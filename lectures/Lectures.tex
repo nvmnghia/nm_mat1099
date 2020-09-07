@@ -1,0 +1,214 @@
+\documentclass{article}    % TODO: Check other style, e.g. book style.
+
+\usepackage{hyperref}          % Clickable link
+\usepackage{indentfirst}
+
+% References. Forced, cuz biber is in the toolchain.
+\usepackage{biblatex}
+\usepackage[final]{microtype}
+
+\usepackage{mathtools}
+\usepackage{icomma}    % TODO: flexible comma-dot.
+\usepackage{siunitx}
+
+
+% Fucking abs.
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+% Blank page https://tex.stackexchange.com/a/374542/206774
+\def\blankpage{%
+      \clearpage%
+      \thispagestyle{empty}%
+      \addtocounter{page}{-1}%
+      \null%
+      \clearpage}
+
+\newtheorem{definition}{Định nghĩa}[section]
+\newtheorem{exmp}{Ví dụ}
+
+\author{Lê Phê Đô \\ \href{mailto:dolp@vnu.edu.vn}{dolp@vnu.edu.vn}}
+
+\date{07/09/2020}
+
+\title{Phương pháp tính MAT1099}
+
+\begin{document}
+
+\maketitle
+
+\blankpage
+
+\section{Giới thiệu về phép tính gần đúng}
+
+\subsection{Một số ví dụ về tính toán khoa học và phương pháp tính}
+
+\subsubsection{Lý do nghiên cứu Phương pháp tính}
+
+\begin{itemize}
+    \item Làm viêc với các số gần đúng.
+    \item Giải gần đúng các phương trình và hê phương trình.
+    \item Xấp xỉ hàm số: Phương pháp nội suy, phương pháp xấp xỉ hàm số, chuỗi
+    Taylor hoặc chuỗi Marlorin.
+    \item Số học IEEE.
+\end{itemize}
+
+\subsubsection{Các nhiệm vụ}
+
+\begin{itemize}
+    \item Tìm hiểu và ứng dụng các thuật toán.
+    \item Thể hiện các thuật toán bằng các chương trình.
+    \item Tìm các bài toán thực tiễn.
+\end{itemize}
+
+Trong thực tế chúng ta thường phải xử lý, tính toán với các đại lượng gần đúng
+như các số đo vật lý, các dữ liệu ban đầu, các số làm tròn…với sai số nào đó,
+tức là các số gần đúng. Việc ước lượng sai số hợp lý cho phép ta đánh giá được
+chất lượng của quá trình tính toán, quyết định số chữ số giữ lại trong các phép
+tính trung gian và trong kết quả. Vì vậy, trước tiên ta cần nghiên cứu về các
+phép tính gần đúng và sai số.
+
+\section{Số gần đúng, sai số tuyệt đối và tương đối}
+
+\subsection{Sai số tuyệt đối và sai số tương đối}
+
+\subsubsection{Sai số tuyệt đối}
+
+Nếu số gần đúng \(a\) có giá trị đúng là \(a_0\) thì ta nói \(a\) xấp xỉ \(a_0\)
+hay \(a\) là số gần đúng của \(a_0\). Khi đó sai số của \(a\) là:
+
+\begin{equation} \label{eq:1}
+    E_a = a - a_0
+\end{equation}
+
+Nhưng giá trị này nói chúng ta không biết được mà chỉ ước lượng được cận trên
+của trị tuyệt đối của nó.
+
+\begin{definition}
+    Giá trị ước lượng \(\Delta a\) sao cho
+    \begin{equation} \label{eq:2}
+        \abs{a - a_0} \leq \Delta a
+    \end{equation}
+    được gọi là \emph{sai số tuyệt đối} của số gần đúng \(a\).
+\end{definition}
+
+% TODO: Mục 2.1?
+Sai số tuyệt đối nhỏ nhất có thể biết được gọi là sai số tuyệt đối giới hạn của
+\(a\). Thông thường ước lượng sai số tuyệt đối giới hạn là khó và nhiều khi
+không cần thiết nên người ta chỉ cần ước lượng sai số tuyệt đối đủ nhỏ và dùng
+từ 1 đến 3 chữ số có nghĩa (là số chữ số bắt đầu từ chữ số khác không đầu tiên
+từ trái sang phải - xem mục 2.1) để biểu diễn sai số tuyệt đối của số gần đúng.
+
+Thay cho \ref{eq:2} người ta còn dùng cách biểu diễn sau để chỉ sai số tuyệt đối
+của \(a\):
+
+\begin{equation} \label{eq:3}
+    a_0 = a \pm \Delta a
+\end{equation}
+
+Trong thực tế thì sai số \(E_a\) không thể biết được nên khi không có sự hiểu
+lầm người ta còn dùng từ \emph{sai số} để chỉ sai số tuyệt đối \(E_a\).
+
+\begin{exmp}
+    Căn phòng có chiều dài \(d = \SI{5,45}{\m}\) và chiều rộng \(r =
+    \SI{3,94}{\m}\) với sai số \(\SI{1}{\cm}\).\\
+
+    Khi đó ta hiểu là:
+    \begin{gather*}
+        \Delta d = \SI{0,01}{\m} \textrm{ hay } d = 5,45 \pm \SI{0,01}{\m}\\
+        \Delta r = \SI{0,01}{\m} \textrm{ hay } r = 3,97 \pm \SI{0.01}{m}
+    \end{gather*}
+
+    Như vậy diện tích của phòng được ước lượng bởi:
+    \begin{equation*}
+        S = d \cdot r = 5,45 \cdot 3,94 = \SI{21,473}{\meter\squared}
+    \end{equation*}
+
+    với cận trên và cận dưới của \(S\) là:
+    \begin{equation*}
+        (5,45 - 0,01)(3,94 - 0,01) = 21,3792 \leq S \leq (5,45 + 0,01)(3,94 + 0,01) = 21,567
+    \end{equation*}
+
+    Vậy ta có ước lượng sai số tuyệt đối của S là:
+    \begin{equation*}
+        \abs{S - S_0} \leq \SI{0,094}{\meter\squared}
+    \end{equation*}
+\end{exmp}
+
+\subsubsection{Sai số tương đối}
+
+Hai số gần đúng có cùng sai số tuyệt đối sẽ có \emph{"mức độ chính xác"} khác
+nhau nếu độ lớn của chúng khác nhau, số bé hơn sẽ có độ chính xác kém hơn. Để
+biểu diễn độ chính xác này người ta dùng sai số sai số tương đối.
+
+\begin{definition}
+    \emph{Sai số tương đối} của số gần đúng \(a\) là tỷ số giữa sai số tuyệt đối
+    và giá trị tuyệt đối của nó, được ký hiệu là \(\delta a\).
+    \begin{equation} \label{eq:4}
+        \delta a = \frac{\delta a}{\abs{a}}
+    \end{equation}
+\end{definition}
+
+Thường sai số tương đối được biểu diễn dưới dạng phần trăm với 2 hoặc 3 chữ số.
+
+Từ \ref{eq:4} ta thấy nếu biết \(\delta a\) thì:
+\begin{equation} \label{eq:5}
+    \Delta a = \abs{a}\delta a
+\end{equation}
+nên ta chỉ cần biết một trong hai loại sai số của nó là được.
+
+\begin{exmp}
+    Nếu \(a = 57\) và \(\Delta a = 0,5\) thì \(\delta a = 0,0087719\) hoặc
+    \(0,88\%\) (gọn hơn là \(0,9\%\)).
+\end{exmp}
+
+\subsubsection{Các loại sai số khác}
+
+Để hình dung các loại sai số khác ta xét ví dụ sau:
+
+\begin{exmp}
+    Một vật thể rơi từ độ cao \(H_0\) với vận tốc ban đầu \(v_0\) (được đo nhờ
+    thiết bị nào đó). Tính độ cao \(H(t)\) của vật thể sau thời gian \(t\). Bài
+    toán có thể giải như sau:
+
+    Nếu gọi ngoại lực tác động vào vật thể là \(F(t)\) (gồm lực hút trọng trường
+    và lực cản), khối lượng vật thể là \(m\) thì \(H(t)\) là nghiệm của phương
+    trình vi phân cấp hai
+    \begin{equation} \label{eq:6}
+        H''(x) = \frac{-F(t)}{m}
+    \end{equation}
+    với điều kiện ban đầu \(H(0) = H_0\) và \(H'(0) = -v_0\).
+
+    Ta chọn một phương pháp gần đúng để giải phương trình này, chẳng hạn nếu giả
+    thiết \(\dfrac{F(t)}{m}\) không đổi thì
+    \[H(t) = H_0 - g\frac{t^2}{2} -v_0 t\]
+\end{exmp}
+
+Qua ví dụ trên ta thấy sai số của kết quả nhận được chịu ảnh hưởng của:
+\begin{itemize}
+    \item các số đo\(H_0\), \(v_0\)
+    \item cách lập luận để xác định \(F(t)\)
+    \item phương pháp giải phương trình \ref{eq:6}
+    \item và các yếu tố ngẫu nhiên khác
+\end{itemize}
+
+Theo các yếu tố ảnh hưởng tới kết quả tính toán ta phân ra các loại sai số sau:
+\begin{itemize}
+    \item \emph{Sai số dữ liệu} (còn gọi là sai số của số liệu ban đầu). Trong
+        thí dụ trên là sai số khi đo \(H_0\) và \(v_0\).
+    \item \emph{Sai số giả thiết}. Sai số này gặp phải khi ta đơn giản hoá bài
+        toán thực tiễn để thiết lập mô hình toán học có thể giải được. Trong thí
+        dụ trên có thể giả thiết ngoại lực chỉ là trọng lực.
+    \item \emph{Sai số phương pháp}. Là sai số của phương pháp giải gần đúng bài
+        toán theo mô hình được lập. Trong thí dụ trên là phương pháp giải phương
+        trình vi phân \ref{eq:6}.
+    \item \emph{Sai số tính toán}. Là sai số tích luỹ trong quá trình tính toán
+        theo phương pháp được chọn.
+    \item \emph{Sai số làm tròn}. Khi tính toán ta thường phải làm tròn các số
+        nên ảnh hưởng tới kết quả nhiều khi rất đáng kể.
+    \item \emph{Sai số ngẫu nhiên}. Là sai số chịu các quy luật chi phối ngẫu
+        nhiên không tránh được.
+\end{itemize}
+
+Về sau ta  quan tâm tới sai số tính toán và sai số phương pháp.
+
+\end{document}
