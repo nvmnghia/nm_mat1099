@@ -1,21 +1,29 @@
-\documentclass{book}    % TODO: Check other style, e.g. book style.
+\documentclass{book}
 
 \usepackage{hyperref}          % Clickable link
 \usepackage{indentfirst}
 
-% References. Forced, cuz biber is in the toolchain.
-\usepackage{biblatex}
+\usepackage{polyglossia}
+\setdefaultlanguage{vietnamese}
+
 \usepackage[final]{microtype}
 
-% TODO: Fix all English element name.
-% i18n
-% \usepackage{polyglossia}
-
 \usepackage{mathtools}
-\usepackage{amsthm}
-\usepackage{icomma}    % TODO: flexible comma-dot.
-\usepackage{siunitx}
 \usepackage{amssymb}
+
+\usepackage{siunitx}
+\sisetup{output-decimal-marker = {,}}
+% \sisetup{group-separator = {.}}
+
+\usepackage{amsthm}
+\newtheorem{definition}{Định nghĩa}
+\newtheorem{exmp}{Ví dụ}[chapter]
+\newtheorem*{proposition}{Mệnh đề}
+\newtheorem*{rule_of_thumb}{Quy tắc}
+\renewcommand{\proofname}{Chứng minh}
+\renewcommand{\qedsymbol}{đpcm.}
+
+\usepackage[figure, table]{totalcount}
 
 
 % Fucking abs.
@@ -23,21 +31,11 @@
 
 % Blank page https://tex.stackexchange.com/a/374542/206774
 \def\blankpage{%
-      \clearpage%
-      \thispagestyle{empty}%
-      \addtocounter{page}{-1}%
-      \null%
-      \clearpage}
-
-\newtheorem{definition}{Định nghĩa}
-\newtheorem{exmp}{Ví dụ}[chapter]
-\newtheorem*{proposition}{Mệnh đề}
-\newtheorem*{rule_of_thumb}{Quy tắc}
-
-\renewcommand{\contentsname}{Mục lục}
-\renewcommand{\chaptername}{Chương}
-\renewcommand{\proofname}{Chứng minh}
-\renewcommand{\qedsymbol}{đpcm.}
+  \clearpage%
+  \thispagestyle{empty}%
+  \addtocounter{page}{-1}%
+  \null%
+  \clearpage}
 
 
 \author{Lê Phê Đô \\ \href{mailto:dolp@vnu.edu.vn}{dolp@vnu.edu.vn}}
@@ -45,6 +43,7 @@
 \date{07/09/2020}
 
 \title{Phương pháp tính MAT1099}
+
 
 \begin{document}
 
@@ -54,9 +53,14 @@
 
 \tableofcontents
 
-\listoffigures
+\iftotalfigures
+  \listoffigures
+\fi
 
-\listoftables
+\iftotaltables
+  \listoftables
+\fi
+
 
 %----------------------------------------------------------------------------------------
 %	Chương 1: Giải tích sai số
@@ -72,7 +76,7 @@
 
 \begin{itemize}
     \item Làm viêc với các số gần đúng.
-    \item Giải gần đúng các phương trình và hê phương trình.
+    \item Giải gần đúng các phương trình và hệ phương trình.
     \item Xấp xỉ hàm số: Phương pháp nội suy, phương pháp xấp xỉ hàm số, chuỗi
     Taylor hoặc chuỗi Maclaurin.
     \item Số học IEEE.
@@ -133,29 +137,23 @@ Trong thực tế thì sai số \(E_a\) không thể biết được nên khi kh
 lầm người ta còn dùng từ \emph{sai số} để chỉ sai số tuyệt đối \(E_a\).
 
 \begin{exmp} \label{exmp:room_example}
-    Căn phòng có chiều dài \(d = \SI{5,45}{\m}\) và chiều rộng \(r =
-    \SI{3,94}{\m}\) với sai số \(\SI{1}{\cm}\).\\
+    Căn phòng có chiều dài \(d = \SI{5.45}{m}\) và chiều rộng \(r =
+    \SI{3.94}{m}\) với sai số \SI{1}{cm}.
 
     Khi đó ta hiểu là:
     \begin{gather*}
-        \Delta d = \SI{0,01}{\m} \textrm{ hay } d = 5,45 \pm \SI{0,01}{\m}\\
-        \Delta r = \SI{0,01}{\m} \textrm{ hay } r = 3,97 \pm \SI{0.01}{m}
+        \Delta d = \SI{0.01}{m} \text{ hay } d = \SI[separate-uncertainty=true]{5.45 \pm 0.01}{m} \\
+        \Delta r = \SI{0.01}{m} \text{ hay } r = \SI[separate-uncertainty=true]{3.97 \pm 0.01}{m}
     \end{gather*}
 
     Như vậy diện tích của phòng được ước lượng bởi:
-    \begin{equation*}
-        S = d \cdot r = 5,45 \cdot 3,94 = \SI{21,473}{\meter\squared}
-    \end{equation*}
+    \[S = d \cdot r = \num{5.45} \cdot \num{3.94} = \SI{21.473}{m^2}\]
 
     với cận trên và cận dưới của \(S\) là:
-    \begin{equation*}
-        (5,45 - 0,01)(3,94 - 0,01) = 21,3792 \leq S \leq (5,45 + 0,01)(3,94 + 0,01) = 21,567
-    \end{equation*}
+    \[(\num{5.45} - \num{0.01})(\num{3.94} - \num{0.01}) = \num{21.3792} \leq S \leq (\num{5.45} + \num{0.01})(\num{3.94} + \num{0.01}) = \num{21.567}\]
 
     Vậy ta có ước lượng sai số tuyệt đối của S là:
-    \begin{equation*}
-        \abs{S - S_0} \leq \SI{0,094}{\meter\squared}
-    \end{equation*}
+    \[\abs{S - S_0} \leq \SI{0.094}{m^2}\]
 \end{exmp}
 
 \subsection{Sai số tương đối}
@@ -181,8 +179,8 @@ Từ \ref{eq:4} ta thấy nếu biết \(\delta a\) thì:
 nên ta chỉ cần biết một trong hai loại sai số của nó là được.
 
 \begin{exmp}
-    Nếu \(a = 57\) và \(\Delta a = 0,5\) thì \(\delta a = 0,0087719\) hoặc
-    \(0,88\%\) (gọn hơn là \(0,9\%\)).
+    Nếu \(a = \num{57}\) và \(\Delta a = \num{0.5}\) thì \(\delta a =
+    \num{0.0087719}\) hoặc \SI{0.88}{\percent} (gọn hơn là \SI{0.9}{\percent}).
 \end{exmp}
 
 \subsection{Các loại sai số khác}
@@ -249,9 +247,7 @@ sai số.
 Bài toán này ta ước lượng \(\Delta y\) khi biết \(x\) và \(\Delta x\).
 
 Theo công thức số gia hữu hạn ta có:
-\begin{equation*}
-    \abs{y - y_0} = \abs{f'(c)}\abs{x - x_0}
-\end{equation*}
+\[\abs{y - y_0} = \abs{f'(c)}\abs{x - x_0}\]
 ở đây \(y_0\) là giá trị đúng của \(y\) và \(c\) là điểm thuộc miền \((x, x_0)\)
 nếu \(x < x_0\) và thuộc \((x_0, x)\) nếu \(x_0 < x\).
 
@@ -265,9 +261,7 @@ Khi \(\Delta x\) bé, \(x\) gần \(x_0\) ta có ước lượng:
 
 \begin{exmp}
     Cho \(y = \ln{x}\) ta có ước lượng:
-    \begin{equation}
-        \Delta(\ln{x}) = \frac{1}{x} \Delta x = \delta x
-    \end{equation}
+    \[\Delta(\ln{x}) = \frac{1}{x} \Delta x = \delta x\]
 \end{exmp}
 
 \subsubsection{Bài toán ngược}
@@ -281,8 +275,8 @@ trị \(\Delta\) cho trước, từ công thức \ref{eq:7} ta thấy nếu
 thì đủ để \(\Delta y \leq \Delta\).
 
 \begin{exmp}
-    \(y = e^x\) với \(x \approx 3\) để có \(\Delta y \leq 0,01\) ta tính \(x\)
-    với \(\Delta x \leq \dfrac{0,01}{e^3}\) là đủ.
+    \(y = e^x\) với \(x \approx 3\) để có \(\Delta y \leq \num{0.01}\) ta tính
+    \(x\) với \(\Delta x \leq \dfrac{\num{0.01}}{e^3}\) là đủ.
 \end{exmp}
 
 % It should be a subsubsection as per the original doc, but this is more readable.
@@ -303,33 +297,29 @@ bản. Sau đây ta ước lượng sai số khi cộng trừ, nhân chia các s
     Trường hợp có nhiều số hạng được xét tương tự.
 
     Khi đó ta có:
-    \begin{equation*}
-        \begin{cases}
-            a_0 - \Delta a \leq a \leq a_0 + \Delta a \\
-            b_0 - \Delta b \leq b \leq b_0 + \Delta b
-        \end{cases}
-    \end{equation*}
+    \[\begin{cases}
+        a_0 - \Delta a \leq a \leq a_0 + \Delta a \\
+        b_0 - \Delta b \leq b \leq b_0 + \Delta b
+    \end{cases}\]
 
     Do đó ta có:
-    \begin{equation*}
-        \begin{cases}
-            a_0 + b_0 - (\Delta a + \Delta b) \leq a + b \leq a_0 + b_0 + (\Delta a + \Delta b) \\
-            a_0 - b_0 - (\Delta a + \Delta b) \leq a - b \leq a_0 - b_0 + (\Delta a + \Delta b)
-        \end{cases}
-    \end{equation*}
+    \[\begin{cases}
+        a_0 + b_0 - (\Delta a + \Delta b) \leq a + b \leq a_0 + b_0 + (\Delta a + \Delta b) \\
+        a_0 - b_0 - (\Delta a + \Delta b) \leq a - b \leq a_0 - b_0 + (\Delta a + \Delta b)
+    \end{cases}\]
 
     Nên
-    \begin{equation*}
-        a_0 \pm b_0 - (\Delta a + \Delta b) \leq a \pm b \leq a_0 \pm b_0 + (\Delta a + \Delta b)
-    \end{equation*}
+    \[a_0 \pm b_0 - (\Delta a + \Delta b) \leq a \pm b \leq a_0 \pm b_0 + (\Delta a + \Delta b)\]
 \end{proof}
 
 \begin{exmp}
-    Cho \(a = 50,5\), \(b = 50,9\) với \(\Delta a = \Delta b = 0,05\) và \(u = a - b\).
+    Cho \(a = \num{50.5}\), \(b = \num{50.9}\) với \(\Delta a = \Delta b =
+    \num{0.05}\) và \(u = a - b\).
 
-    Ta có \(u = 0,4\) với \(\Delta u = 0,05 + 0,05 = 0,1\).
+    Ta có \(u = \num{0.4}\) với \(\Delta u = \num{0.05} + \num{0.05} =
+    \num{0.1}\).
 
-    Vậy \(\delta u = \dfrac{0,1}{0,4} = 25\%\).
+    Vậy \(\delta u = \dfrac{\num{0.1}}{\num{0.4}} = \SI{25}{\percent}\).
 \end{exmp}
 
 \subsubsection{Sai số của tích hoặc thương}
@@ -340,33 +330,25 @@ bản. Sau đây ta ước lượng sai số khi cộng trừ, nhân chia các s
 \end{proposition}
 \begin{proof}
     Xét
-    \begin{equation*}
-        u = \frac{x_1 \ldots x_m}{y_1 \ldots y_n}
-    \end{equation*}
+    \[u = \frac{x_1 \ldots x_m}{y_1 \ldots y_n}\]
 
     Ta có thể giả thiết các \(x_i\) và \(y_j\) đều dương. Khi đó ta có:
-    \begin{equation*}
-        \ln{u} = \sum_{i=1}^{m} \ln{x_i} + \sum_{j=1}^{n} \ln{y_j}
-    \end{equation*}
+    \[\ln{u} = \sum_{i=1}^{m} \ln{x_i} + \sum_{j=1}^{n} \ln{y_j}\]
 
     Theo mệnh đề \ref{prop:error_of_sum} ở trên, ta suy ra:
-    \begin{equation*}
-        \delta u = \sum_{i=1}^{m} \delta x_i + \sum_{j=1}^{n} \delta y_j
-    \end{equation*}
+    \[\delta u = \sum_{i=1}^{m} \delta x_i + \sum_{j=1}^{n} \delta y_j\]
 \end{proof}
 
 \begin{exmp}
-    Xét \(S = d \cdot r\) như ở ví dụ \ref{exmp:room_example} \(d = 5,45\), \(r
-    = 3,94\), \(\Delta d = \Delta r = 0,01\).
+    Xét \(S = d \cdot r\) như ở ví dụ \ref{exmp:room_example} \(d =
+    \num{5.45}\), \(r = \num{3.94}\), \(\Delta d = \Delta r = \num{0.01}\).
 
     Ta có:
-    \begin{equation*}
-        \begin{aligned}
-            &\delta d = 0,001835 \\
-            &\delta r = 0,002538 \\
-            &\delta S = 0,004373 \text{ nên } \Delta S = 0,094
-        \end{aligned}
-    \end{equation*}
+    \[\begin{aligned}
+        \delta d &= \num{0.001835} \\
+        \delta r &= \num{0.002538} \\
+        \delta S &= \num{0.004373} \text{ nên } \Delta S = \num{0.094}
+    \end{aligned}\]
 \end{exmp}
 
 \subsection{Sai số hàm nhiều biến}
@@ -386,10 +368,16 @@ Tương tự hàm một biến, sử dụng công thức số gia hữu hạn ta
 với \(f'_i)\) là đạo hàm riêng của \(u\) theo biến \(x_i\).
 
 \begin{exmp}
-    Xét \(u = a^2 b\) với \(a = 2,0\), \(b = 25,0\), \(\Delta a = \Delta b = 0,1\).
+    Xét \(u = a^2 b\) với \(a = \num{2.0}\), \(b = \num{25.0}\), \(\Delta a =
+    \Delta b = \num{0.1}\).
 
-    Ta có \(u = 100\), \(\Delta u = 2ab \Delta a + a^2 \Delta b = 100.0,1 +
-    4.0,1 = 10,4\).
+    Ta có:
+    \[\begin{aligned}
+               u &= 100 \\
+        \Delta u &= 2ab \Delta a + a^2 \Delta b \\
+                 &= 2 \cdot \num{2.0} \cdot \num{25.0} \cdot \num{0.1} + \num{2.0}^2 \cdot \num{0.1} \\
+                 &= \num{10.4}
+    \end{aligned}\]
 \end{exmp}
 
 \subsubsection{Bài toán ngược}
@@ -405,14 +393,10 @@ phương pháp thông dụng.
 \begin{enumerate}
     \item Sai số của  đối số như nhau.
         Ta xét khi:
-        \begin{equation*}
-            \Delta x_k = \Delta x \, \forall k \leq n
-        \end{equation*}
+        \[\Delta x_k = \Delta x \, \forall k \leq n\]
 
         Từ \ref{eq:approx_of_relative_error} ta có:
-        \begin{equation*}
-            \Delta u = \sum_{i=1}^{n} \abs{f'_i(x_1, \ldots, x_n)} \Delta x
-        \end{equation*}
+        \[\Delta u = \sum_{i=1}^{n} \abs{f'_i(x_1, \ldots, x_n)} \Delta x\]
 
         Vậy để cho \(\Delta u \leq \Delta\) thì chỉ cần:
         \begin{equation} \label{eq:same_error}
@@ -422,14 +406,10 @@ phương pháp thông dụng.
 
     \item Phân bố đều sai số.
         Bây giờ ta xét khi
-        \begin{equation*}
-            \abs{f'_i(x_1, \ldots, x_n)} \Delta x_i = \abs{f'_k(x_1, \ldots, x_n)} \Delta x_k \, \forall i, k \leq n
-        \end{equation*}
+        \[\abs{f'_i(x_1, \ldots, x_n)} \Delta x_i = \abs{f'_k(x_1, \ldots, x_n)} \Delta x_k \, \forall i, k \leq n\]
 
         Khi đó \(\forall j \leq n\), từ \ref{eq:absolute_error_of_function} ta có:
-        \begin{equation*}
-            \Delta u = n \abs{f'_i(x_1, \ldots, x_n)} \Delta x_j
-        \end{equation*}
+        \[\Delta u = n \abs{f'_i(x_1, \ldots, x_n)} \Delta x_j\]
 
         Vậy để cho \(\Delta u \leq \Delta\) thì chỉ cần tính:
         \begin{equation} \label{eq:evenly_distributed_error}
@@ -438,27 +418,23 @@ phương pháp thông dụng.
 \end{enumerate}
 
 \begin{exmp}
-    Mảnh vườn có cạnh \(d \approx \SI{45,0}{m}\) và \(r \approx \SI{20,0}{m}\).
-    Cần tính \(d\) và \(r\) với \(\Delta d\), \(\Delta r\) như thế nào để
-    \(\Delta S \leq \SI{0,1}{\m\squared}\).
+    Mảnh vườn có cạnh \(d \approx \SI{45.0}{m}\) và \(r \approx
+    \SI{20.0}{m}\). Cần tính \(d\) và \(r\) với \(\Delta d\), \(\Delta r\) như
+    thế nào để \(\Delta S \leq \SI{0.1}{m^2}\).
 
     \emph{Cách 1.}
     Xét \(\Delta d = \Delta r = \Delta x\), ta áp dụng \ref{eq:same_error}:
-    \begin{equation*}
-        \Delta x \leq \frac{0,1}{45 + 20} = \SI{0,0015}{m}
-    \end{equation*}
+    \[\Delta x \leq \frac{\num{0.1}}{45 + 20} = \SI{0.0015}{m}\]
 
     \emph{Cách 2.}
     Khi đo chiều dài thường có sai số lớn hơn chiều rộng nên ta có thể dùng
     \ref{eq:evenly_distributed_error}.
 
-    \begin{equation*}
-        \begin{aligned}
-            &\Delta d \leq \frac{0,1}{2,20} = \SI{0,0025}{m}
-            &\Delta r \leq \frac{0,1}{2,45} = \SI{0,0010}{m}
-        \end{aligned}
-    \end{equation*}
-    là đủ để \(\Delta S \leq \SI{0,1}{\m\squared}\)
+    \[\begin{aligned}
+        &\Delta d \leq \frac{\num{0.1}}{\num{2.20}} = \SI{0.0025}{m}
+        &\Delta r \leq \frac{\num{0.1}}{\num{2.45}} = \SI{0.0010}{m}
+    \end{aligned}\]
+    là đủ để \(\Delta S \leq \SI{0.1}{m^2}\)
 \end{exmp}
 
 \section[Sai số quy tròn, quan hệ sai số \& số chữ số chắc]{Sai số qui tròn, quan hệ giữa sai số và số chữ số đáng tin}
@@ -470,28 +446,29 @@ chúng như thế nào?
 \subsection{Chữ số có nghĩa}
 
 \begin{definition}
-    Trong biểu diễn theo cơ số b (trường hợp riêng là biểu diễn thập phân):
+    Trong biểu diễn theo cơ số \(b\) (trường hợp riêng là biểu diễn thập phân):
     \begin{itemize}
-        \item các chữ số kể từ chữ số khác 0 đầu tiên tính từ trái sang phải gọi
-            là \emph{các chữ số có nghĩa},
-        \item các chữ số 0 bên trái là \emph{không có nghĩa}
+        \item các chữ số kể từ chữ số khác \(0\) đầu tiên tính từ trái sang phải
+            gọi là \emph{các chữ số có nghĩa},
+        \item các chữ số \(0\) bên trái là \emph{không có nghĩa}
     \end{itemize}
 \end{definition}
 
-Nếu a được viết dưới dạng
+Nếu \(a\) được viết dưới dạng
 \begin{equation} \label{eq:number_in_decimal}
     a = \sum_{k=p}^{n} a_k10^k
 \end{equation}
-thì các chữ số 0 bên trái không có ở biểu diễn này, ý nghĩa của các chữ số 0 bên
-phải liên quan tới cách biểu diễn số gần đúng sẽ xét dưới đây.
+thì các chữ số \(0\) bên trái không có ở biểu diễn này, ý nghĩa của các chữ số
+\(0\) bên phải liên quan tới cách biểu diễn số gần đúng sẽ xét dưới đây.
 
 \begin{exmp}
-    Số \(a = 03,4050\) thì chữ số 0 đầu không có nghĩa (người ta có thể điền để
-    tránh viết thêm) còn các chữ số 3, 4, 0, 5, 0 là có nghĩa.
+    Số \(a = 03.4050\) thì chữ số \(0\) đầu không có nghĩa (người ta có thể điền
+    để tránh viết thêm) còn các chữ số \(3\), \(4\), \(0\), \(5\), \(0\) là có
+    nghĩa.
 
-    Số \(b = 0,034\) thì các chữ số 3, 4 là có nghĩa, hai chữ số 0 bên trái
-    không có nghĩa vì nếu biểu diễn theo dạng \ref{eq:number_in_decimal} thì các
-    chữ số này không cần đến.
+    Số \(b = 0.034\) thì các chữ số \(3\), \(4\) là có nghĩa, hai chữ số \(0\)
+    bên trái không có nghĩa vì nếu biểu diễn theo dạng
+    \ref{eq:number_in_decimal} thì các chữ số này không cần đến.
 \end{exmp}
 
 \subsection{Chữ số chắc}
@@ -499,20 +476,21 @@ phải liên quan tới cách biểu diễn số gần đúng sẽ xét dưới 
 \begin{definition}
     Xét a có biểu diễn \ref{eq:number_in_decimal} với sai số \(\Delta a\).
     \begin{itemize}
-        \item Nếu \(\Delta a \leq 0,5 \cdot 10^m\) thì \(a_k\) là \emph{chữ số
-            chắc (đáng tin)} \(\forall k \geq m\) (theo nghĩa hẹp dùng trong
-            tính toán).
-        \item Nếu \(0,5 * 10^m \leq \Delta a \leq 10^m\) thì \(a_m\) là
-            \emph{chắc theo nghĩa rộng}
+        \item Nếu \(\Delta a \leq \num{0.5} \cdot 10^m\) thì \(a_k\) là
+            \emph{chữ số chắc (đáng tin)} \(\forall k \geq m\) (theo nghĩa hẹp
+            dùng trong tính toán).
+        \item Nếu \(\num{0.5} \cdot 10^m \leq \Delta a \leq 10^m\) thì \(a_m\)
+            là \emph{chắc theo nghĩa rộng}.
     \end{itemize}
 \end{definition}
 
 \begin{exmp}
-    \(a = 21,473\) và \(\Delta a = 0,094 = 0,94 \cdot 10^{-1}\) thì:
+    \(a = \num{21.473}\) và \(\Delta a = \num{0.094} = \num{0.94} \cdot
+    10^{-1}\) thì:
     \begin{itemize}
-        \item Các chữ số 2, 1 là chắc theo nghĩa hẹp.
-        \item Chữ số 4 là chắc theo nghĩa rộng.
-        \item Các chữ số 7, 3 là không đáng tin hay không chắc.
+        \item Các chữ số \(2\), \(1\) là chắc theo nghĩa hẹp.
+        \item Chữ số \(4\) là chắc theo nghĩa rộng.
+        \item Các chữ số \(7\), \(3\) là không đáng tin hay không chắc.
     \end{itemize}
 \end{exmp}
 
@@ -542,16 +520,16 @@ nhờ bỏ đi các chữ số \(a_k\) (\(k < m\)) theo quy tắc sau:
 Quy tắc chữ số chẵn: Giả sử \(a > 0\) và phần bỏ đi là \mu.
 
 \begin{itemize}
-    \item Nếu \(\mu < 0,5 \cdot 10^m\) thì
+    \item Nếu \(\mu < \num{0.5} \cdot 10^m\) thì
         \begin{equation} \label{eq:removed_part_smaller}
             \overline{a} = \sum_{k=m}^{n} a_k 10^k
         \end{equation}
         nghĩa là ta giữ nguyên các chữ số đến hàng \(m\) tính từ trái sang phải.
-    \item Nếu \(\mu > 0,5 \cdot 10^m\) thì
+    \item Nếu \(\mu > \num{0.5} \cdot 10^m\) thì
         \begin{equation} \label{eq:removed_part_larger}
             \overline{a} = \sum_{k=m}^{n} a_k 10^k + 10^m
         \end{equation}
-    \item Nếu \(\mu = 0,5 \cdot 10^m\), ta xét tiếp:
+    \item Nếu \(\mu = \num{0.5} \cdot 10^m\), ta xét tiếp:
         \begin{itemize}
             \item Nếu \(a_m\) chẵn, làm theo \ref{eq:removed_part_smaller}.
             \item Nếu \(a_m\) lẻ, làm theo \ref{eq:removed_part_larger}.
@@ -562,19 +540,17 @@ Khi \(a < 0\) ta thu gọn giá trị tuyệt đối và giữ nguyên dấu.
 \end{rule_of_thumb}
 
 Khi thu gọn \(a\) thành \(\overline{a}\) ta có sai số thu gọn \(\Gamma_a \leq
-0,5 \cdot 10^m\). Để nó ít ảnh hưởng tới sai số tuyệt đối, ta thu gọn số và giữ
-lại một hoặc hai chữ số không chắc.
+\num{0.5} \cdot 10^m\). Để nó ít ảnh hưởng tới sai số tuyệt đối, ta thu gọn số
+và giữ lại một hoặc hai chữ số không chắc.
 
 Nếu a có biểu diễn \ref{eq:number_in_decimal} và \(a_k\) chắc với \(k \geq m\)
 thì \(\Delta a \leq 10^m\) nên
-\begin{equation*}
-    \begin{aligned}
-        % TODO: Check this carefully.
-        \delta_a = \frac{\Delta a}{\abs{a}} \leq \frac{10^m}{\sum\limits_{k=m}\limits^{n} a_k 10^k} &= \frac{1}{\sum\limits_{k=0}\limits^{n} a_{k+m} 10^k}
-        % \delta_a = \frac{\Delta a}{\abs{a}} \leq \frac{10^m}{\sum\limits_{k=m}\limits^{n} a_k 10^k} &= \frac{1}{\sum\limits_{k=m}\limits^{n} a_k 10^{k - m}} \\
-        %                                                                                             &= \frac{1}{\sum\limits_{k=0}\limits^{n} a_{k + m} 10^k}
-    \end{aligned}
-\end{equation*}
+\[\begin{aligned}
+    % TODO: Check this carefully.
+    \delta_a = \frac{\Delta a}{\abs{a}} \leq \frac{10^m}{\sum\limits_{k=m}\limits^{n} a_k 10^k} &= \frac{1}{\sum\limits_{k=0}\limits^{n} a_{k+m} 10^k}
+    % \delta_a = \frac{\Delta a}{\abs{a}} \leq \frac{10^m}{\sum\limits_{k=m}\limits^{n} a_k 10^k} &= \frac{1}{\sum\limits_{k=m}\limits^{n} a_k 10^{k - m}} \\
+    %                                                                                             &= \frac{1}{\sum\limits_{k=0}\limits^{n} a_{k + m} 10^k}
+\end{aligned}\]
 
 Như vậy sai số tương đối của số gần đúng có thể ước lượng bởi nghịch đảo của số
 gồm các chữ số chắc của \(a\) không có dấu phẩy.
@@ -589,8 +565,8 @@ và dấu phẩy động.
 
 Trong một biểu diễn \emph{dấu phẩy tĩnh} tất cả các số được được đưa ra với một
 số cố định các số thập phân sau dấu thập phân; ví dụ, số được đưa ra với 3 số
-thập phân là \(62,358\), \(0,014\), \(1,000\). Trong một văn bản chúng ta sẽ
-viết, nói, biểu diễn 3 số thập phân là biểu diễn \emph{3D}.
+thập phân là \num{62.358}, \num{0.014}, \num{1.000}. Trong một văn bản chúng ta
+sẽ viết, nói, biểu diễn 3 số thập phân là biểu diễn \emph{3D}.
 
 Biểu diễn dấu phẩy tĩnh có ưu thế:
 \begin{itemize}
@@ -599,44 +575,36 @@ Biểu diễn dấu phẩy tĩnh có ưu thế:
 \end{itemize}
 
 Trong hệ thống \emph{dấu phẩy động}, chúng sẽ ta viết, ví dụ,
-\begin{equation*}
-    0,6247 \cdot 10^3; 0,1735 \cdot 10^{-13}; -0,2000 \cdot 10^{-1}
-\end{equation*}
+\[\num{0.6247} \cdot 10^3; \num{0.1735} \cdot 10^{-13}; \num{-0.2000} \cdot 10^{-1}\]
 hay đôi khi ta biểu diễn:
-\begin{equation*}
-    6,247 \cdot 10^2; 1,735 \cdot 10^{-14}; -2,000 \cdot 10^{-2}
-\end{equation*}
+\[\num{6.247} \cdot 10^2; \num{1.735} \cdot 10^{-14}; \num{-2.000} \cdot 10^{-2}\]
 
 Chúng ta thấy rằng trong biểu diễn này số các chữ số có nghĩa được giữ cố định,
 trong khi dấu phẩy là "động". Ở đây, một chữ số có nghĩa của một số \(c\) là chữ
-số bất kỳ của \(c\), ngoại trừ chữ số 0 nằm ở bên trái chữ số khác 0 đầu tiên;
-các chữ số 0 này chỉ để xác định vị trí của dấu phẩy (như vậy, bất kỳ chữ 0 khác
-đều là chữ số có nghĩa của \(c\)).
+số bất kỳ của \(c\), ngoại trừ chữ số \(0\) nằm ở bên trái chữ số khác \(0\) đầu
+tiên; các chữ số \(0\) này chỉ để xác định vị trí của dấu phẩy (như vậy, bất kỳ
+chữ \(0\) khác đều là chữ số có nghĩa của \(c\)).
 
 \begin{exmp}
-\begin{equation*}
-    13600; 1,3600; 0,0013600
-\end{equation*}
-tất cả đều có 5 chữ số có nghĩa.
+    \[\num{13600}; \num{1.3600}; \num{0.0013600}\]
+    tất cả đều có 5 chữ số có nghĩa.
 \end{exmp}
 
 Trong văn bản chúng ta nói rút gọn một số đến 5 chữ số có nghĩa là \emph{5S}.
 
 Việc sử dụng số mũ cho phép chúng ta biểu diễn số rất lớn và rất nhỏ. Thật vậy,
 về mặt lý thuyết số khác 0 bất kỳ \(a\) có thể được viết như sau:
-\begin{equation*}
-    a = \pm m 10^n \mid 0,1 \leq \abs{m} < 1, n \in \mathbb{Z}
-\end{equation*}
+\[a = \pm m 10^n \mid 0.1 \leq \abs{m} < 1, n \in \mathbb{Z}\]
 
 \begin{rule_of_thumb}
     Để làm tròn số \(x\) đến \(k\) chữ số sau dấu phẩy, ta cộng vào \(x\) lượng
-    \(0,5 \cdot 10^{-(k+1)}\) và bỏ đi từ chữ số thứ \(k+1\) sau dấu phẩy trở
-    đi.
+    \(\num{0.5} \cdot 10^{-(k+1)}\) và bỏ đi từ chữ số thứ \(k+1\) sau dấu phẩy
+    trở đi.
 \end{rule_of_thumb}
 
 \subsubsection{Số học IEEE}
 
-Trong máy tính hiện đại người ta dùng các số nhị phân, ở đây \(m\)) được giới
+Trong máy tính hiện đại người ta dùng các số nhị phân, ở đây \(m\) được giới
 hạn bởi \(k\) chữ số nhị phân (ví dụ, \(k = 8\)) và \(n\) cũng được giới hạn, ta
 có biểu diễn sau (chỉ biểu diễn được một số hữu hạn số):
 \begin{equation}
@@ -644,7 +612,7 @@ có biểu diễn sau (chỉ biểu diễn được một số hữu hạn số)
 \end{equation}
 
 Các số \(\overline{a}\) ở đây được gọi là số máy nhị phân \(k\) chữ số. Phần sau
-dấu phảy \(m\) (được gọi là \emph{mantissa}), biểu diễn các chữ số có nghĩa của
+dấu phẩy \(m\) (được gọi là \emph{mantissa}), biểu diễn các chữ số có nghĩa của
 \(\overline{a}\), \(n\) được gọi là lũy thừa của \(\overline{a}\).
 
 \end{document}
