@@ -78,8 +78,8 @@
     \item Làm viêc với các số gần đúng.
     \item Giải gần đúng các phương trình và hệ phương trình.
     \item Xấp xỉ hàm số: Phương pháp nội suy, phương pháp xấp xỉ hàm số, chuỗi
-    Taylor hoặc chuỗi Maclaurin.
-    \item Số học IEEE.
+        Taylor hoặc chuỗi Maclaurin.
+    \item Số học IEEE\@.    % https://tex.stackexchange.com/questions/55105/when-should-i-use-intersentence-spacing
 \end{itemize}
 
 \subsubsection{Các nhiệm vụ}
@@ -126,7 +126,7 @@ không cần thiết nên người ta chỉ cần ước lượng sai số tuy�
 từ 1 đến 3 chữ số có nghĩa (là số chữ số bắt đầu từ chữ số khác không đầu tiên
 từ trái sang phải - xem mục 2.1) để biểu diễn sai số tuyệt đối của số gần đúng.
 
-Thay cho \ref{eq:2} người ta còn dùng cách biểu diễn sau để chỉ sai số tuyệt đối
+Thay cho~\ref{eq:2} người ta còn dùng cách biểu diễn sau để chỉ sai số tuyệt đối
 của \(a\):
 
 \begin{equation} \label{eq:3}
@@ -136,7 +136,7 @@ của \(a\):
 Trong thực tế thì sai số \(E_a\) không thể biết được nên khi không có sự hiểu
 lầm người ta còn dùng từ \emph{sai số} để chỉ sai số tuyệt đối \(E_a\).
 
-\begin{exmp} \label{exmp:room_example}
+\begin{exmp}\label{exmp:room_example}
     Căn phòng có chiều dài \(d = \SI{5.45}{m}\) và chiều rộng \(r =
     \SI{3.94}{m}\) với sai số \SI{1}{cm}.
 
@@ -158,9 +158,9 @@ lầm người ta còn dùng từ \emph{sai số} để chỉ sai số tuyệt �
 
 \subsection{Sai số tương đối}
 
-Hai số gần đúng có cùng sai số tuyệt đối sẽ có \emph{"mức độ chính xác"} khác
-nhau nếu độ lớn của chúng khác nhau, số bé hơn sẽ có độ chính xác kém hơn. Để
-biểu diễn độ chính xác này người ta dùng sai số sai số tương đối.
+Hai số gần đúng có cùng sai số tuyệt đối sẽ có ``mức độ chính xác'' khác nhau nếu
+độ lớn của chúng khác nhau: số bé hơn sẽ có độ chính xác kém hơn. Để biểu diễn
+độ chính xác này, người ta dùng sai số tương đối.
 
 \begin{definition}
     \emph{Sai số tương đối} của số gần đúng \(a\) là tỷ số giữa sai số tuyệt đối
@@ -172,7 +172,7 @@ biểu diễn độ chính xác này người ta dùng sai số sai số tương
 
 Thường sai số tương đối được biểu diễn dưới dạng phần trăm với 2 hoặc 3 chữ số.
 
-Từ \ref{eq:4} ta thấy nếu biết \(\delta a\) thì:
+Từ~\ref{eq:4} ta thấy nếu biết \(\delta a\) thì:
 \begin{equation} \label{eq:5}
     \Delta a = \abs{a}\delta a
 \end{equation}
@@ -209,7 +209,7 @@ Qua ví dụ trên ta thấy sai số của kết quả nhận được chịu �
 \begin{itemize}
     \item các số đo \(H_0\), \(v_0\)
     \item cách lập luận để xác định \(F(t)\)
-    \item phương pháp giải phương trình \ref{eq:6}
+    \item phương pháp giải phương trình~\ref{eq:6}
     \item và các yếu tố ngẫu nhiên khác
 \end{itemize}
 
@@ -222,7 +222,7 @@ Theo các yếu tố ảnh hưởng tới kết quả tính toán ta phân ra c�
         dụ trên có thể giả thiết ngoại lực chỉ là trọng lực.
     \item \emph{Sai số phương pháp}: Là sai số của phương pháp giải gần đúng bài
         toán theo mô hình được lập. Trong thí dụ trên là phương pháp giải phương
-        trình vi phân \ref{eq:6}.
+        trình vi phân~\ref{eq:6}.
     \item \emph{Sai số tính toán}: Là sai số tích luỹ trong quá trình tính toán
         theo phương pháp được chọn.
     \item \emph{Sai số làm tròn}: Khi tính toán ta thường phải làm tròn các số
@@ -268,7 +268,7 @@ Khi \(\Delta x\) bé, \(x\) gần \(x_0\) ta có ước lượng:
 
 Trong bài toán này, ta biết giá trị gần đúng \(x\), ta cần xác định phải tính
 \(x\) với \(\Delta x\) là bao nhiêu để đảm bảo \(\Delta y \leq \Delta\). Với giá
-trị \(\Delta\) cho trước, từ công thức \ref{eq:7} ta thấy nếu
+trị \(\Delta\) cho trước, từ công thức~\ref{eq:7} ta thấy nếu
 \begin{equation} \label{eq:approx_of_relative_error}
     \Delta x \leq \frac{\Delta}{\abs{f'(x)}}
 \end{equation}
@@ -287,7 +287,7 @@ bản. Sau đây ta ước lượng sai số khi cộng trừ, nhân chia các s
 
 \subsubsection{Sai số của tổng hoặc hiệu}
 
-\begin{proposition} \label{prop:error_of_sum}
+\begin{proposition}\label{prop:error_of_sum}
     Sai số tuyệt đối của một tổng hoặc hiệu bằng tổng các sai số tuyệt đối thành
     phần.
 \end{proposition}
@@ -335,12 +335,12 @@ bản. Sau đây ta ước lượng sai số khi cộng trừ, nhân chia các s
     Ta có thể giả thiết các \(x_i\) và \(y_j\) đều dương. Khi đó ta có:
     \[\ln{u} = \sum_{i=1}^{m} \ln{x_i} + \sum_{j=1}^{n} \ln{y_j}\]
 
-    Theo mệnh đề \ref{prop:error_of_sum} ở trên, ta suy ra:
+    Theo mệnh đề~\ref{prop:error_of_sum} ở trên, ta suy ra:
     \[\delta u = \sum_{i=1}^{m} \delta x_i + \sum_{j=1}^{n} \delta y_j\]
 \end{proof}
 
 \begin{exmp}
-    Xét \(S = d \cdot r\) như ở ví dụ \ref{exmp:room_example} \(d =
+    Xét \(S = d \cdot r\) như ở ví dụ~\ref{exmp:room_example} \(d =
     \num{5.45}\), \(r = \num{3.94}\), \(\Delta d = \Delta r = \num{0.01}\).
 
     Ta có:
@@ -365,7 +365,7 @@ Tương tự hàm một biến, sử dụng công thức số gia hữu hạn ta
 \begin{equation} \label{eq:absolute_error_of_function}
     \Delta u = \sum_{i=1}^{n} \abs{f'_i(x_1, \ldots, x_n)} \Delta x_i
 \end{equation}
-với \(f'_i)\) là đạo hàm riêng của \(u\) theo biến \(x_i\).
+với \(f'_i\) là đạo hàm riêng của \(u\) theo biến \(x_i\).
 
 \begin{exmp}
     Xét \(u = a^2 b\) với \(a = \num{2.0}\), \(b = \num{25.0}\), \(\Delta a =
@@ -386,33 +386,32 @@ Bây giờ ta đã biết các số gần đúng \(x_i\), ta phải tính chúng
 đối như thế nào để có \(\Delta y \leq \Delta\); ở đây \(\Delta\) là số cho
 trước.
 
-Các phương pháp xử lý bài toán này đều dựa trên công thức
-\ref{eq:absolute_error_of_function} một cách linh hoạt. Sau đây ta xét hai
-phương pháp thông dụng.
+Các phương pháp xử lý bài toán này đều dựa trên công thức~\ref{eq:absolute_error_of_function}
+một cách linh hoạt. Sau đây ta xét hai phương pháp thông dụng.
 
 \begin{enumerate}
     \item Sai số của  đối số như nhau.
         Ta xét khi:
         \[\Delta x_k = \Delta x \, \forall k \leq n\]
 
-        Từ \ref{eq:approx_of_relative_error} ta có:
+        Từ~\ref{eq:approx_of_relative_error} ta có:
         \[\Delta u = \sum_{i=1}^{n} \abs{f'_i(x_1, \ldots, x_n)} \Delta x\]
 
         Vậy để cho \(\Delta u \leq \Delta\) thì chỉ cần:
-        \begin{equation} \label{eq:same_error}
+        \begin{equation}\label{eq:same_error}
             \Delta x \leq \frac{\Delta}{\sum_{i=1}^{n} \abs{f'_i(x_1, \ldots, x_n)}}
         \end{equation}
         là đủ.
 
     \item Phân bố đều sai số.
-        Bây giờ ta xét khi
+        Bây giờ ta xét khi:
         \[\abs{f'_i(x_1, \ldots, x_n)} \Delta x_i = \abs{f'_k(x_1, \ldots, x_n)} \Delta x_k \, \forall i, k \leq n\]
 
-        Khi đó \(\forall j \leq n\), từ \ref{eq:absolute_error_of_function} ta có:
+        Khi đó \(\forall j \leq n\), từ~\ref{eq:absolute_error_of_function} ta có:
         \[\Delta u = n \abs{f'_i(x_1, \ldots, x_n)} \Delta x_j\]
 
         Vậy để cho \(\Delta u \leq \Delta\) thì chỉ cần tính:
-        \begin{equation} \label{eq:evenly_distributed_error}
+        \begin{equation}\label{eq:evenly_distributed_error}
             \Delta x_j \leq \frac{\Delta}{n \abs{f'_i(x_1, \ldots, x_n)}} \, \forall j = 1, \ldots, n
         \end{equation}
 \end{enumerate}
@@ -423,12 +422,12 @@ phương pháp thông dụng.
     thế nào để \(\Delta S \leq \SI{0.1}{m^2}\).
 
     \emph{Cách 1.}
-    Xét \(\Delta d = \Delta r = \Delta x\), ta áp dụng \ref{eq:same_error}:
+    Xét \(\Delta d = \Delta r = \Delta x\), ta áp dụng~\ref{eq:same_error}:
     \[\Delta x \leq \frac{\num{0.1}}{45 + 20} = \SI{0.0015}{m}\]
 
     \emph{Cách 2.}
-    Khi đo chiều dài thường có sai số lớn hơn chiều rộng nên ta có thể dùng
-    \ref{eq:evenly_distributed_error}.
+    Khi đo chiều dài thường có sai số lớn hơn chiều rộng nên ta có thể
+    dùng~\ref{eq:evenly_distributed_error}.
 
     \[\begin{aligned}
         &\Delta d \leq \frac{\num{0.1}}{\num{2.20}} = \SI{0.0025}{m}
@@ -467,14 +466,14 @@ thì các chữ số \(0\) bên trái không có ở biểu diễn này, ý ngh�
     nghĩa.
 
     Số \(b = 0.034\) thì các chữ số \(3\), \(4\) là có nghĩa, hai chữ số \(0\)
-    bên trái không có nghĩa vì nếu biểu diễn theo dạng
-    \ref{eq:number_in_decimal} thì các chữ số này không cần đến.
+    bên trái không có nghĩa vì nếu biểu diễn theo dạng~\ref{eq:number_in_decimal}
+    thì các chữ số này không cần đến.
 \end{exmp}
 
 \subsection{Chữ số chắc}
 
 \begin{definition}
-    Xét a có biểu diễn \ref{eq:number_in_decimal} với sai số \(\Delta a\).
+    Xét a có biểu diễn~\ref{eq:number_in_decimal} với sai số \(\Delta a\).
     \begin{itemize}
         \item Nếu \(\Delta a \leq \num{0.5} \cdot 10^m\) thì \(a_k\) là
             \emph{chữ số chắc (đáng tin)} \(\forall k \geq m\) (theo nghĩa hẹp
@@ -509,7 +508,7 @@ kết quả thì giữ lại các chữ số chắc theo nghĩa rộng.
 
 Khi số \(a\) có nhiều chữ số không chắc hoặc có quá nhiều chữ số có nghĩa thì
 người ta thường thu gọn thành số \(\overline{a}\) có ít chữ số có nghĩa hơn. Nếu
-\(a\) có biểu diễn \ref{eq:number_in_decimal} và số thu gọn được giữ lại đến
+\(a\) có biểu diễn~\ref{eq:number_in_decimal} và số thu gọn được giữ lại đến
 \(a_m\) (\(m > p\)) thì \(\overline{a}\) có biểu diễn
 \begin{equation}
     \overline{a} = \sum_{k=m}^{n} b_k 10^k
@@ -521,18 +520,18 @@ Quy tắc chữ số chẵn: Giả sử \(a > 0\) và phần bỏ đi là \mu.
 
 \begin{itemize}
     \item Nếu \(\mu < \num{0.5} \cdot 10^m\) thì
-        \begin{equation} \label{eq:removed_part_smaller}
+        \begin{equation}\label{eq:removed_part_smaller}
             \overline{a} = \sum_{k=m}^{n} a_k 10^k
         \end{equation}
         nghĩa là ta giữ nguyên các chữ số đến hàng \(m\) tính từ trái sang phải.
     \item Nếu \(\mu > \num{0.5} \cdot 10^m\) thì
-        \begin{equation} \label{eq:removed_part_larger}
+        \begin{equation}\label{eq:removed_part_larger}
             \overline{a} = \sum_{k=m}^{n} a_k 10^k + 10^m
         \end{equation}
     \item Nếu \(\mu = \num{0.5} \cdot 10^m\), ta xét tiếp:
         \begin{itemize}
-            \item Nếu \(a_m\) chẵn, làm theo \ref{eq:removed_part_smaller}.
-            \item Nếu \(a_m\) lẻ, làm theo \ref{eq:removed_part_larger}.
+            \item Nếu \(a_m\) chẵn, làm theo~\ref{eq:removed_part_smaller}.
+            \item Nếu \(a_m\) lẻ, làm theo~\ref{eq:removed_part_larger}.
         \end{itemize}
 \end{itemize}
 
@@ -543,7 +542,7 @@ Khi thu gọn \(a\) thành \(\overline{a}\) ta có sai số thu gọn \(\Gamma_a
 \num{0.5} \cdot 10^m\). Để nó ít ảnh hưởng tới sai số tuyệt đối, ta thu gọn số
 và giữ lại một hoặc hai chữ số không chắc.
 
-Nếu a có biểu diễn \ref{eq:number_in_decimal} và \(a_k\) chắc với \(k \geq m\)
+Nếu a có biểu diễn~\ref{eq:number_in_decimal} và \(a_k\) chắc với \(k \geq m\)
 thì \(\Delta a \leq 10^m\) nên
 \[\begin{aligned}
     % TODO: Check this carefully.
@@ -580,10 +579,10 @@ hay đôi khi ta biểu diễn:
 \[\num{6.247} \cdot 10^2; \num{1.735} \cdot 10^{-14}; \num{-2.000} \cdot 10^{-2}\]
 
 Chúng ta thấy rằng trong biểu diễn này số các chữ số có nghĩa được giữ cố định,
-trong khi dấu phẩy là "động". Ở đây, một chữ số có nghĩa của một số \(c\) là chữ
-số bất kỳ của \(c\), ngoại trừ chữ số \(0\) nằm ở bên trái chữ số khác \(0\) đầu
-tiên; các chữ số \(0\) này chỉ để xác định vị trí của dấu phẩy (như vậy, bất kỳ
-chữ \(0\) khác đều là chữ số có nghĩa của \(c\)).
+trong khi dấu phẩy là ``động''. Ở đây, một chữ số có nghĩa của một số \(c\) là
+chữ số bất kỳ của \(c\), ngoại trừ chữ số \(0\) nằm ở bên trái chữ số khác \(0\)
+đầu tiên; các chữ số \(0\) này chỉ để xác định vị trí của dấu phẩy (như vậy, bất
+kỳ chữ \(0\) khác đều là chữ số có nghĩa của \(c\)).
 
 \begin{exmp}
     \[\num{13600}; \num{1.3600}; \num{0.0013600}\]
