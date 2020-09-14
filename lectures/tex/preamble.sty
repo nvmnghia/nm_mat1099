@@ -1,0 +1,44 @@
+\ProvidesPackage{preamble}
+
+
+\usepackage{hyperref}          % Clickable link
+\usepackage{indentfirst}
+
+% \usepackage[vietnamese]{babel}
+\usepackage{polyglossia}
+\setdefaultlanguage{vietnamese}
+
+\usepackage[final]{microtype}
+
+\usepackage{mathtools}
+\usepackage{amssymb}
+
+\usepackage{siunitx}
+\sisetup{output-decimal-marker = {,}}
+
+\usepackage{amsthm}
+\newtheorem{definition}{Định nghĩa}
+\newtheorem{exmp}{Ví dụ}[chapter]
+\newtheorem*{proposition}{Mệnh đề}
+\newtheorem*{rule_of_thumb}{Quy tắc}
+\renewcommand{\proofname}{Chứng minh}
+\renewcommand{\qedsymbol}{đpcm.}
+
+\usepackage[figure, table]{totalcount}
+
+\usepackage[useregional]{datetime2}
+\DTMsetdatestyle{ddmmyyyy}
+
+
+% Fucking abs.
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+
+% Blank page https://tex.stackexchange.com/a/374542/206774
+\def\blankpage{%
+  \clearpage%
+  \thispagestyle{empty}%
+  \addtocounter{page}{-1}%
+  \null%
+  \clearpage}
+
+\usepackage{subfiles} % Best loaded last in the preamble

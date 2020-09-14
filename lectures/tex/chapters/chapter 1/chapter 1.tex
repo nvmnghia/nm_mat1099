@@ -1,70 +1,6 @@
-\documentclass{book}
-
-\usepackage{hyperref}          % Clickable link
-\usepackage{indentfirst}
-
-\usepackage{polyglossia}
-\setdefaultlanguage{vietnamese}
-
-\usepackage[final]{microtype}
-
-\usepackage{mathtools}
-\usepackage{amssymb}
-
-\usepackage{siunitx}
-\sisetup{output-decimal-marker = {,}}
-% \sisetup{group-separator = {.}}
-
-\usepackage{amsthm}
-\newtheorem{definition}{Định nghĩa}
-\newtheorem{exmp}{Ví dụ}[chapter]
-\newtheorem*{proposition}{Mệnh đề}
-\newtheorem*{rule_of_thumb}{Quy tắc}
-\renewcommand{\proofname}{Chứng minh}
-\renewcommand{\qedsymbol}{đpcm.}
-
-\usepackage[figure, table]{totalcount}
-
-
-% Fucking abs.
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-
-% Blank page https://tex.stackexchange.com/a/374542/206774
-\def\blankpage{%
-  \clearpage%
-  \thispagestyle{empty}%
-  \addtocounter{page}{-1}%
-  \null%
-  \clearpage}
-
-
-\author{Lê Phê Đô \\ \href{mailto:dolp@vnu.edu.vn}{dolp@vnu.edu.vn}}
-
-\date{07/09/2020}
-
-\title{Phương pháp tính MAT1099}
-
+\documentclass[../../Lectures.tex]{subfiles}
 
 \begin{document}
-
-\maketitle
-
-\blankpage
-
-\tableofcontents
-
-\iftotalfigures
-  \listoffigures
-\fi
-
-\iftotaltables
-  \listoftables
-\fi
-
-
-%----------------------------------------------------------------------------------------
-%	Chương 1: Giải tích sai số
-%----------------------------------------------------------------------------------------
 
 \chapter{Giải tích sai số}
 
@@ -603,9 +539,9 @@ về mặt lý thuyết số khác 0 bất kỳ \(a\) có thể được viết 
 
 \subsubsection{Số học IEEE}
 
-Trong máy tính hiện đại người ta dùng các số nhị phân, ở đây \(m\) được giới
-hạn bởi \(k\) chữ số nhị phân (ví dụ, \(k = 8\)) và \(n\) cũng được giới hạn, ta
-có biểu diễn sau (chỉ biểu diễn được một số hữu hạn số):
+Trong máy tính hiện đại người ta dùng các số nhị phân, ở đây \(m\) được giới hạn
+bởi \(k\) chữ số nhị phân (ví dụ, \(k = 8\)) và \(n\) cũng được giới hạn, ta có
+biểu diễn sau (chỉ biểu diễn được một số hữu hạn số):
 \begin{equation}
     \overline{a} = \overline{m} \cdot 2^n \mid \overline{m} = 0,d_1d_2\ldots d_k, d_1 > 0
 \end{equation}
