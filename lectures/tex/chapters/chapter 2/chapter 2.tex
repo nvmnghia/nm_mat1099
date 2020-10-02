@@ -1,0 +1,178 @@
+\documentclass[../../Lectures.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Giải gần đúng phương trình}
+
+\section{Mở đầu}
+
+Sự tăng trưởng của dân số thường có thể được mô hình hóa trong khoảng thời gian
+ngắn bằng cách giả định rằng dân số tăng liên tục theo thời gian tỷ lệ thuận với
+con số hiện tại vào thời điểm đó. Giả sử \(N(t)\) biểu thị số lượng trong dân số
+tại thời điểm \(t\) và \(\lambda\) biểu thị tỷ lệ sinh không 2 đổi của dân số.
+Khi đó dân số thỏa mãn phương trình vi phân:
+
+\[\od{N(t)}{t} = \lambda N(t)\]
+
+Nghiệm của phương trình là \(N(t) = N_0 e^{\lambda t}\), ở đây \(N_0\) là dân số
+ban đầu.
+
+% TODO: insert chart
+
+Mô hình hàm mũ này chỉ có giá trị khi dân số bị cô lập, không có người nhập cư.
+Nếu nhập cư được phép ở tốc độ không đổi \(v\) thì phương trình vi phân trở
+thành:
+
+\[\od{N(t)}{t} = \lambda N(t) + v\]
+
+Nghiệm của nó là:
+
+\[N(t) = N_0 e^{\lambda t} + \frac{v}{\lambda} (e^{\lambda t} - 1)\]
+
+Giả sử ban đầu có \(N(0) = \num{1000000}\) người, và có tới \(\num{435000}\)
+người nhập cư vào cộng đồng trong năm đầu tiên, vậy \(N(1) = \num{1564000}\)
+người có mặt vào cuối năm đầu tiên. Để xác định tỷ lệ sinh của cộng đồng dân số
+này, chúng ta cần tìm \(\lambda\) trong phương trình:
+
+\[\num{1564000} = \num{1000000} e^\lambda + \frac{\num{435000}}{\lambda} (e^\lambda - 1)\]
+
+% TODO: Mục 3.3?
+Không thể giải một cách chính xác giá trị \(\lambda\) trong phương trình này,
+nhưng các phương pháp tính được thảo luận trong chương này có thể được sử dụng
+để tính gần đúng nghiệm của các phương trình loại này với độ chính xác cao tùy
+ý. Giải pháp cho vấn đề cụ thể này được xem xét trong Bài tập 24 của Mục 3.3.
+
+\section{Phương pháp chia đôi}
+
+Giả sử \(f\) là hàm số xác định và liên tục trên khoảng \(\interval{a}{b}\), với
+\(f(a)\) và \(f(b)\) trái dấu. Định lý giá trị trung gian nói rằng tồn tại một
+số \(p\) trong \(\interval[open]{a}{b}\) với \(f(p) = 0\).
+
+Mặc dù có thể xảy ra nhiều hơn một nghiệm trong khoảng
+\(\interval[open]{a}{b}\), nhưng để thuận lợi trong việc nghiên cứu, chúng ta
+giả thiết chỉ có duy nhất một nghiệm trong khoảng này. Khi đó, ta có thể dùng
+phương pháp sau:
+
+\begin{method}
+\emph{Phương pháp chia đôi (Bisection method)}
+
+Phương pháp này cho phép tìm nghiệm \(p\) của \(f(p) = 0\) trong khoảng
+\(\interval{a}{b}\), với \(f(a)\) và \(f(b)\) trái dấu.
+
+Để bắt đầu, ta đặt \(a_1 = a\) và \(b_1 = b\), và đặt \(p_1\) là điểm giữa của
+\(\interval{a}{b}\); nghĩa là:
+
+\[p_1 = a_1 + \frac{b_1 - a_1}{2} = \frac{a_1 + b_1}{2}\]
+
+\begin{itemize}
+    \item Nếu \(f(p_1) = 0\) thì \(p = p_1\).
+    \item Nếu \(f(p_1) \neq 0\) thì \(f(p_1)\) cùng dấu với \(f(a_1)\) hoặc \(f(b_1)\).
+        \begin{itemize}
+            \item Nếu \(f(p_1)\) cùng dấu với \(f(a_1)\) thì \(p \in \interval{p_1}{b_1}\). Đặt \(a_2 = p_1\), \(b_2 = b_1\).
+            \item Nếu \(f(p_1)\) cùng dấu với \(f(b_1)\) thì \(p \in \interval{a_1}{p_1}\). Đặt \(a_2 = a_1\), \(b_2 = p_1\).
+        \end{itemize}
+        sau đó làm tiếp phương pháp trên với khoảng \(\interval{a_2}{b_2}\).
+\end{itemize}
+\end{method}
+
+Các cách dừng khác (còn gọi là \emph{tiêu chí dừng}) có thể được áp dụng trong
+phương pháp trên hoặc trong bất kỳ các kỹ thuật lặp lại trong chương này. Ví dụ,
+chúng ta có thể chọn một dung sai \(\varepsilon > 0\) và tạo dãy \(p_1, ...,
+p_N\) cho đến khi đáp ứng một trong các điều kiện sau:
+
+\begin{align}
+                      \abs{p_N - p_{N - 1}} &< \varepsilon \text{, } \\
+    \frac{\abs{p_N - p_{N - 1}}}{\abs{p_N}} &< \varepsilon \text{, } p_N \neq 0 \text{ hoặc} \label{rel_err_stop_criteria} \\
+                               \abs{f(p_N)} &< \varepsilon
+\end{align}
+
+% TODO: fix reference to the above equation in the individual file.
+Không may, khó khăn có thể phát sinh với bất kỳ tiêu chí dừng nào. Ví dụ, có các
+chuỗi \(p_n\) mà hiệu \(p_n - p_{n - 1}\) hội tụ về \num{0} trong khi dãy đó lại
+phân kỳ. Cũng có thể có \(f(p_n)\) gần bằng \num{0} trong khi \(p_n\) khác đáng
+kể so với \(p\). Nếu không có kiến thức bổ sung về \(f\) hoặc \(p\), bất đẳng
+thức \ref{rel_err_stop_criteria} là tiêu chuẩn dừng tốt nhất để áp dụng vì nó
+sát nhất với sai số tương đối.
+
+Khi dùng máy tính để tính xấp xỉ, nên thiết lập một giới hạn trên về số lần lặp
+lại. Điều này giúp tránh vòng lặp vô hạn, một tình huống có thể phát sinh khi
+chuỗi \(p_n\) phân kỳ (và cả khi chương trình sai).
+
+Ta có nhận xét:
+
+\begin{exmp}
+    Chứng minh rằng \(f(x) = x^3 + 4x^2 - 10 = 0\) có nghiệm trong khoảng
+    \(\interval{1}{2}\), và dùng phương pháp chia đôi để xác định nghiệm đúng
+    đến \(10^{-4}\).
+
+    Vì \(f(1) = -5\) và \(f(2) = 14\), \(f(x) = 0\) chắc chắn có nghiệm trong
+    khoảng \(\interval{1}{2}\).
+
+    Ta có bảng sau:
+
+    \begin{tabular}{ r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=-2.6] }    % - for minus sign
+        \\
+        \toprule
+         {\(n\)} &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   & {\(f(p_n)\)} \\
+        \midrule
+              1  &  1.0          &  2.0          &  1.5          &   2.375      \\
+              2  &  1.0          &  1.5          &  1.25         &  -1.79687    \\
+              3  &  1.25         &  1.5          &  1.375        &   0.16211    \\
+              4  &  1.25         &  1.375        &  1.3125       &  -0.84839    \\
+              5  &  1.3125       &  1.375        &  1.34375      &  -0.35098    \\
+              6  &  1.34375      &  1.375        &  1.359375     &  -0.09641    \\
+              7  &  1.359375     &  1.375        &  1.3671875    &   0.03236    \\
+              8  &  1.359375     &  1.3671875    &  1.36328125   &  -0.03215    \\
+              9  &  1.36328125   &  1.3671875    &  1.365234375  &   0.000072   \\
+             10  &  1.36328125   &  1.365234375  &  1.364257813  &  -0.01605    \\
+             11  &  1.364257813  &  1.365234375  &  1.364746094  &  -0.00799    \\
+             12  &  1.364746094  &  1.365234375  &  1.364990234  &  -0.00396    \\
+             13  &  1.364990234  &  1.365234375  &  1.365112305  &  -0.00194    \\
+        \bottomrule                                                             \\    % Without this \\, the next paragraph will be too close to the table.
+    \end{tabular}
+
+    Sau 13 lần lặp, \(p_{13} = \num{1.365112305}\) xấp xỉ nghiệm \(p\) với sai số:
+    \[\abs{p - p_{13}} < \abs{b_{14} - a_{14}} = \abs{\num{1.365234375} - \num{1.365112305}} = \num{0.000122070}\]
+
+    Do \(\abs{a_{14}} < \abs{p}\) (khoảng đang xét dương), ta có:
+    \[\frac{\abs{p - p_{13}}}{\abs{p}} < \frac{\abs{b_{14} - a_{14}}}{\abs{a_{14}}} \leq \num{9e-5}\]
+
+    Cần chú ý rằng, \(p_9\) thực sự gần với \(p\) hơn kết quả cuối cùng
+    \(p_{13}\), tuy nhiên khi thực hiện thuật toán ta không thể biết đều này.
+    Hơn nữa, \(\abs{f(p_9)} < \abs{f(p_{13})}\) cũng không liên quan đến việc
+    \(p_9\) sát với \(p\) hơn.
+\end{exmp}
+
+Phương pháp chia đôi có hai điểm yếu lớn:
+
+\begin{itemize}
+    \item Cần số vòng lặp \(N\) lớn
+    \item Vô tình bỏ qua các xấp xỉ tốt
+\end{itemize}
+
+Dù vậy, phương pháp này lại có một ưu điểm lớn là đảm bảo dãy \(p_N\) hội tụ đến
+một nghiệm. Do ưu điểm này, phương pháp chia đôi thường được dùng để tìm điểm
+bắt đầu cho các phương pháp khác hiệu quả hơn mà sẽ được giới thiệu sau.
+
+\begin{theorem}
+    Cho hàm \(f \in \interval{a}{b}\) và \(f(a) \dot f(b) < 0\). Phương pháp
+    chia đôi tạo ra một chuỗi \(p_n\) xấp xỉ nghiệm \(p\) của \(f\) với sai số
+    như sau:
+    \[\abs{p_n - p} \leq \frac{b - a}{2^n} \text{, } n \geq 1\]
+\end{theorem}
+
+\begin{proof}
+    Với mọi \(n \geq 1\), ta có:
+    \[b_n - a_n = \frac{1}{2^{n - 1}} (b - a) \text{ và } p \in \interval[open]{a_n}{b_n}\]
+
+    Do
+    \[p_n = \frac{1}{2} (a_n + b_n)\]
+    ta suy ra được
+    \begin{align*}
+        &\qquad& \frac{1}{2} (a_n + b_n) - b_n \leq p_n - p &\leq \frac{1}{2} (a_n + b_n) - a_n \\
+        \iff&&   \frac{1}{2} (a_n - b_n)       \leq p_n - p &\leq \frac{1}{2} (b_n - a_n)       \\
+        \iff&&                                \abs{p_n - p} &\leq \frac{1}{2} (b_n - a_n) = \frac{b - a}{2^n}
+    \end{align*}
+\end{proof}
+
+\end{document}

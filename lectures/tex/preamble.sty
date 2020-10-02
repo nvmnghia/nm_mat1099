@@ -12,15 +12,26 @@
 
 \usepackage{mathtools}
 \usepackage{amssymb}
+\usepackage{commath}    % Fucking integrals & differentials
+
+\usepackage{interval}
+\intervalconfig{
+  soft open fences ,    % instead of the "perverse" ]a; b]
+}
 
 \usepackage{siunitx}
 \sisetup{output-decimal-marker = {,}}
 
+\usepackage{booktabs}
+\usepackage{tabularx}
+
 \usepackage{amsthm}
 \newtheorem{definition}{Định nghĩa}
 \newtheorem{exmp}{Ví dụ}[chapter]
+\newtheorem{theorem}{Định lí}[chapter]
 \newtheorem*{proposition}{Mệnh đề}
 \newtheorem*{rule_of_thumb}{Quy tắc}
+\newtheorem*{method}{Phương pháp}
 \renewcommand{\proofname}{Chứng minh}
 \renewcommand{\qedsymbol}{đpcm.}
 
@@ -31,7 +42,7 @@
 
 
 % Fucking abs.
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+% \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 
 % Blank page https://tex.stackexchange.com/a/374542/206774
 \def\blankpage{%
