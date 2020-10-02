@@ -88,15 +88,15 @@ p_N\) cho đến khi đáp ứng một trong các điều kiện sau:
 
 % TODO: fix reference to the above equation in the individual file.
 Không may, khó khăn có thể phát sinh với bất kỳ tiêu chí dừng nào. Ví dụ, có các
-chuỗi \(p_n\) mà hiệu \(p_n - p_{n - 1}\) hội tụ về \num{0} trong khi dãy đó lại
-phân kỳ. Cũng có thể có \(f(p_n)\) gần bằng \num{0} trong khi \(p_n\) khác đáng
-kể so với \(p\). Nếu không có kiến thức bổ sung về \(f\) hoặc \(p\), bất đẳng
-thức \ref{rel_err_stop_criteria} là tiêu chuẩn dừng tốt nhất để áp dụng vì nó
-sát nhất với sai số tương đối.
+chuỗi \(\{p_n\}_{n=1}^\infty\) mà hiệu \(p_n - p_{n - 1}\) hội tụ về \num{0}
+trong khi dãy đó lại phân kỳ. Cũng có thể có \(f(p_n)\) gần bằng \num{0} trong
+khi \(p_n\) khác đáng kể so với \(p\). Nếu không có kiến thức bổ sung về \(f\)
+hoặc \(p\), bất đẳng thức \ref{rel_err_stop_criteria} là tiêu chuẩn dừng tốt
+nhất để áp dụng vì nó sát nhất với sai số tương đối.
 
 Khi dùng máy tính để tính xấp xỉ, nên thiết lập một giới hạn trên về số lần lặp
 lại. Điều này giúp tránh vòng lặp vô hạn, một tình huống có thể phát sinh khi
-chuỗi \(p_n\) phân kỳ (và cả khi chương trình sai).
+chuỗi \(\{p_N\}_{n=0}^\infty\) phân kỳ (và cả khi chương trình sai).
 
 Ta có nhận xét:
 
@@ -150,14 +150,15 @@ Phương pháp chia đôi có hai điểm yếu lớn:
     \item Vô tình bỏ qua các xấp xỉ tốt
 \end{itemize}
 
-Dù vậy, phương pháp này lại có một ưu điểm lớn là đảm bảo dãy \(p_N\) hội tụ đến
-một nghiệm. Do ưu điểm này, phương pháp chia đôi thường được dùng để tìm điểm
-bắt đầu cho các phương pháp khác hiệu quả hơn mà sẽ được giới thiệu sau.
+Dù vậy, phương pháp này lại có một ưu điểm lớn là đảm bảo dãy
+\(\{p_N\}_{n=0}^\infty\) hội tụ đến một nghiệm. Do ưu điểm này, phương pháp chia
+đôi thường được dùng để tìm điểm bắt đầu cho các phương pháp khác hiệu quả hơn
+mà sẽ được giới thiệu sau.
 
 \begin{theorem}
     Cho hàm \(f \in \interval{a}{b}\) và \(f(a) \dot f(b) < 0\). Phương pháp
-    chia đôi tạo ra một chuỗi \(p_n\) xấp xỉ nghiệm \(p\) của \(f\) với sai số
-    như sau:
+    chia đôi tạo ra một chuỗi \(\{p_N\}_{n=0}^\infty\) xấp xỉ nghiệm \(p\) của
+    \(f\) với sai số như sau:
     \[\abs{p_n - p} \leq \frac{b - a}{2^n} \text{, } n \geq 1\]
 \end{theorem}
 
