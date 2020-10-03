@@ -4,6 +4,10 @@
 
 \chapter{Giải gần đúng phương trình}
 
+%----------------------------------------------------------------------------------------
+%	2.1: Mở đầu
+%----------------------------------------------------------------------------------------
+
 \section{Mở đầu}
 
 Sự tăng trưởng của dân số thường có thể được mô hình hóa trong khoảng thời gian
@@ -41,6 +45,11 @@ Không thể giải một cách chính xác giá trị \(\lambda\) trong phươn
 nhưng các phương pháp tính được thảo luận trong chương này có thể được sử dụng
 để tính gần đúng nghiệm của các phương trình loại này với độ chính xác cao tùy
 ý. Giải pháp cho vấn đề cụ thể này được xem xét trong Bài tập 24 của Mục 3.3.
+
+
+%----------------------------------------------------------------------------------------
+%	2.2: Phương pháp chia đôi
+%----------------------------------------------------------------------------------------
 
 \section{Phương pháp chia đôi}
 
@@ -174,6 +183,81 @@ mà sẽ được giới thiệu sau.
         \iff&&   \frac{1}{2} (a_n - b_n)       \leq p_n - p &\leq \frac{1}{2} (b_n - a_n)       \\
         \iff&&                                \abs{p_n - p} &\leq \frac{1}{2} (b_n - a_n) = \frac{b - a}{2^n}
     \end{align*}
+\end{proof}
+
+
+%----------------------------------------------------------------------------------------
+%	2.3: Phương pháp điểm bất động
+%----------------------------------------------------------------------------------------
+
+\section{Phương pháp điểm bất động}
+
+\emph{Điểm bất động (fixed point)} của một hàm là số mà tại đó giá trị của hàm
+số bằng đúng giá trị của đối số.
+
+% TODO: count by section
+\begin{definition}
+    Số \(p\) được gọi là điểm bất động của hàm số \(g\) nếu \(g(p) = p\).
+\end{definition}
+
+Trong phần này, chúng ta xét việc đưa bài toán tìm nghiệm về bài toán tìm điểm
+bất động và tìm sự liên hệ giữa chúng.
+
+Các bài toán tìm nghiệm và các bài toán tìm điểm cố định là các lớp tương đương
+theo nghĩa sau đây:
+\begin{itemize}
+    \item Từ bài toán tìm nghiệm của phương trình \(f(p) = 0\), ta có thể xác
+        định hàm \(g\) với điểm bất động tại \(p\) theo một số cách, ví dụ,
+        \[g(x) = x - f(x) \text{, hoặc } g(x) = x + 3f(x)\].
+    \item Ngược lại, nếu hàm \(g\) có một điểm bất định tại \(p\), thì hàm \(f\)
+        xác định bởi \[f(x) = x – g(x)\] có nghiệm tại \(p\).
+\end{itemize}
+
+Mặc dù các bài toán ta muốn giải quyết là dạng tìm nghiệm, nhưng dạng điểm bất
+động dễ thực hiện hơn và có một số lựa chọn điểm bất động dẫn tới kỹ thuật tìm
+nghiệm rất hiệu quả. Trước hết ta cần đi đến dạng bài toán mới này một cách
+thoải mái, và đưa ra quyết định khi nào hàm số có điểm bất động và điểm bất động
+được xấp xỉ với độ chính xác bao nhiêu.
+
+Các điểm bất động xuất hiện trong nhiều lĩnh vực toán học khác nhau, và là công
+cụ chính của các nhà kinh tế dùng để chứng minh các kết quả liên quan đến tính
+cân bằng. Mặc dù ý tưởng đằng sau kỹ thuật là cũ, nhưng thuật ngữ được sử dụng
+lần đầu bởi nhà toán học Hà Lan L. E. J. Brouwer (1882 - 1962) trong đầu những
+năm 1900.
+
+\begin{exmp}
+    Hãy xác định điểm bất động của hàm \(g(x) = x^2 - 2\).
+
+    Điểm bất động \(p\) của \(g\) có tính chất:
+    \[p= g(p) \iff p = p^2 - 2\]
+
+    Suy ra
+    \[p^2 - p - 2 = (p + 1)(p - 2) = 0\]
+
+    % TODO: hình 2.3?
+    Điểm bất động xảy ra đúng khi khi đồ thị của hàm số \(y = g(x)\) cắt đồ thị
+hàm số \(y = x\), vì vậy \(g\) có 2 điểm bất động là \(-1\) và \(2\). Điều này
+được minh họa bởi hình sau:
+\end{exmp}
+
+Định lý sau cho điều kiện đủ để hàm số \emph{có ít nhất một} và \emph{có duy
+nhất một} điểm bất động.
+
+\begin{theorem}
+\phantom\\
+\begin{itemize}
+    \item Nếu \(g \in \interval{a}{b}\), và \(g(x) \in \interval{a}{b} \forall x
+        \in \interval{a}{b}\), khi đó \(g\) có ít nhất một điểm bất động trên
+        \(\interval{a}{b}\).
+    \item Hơn nữa, nếu \(g'(x)\) tồn tại trên \(\interval[open]{a}{b}\) và tồn
+        tại hằng số dương \(k < 1\) thỏa \(\abs{g'(x)} \leq k \forall x \in
+        \interval{a}{b}\), khi đó, tồn tại đúng một điểm bất động trên
+        \(\interval{a}{b}\).
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+    
 \end{proof}
 
 \end{document}
