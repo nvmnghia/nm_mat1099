@@ -12,9 +12,9 @@
 
 Sự tăng trưởng của dân số thường có thể được mô hình hóa trong khoảng thời gian
 ngắn bằng cách giả định rằng dân số tăng liên tục theo thời gian tỷ lệ thuận với
-con số hiện tại vào thời điểm đó. Giả sử \(N(t)\) biểu thị số lượng trong dân số
-tại thời điểm \(t\) và \(\lambda\) biểu thị tỷ lệ sinh không 2 đổi của dân số.
-Khi đó dân số thỏa mãn phương trình vi phân:
+con số hiện tại vào thời điểm đó. Giả sử \(N(t)\) biểu thị số dân tại thời điểm
+\(t\) và \(\lambda\) biểu thị tỷ lệ sinh không đổi của cộng đồng. Khi đó dân số
+thỏa mãn phương trình vi phân:
 
 \[\od{N(t)}{t} = \lambda N(t)\]
 
@@ -33,18 +33,17 @@ Nghiệm của nó là:
 
 \[N(t) = N_0 e^{\lambda t} + \frac{v}{\lambda} (e^{\lambda t} - 1)\]
 
-Giả sử ban đầu có \(N(0) = \num{1000000}\) người, và có tới \(\num{435000}\)
-người nhập cư vào cộng đồng trong năm đầu tiên, vậy \(N(1) = \num{1564000}\)
-người có mặt vào cuối năm đầu tiên. Để xác định tỷ lệ sinh của cộng đồng dân số
-này, chúng ta cần tìm \(\lambda\) trong phương trình:
+Giả sử ban đầu có \(N(0) = \num{1000000}\) người, và có tới \num{435000} người
+nhập cư vào cộng đồng trong năm đầu tiên, vậy \(N(1) = \num{1564000}\) người có
+mặt vào cuối năm đầu tiên. Để xác định tỷ lệ sinh của cộng đồng dân số này,
+chúng ta cần tìm \(\lambda\) trong phương trình:
 
 \[\num{1564000} = \num{1000000} e^\lambda + \frac{\num{435000}}{\lambda} (e^\lambda - 1)\]
 
-% TODO: Mục 3.3?
 Không thể giải một cách chính xác giá trị \(\lambda\) trong phương trình này,
 nhưng các phương pháp tính được thảo luận trong chương này có thể được sử dụng
 để tính gần đúng nghiệm của các phương trình loại này với độ chính xác cao tùy
-ý. Giải pháp cho vấn đề cụ thể này được xem xét trong Bài tập 24 của Mục 3.3.
+ý.
 
 
 %----------------------------------------------------------------------------------------
@@ -56,7 +55,7 @@ nhưng các phương pháp tính được thảo luận trong chương này có 
 Giả sử \(f\) là hàm số xác định và liên tục trên khoảng \(\interval{a}{b}\), với
 \(f(a)\) và \(f(b)\) trái dấu.
 \emph{\hyperref[thm:intermediate_value_theorem]{Định lý giá trị trung gian}} nói
-rằng tồn tại một số \(p\) trong \(\interval[open]{a}{b}\) với \(f(p) = 0\).
+rằng tồn tại một số \(p \in \interval[open]{a}{b}\) với \(f(p) = 0\).
 
 \begin{theorem}\label{thm:intermediate_value_theorem}
     Định lý giá trị trung gian (Intermediate Value Theorem).
@@ -88,8 +87,10 @@ Phương pháp này cho phép tìm nghiệm \(p\) của \(f(p) = 0\) trong kho�
     \item Nếu \(f(p_1) = 0\) thì \(p = p_1\).
     \item Nếu \(f(p_1) \neq 0\) thì \(f(p_1)\) cùng dấu với \(f(a_1)\) hoặc \(f(b_1)\).
         \begin{itemize}
-            \item Nếu \(f(p_1)\) cùng dấu với \(f(a_1)\) thì \(p \in \interval{p_1}{b_1}\). Đặt \(a_2 = p_1\), \(b_2 = b_1\).
-            \item Nếu \(f(p_1)\) cùng dấu với \(f(b_1)\) thì \(p \in \interval{a_1}{p_1}\). Đặt \(a_2 = a_1\), \(b_2 = p_1\).
+            \item Nếu \(f(p_1)\) cùng dấu với \(f(a_1)\) thì \(p \in
+                \interval{p_1}{b_1}\). Đặt \(a_2 = p_1\), \(b_2 = b_1\).
+            \item Nếu \(f(p_1)\) cùng dấu với \(f(b_1)\) thì \(p \in
+                \interval{a_1}{p_1}\). Đặt \(a_2 = a_1\), \(b_2 = p_1\).
         \end{itemize}
         sau đó làm tiếp phương pháp trên với khoảng \(\interval{a_2}{b_2}\).
 \end{itemize}
@@ -131,7 +132,7 @@ Ta có nhận xét:
     Ta có bảng sau:
 
     \begin{tabular}{ r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=-1.6] }    % - for minus sign
-        \\
+        \\    % Add space between the table and the previous paragraph.
         \toprule
          {\(n\)} &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   & {\(f(p_n)\)} \\
         \midrule
@@ -148,13 +149,16 @@ Ta có nhận xét:
              11  &  1.364257813  &  1.365234375  &  1.364746094  &  -0.00799    \\
              12  &  1.364746094  &  1.365234375  &  1.364990234  &  -0.00396    \\
              13  &  1.364990234  &  1.365234375  &  1.365112305  &  -0.00194    \\
-        \bottomrule                                                             \\    % Without this \\, the next paragraph will be too close to the table.
+        \bottomrule
+        \\    % Add space between the table and the next paragraph.
     \end{tabular}
 
     Sau 13 lần lặp, \(p_{13} = \num{1.365112305}\) xấp xỉ nghiệm \(p\) với sai số:
+
     \[\abs{p - p_{13}} < \abs{b_{14} - a_{14}} = \abs{\num{1.365234375} - \num{1.365112305}} = \num{0.000122070}\]
 
     Do \(\abs{a_{14}} < \abs{p}\) (khoảng đang xét dương), ta có:
+
     \[\frac{\abs{p - p_{13}}}{\abs{p}} < \frac{\abs{b_{14} - a_{14}}}{\abs{a_{14}}} \leq \num{9e-5}\]
 
     Cần chú ý rằng, \(p_9\) thực sự gần với \(p\) hơn kết quả cuối cùng
@@ -179,16 +183,21 @@ mà sẽ được giới thiệu sau.
     Cho hàm \(f \in \interval{a}{b}\) và \(f(a) \dot f(b) < 0\). Phương pháp
     chia đôi tạo ra một chuỗi \(\{p_N\}_{n=0}^\infty\) xấp xỉ nghiệm \(p\) của
     \(f\) với sai số như sau:
+
     \[\abs{p_n - p} \leq \frac{b - a}{2^n} \text{, } n \geq 1\]
 \end{theorem}
 
 \begin{proof}
     Với mọi \(n \geq 1\), ta có:
+
     \[b_n - a_n = \frac{1}{2^{n - 1}} (b - a) \text{ và } p \in \interval[open]{a_n}{b_n}\]
 
     Do
+
     \[p_n = \frac{1}{2} (a_n + b_n)\]
+
     ta suy ra được
+
     \begin{align*}    % TODO: Make the iff symbol close to the indent.
         &\qquad& \frac{1}{2} (a_n + b_n) - b_n \leq p_n - p &\leq \frac{1}{2} (a_n + b_n) - a_n \\
         \iff&&   \frac{1}{2} (a_n - b_n)       \leq p_n - p &\leq \frac{1}{2} (b_n - a_n)       \\
@@ -219,7 +228,9 @@ theo nghĩa sau đây:
 \begin{itemize}
     \item Từ bài toán tìm nghiệm của phương trình \(f(p) = 0\), ta có thể xác
         định hàm \(g\) với điểm bất động tại \(p\) theo một số cách, ví dụ,
+
         \[g(x) = x - f(x) \text{, hoặc } g(x) = x + 3f(x)\].
+
     \item Ngược lại, nếu hàm \(g\) có một điểm bất định tại \(p\), thì hàm \(f\)
         xác định bởi \[f(x) = x - g(x)\] có nghiệm tại \(p\).
 \end{itemize}
@@ -240,9 +251,11 @@ năm 1900.
     Hãy xác định điểm bất động của hàm \(g(x) = x^2 - 2\).
 
     Điểm bất động \(p\) của \(g\) có tính chất:
+
     \[p= g(p) \iff p = p^2 - 2\]
 
     Suy ra
+
     \[p^2 - p - 2 = (p + 1)(p - 2) = 0\]
 
     Điểm bất động xảy ra đúng khi khi đồ thị của hàm số \(y = g(x)\) cắt đồ thị
@@ -282,6 +295,7 @@ bình}.
     \(\interval[open]{a}{b}\), tồn tại một điểm \(c \in \interval[open]{a}{b}\)
     sao cho tiếp tuyến tại \(c\) song song với cát tuyến qua hai điểm mút \((a,
     f(a))\) và \((b, f(b))\), hay nói cách khác:
+
     \[f'(c) = \frac{f(b) - f(a)}{b - a}\]
 \end{theorem}
 
@@ -292,21 +306,25 @@ bình}.
         \(b\). Nếu không, \(g(a) > a\) và đồng thời \(g(b) < b\); ta sẽ xét
         trường hợp này.
 
-        Hàm \(h(x) = g(x) - x\) liên tục trên \(\interval{a}{b}\) với
+        Hàm \(h(x) = g(x) - x\) liên tục trên \(\interval{a}{b}\) với:
+
         \[h(a) - a > 0 \text{ và } h(b) - b > 0\]
 
         \hyperref[thm:intermediate_value_theorem]{Định lý giá trị trung gian}
         khẳng định rằng tồn tại \(p \in \interval[open]{a}{b}\) sao cho \(h(p) =
-        0\). Điểm \(p\) này là điểm bất động của \(g\) vì
+        0\). Điểm \(p\) này là điểm bất động của \(g\) vì:
+
         \[0 = h(p) = g(p) - p \iff g(p) = p\]
 
     \item Giả sử \(g\) có hai điểm bất động \(p\), \(q\) trên
         \(\interval{a}{b}\). Không mất tính tổng quát, giả sử \(p < q\). Theo
         \hyperref[thm:mean_value_theorem]{định lí giá trị trung bình}, tồn tại
         \(\xi \in \interval[open]{p}{q}\) sao cho:
+
         \[g'(\xi) = \frac{g(p) - g(q)}{p - q}\]
 
         Ta có:
+
         \[\abs{p - q} = \abs{g(p) - g(q)} = \abs{g'(\xi)} \abs{p - q} < \abs{p - q} \text{ (vô lí)}\]
 
         Giả thuyết \(g\) có hai điểm bất động trên \(\interval{a}{b}\) sai. Vậy
