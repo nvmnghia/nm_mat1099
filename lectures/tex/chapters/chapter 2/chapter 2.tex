@@ -54,10 +54,22 @@ nhưng các phương pháp tính được thảo luận trong chương này có 
 \section{Phương pháp chia đôi}
 
 Giả sử \(f\) là hàm số xác định và liên tục trên khoảng \(\interval{a}{b}\), với
-\(f(a)\) và \(f(b)\) trái dấu. Định lý giá trị trung gian nói rằng tồn tại một
-số \(p\) trong \(\interval[open]{a}{b}\) với \(f(p) = 0\).
+\(f(a)\) và \(f(b)\) trái dấu.
+\emph{\hyperref[thm:intermediate_value_theorem]{Định lý giá trị trung gian}},
+hay còn gọi là \emph{định lý Bolzano}, nói rằng tồn tại một số \(p\) trong
+\(\interval[open]{a}{b}\) với \(f(p) = 0\).
 
-Mặc dù có thể xảy ra nhiều hơn một nghiệm trong khoảng
+\begin{theorem}\label{thm:intermediate_value_theorem}
+    Định lý giá trị trung gian (Intermediate Value Theorem).
+
+    Nếu \(f\) liên tục trên \(\interval{a}{b}\) và \(K\) nằm giữa \(f(a)\) và
+    \(f(b)\), tồn tại \(c \in \interval[open]{a}{b}\) sao cho \(f(c) = K\).
+\end{theorem}
+
+Cụ thể hơn, do \(f(a)\) và \(f(b)\) trái dấu, do đó \(0\) nằm giữa \(f(a)\) và
+\(f(b)\), do đó tồn tại nghiệm \(p \in \interval[open]{a}{b}\).
+
+Mặc dù có thể tồn tại nhiều hơn một nghiệm trong khoảng
 \(\interval[open]{a}{b}\), nhưng để thuận lợi trong việc nghiên cứu, chúng ta
 giả thiết chỉ có duy nhất một nghiệm trong khoảng này. Khi đó, ta có thể dùng
 phương pháp sau:
@@ -210,7 +222,7 @@ theo nghĩa sau đây:
         định hàm \(g\) với điểm bất động tại \(p\) theo một số cách, ví dụ,
         \[g(x) = x - f(x) \text{, hoặc } g(x) = x + 3f(x)\].
     \item Ngược lại, nếu hàm \(g\) có một điểm bất định tại \(p\), thì hàm \(f\)
-        xác định bởi \[f(x) = x – g(x)\] có nghiệm tại \(p\).
+        xác định bởi \[f(x) = x - g(x)\] có nghiệm tại \(p\).
 \end{itemize}
 
 Mặc dù các bài toán ta muốn giải quyết là dạng tìm nghiệm, nhưng dạng điểm bất
@@ -236,28 +248,73 @@ năm 1900.
 
     % TODO: hình 2.3?
     Điểm bất động xảy ra đúng khi khi đồ thị của hàm số \(y = g(x)\) cắt đồ thị
-hàm số \(y = x\), vì vậy \(g\) có 2 điểm bất động là \(-1\) và \(2\). Điều này
-được minh họa bởi hình sau:
+    hàm số \(y = x\), vì vậy \(g\) có 2 điểm bất động là \(-1\) và \(2\). Điều
+    này được minh họa bởi hình~\ref{fig:exmp_2.2_fixed_point}.
+
+    \begin{figure}[!h]
+        \centering
+        \subfile{graphics/exmp_2.2_fixed_point/exmp_2.2_fixed_point.tex}
+        \caption{Điểm bất động của \(y = x^2 - 2\)}
+        \label{fig:exmp_2.2_fixed_point}
+    \end{figure}
 \end{exmp}
 
 Định lý sau cho điều kiện đủ để hàm số \emph{có ít nhất một} và \emph{có duy
 nhất một} điểm bất động.
 
-\begin{theorem}
+\begin{theorem}\label{thm:1}
 \phantom\\
-\begin{itemize}
-    \item Nếu \(g \in \interval{a}{b}\), và \(g(x) \in \interval{a}{b} \forall x
-        \in \interval{a}{b}\), khi đó \(g\) có ít nhất một điểm bất động trên
-        \(\interval{a}{b}\).
-    \item Hơn nữa, nếu \(g'(x)\) tồn tại trên \(\interval[open]{a}{b}\) và tồn
-        tại hằng số dương \(k < 1\) thỏa \(\abs{g'(x)} \leq k \forall x \in
-        \interval{a}{b}\), khi đó, tồn tại đúng một điểm bất động trên
-        \(\interval{a}{b}\).
-\end{itemize}
+\begin{enumerate}
+    \item Nếu \(g \in \interval{a}{b}\), và \(g(x) \in \interval{a}{b} \,
+        \forall x \in \interval{a}{b}\), khi đó \(g\) có ít nhất một điểm bất
+        động trên \(\interval{a}{b}\).
+    \item Hơn nữa, nếu \(g'(x)\) tồn tại trên \(\interval[open]{a}{b}\) và
+        \(\abs{g'(x)} < 1 \, \forall x \in \interval{a}{b}\), khi đó, tồn tại
+        đúng một điểm bất động trên \(\interval{a}{b}\).
+\end{enumerate}
 \end{theorem}
 
-\begin{proof}
-    
+Trước khi chứng minh định lí trên, ta cần biết \emph{định lí giá trị trung
+bình}.
+
+\begin{theorem}\label{thm:mean_value_theorem}
+    Định lí giá trị trung bình (Mean Value Theorem).
+
+    Nếu \(f\) liên tục trên \(\interval{a}{b}\) và khả vi trên
+    \(\interval[open]{a}{b}\), tồn tại một điểm \(c \in \interval[open]{a}{b}\)
+    sao cho tiếp tuyến tại \(c\) song song với cát tuyến qua hai điểm mút \((a,
+    f(a))\) và \((b, f(b))\), hay nói cách khác:
+    \[f'(c) = \frac{f(b) - f(a)}{b - a}\]
+\end{theorem}
+
+\begin{proof}[Chứng minh Định lí~\ref{thm:1}]
+\phantom\\
+\begin{enumerate}
+    \item Nếu \(g(a) = a\) hoặc \(g(b) = b\), \(g\) có điểm bất động \(a\) hoặc
+        \(b\). Nếu không, \(g(a) > a\) và đồng thời \(g(b) < b\); ta sẽ xét
+        trường hợp này.
+
+        Hàm \(h(x) = g(x) - x\) liên tục trên \(\interval{a}{b}\) với
+        \[h(a) - a > 0 \text{ và } h(b) - b > 0\]
+
+        Định lý giá trị trung gian~\ref{thm:intermediate_value_theorem} khẳng
+        định rằng tồn tại \(p \in \interval[open]{a}{b}\) sao cho \(h(p) = 0\).
+        Điểm \(p\) này là điểm bất động của \(g\) vì
+        \[0 = h(p) = g(p) - p \iff g(p) = p\]
+
+    \item Giả sử \(g\) có hai điểm bất động \(p\), \(q\) trên
+        \(\interval{a}{b}\). Không mất tính tổng quát, giả sử \(p < q\). Theo
+        định lí giá trị trung bình~\ref{thm:mean_value_theorem}, tồn tại \(\xi
+        \in \interval[open]{p}{q}\) sao cho:
+        \[g'(\xi) = \frac{g(p) - g(q)}{p - q}\]
+
+        Ta có:
+        \[\abs{p - q} = \abs{g(p) - g(q)} = \abs{g'(\xi)} \abs{p - q} < \abs{p - q} \text{ (vô lí)}\]
+
+        Giả thuyết \(g\) có hai điểm bất động trên \(\interval{a}{b}\) sai. Vậy
+        với điều kiện ban đầu, chỉ có duy nhất một điểm bất động trên
+        \(\interval{a}{b}\).
+\end{enumerate}
 \end{proof}
 
 \end{document}
