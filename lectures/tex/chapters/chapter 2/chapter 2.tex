@@ -55,9 +55,8 @@ nhưng các phương pháp tính được thảo luận trong chương này có 
 
 Giả sử \(f\) là hàm số xác định và liên tục trên khoảng \(\interval{a}{b}\), với
 \(f(a)\) và \(f(b)\) trái dấu.
-\emph{\hyperref[thm:intermediate_value_theorem]{Định lý giá trị trung gian}},
-hay còn gọi là \emph{định lý Bolzano}, nói rằng tồn tại một số \(p\) trong
-\(\interval[open]{a}{b}\) với \(f(p) = 0\).
+\emph{\hyperref[thm:intermediate_value_theorem]{Định lý giá trị trung gian}} nói
+rằng tồn tại một số \(p\) trong \(\interval[open]{a}{b}\) với \(f(p) = 0\).
 
 \begin{theorem}\label{thm:intermediate_value_theorem}
     Định lý giá trị trung gian (Intermediate Value Theorem).
@@ -67,12 +66,12 @@ hay còn gọi là \emph{định lý Bolzano}, nói rằng tồn tại một s�
 \end{theorem}
 
 Cụ thể hơn, do \(f(a)\) và \(f(b)\) trái dấu, do đó \(0\) nằm giữa \(f(a)\) và
-\(f(b)\), do đó tồn tại nghiệm \(p \in \interval[open]{a}{b}\).
+\(f(b)\), do đó tồn tại nghiệm \(p \in \interval[open]{a}{b}\). Trường hợp đặc
+biệt này được gọi là \emph{định lý Bolzano}.
 
 Mặc dù có thể tồn tại nhiều hơn một nghiệm trong khoảng
-\(\interval[open]{a}{b}\), nhưng để thuận lợi trong việc nghiên cứu, chúng ta
-giả thiết chỉ có duy nhất một nghiệm trong khoảng này. Khi đó, ta có thể dùng
-phương pháp sau:
+\(\interval[open]{a}{b}\), nhưng để thuận lợi, chúng ta giả thiết chỉ có duy
+nhất một nghiệm trong khoảng này. Khi đó, ta có thể dùng phương pháp sau:
 
 \begin{method}
 \emph{Phương pháp chia đôi (Bisection method)}
@@ -296,15 +295,15 @@ bình}.
         Hàm \(h(x) = g(x) - x\) liên tục trên \(\interval{a}{b}\) với
         \[h(a) - a > 0 \text{ và } h(b) - b > 0\]
 
-        Định lý giá trị trung gian~\ref{thm:intermediate_value_theorem} khẳng
-        định rằng tồn tại \(p \in \interval[open]{a}{b}\) sao cho \(h(p) = 0\).
-        Điểm \(p\) này là điểm bất động của \(g\) vì
+        \hyperref[thm:intermediate_value_theorem]{Định lý giá trị trung gian}
+        khẳng định rằng tồn tại \(p \in \interval[open]{a}{b}\) sao cho \(h(p) =
+        0\). Điểm \(p\) này là điểm bất động của \(g\) vì
         \[0 = h(p) = g(p) - p \iff g(p) = p\]
 
     \item Giả sử \(g\) có hai điểm bất động \(p\), \(q\) trên
         \(\interval{a}{b}\). Không mất tính tổng quát, giả sử \(p < q\). Theo
-        định lí giá trị trung bình~\ref{thm:mean_value_theorem}, tồn tại \(\xi
-        \in \interval[open]{p}{q}\) sao cho:
+        \hyperref[thm:mean_value_theorem]{định lí giá trị trung bình}, tồn tại
+        \(\xi \in \interval[open]{p}{q}\) sao cho:
         \[g'(\xi) = \frac{g(p) - g(q)}{p - q}\]
 
         Ta có:
