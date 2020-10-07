@@ -65,35 +65,39 @@ rằng tồn tại một số \(p \in \interval[open]{a}{b}\) với \(f(p) = 0\)
 \end{theorem}
 
 Cụ thể hơn, do \(f(a)\) và \(f(b)\) trái dấu, do đó \(0\) nằm giữa \(f(a)\) và
-\(f(b)\), do đó tồn tại nghiệm \(p \in \interval[open]{a}{b}\). Trường hợp đặc
-biệt này được gọi là \emph{định lý Bolzano}.
+\(f(b)\), do đó tồn tại nghiệm \(p \in \interval[open]{a}{b}\).
+
+Kết quả trên là một trường hợp đặc biệt (\(f(a)\), \(f(b)\) trái dấu, \(K = 0\))
+của \hyperref[thm:intermediate_value_theorem]{định lý giá trị trung gian}, còn
+được gọi là \emph{định lý Bolzano}.
 
 Mặc dù có thể tồn tại nhiều hơn một nghiệm trong khoảng
 \(\interval[open]{a}{b}\), nhưng để thuận lợi, chúng ta giả thiết chỉ có duy
 nhất một nghiệm trong khoảng này. Khi đó, ta có thể dùng phương pháp sau:
 
-\begin{method}
-\emph{Phương pháp chia đôi (Bisection method)}
+\begin{method}\label{method:bisection}
+    \emph{Phương pháp chia đôi (Bisection method)}
 
-Phương pháp này cho phép tìm nghiệm \(p\) của \(f(p) = 0\) trong khoảng
-\(\interval{a}{b}\), với \(f(a)\) và \(f(b)\) trái dấu.
+    Phương pháp này cho phép tìm nghiệm \(p\) của \(f(p) = 0\) trong khoảng
+    \(\interval{a}{b}\), với \(f(a)\) và \(f(b)\) trái dấu.
 
-Để bắt đầu, ta đặt \(a_1 = a\) và \(b_1 = b\), và đặt \(p_1\) là điểm giữa của
-\(\interval{a}{b}\); nghĩa là:
+    Để bắt đầu, ta đặt \(a_1 = a\) và \(b_1 = b\), và đặt \(p_1\) là điểm giữa
+    của \(\interval{a}{b}\); nghĩa là:
 
-\[p_1 = a_1 + \frac{b_1 - a_1}{2} = \frac{a_1 + b_1}{2}\]
+    \[p_1 = a_1 + \frac{b_1 - a_1}{2} = \frac{a_1 + b_1}{2}\]
 
-\begin{itemize}
-    \item Nếu \(f(p_1) = 0\) thì \(p = p_1\).
-    \item Nếu \(f(p_1) \neq 0\) thì \(f(p_1)\) cùng dấu với \(f(a_1)\) hoặc \(f(b_1)\).
-        \begin{itemize}
-            \item Nếu \(f(p_1)\) cùng dấu với \(f(a_1)\) thì \(p \in
-                \interval{p_1}{b_1}\). Đặt \(a_2 = p_1\), \(b_2 = b_1\).
-            \item Nếu \(f(p_1)\) cùng dấu với \(f(b_1)\) thì \(p \in
-                \interval{a_1}{p_1}\). Đặt \(a_2 = a_1\), \(b_2 = p_1\).
-        \end{itemize}
-        sau đó làm tiếp phương pháp trên với khoảng \(\interval{a_2}{b_2}\).
-\end{itemize}
+    \begin{itemize}
+        \item Nếu \(f(p_1) = 0\) thì \(p = p_1\).
+        \item Nếu \(f(p_1) \neq 0\) thì \(f(p_1)\) cùng dấu với \(f(a_1)\) hoặc
+            \(f(b_1)\).
+            \begin{itemize}
+                \item Nếu \(f(p_1)\) cùng dấu với \(f(a_1)\) thì \(p \in
+                    \interval{p_1}{b_1}\). Đặt \(a_2 = p_1\), \(b_2 = b_1\).
+                \item Nếu \(f(p_1)\) cùng dấu với \(f(b_1)\) thì \(p \in
+                    \interval{a_1}{p_1}\). Đặt \(a_2 = a_1\), \(b_2 = p_1\).
+            \end{itemize}
+            sau đó làm tiếp phương pháp trên với khoảng \(\interval{a_2}{b_2}\).
+    \end{itemize}
 \end{method}
 
 Các cách dừng khác (còn gọi là \emph{tiêu chí dừng}) có thể được áp dụng trong
@@ -210,6 +214,8 @@ mà sẽ được giới thiệu sau.
 
 \section{Phương pháp điểm bất động}
 
+\subsection{Điểm bất động và bài toán tìm nghiệm}
+
 \emph{Điểm bất động (fixed point)} của một hàm là số mà tại đó giá trị của hàm
 số bằng đúng giá trị của đối số.
 
@@ -227,7 +233,9 @@ theo nghĩa sau đây:
     \item Từ bài toán tìm nghiệm của phương trình \(f(p) = 0\), ta có thể xác
         định hàm \(g\) với điểm bất động tại \(p\) theo một số cách, ví dụ,
 
-        \[g(x) = x - f(x) \text{, hoặc } g(x) = x + 3f(x)\].
+        \[g(x) = x - 3f(x)\]
+
+        vì khi thay \(p\) vào, \(g(p) = p - 3f(p) = p\).
 
     \item Ngược lại, nếu hàm \(g\) có một điểm bất định tại \(p\), thì hàm \(f\)
         xác định bởi \[f(x) = x - g(x)\] có nghiệm tại \(p\).
@@ -244,6 +252,8 @@ cụ chính của các nhà kinh tế dùng để chứng minh các kết quả 
 cân bằng. Mặc dù ý tưởng đằng sau kỹ thuật là cũ, nhưng thuật ngữ được sử dụng
 lần đầu bởi nhà toán học Hà Lan L. E. J. Brouwer (1882 - 1962) trong đầu những
 năm 1900.
+
+\subsection{Điều kiện cho điểm bất động}
 
 \begin{exmp}
     Hãy xác định điểm bất động của hàm \(g(x) = x^2 - 2\).
@@ -271,7 +281,7 @@ năm 1900.
 Định lý sau cho điều kiện đủ để hàm số \emph{có ít nhất một} và \emph{có duy
 nhất một} điểm bất động.
 
-\begin{theorem}\label{thm:1}
+\begin{theorem}\label{thm:sufficient_conditions_of_fixed_point}
 \phantom\\
 \begin{enumerate}
     \item Nếu \(g \in \interval{a}{b}\), và \(g(x) \in \interval{a}{b} \,
@@ -279,7 +289,7 @@ nhất một} điểm bất động.
         động trên \(\interval{a}{b}\).
     \item Hơn nữa, nếu \(g'(x)\) tồn tại trên \(\interval[open]{a}{b}\) và
         \(\abs{g'(x)} < 1 \, \forall x \in \interval{a}{b}\), khi đó, tồn tại
-        đúng một điểm bất động trên \(\interval{a}{b}\).
+        duy nhất một điểm bất động trên \(\interval{a}{b}\).
 \end{enumerate}
 \end{theorem}
 
@@ -297,7 +307,7 @@ bình}.
     \[f'(c) = \frac{f(b) - f(a)}{b - a}\]
 \end{theorem}
 
-\begin{proof}[Chứng minh Định lí~\ref{thm:1}]
+\begin{proof}[Chứng minh Định lí~\ref{thm:sufficient_conditions_of_fixed_point}]
 \phantom\\
 \begin{enumerate}
     \item Nếu \(g(a) = a\) hoặc \(g(b) = b\), \(g\) có điểm bất động \(a\) hoặc
@@ -330,5 +340,201 @@ bình}.
         \(\interval{a}{b}\).
 \end{enumerate}
 \end{proof}
+
+\subsection{Phương pháp điểm bất động}
+
+Xét chuỗi sau:
+
+\[\{p_n\}_{n=0}^\infty \mid p_n = g(p_{n-1}) \, \forall n \geq 1\]
+
+\emph{Giả sử} chuỗi này hội tụ tới \(p\), và \(g\) liên tục, thì:
+
+\[p = \lim_{n \to \infty} p_n = \lim_{n \to \infty} g(p_{n - 1}) = g(\lim_{n \to \infty} p_{n - 1}) = g(p)\]
+
+Khi này \(p\) chính là điểm bất động của \(g\). Đây chính là tiền đề cho
+\hyperref[method:fixed_point]{\emph{phương pháp điểm bất động}}.
+
+Cần chú ý rằng phương pháp này chỉ đúng khi chuỗi \(\{p_n\}_{n=0}^\infty\) hội
+tụ về \(p\).
+
+\begin{method}\label{method:fixed_point}
+    \emph{Phương pháp điểm bất động}
+
+    Phương pháp này cho phép tìm điểm bất động \(p\) của \(g\), khi biết một
+    điểm bắt đầu \(p_0\).
+
+    Đặt \(p = g(p_0)\).
+
+    \begin{itemize}
+        \item Nếu \(\abs{p - p_0}\) đủ nhỏ, thì ta có \(p\) cần tìm.
+        \item Nếu \(\abs{p - p_0}\) chưa đủ nhỏ, ta đặt \(p_0 = p\) rồi làm tiếp
+            phương pháp trên.
+    \end{itemize}
+\end{method}
+
+Cũng như với \hyperref[method:bisection]{phương pháp chia đôi}, có thể dùng
+nhiều điều kiện dừng khác nhau. Ví dụ trên sử dụng điểu kiện \(\abs{p - p_0}\)
+nhỏ hơn một mốc \(\epsilon\) nào đó thì dừng lại.
+
+Ta cần nhắc lại rằng điểm quan trọng nhất của phương pháp trên là giả sử
+\(\{p_n\}_{n=0}^\infty\) hội tụ về \(p\), tức ta phải chọn hàm \(g\) một cách
+phù hợp, chứ không áp dụng được cho mọi hàm \(g\). Ví dụ sau cho ta thấy sự quan
+trọng của hàm này.
+
+\begin{exmp}
+    Thử tìm và biện luận cho cách tìm nghiệm của phương trình \(x^3 + 4x^2 - 10
+    = 0\) trong \(\interval{1}{2}\) bằng \hyperref[method:fixed_point]{phương
+    pháp điểm bất động}.
+
+    Ta có một số lựa chọn về hàm \(g\), được chọn ngẫu nhiên:
+
+    \[\begin{aligned}
+        &\textbf{(a) } x = g_1(x) = x - x^3 -4x^2 + 10   &&\textbf{(b) } x = g_2(x) = \left(\frac{10}{x} - 4x \right)^{0.5}  \\
+        &\textbf{(c) } x = \frac{1}{2} (10 - x^3)^{0.5}  &&\textbf{(d) } x = g_4(x) = \left(\frac{10}{x + 4} \right)^{0.5}   \\
+        &\textbf{(e) } x = g_5(x) = x - \frac{x^3 + 4x^2 - 10}{3x^2 + 8x}
+    \end{aligned}\]
+
+    Với \(p_0 = 1.5\), ta có bảng sau:
+
+    \begin{tabular}{r c c S[table-format=1.9] S[table-format=1.9] S[table-format=1.9]}
+        \\
+        \toprule
+        {\(n\)}  & {(a)}          & {(b)}                     & {(c)}         & {(d)}         & {(e)}         \\
+        \midrule
+              0  &  \num{1.5}     &  \num{1.5}                &  1.5          &  1.5          &  1.5          \\
+              1  &  \num{-0.875}  &  \num{0.8165}             &  1.286953768  &  1.348399725  &  1.373333333  \\
+              2  &  \num{6.732}   &  \num{2.9969}             &  1.402540804  &  1.367376372  &  1.365262015  \\
+              3  &  \num{-469.7}  &  \((\num{-8.65})^{0.5}\)  &  1.345458374  &  1.364957015  &  1.365230014  \\
+              4  &  \num{1.03e8}  &                           &  1.375170253  &  1.365264748  &  1.365230013  \\
+              5  &                &                           &  1.360094193  &  1.365225594  &               \\
+              6  &                &                           &  1.367846968  &  1.365230576  &               \\
+              7  &                &                           &  1.363887004  &  1.365229942  &               \\
+              8  &                &                           &  1.365916734  &  1.365230022  &               \\
+              9  &                &                           &  1.364878217  &  1.365230012  &               \\
+             10  &                &                           &  1.365410062  &  1.365230014  &               \\
+             15  &                &                           &  1.365223680  &  1.365230013  &               \\
+             20  &                &                           &  1.365230236  &               &               \\
+             25  &                &                           &  1.365230006  &               &               \\
+             30  &                &                           &  1.365230013  &               &               \\
+        \bottomrule
+        \\
+    \end{tabular}
+
+    Với nghiệm thực \num{1.365230013}, ta thấy lựa chọn (c), (d), (e) có tiềm
+    năng nhất. Phương pháp chia đôi cần 27 lần lặp để đạt được kết quả này, tuy
+    nhiên (d) chỉ cần 15 lần, còn (e) thậm chí chỉ cần 4. Ngược lại, (a) thì
+    phân kì còn (b) thậm chí không xác định (căn của số âm).
+\end{exmp}
+
+\subsection{Tìm \(g\) phù hợp}
+
+Tiếp tục nhắc lại điểm quan trọng nhất để làm được phương pháp điểm bất động là
+chọn được \(g\) phù hợp. Định lí sau và hệ quả của nó cho ta một số gợi ý về
+việc chọn những hàm phù hợp, hay quan trọng hơn, loại bỏ những hàm không phù
+hợp.
+
+\begin{theorem}\label{thm:fixed_point}
+    \emph{Định lí điểm bất định}
+
+    Cho hàm \(g\) liên tục trên \(\interval{a}{b}\) sao cho \(g(x) \in
+    \interval{a}{b} \, \forall x \in \interval{a}{b}\). Giả sử thêm rằng \(g\)
+    khả vi trên \(\interval[open]{a}{b}\) và
+
+    \[\abs{g'(x)} < 1 \, \forall x \in \interval[open]{a}{b}\]
+
+    Thì với mọi \(p_0 \in \interval{a}{b}\), chuỗi
+
+    \[p_n = g(p_{n - 1}) \, \forall n \geq 1\]
+
+    hội tụ về điểm bất động duy nhất \(p\) trên \(\interval{a}{b}\).
+\end{theorem}
+
+\begin{proof}\label{proof:thm:fixed_point}
+    % TODO: fix theorem reference
+    Dựa vào \ref{thm:sufficient_conditions_of_fixed_point}, có một điểm bất định
+    duy nhất \(p\) trong khoảng \(\interval{a}{b}\).
+
+    Do \(g(x) \in \interval{a}{b} \, \forall x \in \interval{a}{b}\), ta chắc
+    chắn dãy \(\{p_n\}_{n = 0}^\infty\) tồn tại.
+
+    Theo điều kiện \(\abs{g'(x)} < 1 \, \forall x \in \interval[open]{a}{b}\),
+    tồn tại \(0 < k < 1\) thỏa mãn:
+
+    \[\abs{g'(x)} \leq k \, \forall x \in \interval[open]{a}{b}\]
+
+    Kết hợp điều trên với \hyperref[thm:mean_value_theorem]{định lí giá trị
+    trung bình}, ta có:
+
+    \[\abs{p_n - p} = \abs{g(p_{n - 1}) - g(p)} = \abs{g'(\xi_n)} \abs{p_{n - 1} - p} \leq \abs{p_{n - 1} - p}\]
+
+    với \(\xi_n \in \interval[open]{a}{b}\). Quy nạp kết quả này ta có:
+
+    \[\begin{aligned}
+                                 \abs{p_n - p} & \leq k^n \abs{p_0 - p} \\
+        \iff \lim_{n \to \infty} \abs{p_n - p} & \leq \lim_{n \to \infty} k^n \abs{p_0 - p} = 0
+    \end{aligned}\]
+
+    Vậy ta thấy \(\{p_n\}_{n = 0}^\infty\) hội tụ về \(p\).
+\end{proof}
+
+Ta tiếp tục xem xét một số hệ quả hữu dụng của định lí trên.
+
+\begin{coro}
+    \emph{Hệ quả của \hyperref[thm:fixed_point]{định lí điểm bất động}}
+
+    Nếu \(g\) thỏa mãn các điều kiện trong \hyperref[thm:fixed_point]{định lí
+    điểm bất động}, ta có cận trên của sai số tuyệt đối khi ước lượng \(p\) bằng
+    \(p_n\):
+
+    \begin{equation}\label{ieq:coro:thm:fixed_point_1}
+        \abs{p_n - p} \leq k^n \max \{p_0 - a, b - p_0\}
+    \end{equation}
+
+    và
+
+    \begin{equation}\label{ieq:coro:thm:fixed_point_2}
+        \abs{p_n - p} \leq \frac{k^n}{1 - k} \abs{p_1 - p_0} \, \forall n \geq 1
+    \end{equation}
+
+    với \(k\) như đã định nghĩa trong \hyperref[proof:thm:fixed_point]{chứng
+    minh của định lí điểm bất động}.
+\end{coro}
+
+\begin{proof}
+    Ta có:
+
+    \[\abs{p_n - p} \leq k^n \abs{p_0 - p}\]
+
+    Vì \(p \in \interval{a}{b}\) nên ta suy ra được bất đẳng
+    thức~\ref{ieq:coro:thm:fixed_point_1}:
+
+    \[\abs{p_n - p} \leq k^n \abs{p_0 - p} \leq k^n \max \{p_0 - a, b - p_0\}\]
+
+    Xét khi \(n \geq 1\), bằng quy nạp và
+    \hyperref[thm:mean_value_theorem]{định lí giá trị trung bình}, ta có:
+
+    \[\abs{p_{n + 1} - p_n} = \abs{g(p_n) - g(p_{n - 1})} \leq k^n \abs{p_1 - p_0}\]
+
+    Do đó với \(m > n \geq 1\):
+
+    \[\begin{aligned}
+        \abs{p_m - p_n} & = \abs{p_m - p_{m - 1} + p_{m - 1} - \ldots - p_{n + 1} + p_{n + 1} - p_n} \\
+                        & \leq \abs{p_m - p_{m - 1}} + \ldots + \abs{p_{n + 1} - p_n}                \\
+                        & \leq k^{m - 1} \abs{p_1 - p_0} + \ldots + k^n \abs{p_1 - p_0}              \\
+                        & = \abs{p_1 - p_0} \sum_{i = n}^{m - 1} k^i                                 \\
+                        & = \abs{p_1 - p_0} \frac{k^m - k^n}{k - 1}
+    \end{aligned}\]
+
+    Lấy giới hạn hai vế với \(m \to \infty\), ta có được bất đẳng
+    thức~\ref{ieq:coro:thm:fixed_point_2}:
+
+    \[\begin{aligned}
+        \lim_{m \to \infty} \abs{p_m - p_n} & = \abs{p_1 - p_0} \lim_{m \to \infty} \frac{k^m - k^n}{k - 1} \\
+        \iff                  \abs{p_n - p} & = \frac{k^n}{1 - k} \abs{p_1 - p_0}
+    \end{aligned}\]
+\end{proof}
+
+Qua các kết quả trên, ta rút ra một quy tắc chọn hàm \(g\): đạo hàm của \(g\)
+càng nhỏ càng tốt.
 
 \end{document}
