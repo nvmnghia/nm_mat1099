@@ -1,0 +1,31 @@
+\providecommand\numberofexercises{}
+\XSIM{solution-body}{exercise-1=={as hey}||exercise-2=={Table of iteration for \(f(x) = \sqrt (x) - \cos x\) on \(\interval {0}{1}\): \par \begin {tabular}{r S[table-format=1.1] S[table-format=1.2] S[table-format=1.3] S[table-format=-1.9]} \\ \toprule n & {\(a_n\)} & {\(b_n\)} & {\(p_n\)} & {\(f(p_n)\)} \\ \midrule 1 & 0 & 1 & 0.5 & -0.170475781 \\ 2 & 0.5 & 1 & 0.75 & 0.134336535 \\ 3 & 0.5 & 0.75 & 0.625 & -0.020393704 \\ \bottomrule \\ \end {tabular} \par So \(p_3 = \num {0.625}\).}}
+\XSIM{exercise-body}{exercise-1=={Use the Bisection method to find \(p_3\) for \(f(x) = \sqrt {x} - \cos x\) on \(\interval {0}{1}\).}||exercise-2=={Use the Bisection method to find \(p_3\) for \(f(x) = \sqrt {x} - \cos x\) on \(\interval {0}{1}\).}}
+\XSIM{goal}{exercise}{points}{0}
+\XSIM{totalgoal}{points}{0}
+\XSIM{goal}{exercise}{bonus-points}{0}
+\XSIM{totalgoal}{bonus-points}{0}
+\XSIM{collection:all exercises}{exercise-1||exercise-2}
+\XSIM{total-number}{2}
+\XSIM{exercise}{2}
+\XSIM{types}{exercise}
+\XSIM{id}{exercise-1=={1}||exercise-2=={2}}
+\XSIM{ID}{exercise-1=={1}||exercise-2=={2}}
+\XSIM{counter}{exercise-1=={1}||exercise-2=={1}}
+\XSIM{counter-value}{exercise-1=={1}||exercise-2=={1}}
+\XSIM{print}{exercise-1=={true}||exercise-2=={true}}
+\XSIM{use}{exercise-1=={true}||exercise-2=={true}}
+\XSIM{used}{exercise-1=={true}||exercise-2=={true}}
+\XSIM{solution}{}
+\XSIM{chapter-value}{exercise-1=={1}||exercise-2=={2}}
+\XSIM{chapter}{exercise-1=={1}||exercise-2=={2}}
+\XSIM{section-value}{exercise-1=={0}||exercise-2=={1}}
+\XSIM{section}{exercise-1=={1.0}||exercise-2=={2.1}}
+\XSIM{sectioning}{exercise-1=={{1}{0}{0}{0}{0}}||exercise-2=={{2}{1}{0}{0}{0}}}
+\XSIM{subtitle}{}
+\XSIM{points}{}
+\XSIM{bonus-points}{}
+\XSIM{page-value}{exercise-1=={3}||exercise-2=={5}}
+\XSIM{page}{exercise-1=={3}||exercise-2=={5}}
+\XSIM{tags}{}
+\XSIM{topics}{}

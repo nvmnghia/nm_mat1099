@@ -1,0 +1,32 @@
+\documentclass[../../Assignments.tex]{subfiles}
+
+
+\begin{document}
+
+\chapter{Solution approximation}
+
+\section{The Bisection Method}
+
+\begin{exercise}
+    Use the Bisection method to find \(p_3\) for \(f(x) = \sqrt{x} - \cos x\) on \(\interval{0}{1}\).
+\end{exercise}
+
+\begin{solution}
+    Table of iteration for \(f(x) = \sqrt(x) - \cos x\) on \(\interval{0}{1}\):
+
+    \begin{tabular}{r S[table-format=1.1] S[table-format=1.2] S[table-format=1.3] S[table-format=-1.9]}
+        \\
+        \toprule
+        n   &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)} \\
+        \midrule
+        1   &  0          &  1          &  0.5        &  -0.170475781 \\
+        2   &  0.5        &  1          &  0.75       &   0.134336535 \\
+        3   &  0.5        &  0.75       &  0.625      &  -0.020393704 \\
+        \bottomrule
+        \\
+    \end{tabular}
+
+    So \(p_3 = \num{0.625}\).
+\end{solution}
+
+\end{document}
