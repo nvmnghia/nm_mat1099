@@ -10,9 +10,11 @@
 
 \usepackage[final]{microtype}
 
-\usepackage{mathtools}
+\usepackage{mathtools}    % Loads amsmath anyway
 \usepackage{amssymb}
 \usepackage{commath}    % Fucking abs & integrals & differentials
+
+\usepackage{enumitem}
 
 \usepackage{interval}
 \intervalconfig{
@@ -29,11 +31,17 @@
 \newtheorem{definition}{Định nghĩa}
 \newtheorem{exmp}{Ví dụ}[chapter]
 \newtheorem{theorem}{Định lí}[chapter]
+\newtheorem{coro}{Hệ quả}[chapter]
+\newtheorem{lemma}{Bổ đề}[chapter]
 \newtheorem*{proposition}{Mệnh đề}
 \newtheorem*{rule_of_thumb}{Quy tắc}
 \newtheorem*{method}{Phương pháp}
 \renewcommand{\proofname}{Chứng minh}
 \renewcommand{\qedsymbol}{đpcm.}
+
+\usepackage{tikz}
+
+\usepackage{bookmark}
 
 \usepackage[figure, table]{totalcount}
 
@@ -49,4 +57,5 @@
   \null%
   \clearpage}
 
+% \usepackage{standalone}
 \usepackage{subfiles} % Best loaded last in the preamble

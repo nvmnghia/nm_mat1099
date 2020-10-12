@@ -4,13 +4,17 @@
 
 \chapter{Giải gần đúng phương trình}
 
+%----------------------------------------------------------------------------------------
+%	2.1: Mở đầu
+%----------------------------------------------------------------------------------------
+
 \section{Mở đầu}
 
 Sự tăng trưởng của dân số thường có thể được mô hình hóa trong khoảng thời gian
 ngắn bằng cách giả định rằng dân số tăng liên tục theo thời gian tỷ lệ thuận với
-con số hiện tại vào thời điểm đó. Giả sử \(N(t)\) biểu thị số lượng trong dân số
-tại thời điểm \(t\) và \(\lambda\) biểu thị tỷ lệ sinh không 2 đổi của dân số.
-Khi đó dân số thỏa mãn phương trình vi phân:
+con số hiện tại vào thời điểm đó. Giả sử \(N(t)\) biểu thị số dân tại thời điểm
+\(t\) và \(\lambda\) biểu thị tỷ lệ sinh không đổi của cộng đồng. Khi đó dân số
+thỏa mãn phương trình vi phân:
 
 \[\od{N(t)}{t} = \lambda N(t)\]
 
@@ -29,50 +33,71 @@ Nghiệm của nó là:
 
 \[N(t) = N_0 e^{\lambda t} + \frac{v}{\lambda} (e^{\lambda t} - 1)\]
 
-Giả sử ban đầu có \(N(0) = \num{1000000}\) người, và có tới \(\num{435000}\)
-người nhập cư vào cộng đồng trong năm đầu tiên, vậy \(N(1) = \num{1564000}\)
-người có mặt vào cuối năm đầu tiên. Để xác định tỷ lệ sinh của cộng đồng dân số
-này, chúng ta cần tìm \(\lambda\) trong phương trình:
+Giả sử ban đầu có \(N(0) = \num{1000000}\) người, và có tới \num{435000} người
+nhập cư vào cộng đồng trong năm đầu tiên, vậy \(N(1) = \num{1564000}\) người có
+mặt vào cuối năm đầu tiên. Để xác định tỷ lệ sinh của cộng đồng dân số này,
+chúng ta cần tìm \(\lambda\) trong phương trình:
 
 \[\num{1564000} = \num{1000000} e^\lambda + \frac{\num{435000}}{\lambda} (e^\lambda - 1)\]
 
-% TODO: Mục 3.3?
 Không thể giải một cách chính xác giá trị \(\lambda\) trong phương trình này,
 nhưng các phương pháp tính được thảo luận trong chương này có thể được sử dụng
 để tính gần đúng nghiệm của các phương trình loại này với độ chính xác cao tùy
-ý. Giải pháp cho vấn đề cụ thể này được xem xét trong Bài tập 24 của Mục 3.3.
+ý.
+
+
+%----------------------------------------------------------------------------------------
+%	2.2: Phương pháp chia đôi
+%----------------------------------------------------------------------------------------
 
 \section{Phương pháp chia đôi}
 
 Giả sử \(f\) là hàm số xác định và liên tục trên khoảng \(\interval{a}{b}\), với
-\(f(a)\) và \(f(b)\) trái dấu. Định lý giá trị trung gian nói rằng tồn tại một
-số \(p\) trong \(\interval[open]{a}{b}\) với \(f(p) = 0\).
+\(f(a)\) và \(f(b)\) trái dấu.
+\emph{\hyperref[thm:intermediate_value_theorem]{Định lý giá trị trung gian}} nói
+rằng tồn tại một số \(p \in \interval[open]{a}{b}\) với \(f(p) = 0\).
 
-Mặc dù có thể xảy ra nhiều hơn một nghiệm trong khoảng
-\(\interval[open]{a}{b}\), nhưng để thuận lợi trong việc nghiên cứu, chúng ta
-giả thiết chỉ có duy nhất một nghiệm trong khoảng này. Khi đó, ta có thể dùng
-phương pháp sau:
+\begin{theorem}\label{thm:intermediate_value_theorem}
+    Định lý giá trị trung gian (Intermediate Value Theorem).
 
-\begin{method}
-\emph{Phương pháp chia đôi (Bisection method)}
+    Nếu \(f\) liên tục trên \(\interval{a}{b}\) và \(K\) nằm giữa \(f(a)\) và
+    \(f(b)\), tồn tại \(c \in \interval[open]{a}{b}\) sao cho \(f(c) = K\).
+\end{theorem}
 
-Phương pháp này cho phép tìm nghiệm \(p\) của \(f(p) = 0\) trong khoảng
-\(\interval{a}{b}\), với \(f(a)\) và \(f(b)\) trái dấu.
+Cụ thể hơn, do \(f(a)\) và \(f(b)\) trái dấu, do đó \(0\) nằm giữa \(f(a)\) và
+\(f(b)\), do đó tồn tại nghiệm \(p \in \interval[open]{a}{b}\).
 
-Để bắt đầu, ta đặt \(a_1 = a\) và \(b_1 = b\), và đặt \(p_1\) là điểm giữa của
-\(\interval{a}{b}\); nghĩa là:
+Kết quả trên là một trường hợp đặc biệt (\(f(a)\), \(f(b)\) trái dấu, \(K = 0\))
+của \hyperref[thm:intermediate_value_theorem]{định lý giá trị trung gian}, còn
+được gọi là \emph{định lý Bolzano}.
 
-\[p_1 = a_1 + \frac{b_1 - a_1}{2} = \frac{a_1 + b_1}{2}\]
+Mặc dù có thể tồn tại nhiều hơn một nghiệm trong khoảng
+\(\interval[open]{a}{b}\), nhưng để thuận lợi, chúng ta giả thiết chỉ có duy
+nhất một nghiệm trong khoảng này. Khi đó, ta có thể dùng phương pháp sau:
 
-\begin{itemize}
-    \item Nếu \(f(p_1) = 0\) thì \(p = p_1\).
-    \item Nếu \(f(p_1) \neq 0\) thì \(f(p_1)\) cùng dấu với \(f(a_1)\) hoặc \(f(b_1)\).
-        \begin{itemize}
-            \item Nếu \(f(p_1)\) cùng dấu với \(f(a_1)\) thì \(p \in \interval{p_1}{b_1}\). Đặt \(a_2 = p_1\), \(b_2 = b_1\).
-            \item Nếu \(f(p_1)\) cùng dấu với \(f(b_1)\) thì \(p \in \interval{a_1}{p_1}\). Đặt \(a_2 = a_1\), \(b_2 = p_1\).
-        \end{itemize}
-        sau đó làm tiếp phương pháp trên với khoảng \(\interval{a_2}{b_2}\).
-\end{itemize}
+\begin{method}\label{method:bisection}
+    \emph{Phương pháp chia đôi (Bisection method)}
+
+    Phương pháp này cho phép tìm nghiệm \(p\) của \(f(p) = 0\) trong khoảng
+    \(\interval{a}{b}\), với \(f(a)\) và \(f(b)\) trái dấu.
+
+    Để bắt đầu, ta đặt \(a_1 = a\) và \(b_1 = b\), và đặt \(p_1\) là điểm giữa
+    của \(\interval{a}{b}\); nghĩa là:
+
+    \[p_1 = a_1 + \frac{b_1 - a_1}{2} = \frac{a_1 + b_1}{2}\]
+
+    \begin{itemize}
+        \item Nếu \(f(p_1) = 0\) thì \(p = p_1\).
+        \item Nếu \(f(p_1) \neq 0\) thì \(f(p_1)\) cùng dấu với \(f(a_1)\) hoặc
+            \(f(b_1)\).
+            \begin{itemize}
+                \item Nếu \(f(p_1)\) cùng dấu với \(f(a_1)\) thì \(p \in
+                    \interval{p_1}{b_1}\). Đặt \(a_2 = p_1\), \(b_2 = b_1\).
+                \item Nếu \(f(p_1)\) cùng dấu với \(f(b_1)\) thì \(p \in
+                    \interval{a_1}{p_1}\). Đặt \(a_2 = a_1\), \(b_2 = p_1\).
+            \end{itemize}
+            sau đó làm tiếp phương pháp trên với khoảng \(\interval{a_2}{b_2}\).
+    \end{itemize}
 \end{method}
 
 Các cách dừng khác (còn gọi là \emph{tiêu chí dừng}) có thể được áp dụng trong
@@ -80,10 +105,10 @@ phương pháp trên hoặc trong bất kỳ các kỹ thuật lặp lại trong
 chúng ta có thể chọn một dung sai \(\varepsilon > 0\) và tạo dãy \(p_1, ...,
 p_N\) cho đến khi đáp ứng một trong các điều kiện sau:
 
-\begin{align}
-                      \abs{p_N - p_{N - 1}} &< \varepsilon \text{, } \\
-    \frac{\abs{p_N - p_{N - 1}}}{\abs{p_N}} &< \varepsilon \text{, } p_N \neq 0 \text{ hoặc} \label{rel_err_stop_criteria} \\
-                               \abs{f(p_N)} &< \varepsilon
+\begin{align}\label{ieq:stop_criteria}
+                      \abs{p_N - p_{N - 1}} & < \varepsilon \text{, } \\
+    \frac{\abs{p_N - p_{N - 1}}}{\abs{p_N}} & < \varepsilon \text{, } p_N \neq 0 \text{ hoặc} \label{ieq:rel_err_stop_criterion} \\
+                               \abs{f(p_N)} & < \varepsilon
 \end{align}
 
 % TODO: fix reference to the above equation in the individual file.
@@ -91,14 +116,12 @@ Không may, khó khăn có thể phát sinh với bất kỳ tiêu chí dừng n
 chuỗi \(\{p_n\}_{n=1}^\infty\) mà hiệu \(p_n - p_{n - 1}\) hội tụ về \num{0}
 trong khi dãy đó lại phân kỳ. Cũng có thể có \(f(p_n)\) gần bằng \num{0} trong
 khi \(p_n\) khác đáng kể so với \(p\). Nếu không có kiến thức bổ sung về \(f\)
-hoặc \(p\), bất đẳng thức \ref{rel_err_stop_criteria} là tiêu chuẩn dừng tốt
+hoặc \(p\), bất đẳng thức \ref{ieq:rel_err_stop_criterion} là tiêu chuẩn dừng tốt
 nhất để áp dụng vì nó sát nhất với sai số tương đối.
 
 Khi dùng máy tính để tính xấp xỉ, nên thiết lập một giới hạn trên về số lần lặp
 lại. Điều này giúp tránh vòng lặp vô hạn, một tình huống có thể phát sinh khi
 chuỗi \(\{p_N\}_{n=0}^\infty\) phân kỳ (và cả khi chương trình sai).
-
-Ta có nhận xét:
 
 \begin{exmp}
     Chứng minh rằng \(f(x) = x^3 + 4x^2 - 10 = 0\) có nghiệm trong khoảng
@@ -111,7 +134,7 @@ Ta có nhận xét:
     Ta có bảng sau:
 
     \begin{tabular}{ r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=-1.6] }    % - for minus sign
-        \\
+        \\    % Add space between the table and the previous paragraph.
         \toprule
          {\(n\)} &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   & {\(f(p_n)\)} \\
         \midrule
@@ -128,13 +151,16 @@ Ta có nhận xét:
              11  &  1.364257813  &  1.365234375  &  1.364746094  &  -0.00799    \\
              12  &  1.364746094  &  1.365234375  &  1.364990234  &  -0.00396    \\
              13  &  1.364990234  &  1.365234375  &  1.365112305  &  -0.00194    \\
-        \bottomrule                                                             \\    % Without this \\, the next paragraph will be too close to the table.
+        \bottomrule
+        \\    % Add space between the table and the next paragraph.
     \end{tabular}
 
     Sau 13 lần lặp, \(p_{13} = \num{1.365112305}\) xấp xỉ nghiệm \(p\) với sai số:
+
     \[\abs{p - p_{13}} < \abs{b_{14} - a_{14}} = \abs{\num{1.365234375} - \num{1.365112305}} = \num{0.000122070}\]
 
     Do \(\abs{a_{14}} < \abs{p}\) (khoảng đang xét dương), ta có:
+
     \[\frac{\abs{p - p_{13}}}{\abs{p}} < \frac{\abs{b_{14} - a_{14}}}{\abs{a_{14}}} \leq \num{9e-5}\]
 
     Cần chú ý rằng, \(p_9\) thực sự gần với \(p\) hơn kết quả cuối cùng
@@ -157,23 +183,705 @@ mà sẽ được giới thiệu sau.
 
 \begin{theorem}
     Cho hàm \(f \in \interval{a}{b}\) và \(f(a) \dot f(b) < 0\). Phương pháp
-    chia đôi tạo ra một chuỗi \(\{p_N\}_{n=0}^\infty\) xấp xỉ nghiệm \(p\) của
+    chia đôi tạo ra một chuỗi \(\{p_n\}_{n=1}^\infty\) xấp xỉ nghiệm \(p\) của
     \(f\) với sai số như sau:
+
     \[\abs{p_n - p} \leq \frac{b - a}{2^n} \text{, } n \geq 1\]
 \end{theorem}
 
 \begin{proof}
     Với mọi \(n \geq 1\), ta có:
+
     \[b_n - a_n = \frac{1}{2^{n - 1}} (b - a) \text{ và } p \in \interval[open]{a_n}{b_n}\]
 
     Do
+
     \[p_n = \frac{1}{2} (a_n + b_n)\]
+
     ta suy ra được
+
     \begin{align*}    % TODO: Make the iff symbol close to the indent.
         &\qquad& \frac{1}{2} (a_n + b_n) - b_n \leq p_n - p &\leq \frac{1}{2} (a_n + b_n) - a_n \\
         \iff&&   \frac{1}{2} (a_n - b_n)       \leq p_n - p &\leq \frac{1}{2} (b_n - a_n)       \\
         \iff&&                                \abs{p_n - p} &\leq \frac{1}{2} (b_n - a_n) = \frac{b - a}{2^n}
     \end{align*}
 \end{proof}
+
+
+%----------------------------------------------------------------------------------------
+%	2.3: Phương pháp điểm bất động
+%----------------------------------------------------------------------------------------
+
+\section{Phương pháp điểm bất động}
+
+\subsection{Điểm bất động và bài toán tìm nghiệm}
+
+\emph{Điểm bất động (fixed point)} của một hàm là số mà tại đó giá trị của hàm
+số bằng đúng giá trị của đối số.
+
+% TODO: count by section
+\begin{definition}
+    Số \(p\) được gọi là điểm bất động của hàm số \(g\) nếu \(g(p) = p\).
+\end{definition}
+
+Trong phần này, chúng ta xét việc đưa bài toán tìm nghiệm về bài toán tìm điểm
+bất động và tìm sự liên hệ giữa chúng.
+
+Các bài toán tìm nghiệm và các bài toán tìm điểm cố định là các lớp tương đương
+theo nghĩa sau đây:
+\begin{itemize}
+    \item Từ bài toán tìm nghiệm của phương trình \(f(p) = 0\), ta có thể xác
+        định hàm \(g\) với điểm bất động tại \(p\) theo một số cách, ví dụ,
+
+        \[g(x) = x - 3f(x)\]
+
+        vì khi thay \(p\) vào, \(g(p) = p - 3f(p) = p\).
+
+    \item Ngược lại, nếu hàm \(g\) có một điểm bất động tại \(p\), thì hàm \(f\)
+        xác định bởi \[f(x) = x - g(x)\] có nghiệm tại \(p\).
+\end{itemize}
+
+Mặc dù các bài toán ta muốn giải quyết là dạng tìm nghiệm, nhưng dạng điểm bất
+động dễ thực hiện hơn và có một số lựa chọn điểm bất động dẫn tới kỹ thuật tìm
+nghiệm rất hiệu quả. Trước hết ta cần đi đến dạng bài toán mới này một cách
+thoải mái, và đưa ra quyết định khi nào hàm số có điểm bất động và điểm bất động
+được xấp xỉ với độ chính xác bao nhiêu.
+
+Các điểm bất động xuất hiện trong nhiều lĩnh vực toán học khác nhau, và là công
+cụ chính của các nhà kinh tế dùng để chứng minh các kết quả liên quan đến tính
+cân bằng. Mặc dù ý tưởng đằng sau kỹ thuật là cũ, nhưng thuật ngữ được sử dụng
+lần đầu bởi nhà toán học Hà Lan L. E. J. Brouwer (1882 - 1962) trong đầu những
+năm 1900.
+
+\subsection{Điều kiện tồn tại của điểm bất động}
+
+\begin{exmp}
+    Hãy xác định điểm bất động của hàm \(g(x) = x^2 - 2\).
+
+    Điểm bất động \(p\) của \(g\) có tính chất:
+
+    \[p= g(p) \iff p = p^2 - 2\]
+
+    Suy ra
+
+    \[p^2 - p - 2 = (p + 1)(p - 2) = 0\]
+
+    Điểm bất động xảy ra đúng khi khi đồ thị của hàm số \(y = g(x)\) cắt đồ thị
+    hàm số \(y = x\), vì vậy \(g\) có 2 điểm bất động là \(-1\) và \(2\). Điều
+    này được minh họa bởi hình~\ref{fig:exmp_2.2_fixed_point}.
+
+    \begin{figure}[!h]
+        \centering
+        \subfile{graphics/exmp_2.2_fixed_point/exmp_2.2_fixed_point.tex}
+        \caption{Điểm bất động của \(y = x^2 - 2\)}
+        \label{fig:exmp_2.2_fixed_point}
+    \end{figure}
+\end{exmp}
+
+Định lý sau cho điều kiện đủ để hàm số \emph{có ít nhất một} và \emph{có duy
+nhất một} điểm bất động.
+
+\begin{theorem}\label{thm:sufficient_conditions_of_fixed_point}
+\phantom\\
+\begin{enumerate}
+    \item Nếu \(g \in \interval{a}{b}\), và \(g(x) \in \interval{a}{b} \,
+        \forall x \in \interval{a}{b}\), khi đó \(g\) có ít nhất một điểm bất
+        động trên \(\interval{a}{b}\).
+    \item Hơn nữa, nếu \(g'(x)\) tồn tại trên \(\interval[open]{a}{b}\) và
+        \(\abs{g'(x)} < 1 \, \forall x \in \interval{a}{b}\), khi đó, tồn tại
+        duy nhất một điểm bất động trên \(\interval{a}{b}\).
+\end{enumerate}
+\end{theorem}
+
+Trước khi chứng minh định lí trên, ta cần biết \emph{định lí giá trị trung
+bình}.
+
+\begin{theorem}\label{thm:mean_value_theorem}
+    Định lí giá trị trung bình (Mean Value Theorem).
+
+    Nếu \(f\) liên tục trên \(\interval{a}{b}\) và khả vi trên
+    \(\interval[open]{a}{b}\), tồn tại một điểm \(c \in \interval[open]{a}{b}\)
+    sao cho tiếp tuyến tại \(c\) song song với cát tuyến qua hai điểm mút \((a,
+    f(a))\) và \((b, f(b))\), hay nói cách khác:
+
+    \[f'(c) = \frac{f(b) - f(a)}{b - a}\]
+\end{theorem}
+
+\begin{proof}[Chứng minh Định lí~\ref{thm:sufficient_conditions_of_fixed_point}]
+\phantom\\
+\begin{enumerate}
+    \item Nếu \(g(a) = a\) hoặc \(g(b) = b\), \(g\) có điểm bất động \(a\) hoặc
+        \(b\). Nếu không, \(g(a) > a\) và đồng thời \(g(b) < b\); ta sẽ xét
+        trường hợp này.
+
+        Hàm \(h(x) = g(x) - x\) liên tục trên \(\interval{a}{b}\) với:
+
+        \[h(a) - a > 0 \text{ và } h(b) - b > 0\]
+
+        \hyperref[thm:intermediate_value_theorem]{Định lý giá trị trung gian}
+        khẳng định rằng tồn tại \(p \in \interval[open]{a}{b}\) sao cho \(h(p) =
+        0\). Điểm \(p\) này là điểm bất động của \(g\) vì:
+
+        \[0 = h(p) = g(p) - p \iff g(p) = p\]
+
+    \item Giả sử \(g\) có hai điểm bất động \(p\), \(q\) trên
+        \(\interval{a}{b}\). Không mất tính tổng quát, giả sử \(p < q\). Theo
+        \hyperref[thm:mean_value_theorem]{định lí giá trị trung bình}, tồn tại
+        \(\xi \in \interval[open]{p}{q}\) sao cho:
+
+        \[g'(\xi) = \frac{g(p) - g(q)}{p - q}\]
+
+        Ta có:
+
+        \[\abs{p - q} = \abs{g(p) - g(q)} = \abs{g'(\xi)} \abs{p - q} < \abs{p - q} \text{ (vô lí)}\]
+
+        Giả thuyết \(g\) có hai điểm bất động trên \(\interval{a}{b}\) sai. Vậy
+        với điều kiện ban đầu, chỉ có duy nhất một điểm bất động trên
+        \(\interval{a}{b}\).
+\end{enumerate}
+\end{proof}
+
+\subsection{Phương pháp điểm bất động}
+
+Xét chuỗi sau:
+
+\[\{p_n\}_{n=0}^\infty \mid p_n = g(p_{n-1}) \, \forall n \geq 1\]
+
+\emph{Giả sử} chuỗi này hội tụ tới \(p\), và \(g\) liên tục, thì:
+
+\[p = \lim_{n \to \infty} p_n = \lim_{n \to \infty} g(p_{n - 1}) = g(\lim_{n \to \infty} p_{n - 1}) = g(p)\]
+
+Khi này \(p\) chính là điểm bất động của \(g\). Đây chính là tiền đề cho
+\hyperref[method:fixed_point]{\emph{phương pháp điểm bất động}}.
+
+Cần chú ý rằng phương pháp này chỉ đúng khi chuỗi \(\{p_n\}_{n=0}^\infty\) hội
+tụ về \(p\).
+
+\begin{method}\label{method:fixed_point}
+    \emph{Phương pháp điểm bất động}
+
+    Phương pháp này cho phép tìm điểm bất động \(p\) của \(g\), khi biết một
+    điểm bắt đầu \(p_0\).
+
+    Đặt \(p = g(p_0)\).
+
+    \begin{itemize}
+        \item Nếu \(\abs{p - p_0}\) đủ nhỏ, thì ta có \(p\) cần tìm.
+        \item Nếu \(\abs{p - p_0}\) chưa đủ nhỏ, ta đặt \(p_0 = p\) rồi làm tiếp
+            phương pháp trên.
+    \end{itemize}
+\end{method}
+
+Cũng như với \hyperref[method:bisection]{phương pháp chia đôi}, có thể dùng
+nhiều điều kiện dừng khác nhau. Ví dụ trên sử dụng điểu kiện \(\abs{p - p_0}\)
+nhỏ hơn một mốc \(\epsilon\) nào đó thì dừng lại.
+
+Ta cần nhắc lại rằng điểm quan trọng nhất của phương pháp trên là giả sử
+\(\{p_n\}_{n=0}^\infty\) hội tụ về \(p\), tức ta phải chọn hàm \(g\) một cách
+phù hợp, chứ không áp dụng được cho mọi hàm \(g\). Ví dụ sau cho ta thấy sự quan
+trọng của hàm này.
+
+\begin{exmp}
+    Thử tìm và biện luận cho cách tìm nghiệm của phương trình \(x^3 + 4x^2 - 10
+    = 0\) trong \(\interval{1}{2}\) bằng \hyperref[method:fixed_point]{phương
+    pháp điểm bất động}.
+
+    Ta có một số lựa chọn về hàm \(g\), được chọn ngẫu nhiên:
+
+    \[\begin{aligned}
+        &\textbf{(a) } x = g_1(x) = x - x^3 -4x^2 + 10   &&\textbf{(b) } x = g_2(x) = \left(\frac{10}{x} - 4x \right)^{0.5}  \\
+        &\textbf{(c) } x = \frac{1}{2} (10 - x^3)^{0.5}  &&\textbf{(d) } x = g_4(x) = \left(\frac{10}{x + 4} \right)^{0.5}   \\
+        &\textbf{(e) } x = g_5(x) = x - \frac{x^3 + 4x^2 - 10}{3x^2 + 8x}
+    \end{aligned}\]
+
+    Với \(p_0 = 1.5\), ta có bảng sau:
+
+    \begin{tabular}{r c c S[table-format=1.9] S[table-format=1.9] S[table-format=1.9]}
+        \\
+        \toprule
+        {\(n\)}  & {(a)}          & {(b)}                     & {(c)}         & {(d)}         & {(e)}         \\
+        \midrule
+              0  &  \num{1.5}     &  \num{1.5}                &  1.5          &  1.5          &  1.5          \\
+              1  &  \num{-0.875}  &  \num{0.8165}             &  1.286953768  &  1.348399725  &  1.373333333  \\
+              2  &  \num{6.732}   &  \num{2.9969}             &  1.402540804  &  1.367376372  &  1.365262015  \\
+              3  &  \num{-469.7}  &  \((\num{-8.65})^{0.5}\)  &  1.345458374  &  1.364957015  &  1.365230014  \\
+              4  &  \num{1.03e8}  &                           &  1.375170253  &  1.365264748  &  1.365230013  \\
+              5  &                &                           &  1.360094193  &  1.365225594  &               \\
+              6  &                &                           &  1.367846968  &  1.365230576  &               \\
+              7  &                &                           &  1.363887004  &  1.365229942  &               \\
+              8  &                &                           &  1.365916734  &  1.365230022  &               \\
+              9  &                &                           &  1.364878217  &  1.365230012  &               \\
+             10  &                &                           &  1.365410062  &  1.365230014  &               \\
+             15  &                &                           &  1.365223680  &  1.365230013  &               \\
+             20  &                &                           &  1.365230236  &               &               \\
+             25  &                &                           &  1.365230006  &               &               \\
+             30  &                &                           &  1.365230013  &               &               \\
+        \bottomrule
+        \\
+    \end{tabular}
+
+    Với nghiệm thực \num{1.365230013}, ta thấy lựa chọn (c), (d), (e) có tiềm
+    năng nhất. Phương pháp chia đôi cần 27 lần lặp để đạt được kết quả này, tuy
+    nhiên (d) chỉ cần 15 lần, còn (e) thậm chí chỉ cần 4. Ngược lại, (a) thì
+    phân kì còn (b) thậm chí không xác định (căn của số âm).
+\end{exmp}
+
+\subsection{Tìm \(g\) phù hợp}
+
+Tiếp tục nhắc lại điểm quan trọng nhất để làm được phương pháp điểm bất động là
+chọn được \(g\) phù hợp. Định lí sau và hệ quả của nó cho ta một số gợi ý về
+việc chọn những hàm phù hợp, hay quan trọng hơn, loại bỏ những hàm không phù
+hợp.
+
+\begin{theorem}\label{thm:fixed_point}
+    \emph{Định lí điểm bất động}
+
+    Cho hàm \(g\) liên tục trên \(\interval{a}{b}\) sao cho \(g(x) \in
+    \interval{a}{b} \, \forall x \in \interval{a}{b}\). Giả sử thêm rằng \(g\)
+    khả vi trên \(\interval[open]{a}{b}\) và
+
+    \[\abs{g'(x)} < 1 \, \forall x \in \interval[open]{a}{b}\]
+
+    Thì với mọi \(p_0 \in \interval{a}{b}\), chuỗi
+
+    \[p_n = g(p_{n - 1}) \, \forall n \geq 1\]
+
+    hội tụ về \(p\) là điểm bất động duy nhất của \(g\) trên
+    \(\interval{a}{b}\).
+\end{theorem}
+
+\begin{proof}\label{proof:thm:fixed_point}
+    % TODO: fix theorem reference
+    Dựa vào \ref{thm:sufficient_conditions_of_fixed_point}, có một điểm bất động
+    duy nhất \(p\) trong khoảng \(\interval{a}{b}\).
+
+    Do \(g(x) \in \interval{a}{b} \, \forall x \in \interval{a}{b}\), ta chắc
+    chắn dãy \(\{p_n\}_{n = 0}^\infty\) tồn tại.
+
+    Theo điều kiện \(\abs{g'(x)} < 1 \, \forall x \in \interval[open]{a}{b}\),
+    tồn tại \(0 < k < 1\) thỏa mãn:
+
+    \[\abs{g'(x)} \leq k \, \forall x \in \interval[open]{a}{b}\]
+
+    Kết hợp điều trên với \hyperref[thm:mean_value_theorem]{định lí giá trị
+    trung bình}, ta có:
+
+    \[\abs{p_n - p} = \abs{g(p_{n - 1}) - g(p)} = \abs{g'(\xi_n)} \abs{p_{n - 1} - p} \leq \abs{p_{n - 1} - p}\]
+
+    với \(\xi_n \in \interval[open]{a}{b}\). Quy nạp kết quả này ta có:
+
+    \[\begin{aligned}
+                                 \abs{p_n - p} & \leq k^n \abs{p_0 - p} \\
+        \iff \lim_{n \to \infty} \abs{p_n - p} & \leq \lim_{n \to \infty} k^n \abs{p_0 - p} = 0
+    \end{aligned}\]
+
+    Vậy ta thấy \(\{p_n\}_{n = 0}^\infty\) hội tụ về \(p\).
+\end{proof}
+
+Ta tiếp tục xem xét một số hệ quả hữu dụng của định lí trên.
+
+\begin{coro}
+    \emph{Hệ quả của \hyperref[thm:fixed_point]{định lí điểm bất động}}
+
+    Nếu \(g\) thỏa mãn các điều kiện trong \hyperref[thm:fixed_point]{định lí
+    điểm bất động}, ta có cận trên của sai số tuyệt đối khi ước lượng \(p\) bằng
+    \(p_n\):
+
+    \begin{equation}\label{ieq:coro:thm:fixed_point_1}
+        \abs{p_n - p} \leq k^n \max \{p_0 - a, b - p_0\}
+    \end{equation}
+
+    và
+
+    \begin{equation}\label{ieq:coro:thm:fixed_point_2}
+        \abs{p_n - p} \leq \frac{k^n}{1 - k} \abs{p_1 - p_0} \, \forall n \geq 1
+    \end{equation}
+
+    với \(k\) như đã định nghĩa trong \hyperref[proof:thm:fixed_point]{chứng
+    minh của định lí điểm bất động}.
+\end{coro}
+
+\begin{proof}
+    Ta có:
+
+    \[\abs{p_n - p} \leq k^n \abs{p_0 - p}\]
+
+    Vì \(p \in \interval{a}{b}\) nên ta suy ra được bất đẳng
+    thức~\ref{ieq:coro:thm:fixed_point_1}:
+
+    \[\abs{p_n - p} \leq k^n \abs{p_0 - p} \leq k^n \max \{p_0 - a, b - p_0\}\]
+
+    Xét khi \(n \geq 1\), bằng quy nạp và
+    \hyperref[thm:mean_value_theorem]{định lí giá trị trung bình}, ta có:
+
+    \[\abs{p_{n + 1} - p_n} = \abs{g(p_n) - g(p_{n - 1})} \leq k^n \abs{p_1 - p_0}\]
+
+    Do đó với \(m > n \geq 1\):
+
+    \[\begin{aligned}
+        \abs{p_m - p_n} & = \abs{p_m - p_{m - 1} + p_{m - 1} - \ldots - p_{n + 1} + p_{n + 1} - p_n} \\
+                        & \leq \abs{p_m - p_{m - 1}} + \ldots + \abs{p_{n + 1} - p_n}                \\
+                        & \leq k^{m - 1} \abs{p_1 - p_0} + \ldots + k^n \abs{p_1 - p_0}              \\
+                        & = \abs{p_1 - p_0} \sum_{i = n}^{m - 1} k^i                                 \\
+                        & = \abs{p_1 - p_0} \frac{k^m - k^n}{k - 1}
+    \end{aligned}\]
+
+    Lấy giới hạn hai vế với \(m \to \infty\), ta có được bất đẳng
+    thức~\ref{ieq:coro:thm:fixed_point_2}:
+
+    \[\begin{aligned}
+        \lim_{m \to \infty} \abs{p_m - p_n} & = \abs{p_1 - p_0} \lim_{m \to \infty} \frac{k^m - k^n}{k - 1} \\
+        \iff                  \abs{p_n - p} & = \frac{k^n}{1 - k} \abs{p_1 - p_0}
+    \end{aligned}\]
+\end{proof}
+
+Qua các kết quả trên, ta rút ra hai quy tắc chọn hàm \(g\):
+
+\begin{itemize}
+    \item \(\abs{g'(x)} < 1 \, \forall x \in \interval[open]{a}{b}\)
+\end{itemize}
+
+đạo hàm của \(g\)
+càng nhỏ càng tốt.
+
+\section{Phương pháp Newton \& các phương pháp liên quan}
+
+\emph{Phương pháp Newton}, hay \emph{Newton-Raphson}, là một trong những phương
+pháp mạnh nhất và phổ biến để tìm nghiệm phương trình. Trong phần này, ta sẽ sử
+dụng khai triển Taylor để biện luận về phương pháp Newton, và hơn nữa là về cận
+cho sai số của phương pháp này.
+
+\subsection{Phương pháp Newton}\label{sec:newton_method}
+
+Giả sử \(f \in C^2\interval{a}{b}\) (\(f\) khả vi liên tục đến cấp 2). Xét \(p_0
+\in \interval{a}{b}\) là một xấp xỉ của nghiệm \(p\) sao cho \(f'(p_0) \neq 0\)
+và \(\abs{p - p_0}\) "nhỏ".
+
+Khai triển Taylor quanh \(p_0\) và tại \(x = p\), ta có:
+
+\[f(p) = f(p_0) + (p - p_0) f'(p_0) + \frac{(p - p_0)^2}{2} f''(\xi(p))\]
+
+Với \(\xi(p)\) nằm giữa \(p\) và \(p_0\).
+
+Do giả thiết \(\abs{p - p_0}\) nhỏ, \((p - p_0)^2\) thậm chí còn nhỏ hơn. Phương
+trình trên trở thành:
+
+\[\begin{aligned}
+                0 & \approx f(p_0) + (p - p_0) f'(p_0) \\
+    \Rightarrow	p & \approx p_0 - \frac{f(p_0)}{f'(p_0)} \equiv p_1
+\end{aligned}\]
+
+Phương trình trên là tiền đề cho phương pháp Newton. Phương pháp Newton bắt đầu
+từ một \(p_0\) cho trước, và tạo dãy \(\{p_n\}_{n = 0}^\infty\) theo quy tắc:
+
+\begin{equation}\label{eq:newton_sequence_function}
+    p_{n + 1} = p_n - \frac{f(p_n)}{f'(p_n)}
+\end{equation}
+
+% TODO: add illustration graph
+
+\begin{method}\label{method:newton}
+    \emph{Phương pháp Newton}
+
+    Phương pháp này cho phép tìm nghiệm \(p\) của \(f\), khi biết một điểm bắt
+    đầu \(p_0\).
+
+    Đặt \(p = p_0 - \dfrac{f(p_0)}{f'(p_0)}\).
+
+    \begin{itemize}
+        \item Nếu \(\abs{p - p_0}\) đủ nhỏ, thì ta có \(p\) cần tìm.
+        \item Nếu \(\abs{p - p_0}\) chưa đủ nhỏ, ta đặt \(p_0 = p\) rồi làm tiếp
+            phương pháp trên.
+    \end{itemize}
+\end{method}
+
+Tương tự phương pháp chia đôi, ta có thể tùy chọn nhiều điều kiện dừng khác
+nhau.
+
+\begin{exmp}
+    Xấp xỉ nghiệm của \(f(x) = cos(x) - x = 0\) bằng phương pháp Newton.
+
+    Xét đồ thị của hàm \(y = cos(x)\) và \(y = x\):
+
+    % TODO: graph graph graph
+
+    Dựa theo đồ thị, ta biết phương trình có nghiệm trong khoảng
+    \(\interval{0}{\frac{\pi}{2}}\), nên ta xét điểm khởi đầu \(p_0 =
+    \frac{\pi}{4}\).
+
+    Ta có \(f'(x) = -sin(x) - 1\). Áp dụng phương pháp Newton, ta có công thức
+    cho chuỗi xấp xỉ sau:
+
+    \begin{equation*}
+        \begin{cases}
+            p_0 = \dfrac{\pi}{4} \\
+            p_{n + 1} = p_n - \dfrac{f(p_n)}{f'(p_n)} \, \forall n \geq 0
+        \end{cases}
+    \end{equation*}
+
+    Ta có bảng lặp, đạt kết quả tốt ngay khi \(n = 3\):
+
+    \begin{tabular}{r S[table-format=1.9]}
+        \\
+        \toprule
+        {\(n\)}  &  {\(p_n\)}          \\
+        \midrule
+              0  &  \(\frac{\pi}{4}\)  \\
+              1  &  0.739536134        \\
+              2  &  0.739085178        \\
+              3  &  0.739085133        \\
+              4  &  0.739085133        \\
+        \bottomrule
+        \\
+    \end{tabular}
+
+\end{exmp}
+
+\subsection{Khả năng hội tụ của phương pháp Newton}
+
+Với phương pháp điểm bất động, việc chọn hàm \(g\) là mấu chốt để đạt được kết
+quả tốt. Với phương pháp Newton, điểm khởi đầu \(p_0\) lại đóng vai trò tối quan
+trọng. Biện luận trong~\ref{sec:newton_method} chỉ đúng khi \(\abs{p - p_0}\)
+nhỏ, tức ta có xấp xỉ khởi đầu tốt (tuy nhiên vẫn có những ngoại lệ, không cần
+xấp xỉ tốt vẫn có thể hội tụ tới nghiệm).
+
+Sau đây ta sẽ xem xét kĩ hơn khả năng hội tụ của phương pháp Newton để thấy được
+sự nhạy cảm của phương pháp này với điểm khởi đầu.
+
+\begin{theorem}
+    Cho \(f \in C^2 \interval{a}{b}\). Nếu \(f = 0\) có nghiệm \(p \in
+    \interval[open]{a}{b}\) sao cho \(f'(p) \neq 0\), thì tồn tại \(\delta > 0\)
+    sao cho phương pháp Newton hội tụ với bất kì xấp xỉ ban đầu \(p_0 \in
+    \interval{p - \delta}{p + \delta}\).
+\end{theorem}
+
+\begin{proof}
+    Xét công thức chuỗi của phương pháp Newton.
+
+    \begin{equation*}
+        \begin{cases}
+            p_{n + 1} = g(p_n) \\
+            g(x) = x - \dfrac{f(x)}{f'(x)}
+        \end{cases}
+    \end{equation*}
+
+    Dễ thấy công thức của phương pháp Newton có dạng giống như phương pháp điểm
+    bất định (kết quả của \(g\) ở vòng lặp này là đầu vào cho \(g\) ở vòng lặp
+    kế tiếp; \(p\) là điểm bất động của \(g\)). Vậy hướng chứng minh tiềm năng
+    là sử dụng \hyperref[thm:fixed_point]{định lí điểm bất động}, chứng minh hàm
+    \(g\) với các điều kiện đã cho là một hàm thỏa mãn các điều kiện trong định
+    lí điểm bất động, từ đó đảm bảo được sự hội tụ của \(\{p_n\}\).
+
+    Ta chia chứng minh thành hai phần: tồn tại \(\delta > 0\) mà:
+
+    \begin{enumerate}
+        \item \label{proof:newton_part_1} \(g\) khả vi liên tục trên \(I =
+            \interval{p - \delta}{p + \delta}\) và \(\abs{g'(x)} < 1 \, \forall
+            x \in I\), và
+        \item \label{proof:newton_part_2} \(g(x) \in I \, \forall x \in I\),
+    \end{enumerate}
+
+    Ta chứng minh điều~\ref{proof:newton_part_1} thông qua bổ đề sau:
+
+    \begin{lemma}\label{lemma:proof:newton_part_1}
+        Cho \(f \in C \interval{a}{b}\). Xét \(p \in \interval[open]{a}{b}\) sao
+        cho \(f(p) \neq 0\).
+
+        \begin{enumerate}[label=(\alph*)]
+            \item Nếu \(f(p) \neq 0\) thì tồn tại \(\delta > 0\) sao cho:
+                \[f(x) \neq 0 \, \forall x \in \interval{p - \delta}{p + \delta} \subseteq \interval{a}{b}\]
+            \item Nếu \(f(p) = 0\) và cho \(K > 0\) thì tồn tại \(\delta > 0\) sao cho:
+                \[\abs{f(x)} \leq K \, \forall x \in \interval{p - \delta}{p + \delta} \subseteq \interval{a}{b}\]
+        \end{enumerate}
+    \end{lemma}
+
+    \begin{proof}[Chứng minh Bổ đề~\ref{lemma:proof:newton_part_1}]
+        $ $\\    % lmao https://tex.stackexchange.com/a/85081/206774
+        Do \(f \in C \interval{a}{b}\), mà \(p \in \interval[open]{a}{b}\), theo
+        định nghĩa tính liên tục, ta có:
+
+        \[\lim_{x \to p} f(x) = f(p)\]
+
+        Phân tích phương trình trên, theo định nghĩa giới hạn, ta biết rằng với
+        mọi \(E > 0\), tồn tại \(\Delta\) sao cho:
+
+        \[\abs{f(x) - f(p)} < E \, \forall x \in \interval[open]{p - \Delta}{p + \Delta} \cap \interval[open]{a}{b}\]
+
+        Với mỗi \(E\), ta lại chọn được \(\delta < \Delta\) sao cho:
+
+        \[\abs{f(x) - f(p)} < E \, \forall x \in \interval{p - \delta}{p + \delta} \subseteq \interval{a}{b}\]
+
+        \begin{enumerate}[label=(\alph*)]
+            \item Xét khi \(E = \varepsilon < \abs{f(p)}\), ta có:
+                \[f(p) - \varepsilon < f(x) < f(p) + \varepsilon\]
+
+                Nếu \(f(p) < 0\), \(f(p) + \varepsilon < 0\), dẫn đến \(f(x) < 0
+                \, \forall x \in \interval{p - \delta}{p + \delta}\).
+
+                Nếu \(f(p) > 0\), \(f(p) - \varepsilon > 0\), dẫn đến \(f(x) > 0
+                \, \forall x \in \interval{p - \delta}{p + \delta}\).
+
+                Vậy luôn chọn được \(\delta\) thỏa mãn yêu cầu.
+
+            \item Xét khi \(E = K\). Do \(f(p) = 0\), ta có ngay kết quả:
+                \[\abs{f(x)} < K \, \forall x \in \interval{p - \delta}{p + \delta} \subseteq \interval{a}{b}\]
+        \end{enumerate}
+    \end{proof}
+
+    Ta chứng minh điều~\ref{proof:newton_part_1} như sau:
+
+    Vì \(f \in C^2 \interval{a}{b}\), nên \(f' \in C^1 \interval{a}{b}\). Áp
+    dụng phần a của bổ đề~\ref{lemma:proof:newton_part_1} với \(f'\), ta thấy
+    rằng tồn tại \(\delta_1 > 0\) sao cho:
+
+    \[f'(x) \neq 0 \, \forall x \in \interval{p - \delta_1}{p + \delta_1} \subseteq \interval{a}{b}\]
+
+    Vì \(f'(x) \neq 0\), nên \(g\) xác định trên \(\interval{p - \delta_1}{p +
+    \delta_1}\). Nói cách khác, \(g \in C \interval{a}{b}\).
+
+    Lấy đạo hàm \(g\), ta có:
+
+    \[g'(x) = 1 - \frac{f'(x) f'(x) - f''(x)f(x)}{[f'(x)]^2} = \frac{f(x) f''(x)}{[f'(x)]^2}\]
+
+    Vì \(f \in C^2 \interval{a}{b}\), nên \(f'' \in C \interval{a}{b}\), nên
+    \(g'(x)\) xác định trên \(\interval{p - \delta_1}{p + \delta_1}\). Nói cách
+    khác, \(g \in C^1 \interval{a}{b}\).
+
+    Xét \(g'(p)\). Theo giả thuyết, \(f(p) = 0\), nên \(g'(p) = 0\). Áp dụng
+    phần b của bổ đề~\ref{lemma:proof:newton_part_1} cho \(g'\) và cho \(0 < k <
+    1\) bất kì, ta thấy rằng tồn tại \(\delta_2 > 0\) sao cho:
+
+    \[\abs{g'(x)} \leq k \, \forall x \in \interval{p - \delta_2}{p + \delta_2} \subseteq \interval{a}{b}\]
+
+    Chọn \(0 < \delta < \min \{\delta_1, \delta_2\}\). Vậy ta chứng minh được
+    điều~\ref{proof:newton_part_1}, rằng tồn tại \(\delta > 0\) sao cho:
+
+    \[g \in C^1 I \text{ và } \abs{g'(x)} \leq k < 1 \, \forall x \in I \text{ với } I = \interval{p - \delta}{p + \delta}\]
+
+    Ta chứng minh điều~\ref{proof:newton_part_2} như sau:
+
+    Theo \hyperref[thm:mean_value_theorem]{định lí giá trị trung bình},
+    với mọi \(x \in I\), tồn tại \(\xi\) nằm giữa \(x\) và \(p\) sao cho:
+
+    \[\abs{g(x) - g(p)} = \abs{g'(\xi)} \abs{x - p}\]
+
+    Theo công thức chuỗi của phương pháp Newton, \(p\) là điểm bất động của
+    \(g\), tức \(p = g(p)\). Thế vào phương trình trên, ta có:
+
+    \[\abs{g(x) - p} = \abs{g(x) - g(p)} = \abs{g'(\xi)} \abs{x - p} \leq k \abs{x - p} < \abs{x - p}\]
+
+    Do \(x \in I\) nên \(\abs{x - p} < \delta\), do đó:
+
+    \[\abs{g(x) - p} < \abs{x - p} < \delta \iff g(x) \in I\]
+
+    Vậy ta chứng minh được điều~\ref{proof:newton_part_2}.
+
+    Tổng hợp lại, đến đây, ta chứng minh được tồn tại \(\delta > 0\) sao cho:
+
+    \[\begin{cases}
+        g \in C^1 I = \interval{p - \delta}{p + \delta} \text{ và } \abs{g(x)} < 1 \, \forall x \in I \\
+        g(x) \in I \, \forall x \in I
+    \end{cases}\]
+
+    Áp dụng \hyperref[thm:fixed_point]{định lí điểm bất động}, ta thấy chuỗi
+    \(\{p_n\}_{n = 0}^\infty\) cho bởi công thức của phương pháp Newton hội tụ
+    về điểm bất động \(p\) của \(g\), cũng là nghiệm của \(f\), với \(p_0\) khởi
+    đầu bất kì thuộc \(\interval{p - \delta}{p + \delta}\).
+\end{proof}
+
+Kết quả trên có ý nghĩa quan trọng về lí thuyết do đảm bảo sự hội tụ của phương
+pháp Newton khi biết \(\delta\) ``phù hợp", tuy nhiên trong bài tập lại ít dùng
+do không nói đến cách tìm \(\delta\).
+
+Theo kinh nghiệm, phương pháp Newton có một đặc điểm hữu dụng là nó hội tụ nhanh
+với \(p_0\) tốt, đồng thời phân kì nhanh với \(p_0\) xấu, cho phép loại bỏ các
+điểm khởi đầu kém.
+
+\subsection{Phương pháp dây cung}
+
+Một điểm yếu quan trọng của phương pháp Newton là cần phải tính đạo hàm của
+\(f\), và có nhiều trường hợp đạo hàm rất khó tính hay ước lượng.
+
+Để tránh điểm yếu này, \emph{phương pháp dây cung (secant method)} có một chút
+thay đổi trong công thức chuỗi.
+
+Theo định nghĩa:
+
+\[f'(p_n) = \lim_{x \to p_n} \frac{f(x) - f(p_n)}{x - p_n}\]
+
+Nếu \(p_{n - 1}\) gần với \(p_n\), ta có:
+
+\[f'(p_n) \approx \frac{f(p_{n - 1}) - f(p_n)}{p_{n - 1} - p_n} = \frac{f(p_n) - f(p_{n - 1})}{p_n - p_{n - 1}}\]
+
+(Công thức trên là một xấp xỉ \emph{sai phân hữu hạn (finite difference)}). Thay
+vào công thức~\ref{eq:newton_sequence_function}, ta có:
+
+\begin{equation}\label{eq:secant_method}
+    p_{n + 1} = p_n - \frac{f(p_n)}{\dfrac{f(p_n) - f(p_{n - 1})}{p_n - p_{n - 1}}} = p_n - \frac{f(p_n) (p_n - p_{n - 1})}{f(p_n) - f(p_{n - 1})}
+\end{equation}
+
+Đây chính là công thức được dùng trong phương pháp dây cung.
+
+\begin{method}\label{method:secant}
+    \emph{Phương pháp dây cung}
+
+    Phương pháp này cho phép tìm nghiệm \(p\) của \(f(p) = 0\) khi biết
+    \emph{hai} điểm khởi đầu \(p_1\) và \(p_2\).
+
+    Đặt \(p_3\) là hoành độ của giao điểm của đường thẳng nối \((p_1, f(p_1))\)
+    và \((p_2, f(p_2))\) với \(Ox\). Tiếp tục thực hiện phương pháp trên với
+    \(p_2\) và \(p_3\) và các số sau đó, chuỗi sẽ hội tụ đến \(p\).
+\end{method}
+
+Chú ý rằng, công thức~\ref{eq:secant_method} có thể được rút ngắn thành:
+
+\[p_{n + 1} = \frac{f(p_n) p_{n - 1} - f(p_{n - 1}) p_n}{f(p_n) - f(p_{n - 1})}\]
+
+Công thức trên cũng chính là công thức nhận được khi sử dụng cách tính thông
+thường (tìm phương trình đường thẳng nối hai điểm \((p_1, f(p_1))\) và \((p_2,
+f(p_2))\) rồi tìm giao điểm với \(Ox\)) Tuy nhiên cách viết này khiến tỉ số và
+mẫu số đều là những số rất nhỏ, dẫn đến sai lệch khi tính toán. Do vậy, trong sử
+dụng thực tế, công thức~\ref{eq:secant_method} được sử dụng nhiều hơn.
+
+\subsection{Phương pháp điểm sai}
+
+\emph{Phương pháp điểm sai} (\emph{false position method}, hay \emph{Regula
+Falsi}) sinh ra các xấp xỉ theo cách gần giống với
+\hyperref[method:secant]{phương pháp dây cung}, tuy nhiên phương pháp này có một
+khác biệt quan trọng: nó đảm bảo nghiệm luôn nằm trong khoảng đang tìm, giống
+phương pháp chia đôi, và thu hẹp khoảng này sau mỗi lần lặp. Tính chất này gọi
+là \emph{bracketing}, và phương pháp Newton và dây cung không có tính chất này.
+
+\begin{method}
+    \emph{Phương pháp điểm sai}
+
+    Phương pháp này cho phép tìm nghiệm \(p\) của \(f(p) = 0\) khi biết
+    \emph{hai} điểm khởi đầu \(p_0\) và \(p_1\) sao cho \(f(p_0)\) và \(f(p_1)\)
+    trái dấu.
+
+    Đặt \(p_2\) là hoành độ của giao điểm của đường thẳng nối \((p_0, f(p_0))\)
+    và \((p_1, f(p_1))\) với \(Ox\).
+
+    Cách tính \(p_3\) như sau:
+
+    \begin{itemize}
+        \item Nếu \(f(p_1\) và \(f(p_2)\) trái dấu, thì \(p_3\) là hoành độ của
+            giao điểm của đường thẳng nối \((p_2, f(p_2))\) và \((p_1, f(p_1))\)
+            với \(Ox\).
+        \item Nếu không, thì \(p_3\) là hoành độ của giao điểm của đường thẳng
+            nối \((p_2, f(p_2))\) và \((p_0, f(p_0))\)  với \(Ox\); đồng thời,
+            tráo đổi giá trị của \(p_0\) và \(p_1\).
+    \end{itemize}
+
+    Tương tự với \(p_3\), tính được \(p_4\) \(p_5\),\ldots
+\end{method}
+
+Ta thấy yêu cầu \(f(p_0)\) và \(f(p_1)\) trái dấu là hiển nhiên do phương pháp
+này có tính bracketing, nếu không có nghiệm trong khoảng giữa \(p_0\) và \(p_1\)
+thì phương pháp sẽ không hội tụ.
+
+Ta cũng thấy yêu cầu tráo giá trị của \(p_0\) và \(p_1\) để đảm bảo nghiệm nằm
+giữa \(p_2\) và \(p_3\). Ngoài ra, do việc tráo giá trị, khi thuật toán kết
+thúc, \(p\) chỉ đảm bảo kẹp giữa 2 giá trị cuối \(p_N\) và \(p_{N - 1}\).
 
 \end{document}
