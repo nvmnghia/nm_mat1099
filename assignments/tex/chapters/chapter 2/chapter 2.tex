@@ -17,17 +17,19 @@
 
     Table of iteration for \(f(x) = \sqrt(x) - \cos{x}\) on \(\interval{0}{1}\):
 
-    \begin{tabular}{r S[table-format=1.1] S[table-format=1.2] S[table-format=1.3] S[table-format=-1.9]}
-        \\
-        \toprule
-        \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
-        \midrule
-            1  &  0          &  1          &  0.5        &  -0.170475781  \\
-            2  &  0.5        &  1          &  0.75       &   0.134336535  \\
-            3  &  0.5        &  0.75       &  0.625      &  -0.020393704  \\
-        \bottomrule
-        \\
-    \end{tabular}
+    \begin{table}[hbt!]    % Default table floats (i.e. [btp]). [h] keeps it here.
+        % tabular must be nested inside table, otherwise manual \\ must be used
+        \centering
+        \begin{tabular}{r S[table-format=1.1] S[table-format=1.2] S[table-format=1.3] S[table-format=-1.9]}
+            \toprule
+            \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
+            \midrule
+                1  &  0          &  1          &  0.5        &  -0.170475781  \\
+                2  &  0.5        &  1          &  0.75       &   0.134336535  \\
+                3  &  0.5        &  0.75       &  0.625      &  -0.020393704  \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
 
     So \(p_3 = \num{0.625}\).
 \end{solution}
@@ -49,17 +51,18 @@
 
             We have the following table:
 
-            \begin{tabular}{r S[table-format=-1.3] S[table-format=-1.2] S[table-format=-1.4] S[table-format=-1.9]}
-                \\
-                \toprule
-                \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  -2         &   1.5       &  -0.25      &   2.109375     \\
-                    2  &  -2         &  -0.25      &  -1.125     &  -1.294921875  \\
-                    3  &  -1.125     &  -0.25      &  -0.6875    &   1.878662109  \\
-                \bottomrule
-                \\
-            \end{tabular}
+            \begin{table}[hbt!]
+                \centering
+                \begin{tabular}{r S[table-format=-1.3] S[table-format=-1.2] S[table-format=-1.4] S[table-format=-1.9]}
+                    \toprule
+                    \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  -2         &   1.5       &  -0.25      &   2.109375     \\
+                        2  &  -2         &  -0.25      &  -1.125     &  -1.294921875  \\
+                        3  &  -1.125     &  -0.25      &  -0.6875    &   1.878662109  \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             So \(p_3 = \num{-0.6875}\).
 
@@ -69,15 +72,16 @@
 
             We have the following table:
 
-            \begin{tabular}{r S[table-format=-1.1] S[table-format=-1.1] S[table-format=1.1] S[table-format=1.1]}
-                \\
-                \toprule
-                \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
-                \midrule
-                   1   &  -1.5       &   2.5       &   0.5       &   0            \\
-                \bottomrule
-                \\
-            \end{tabular}
+            \begin{table}[hbt!]
+                \centering
+                \begin{tabular}{r S[table-format=-1.1] S[table-format=-1.1] S[table-format=1.1] S[table-format=1.1]}
+                    \toprule
+                    \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
+                    \midrule
+                       1   &  -1.5       &   2.5       &   0.5       &   0            \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             The solution is found in the first iteration so \(p_3\) doesn't
             exist.
@@ -107,21 +111,22 @@
 
             We have the following table:
 
-            \begin{tabular}{r S[table-format=1.6] S[table-format=1.5] S[table-format=1.7] S[table-format=-1.6]}
-                \\
-                \toprule
-                \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  0          &  1          &  0.5        &  -0.625        \\
-                    2  &  0.5        &  1          &  0.75       &   0.984375     \\
-                    3  &  0.5        &  0.75       &  0.625      &   0.259766     \\
-                    4  &  0.5        &  0.625      &  0.5625     &  -0.161865     \\
-                    5  &  0.5625     &  0.625      &  0.59375    &   0.054047     \\
-                    6  &  0.5625     &  0.59375    &  0.578125   &  -0.052624     \\
-                    7  &  0.578125   &  0.59375    &  0.5859375  &   0.001031     \\
-                \bottomrule
-                \\
-            \end{tabular}
+            \begin{table}[hbt!]
+                \centering
+                \begin{tabular}{r S[table-format=1.6] S[table-format=1.5] S[table-format=1.7] S[table-format=-1.6]}
+                    \toprule
+                    \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  0          &  1          &  0.5        &  -0.625        \\
+                        2  &  0.5        &  1          &  0.75       &   0.984375     \\
+                        3  &  0.5        &  0.75       &  0.625      &   0.259766     \\
+                        4  &  0.5        &  0.625      &  0.5625     &  -0.161865     \\
+                        5  &  0.5625     &  0.625      &  0.59375    &   0.054047     \\
+                        6  &  0.5625     &  0.59375    &  0.578125   &  -0.052624     \\
+                        7  &  0.578125   &  0.59375    &  0.5859375  &   0.001031     \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             So \(p \approx \num{0.5859}\).
 
@@ -135,22 +140,23 @@
 
             We have the following table:
 
-            \begin{tabular}{r S[table-format=1.5] S[table-format=1.6] S[table-format=1.6] S[table-format=-1.6]}
-                \\
-                \toprule
-                \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  1          &  3.2        &  2.1        &   1.791        \\
-                    2  &  2.1        &  3.2        &  2.65       &   0.552125     \\
-                    3  &  2.65       &  3.2        &  2.925      &   0.085828     \\
-                    4  &  2.925      &  3.2        &  3.0625     &  -0.054443     \\
-                    5  &  2.925      &  3.0625     &  2.99375    &   0.006328     \\
-                    6  &  2.99375    &  3.0625     &  3.028125   &  -0.026521     \\
-                    7  &  2.99375    &  3.02813    &  3.010938   &  -0.010697     \\
-                    8  &  2.99375    &  3.010938   &  3.002344   &  -0.002333     \\
-                \bottomrule
-                \\
-            \end{tabular}
+            \begin{table}[hbt!]
+                \centering
+                \begin{tabular}{r S[table-format=1.5] S[table-format=1.6] S[table-format=1.6] S[table-format=-1.6]}
+                    \toprule
+                    \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  1          &  3.2        &  2.1        &   1.791        \\
+                        2  &  2.1        &  3.2        &  2.65       &   0.552125     \\
+                        3  &  2.65       &  3.2        &  2.925      &   0.085828     \\
+                        4  &  2.925      &  3.2        &  3.0625     &  -0.054443     \\
+                        5  &  2.925      &  3.0625     &  2.99375    &   0.006328     \\
+                        6  &  2.99375    &  3.0625     &  3.028125   &  -0.026521     \\
+                        7  &  2.99375    &  3.02813    &  3.010938   &  -0.010697     \\
+                        8  &  2.99375    &  3.010938   &  3.002344   &  -0.002333     \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             So \(p \approx \num{3.0023}\).
 
@@ -164,21 +170,22 @@
 
             We have the following table:
 
-            \begin{tabular}{r S[table-format=1.5] S[table-format=1.6] S[table-format=1.6] S[table-format=-1.6]}
-                \\
-                \toprule
-                \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  3.2        &  4          &  3.6        &   0.336        \\
-                    2  &  3.2        &  3.6        &  3.4        &  -0.016        \\
-                    3  &  3.4        &  3.6        &  3.5        &   0.125        \\
-                    4  &  3.4        &  3.5        &  3.45       &   0.046125     \\
-                    5  &  3.4        &  3.45       &  3.425      &   0.013016     \\
-                    6  &  3.4        &  3.425      &  3.4125     &  -0.001998     \\
-                    7  &  3.4125     &  3.425      &  3.41875    &   0.005382     \\
-                \bottomrule
-                \\
-            \end{tabular}
+            \begin{table}[hbt!]
+                \centering
+                \begin{tabular}{r S[table-format=1.5] S[table-format=1.6] S[table-format=1.6] S[table-format=-1.6]}
+                    \toprule
+                    \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  3.2        &  4          &  3.6        &   0.336        \\
+                        2  &  3.2        &  3.6        &  3.4        &  -0.016        \\
+                        3  &  3.4        &  3.6        &  3.5        &   0.125        \\
+                        4  &  3.4        &  3.5        &  3.45       &   0.046125     \\
+                        5  &  3.4        &  3.45       &  3.425      &   0.013016     \\
+                        6  &  3.4        &  3.425      &  3.4125     &  -0.001998     \\
+                        7  &  3.4125     &  3.425      &  3.41875    &   0.005382     \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             So \(p \approx \num{3.4188}\).
     \end{enumerate}
@@ -208,21 +215,22 @@
 
             We have the following table:
 
-            \begin{tabular}{r S[table-format=-1.5] S[table-format=-1.5] S[table-format=-1.6] S[table-format=-1.6]}
-                \\
-                \toprule
-                \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  -2         &  -1         &  -1.5       &   0.8125       \\
-                    2  &  -1.5       &  -1         &  -1.25      &  -0.902344     \\
-                    3  &  -1.5       &  -1.25      &  -1.375     &  -0.288818     \\
-                    4  &  -1.5       &  -1.375     &  -1.4375    &   0.195328     \\
-                    5  &  -1.4375    &  -1.375     &  -1.40625   &  -0.062667     \\
-                    6  &  -1.4375    &  -1.40625   &  -1.421875  &   0.062263     \\
-                    7  &  -1.421875  &  -1.40625   &  -1.414063  &  -0.001208     \\
-                \bottomrule
-                \\
-            \end{tabular}
+            \begin{table}[hbt!]
+                \centering
+                \begin{tabular}{r S[table-format=-1.5] S[table-format=-1.5] S[table-format=-1.6] S[table-format=-1.6]}
+                    \toprule
+                    \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  -2         &  -1         &  -1.5       &   0.8125       \\
+                        2  &  -1.5       &  -1         &  -1.25      &  -0.902344     \\
+                        3  &  -1.5       &  -1.25      &  -1.375     &  -0.288818     \\
+                        4  &  -1.5       &  -1.375     &  -1.4375    &   0.195328     \\
+                        5  &  -1.4375    &  -1.375     &  -1.40625   &  -0.062667     \\
+                        6  &  -1.4375    &  -1.40625   &  -1.421875  &   0.062263     \\
+                        7  &  -1.421875  &  -1.40625   &  -1.414063  &  -0.001208     \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             So \(p \approx \num{-1.4141}\).
 
@@ -236,22 +244,23 @@
 
             We have the following table:
 
-            \begin{tabular}{r S[table-format=1.5] S[table-format=1.6] S[table-format=1.6] S[table-format=-1.6]}
-                \\
-                \toprule
-                \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  0          &  2          &  1          &   3            \\
-                    2  &  1          &  2          &  1.5        &  -0.6875       \\
-                    3  &  1          &  1.5        &  1.25       &   1.285156     \\
-                    4  &  1.25       &  1.5        &  1.375      &   0.312744     \\
-                    5  &  1.375      &  1.5        &  1.4375     &  -0.186508     \\
-                    6  &  1.375      &  1.4375     &  1.40625    &   0.063676     \\
-                    7  &  1.40625    &  1.4375     &  1.421875   &  -0.061318     \\
-                    8  &  1.40625    &  1.421875   &  1.414063   &   0.001208     \\
-                \bottomrule
-                \\
-            \end{tabular}
+            \begin{table}[hbt!]
+                \centering
+                \begin{tabular}{r S[table-format=1.5] S[table-format=1.6] S[table-format=1.6] S[table-format=-1.6]}
+                    \toprule
+                    \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  0          &  2          &  1          &   3            \\
+                        2  &  1          &  2          &  1.5        &  -0.6875       \\
+                        3  &  1          &  1.5        &  1.25       &   1.285156     \\
+                        4  &  1.25       &  1.5        &  1.375      &   0.312744     \\
+                        5  &  1.375      &  1.5        &  1.4375     &  -0.186508     \\
+                        6  &  1.375      &  1.4375     &  1.40625    &   0.063676     \\
+                        7  &  1.40625    &  1.4375     &  1.421875   &  -0.061318     \\
+                        8  &  1.40625    &  1.421875   &  1.414063   &   0.001208     \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             So \(p \approx \num{1.4141}\).
 
@@ -265,21 +274,22 @@
 
             We have the following table:
 
-            \begin{tabular}{r S[table-format=1.5] S[table-format=1.6] S[table-format=1.6] S[table-format=-1.6]}
-                \\
-                \toprule
-                \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  2          &  3          &  2.5        &  -3.1875       \\
-                    2  &  2.5        &  3          &  2.75       &   0.347656     \\
-                    3  &  2.5        &  2.75       &  2.625      &  -1.757568     \\
-                    4  &  2.625      &  2.75       &  2.6875     &  -0.795639     \\
-                    5  &  2.6875     &  2.75       &  2.71875    &  -0.247466     \\
-                    6  &  2.71875    &  2.75       &  2.734375   &   0.044125     \\
-                    7  &  2.71875    &  2.734375   &  2.726563   &  -0.103151     \\
-                \bottomrule
-                \\
-            \end{tabular}
+            \begin{table}[hbt!]
+                \centering
+                \begin{tabular}{r S[table-format=1.5] S[table-format=1.6] S[table-format=1.6] S[table-format=-1.6]}
+                    \toprule
+                    \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  2          &  3          &  2.5        &  -3.1875       \\
+                        2  &  2.5        &  3          &  2.75       &   0.347656     \\
+                        3  &  2.5        &  2.75       &  2.625      &  -1.757568     \\
+                        4  &  2.625      &  2.75       &  2.6875     &  -0.795639     \\
+                        5  &  2.6875     &  2.75       &  2.71875    &  -0.247466     \\
+                        6  &  2.71875    &  2.75       &  2.734375   &   0.044125     \\
+                        7  &  2.71875    &  2.734375   &  2.726563   &  -0.103151     \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             So \(p \approx \num{2.7266}\).
 
@@ -293,21 +303,22 @@
 
             We have the following table:
 
-            \begin{tabular}{r S[table-format=-1.6] S[table-format=-1.5] S[table-format=-1.6] S[table-format=-1.6]}
-                \\
-                \toprule
-                \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  -1         &  0          &  -0.5       &   1.3125       \\
-                    2  &  -1         &  -0.5       &  -0.75      &  -0.089844     \\
-                    3  &  -0.75      &  -0.5       &  -0.625     &   0.578369     \\
-                    4  &  -0.75      &  -0.625     &  -0.6875    &   0.232681     \\
-                    5  &  -0.75      &  -0.6875    &  -0.71875   &   0.068086     \\
-                    6  &  -0.75      &  -0.71875   &  -0.734375  &  -0.011768     \\
-                    7  &  -0.734375  &  -0.71875   &  -0.726563  &   0.027943     \\
-                \bottomrule
-                \\
-            \end{tabular}
+            \begin{table}[hbt!]
+                \centering
+                \begin{tabular}{r S[table-format=-1.6] S[table-format=-1.5] S[table-format=-1.6] S[table-format=-1.6]}
+                    \toprule
+                    \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  -1         &  0          &  -0.5       &   1.3125       \\
+                        2  &  -1         &  -0.5       &  -0.75      &  -0.089844     \\
+                        3  &  -0.75      &  -0.5       &  -0.625     &   0.578369     \\
+                        4  &  -0.75      &  -0.625     &  -0.6875    &   0.232681     \\
+                        5  &  -0.75      &  -0.6875    &  -0.71875   &   0.068086     \\
+                        6  &  -0.75      &  -0.71875   &  -0.734375  &  -0.011768     \\
+                        7  &  -0.734375  &  -0.71875   &  -0.726563  &   0.027943     \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             So \(p \approx \num{-0.7266}\).
     \end{enumerate}
@@ -337,7 +348,6 @@
 
             We have the following table:
 
-            % TODO: Check why longtable doesn't need \\, but tabular does
             \begin{longtable}{r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=-1.9]}
                 \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
@@ -572,28 +582,31 @@
 
             We have the following table:
 
-            \begin{longtable}{r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=-1.9]}
-                \toprule
-                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  0            &  0.5          &  0.25         &  -0.164213562  \\
-                    2  &  0            &  0.25         &  0.125        &   0.359633135  \\
-                    3  &  0.125        &  0.25         &  0.1875       &   0.076359534  \\
-                    4  &  0.1875       &  0.25         &  0.21875      &  -0.050036568  \\
-                    5  &  0.1875       &  0.21875      &  0.203125     &   0.011726391  \\
-                    6  &  0.203125     &  0.21875      &  0.2109375    &  -0.019525681  \\
-                    7  &  0.203125     &  0.2109375    &  0.20703125   &  -0.003990833  \\
-                    8  &  0.203125     &  0.20703125   &  0.205078125  &   0.003845166  \\
-                    9  &  0.205078125  &  0.20703125   &  0.206054688  &  -0.00007851   \\
-                   10  &  0.205078125  &  0.206054688  &  0.205566406  &   0.001881912  \\
-                   11  &  0.205566406  &  0.206054688  &  0.205810547  &   0.000901347  \\
-                   12  &  0.205810547  &  0.206054688  &  0.205932617  &   0.00041133   \\
-                   13  &  0.205932617  &  0.206054688  &  0.205993652  &   0.000166388  \\
-                   14  &  0.205993652  &  0.206054688  &  0.20602417   &   0.000043934  \\
-                   15  &  0.20602417   &  0.206054688  &  0.206039429  &  -0.000017289  \\
-                   16  &  0.20602417   &  0.206039429  &  0.206031799  &   0.000013322  \\
-                   \bottomrule
-            \end{longtable}
+            \begin{table}
+                \centering
+                \begin{longtable}{r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=-1.9]}
+                    \toprule
+                    \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  0            &  0.5          &  0.25         &  -0.164213562  \\
+                        2  &  0            &  0.25         &  0.125        &   0.359633135  \\
+                        3  &  0.125        &  0.25         &  0.1875       &   0.076359534  \\
+                        4  &  0.1875       &  0.25         &  0.21875      &  -0.050036568  \\
+                        5  &  0.1875       &  0.21875      &  0.203125     &   0.011726391  \\
+                        6  &  0.203125     &  0.21875      &  0.2109375    &  -0.019525681  \\
+                        7  &  0.203125     &  0.2109375    &  0.20703125   &  -0.003990833  \\
+                        8  &  0.203125     &  0.20703125   &  0.205078125  &   0.003845166  \\
+                        9  &  0.205078125  &  0.20703125   &  0.206054688  &  -0.00007851   \\
+                       10  &  0.205078125  &  0.206054688  &  0.205566406  &   0.001881912  \\
+                       11  &  0.205566406  &  0.206054688  &  0.205810547  &   0.000901347  \\
+                       12  &  0.205810547  &  0.206054688  &  0.205932617  &   0.00041133   \\
+                       13  &  0.205932617  &  0.206054688  &  0.205993652  &   0.000166388  \\
+                       14  &  0.205993652  &  0.206054688  &  0.20602417   &   0.000043934  \\
+                       15  &  0.20602417   &  0.206054688  &  0.206039429  &  -0.000017289  \\
+                       16  &  0.20602417   &  0.206039429  &  0.206031799  &   0.000013322  \\
+                       \bottomrule
+                \end{longtable}
+            \end{table}
 
             So \(p \approx \num{0.206032}\).
     \end{enumerate}
@@ -612,7 +625,10 @@
     \begin{enumerate}[label=(\alph*)]
         \item Graph of \(y = x\) and \(y = 2 \sin{x}\) is as follow:
 
-            \subfile{graphics/exercise_7_graph/exercise_7_graph.tex}
+            \begin{figure}[hbt!]
+                \centering
+                \subfile{graphics/exercise_7_graph/exercise_7_graph.tex}
+            \end{figure}
 
         \item According to the graph, the first positive root \(p\) of \(f = x -
             2 \sin{x}\) is in \(\interval{\dfrac{\pi}{2}}{\pi}\).
@@ -650,8 +666,55 @@
             \end{longtable}
 
             So \(p \approx \num{1.895491}\).
-
     \end{enumerate}
 \end{solution}
+
+\begin{exercise}
+    \begin{enumerate}[label=(\alph*)]
+        \item Graph of \(y = x\) and \(y = \tan{x}\) is as follow:
+
+            \begin{figure}[hbt!]
+                \centering
+                \subfile{graphics/exercise_8_graph/exercise_8_graph.tex}
+            \end{figure}
+
+        \item According to the graph, the first positive root \(p\) of \(f = x -
+            \tan{x}\) is in \(\interval{\pi}{\dfrac{3 \pi}{2}}\).
+
+            The number of iteration \(n\) needed to approximate \(p\) to within
+            \(10^{-5}\) in that range is:
+
+            \[\abs{p_n - p} \leq \frac{\dfrac{3 \pi}{2} - \pi}{2^n} < 10^{-5} \iff n \geq 18\]
+
+            We have the following table:
+
+            \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                    1  &  3.14159265   &  4.71238898   &  3.92699082   &   2.92699082   \\
+                    2  &  3.92699082   &  4.71238898   &  4.3196899    &   1.90547634   \\
+                    3  &  4.3196899    &  4.71238898   &  4.51603944   &  -0.511300053  \\
+                    4  &  4.3196899    &  4.51603944   &  4.41786467   &   1.12130646   \\
+                    5  &  4.41786467   &  4.51603944   &  4.46695205   &   0.474728271  \\
+                    6  &  4.46695205   &  4.51603944   &  4.49149575   &   0.038293523  \\
+                    7  &  4.49149575   &  4.51603944   &  4.50376759   &  -0.219861735  \\
+                    8  &  4.49149575   &  4.50376759   &  4.49763167   &  -0.086980389  \\
+                    9  &  4.49149575   &  4.49763167   &  4.49456371   &  -0.023432692  \\
+                   10  &  4.49149575   &  4.49456371   &  4.49302973   &   0.007653323  \\
+                   11  &  4.49302973   &  4.49456371   &  4.49379672   &  -0.007833371  \\
+                   12  &  4.49302973   &  4.49379672   &  4.49341322   &  -0.00007602   \\
+                   13  &  4.49302973   &  4.49341322   &  4.49322148   &   0.003792144  \\
+                   14  &  4.49322148   &  4.49341322   &  4.49331735   &   0.001858936  \\
+                   15  &  4.49331735   &  4.49341322   &  4.49336529   &   0.000891677  \\
+                   16  &  4.49336529   &  4.49341322   &  4.49338925   &   0.000407883  \\
+                   17  &  4.49338925   &  4.49341322   &  4.49340124   &   0.000165946  \\
+                   18  &  4.49340124   &  4.49341322   &  4.49340723   &   0.000044966  \\
+                \bottomrule
+            \end{longtable}
+
+            So \(p \approx \num{4.493407}\).
+    \end{enumerate}
+\end{exercise}
 
 \end{document}
