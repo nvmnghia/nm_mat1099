@@ -634,7 +634,7 @@
             2 \sin{x}\) is in \(\interval{\dfrac{\pi}{2}}{\pi}\).
 
             The number of iteration \(n\) needed to approximate \(p\) to within
-            \(10^{-5}\) in that range is:
+            \(10^{-5}\) in that interval is:
 
             \[\abs{p_n - p} \leq \frac{\pi - \dfrac{\pi}{2}}{2^n} < 10^{-5} \iff n \geq 18\]
 
@@ -682,7 +682,7 @@
             \tan{x}\) is in \(\interval{\pi}{\dfrac{3 \pi}{2}}\).
 
             The number of iteration \(n\) needed to approximate \(p\) to within
-            \(10^{-5}\) in that range is:
+            \(10^{-5}\) in that interval is:
 
             \[\abs{p_n - p} \leq \frac{\dfrac{3 \pi}{2} - \pi}{2^n} < 10^{-5} \iff n \geq 18\]
 
@@ -716,5 +716,515 @@
             So \(p \approx \num{4.493407}\).
     \end{enumerate}
 \end{exercise}
+
+\begin{exercise}
+    \begin{enumerate}[label=(\alph*)]
+        \item Sketch the graphs of \(y = e^x - 2\) and \(y = \cos{e^x - 2}\).
+        \item Use the Bisection method to find an approximation to within
+            \(10^{-5}\) to a value in \(\interval{\num{0.5}}{\num{1.5}}\) with
+            \(e^x - 2 = \cos{e^x - 2}\).
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label=(\alph*)]
+        \item The graphs of the 2 functions are as follow:
+
+            \begin{figure}
+                \centering
+                \subfile{graphics/exercise_9_graph/exercise_9_graph.tex}
+            \end{figure}
+
+        \item Let \(f = e^x - 2 - \cos{e^x - 2}\). \(f(\num{0.5}) \approx
+            \num{-1.290212} \) and \(f(\num{1.5}) \approx \num{3.27174}\) have
+            the opposite signs, so there's a root \(p\) of \(f\) in
+            \(\interval{\num{0.5}}{\num{1.5}}\).
+
+            The number of iteration \(n\) needed to approximate \(p\) to within
+            \(10^{-5}\) in that interval is:
+
+            \[\abs{p_n - p} \leq \frac{\num{1.5} - \num{0.5}}{2^n} < 10^{-5} \iff n \geq 17\]
+
+            We have the following table:
+
+            \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                    1  &  0.5          &  1.5          &  1            &  -0.034655726  \\
+                    2  &  1            &  1.5          &  1.25         &   1.40997635   \\
+                    3  &  1            &  1.25         &  1.125        &   0.609079747  \\
+                    4  &  1            &  1.125        &  1.0625       &   0.266982288  \\
+                    5  &  1            &  1.0625       &  1.03125      &   0.111147764  \\
+                    6  &  1            &  1.03125      &  1.015625     &   0.037002875  \\
+                    7  &  1            &  1.015625     &  1.0078125    &   0.000864425  \\
+                    8  &  1            &  1.0078125    &  1.00390625   &  -0.016972716  \\
+                    9  &  1.00390625   &  1.0078125    &  1.00585938   &  -0.00807344   \\
+                   10  &  1.00585938   &  1.0078125    &  1.00683594   &  -0.003609335  \\
+                   11  &  1.00683594   &  1.0078125    &  1.00732422   &  -0.001373662  \\
+                   12  &  1.00732422   &  1.0078125    &  1.00756836   &  -0.00025492   \\
+                   13  &  1.00756836   &  1.0078125    &  1.00769043   &   0.000304677  \\
+                   14  &  1.00756836   &  1.00769043   &  1.00762939   &   0.000024859  \\
+                   15  &  1.00756836   &  1.00762939   &  1.00759888   &  -0.000115035  \\
+                   16  &  1.00759888   &  1.00762939   &  1.00761414   &  -0.000045089  \\
+                \bottomrule
+            \end{longtable}
+
+            So \(p \approx \num{1.007614}\).
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Let \(f(x) = (x + 2) (x+1)^2 x (x - 1)^3 (x - 2)\). To which zero of \(f\)
+    does the Bisection method converge when applied on the following intervals?
+
+    \begin{enumerate}[label=(\alph*)]
+        \item \(\interval{\num{-1.5}}{\num{2.5}}\)
+        \item \(\interval{\num{-0.5}}{\num{2.4}}\)
+        \item \(\interval{\num{-0.5}}{3}\)
+        \item \(\interval{-3}{\num{-0.5}}\)
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+    \(f\) has 5 zeros: \(\pm 2\), \(\pm 1\), \(0\).
+
+    \begin{enumerate}[label=(\alph*)]
+        \item We have the following table:
+
+            \begin{longtable}{r S[table-format=-1.1] S[table-format=1.1] S[table-format=-1.1] S[table-format=-1.8]}
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                    1  &  -1.5         &  2.5          &   0.5         &   0.52734375   \\
+                    2  &  -1.5         &  0.5          &  -0.5         &  -1.58203125   \\
+                    3  &  -0.5         &  0.5          &   0           &   0            \\
+                \bottomrule
+            \end{longtable}
+
+            So when applied on \(\interval{\num{-1.5}}{\num{2.5}}\), the
+            Bisection method gives \(0\).
+
+        \item We have the following table:
+
+            \begin{longtable}{r S[table-format=-1.1] S[table-format=1.2] S[table-format=1.3] S[table-format=1.9]}
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                    1  &  -0.5         &  2.4          &  0.95         &  0.001398666   \\
+                    2  &  -0.5         &  0.95         &  0.225        &  0.62070919    \\
+                \bottomrule
+            \end{longtable}
+
+            At \(n = 2\), the interval shrinks to
+            \(\interval{\num{-0.5}}{\num{0.95}}\). So when applied on
+            \(\interval{\num{-0.5}}{\num{2.4}}\), the Bisection method gives
+            \(0\).
+
+        \item We have the following table:
+
+            \begin{longtable}{r S[table-format=-1.2] S[table-format=1] S[table-format=1.3] S[table-format=2.9]}
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                    1  &  -0.5         &  3            &  1.25         &  -0.241012573  \\
+                    2  &   1.25        &  3            &  2.125        &  15.2352825    \\
+                \bottomrule
+            \end{longtable}
+
+            At \(n = 2\), the interval shrinks to \(\interval{\num{1.25}}{3}\).
+            So when applied on \(\interval{\num{-0.5}}{3}\), the Bisection
+            method gives \(2\).
+
+        \item We have the following table:
+
+            \begin{longtable}{r S[table-format=-1] S[table-format=-1.2] S[table-format=-1.3] S[table-format=3.7]}
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                    1  &  -3           &  -0.5         &  -1.75        &  -19.1924286   \\
+                    2  &  -3           &  -1.75        &  -2.375       &  283.204185    \\
+                \bottomrule
+            \end{longtable}
+
+            At \(n = 2\), the interval shrinks to
+            \(\interval{\-3}{\num{-1.75}}\). So when applied on
+            \(\interval{-3}{\num{-0.5}}\), the Bisection method gives \(-2\).
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Let \(f(x) = (x + 2) (x+1) x (x - 1)^3 (x - 2)\). To which zero of \(f\)
+    does the Bisection method converge when applied on the following intervals?
+
+    \begin{enumerate}[label=(\alph*)]
+        \item \(\interval{-3}{\num{2.5}}\)
+        \item \(\interval{\num{-2.5}}{3}\)
+        \item \(\interval{\num{-1.75}}{\num{1.5}}\)
+        \item \(\interval{\num{-1.5}}{\num{-1.75}}\)
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+    \(f\) has 5 zeros: \(\pm 2\), \(\pm 1\), \(0\).
+
+    \begin{enumerate}[label=(\alph*)]
+        \item We have the following table:
+
+            \begin{longtable}{r S[table-format=-1.3] S[table-format=1.1] S[table-format=-1.4] S[table-format=-1.9]}
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                    1  &  -3           &  2.5          &  -0.25        &  -1.44195557   \\
+                    2  &  -0.25        &  2.5          &   1.125       &  -0.012767315  \\
+                    3  &   1.125       &  2.5          &   1.8125      &  -1.95457248   \\
+                \bottomrule
+            \end{longtable}
+
+            At \(n = 3\), the interval shrinks to
+            \(\interval{\num{1.125}}{\num{2.5}}\). So when applied on
+            \(\interval{-3}{\num{2.5}}\), the Bisection method gives \(2\).
+
+        \item We have the following table:
+
+            \begin{longtable}{r S[table-format=-1.1] S[table-format=-1.3] S[table-format=-1.4] S[table-format=2.9]}
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                    1  &  -2.5         &   3           &   0.25        &    0.519104004 \\
+                    2  &  -2.5         &   0.25        &  -1.125       &    3.68975401  \\
+                    3  &  -2.5         &  -1.125       &  -1.8125      &   23.4201732   \\
+                \bottomrule
+            \end{longtable}
+
+            At \(n = 3\), the interval shrinks to
+            \(\interval{\num{-2.5}}{\num{-1.125}}\). So when applied on
+            \(\interval{\num{-2.5}}{3}\), the Bisection method gives \(-2\).
+
+        \item We have the following table:
+
+            \begin{longtable}{r S[table-format=-1.2] S[table-format=-1.3] S[table-format=-1.4] S[table-format=-1.9]}
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                     1 &  -1.75        &   1.5         &  -0.125       & -0.620491505    \\
+                     2 &  -1.75        &  -0.125       &  -0.9375      & -1.33009678     \\
+                \bottomrule
+            \end{longtable}
+
+            At \(n = 2\), the interval shrinks to
+            \(\interval{\num{-1.75}}{\num{-0.125}}\). So when applied on
+            \(\interval{\num{-1.75}}{\num{1.5}}\), the Bisection method gives
+            \(-1\).
+
+        \item We have the following table:
+
+            \begin{longtable}{r S[table-format=-1.3] S[table-format=1.2] S[table-format=1.4] S[table-format=1.9]}
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                    1  &  -1.5         & 1.75          &  0.125        &  0.375359058   \\
+                    2  &   0.125       & 1.75          &  0.9375       &  0.001384076   \\
+                \bottomrule
+            \end{longtable}
+
+            At \(n = 2\), the interval shrinks to
+            \(\interval{\num{0.125}}{\num{1.75}}\). So when applied on
+            \(\interval{\num{-1.5}}{\num{1.75}}\), the Bisection method gives
+            \(1\).
+    \end{enumerate}
+\end{solution}
+
+\begin{solution}
+    Find an approximation to \(\sqrt{3}\) correct to within \(10^{−4}\) using
+    the Bisection Algorithm.
+\end{solution}
+
+\begin{solution}
+    Let \(f(x) = x^2 - 3\). The positive zero of \(f\) is \(\sqrt{3}\), so by
+    approximate that positive zero, we get an approximation of \(\sqrt{3}\).
+
+    The positive zero of \(f\) clearly is inside \(\interval{1}{2}\). Using
+    Bisection, the number of iteration \(n\) needed to approximate \(\sqrt{3}\)
+    to within \(10^{-4}\) in that interval is:
+
+    \[\frac{2 - 1}{2^n} < 10^{-4} \iff n \geq 14\]
+
+    Applying Bisection, we have the following table:
+
+    \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
+        \toprule
+        \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+        \midrule
+            1  &  1            &  2            &  1.5          &  -0.75         \\
+            2  &  1.5          &  2            &  1.75         &   0.0625       \\
+            3  &  1.5          &  1.75         &  1.625        &  -0.359375     \\
+            4  &  1.625        &  1.75         &  1.6875       &  -0.15234375   \\
+            5  &  1.6875       &  1.75         &  1.71875      &  -0.045898438  \\
+            6  &  1.71875      &  1.75         &  1.734375     &   0.008056641  \\
+            7  &  1.71875      &  1.734375     &  1.7265625    &  -0.018981934  \\
+            8  &  1.7265625    &  1.734375     &  1.73046875   &  -0.005477905  \\
+            9  &  1.73046875   &  1.734375     &  1.73242188   &   0.001285553  \\
+           10  &  1.73046875   &  1.73242188   &  1.73144531   &  -0.00209713   \\
+           11  &  1.73144531   &  1.73242188   &  1.73193359   &  -0.000406027  \\
+           12  &  1.73193359   &  1.73242188   &  1.73217773   &   0.000439703  \\
+           13  &  1.73193359   &  1.73217773   &  1.73205566   &   0.000016823  \\
+           14  &  1.73193359   &  1.73205566   &  1.73199463   &  -0.000194605  \\
+       \bottomrule
+    \end{longtable}
+
+    So \(\sqrt{3} \approx \num{1.73199}\).
+\end{solution}
+
+\begin{exercise}
+    Find an approximation to \(\sqrt[3]{25}\) correct to within \(10^{−4}\)
+    using the Bisection Algorithm.
+\end{exercise}
+
+\begin{solution}
+    Let \(f(x) = x^3 - 25\). The zero of \(f\) is \(\sqrt[3]{25}\), so by
+    approximate that positive zero, we get an approximation of \(\sqrt[3]{25}\).
+
+    The positive zero of \(f\) clearly is inside \(\interval{2}{3}\). Using
+    Bisection, the number of iteration \(n\) needed to approximate
+    \(\sqrt[3]{25}\) to within \(10^{-4}\) in that interval is:
+
+    \[\frac{3 - 2}{2^n} < 10^{-4} \iff n \geq 14\]
+
+    Applying Bisection, we have the following table:
+
+    \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
+        \toprule
+        \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+        \midrule
+            1  &  2            &  3            &  2.5          &  -9.375        \\
+            2  &  2.5          &  3            &  2.75         &  -4.203125     \\
+            3  &  2.75         &  3            &  2.875        &  -1.23632812   \\
+            4  &  2.875        &  3            &  2.9375       &   0.347412109  \\
+            5  &  2.875        &  2.9375       &  2.90625      &  -0.452972412  \\
+            6  &  2.90625      &  2.9375       &  2.921875     &  -0.054920197  \\
+            7  &  2.921875     &  2.9375       &  2.9296875    &   0.145709515  \\
+            8  &  2.921875     &  2.9296875    &  2.92578125   &   0.045260727  \\
+            9  &  2.921875     &  2.92578125   &  2.92382812   &  -0.004863195  \\
+           10  &  2.92382812   &  2.92578125   &  2.92480469   &   0.020190398  \\
+           11  &  2.92382812   &  2.92480469   &  2.92431641   &   0.00766151   \\
+           12  &  2.92382812   &  2.92431641   &  2.92407227   &   0.001398635  \\
+           13  &  2.92382812   &  2.92407227   &  2.9239502    &  -0.001732411  \\
+           14  &  2.9239502    &  2.92407227   &  2.92401123   &  -0.000166921  \\
+       \bottomrule
+    \end{longtable}
+
+    So \(\sqrt[3]{25} \approx \num{2.92401}\).
+\end{solution}
+
+\begin{exercise}
+    Use Theorem 2.1 (\emph{Định lí 2.2} in the Lectures.pdf of the project) to
+    find a bound for the number of iterations needed to achieve an approximation
+    with accuracy \(10^{-3}\) to the solution of \(x^3 + x − 4 = 0\) lying in
+    the interval \(\interval{1}{4}\). Find an approximation to the root with
+    this degree of accuracy.
+\end{exercise}
+
+\begin{solution}
+    Let \(f(x) = x^3 + x − 4\). \(f(1) = -2\) and \(f(4) = 64\) have the
+    opposite signs, so there's a root \(p\) of \(f\) in \(\interval{1}{4}\).
+
+    The number of iteration \(n\) needed to approximate \(p\) to within
+    \(10^{-3}\) in that interval is:
+
+    \[\abs{p_n - p} \leq \frac{4 - 1}{2^n} < 10^{-3} \iff n \geq 12\]
+
+    We have the following table:
+
+    \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=2.9]}
+        \toprule
+        \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+        \midrule
+            1  &  1            &  4            &  2.5          &  14.125        \\
+            2  &  1            &  2.5          &  1.75         &   3.109375     \\
+            3  &  1            &  1.75         &  1.375        &  -0.025390625  \\
+            4  &  1.375        &  1.75         &  1.5625       &   1.37719727   \\
+            5  &  1.375        &  1.5625       &  1.46875      &   0.637176514  \\
+            6  &  1.375        &  1.46875      &  1.421875     &   0.296520233  \\
+            7  &  1.375        &  1.421875     &  1.3984375    &   0.13326025   \\
+            8  &  1.375        &  1.3984375    &  1.38671875   &   0.053363502  \\
+            9  &  1.375        &  1.38671875   &  1.38085938   &   0.013844214  \\
+           10  &  1.375        &  1.38085938   &  1.37792969   &  -0.005808686  \\
+           11  &  1.37792969   &  1.38085938   &  1.37939453   &   0.004008885  \\
+           12  &  1.37792969   &  1.37939453   &  1.37866211   &  -0.000902119  \\
+        \bottomrule
+    \end{longtable}
+
+    So \(p \approx \num{1.3787}\).
+\end{solution}
+
+\begin{exercise}
+    Use Theorem 2.1 (\emph{Định lí 2.2} in the Lectures.pdf of the project) to
+    find a bound for the number of iterations needed to achieve an approximation
+    with accuracy \(10^{-4}\) to the solution of \(x^3 - x − 1 = 0\) lying in
+    the interval \(\interval{1}{2}\). Find an approximation to the root with
+    this degree of accuracy.
+\end{exercise}
+
+\begin{solution}
+    Let \(f(x) = x^3 - x − 1\). \(f(1) = -2\) and \(f(4) = 64\) have the
+    opposite signs, so there's a root \(p\) of \(f\) in \(\interval{1}{2}\).
+
+    The number of iteration \(n\) needed to approximate \(p\) to within
+    \(10^{-4}\) in that interval is:
+
+    \[\abs{p_n - p} \leq \frac{2 - 1}{2^n} < 10^{-4} \iff n \geq 14\]
+
+    We have the following table:
+
+    \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
+        \toprule
+        \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+        \midrule
+            1  &  1            &  2            &  1.5          &   0.875        \\
+            2  &  1            &  1.5          &  1.25         &  -0.296875     \\
+            3  &  1.25         &  1.5          &  1.375        &   0.224609375  \\
+            4  &  1.25         &  1.375        &  1.3125       &  -0.051513672  \\
+            5  &  1.3125       &  1.375        &  1.34375      &   0.082611084  \\
+            6  &  1.3125       &  1.34375      &  1.328125     &   0.014575958  \\
+            7  &  1.3125       &  1.328125     &  1.3203125    &  -0.018710613  \\
+            8  &  1.3203125    &  1.328125     &  1.32421875   &  -0.002127945  \\
+            9  &  1.32421875   &  1.328125     &  1.32617188   &   0.00620883   \\
+           10  &  1.32421875   &  1.32617188   &  1.32519531   &   0.002036651  \\
+           11  &  1.32421875   &  1.32519531   &  1.32470703   &  -0.000046595  \\
+           12  &  1.32470703   &  1.32519531   &  1.32495117   &   0.000994791  \\
+           13  &  1.32470703   &  1.32495117   &  1.3248291    &   0.000474039  \\
+           14  &  1.32470703   &  1.3248291    &  1.32476807   &   0.000213707  \\
+        \bottomrule
+    \end{longtable}
+
+    So \(p \approx \num{1.32477}\).
+\end{solution}
+
+\begin{exercise}
+    Let \(f(x) = (x − 1)^{10}\), \(p = 1\), and \(p_n = 1 + \frac{1}{n}\). Show
+    that \(\abs{f(p_n)} < 10^{-3}\) whenever \(n > 1\) but that \(\abs{p - p_n}
+    < 10^{-3}\) requires that \(n > 1000\).
+\end{exercise}
+
+\begin{solution}
+    \begin{align*}
+        &\qquad&         f(p_n) & < 10^{-3} \\
+        \iff&&   (p_n - 1)^{10} & < 10^{-3} \\
+        \iff&& \frac{1}{n^{10}} & < 10^{-3} \\
+        \iff&&                n & > 1
+    \end{align*}
+
+    \begin{align*}
+        &\qquad& \abs{p - p_n} & < 10^{-3} \\
+        \iff&&     \frac{1}{n} & < 10^{-3} \\
+        \iff&&               n & > 1000
+    \end{align*}
+
+    \qed
+\end{solution}
+
+\begin{exercise}
+    Let \(\{p_n\}\) be the sequence defined by \(p_n = \sum_{k = 1}^{n}
+    \frac{1}{k}\). Show that \(\{p_n\}\) diverges even though \(\lim_{n \to
+    \infty} (p_n - p_{n - 1}) = 0\).
+\end{exercise}
+
+\begin{solution}
+    It's clear that the difference of 2 consecutive terms goes to zero:
+
+    \[\lim_{n \to \infty} (p_n - p_{n - 1}) = \lim_{n \to \infty} \frac{1}{n} = 0\]
+
+    However, the sequence diverges as:
+
+    \[\begin{aligned}
+        p_n & = \sum_{k = 1}^{n} \frac{1}{k} \\
+            & = 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \ldots \\
+            & > 1 + (\frac{1}{2}) + (\frac{1}{4} + \frac{1}{4}) + \ldots \\
+            & = 1 + \frac{1}{2} + \frac{1}{2} + ... \\
+            & = \infty
+    \end{aligned}\]
+\end{solution}
+
+\begin{exercise}
+    The function defined by \(f(x) = \sin{\pi x}\) has zeros at every integer.
+    Show that when \(−1 < a < 0\) and \(2 < b < 3\), the Bisection method
+    converges to
+
+    \begin{enumerate}[label=(\alph*)]
+        \item \(0\) if \(a + b < 2\)
+        \item \(2\) if \(a + b > 2\)
+        \item \(1\) if \(a + b = 2\)
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+    Let \(p\) be the zero converged by Bisection.
+
+    With \(-1 < a < 0\) and \(2 < b < 3\):
+
+    \[\begin{aligned}
+        \sin{\pi a} < 0 \\
+        \sin{\pi b} > 0 \\
+        1 < a + b < 3
+    \end{aligned}\]
+
+    \begin{enumerate}[label=(\alph*)]
+        \item If \(a + b < 2\), then \(\num{0.5} < p_1 = \frac{a + b}{2} < 1\).
+            Then \(\sin{p_1} > 0\), and the interval shrinks to
+            \(\interval{a}{p_1}\). \(0\) is the only zero in that interval, so
+            \(p = 0\).
+
+        \item If \(a + b > 2\), then \(1 < p_1 = \frac{a + b}{2} < \num{1.5}\).
+            Then \(\sin{p_1} < 0\), and the interval shrinks to
+            \(\interval{p_1}{b}\). \(2\) is the only zero in that interval, so
+            \(p = 0\).
+
+        \item If \(a + b = 2\), then \(p_1 = \frac{a + b}{2} = 1\). Then
+            \(\sin{p_1} = 0\), and a zero \(p = 1\) is found.
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    A trough of length \(L\) has a cross section in the shape of a semicircle
+    with radius \(r\). When filled with water to within a distance \(h\) of the
+    top, the volume \(V\) of water is:
+
+    \[V = L [0.5 \pi r^2 - r^2 \arcsin{\frac{h}{r}} - h \sqrt{r^2 - h^2}]\]
+
+    Suppose \(L = \SI{10}{ft}\), \(r = \SI{1}{ft}\), and \(V =
+    \SI{12.4}{ft^3}\). Find the depth of water in the trough to within
+    \(\SI{0.01}{ft}\).
+\end{exercise}
+
+\begin{solution}
+    Let \(d\) be the depth of the water, so \(d = r - h\). Let
+
+    \[f(h) = 10 (\num{0.5} \pi - \arcsin(h) - h \sqrt{1 - h^2}) - \num{12.4}\]
+
+    Instead of finding \(d\) directly, we find \(h\), also to within
+    \(\SI{0.01}{ft}\). The number of iteration \(n\) needed to approximate \(h\)
+    to within \(\num{0.01}\) in \(\interval{0}{r}\) is:
+
+    \[\abs{h - h_n} < \frac{1 - 0}{2^n} < 0.01 \iff n \geq 7\]
+
+    Applying Bisection, we have the following table:
+
+    \begin{longtable}{r S[table-format=1.5] S[table-format=1.6] S[table-format=1.7] S[table-format=-1.9]}
+        \toprule
+        \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(h_n\)}   &  {\(f(h_n)\)}  \\
+        \midrule
+            1  &  0            &  1            &  0.5          &  -6.25815151   \\
+            2  &  0            &  0.5          &  0.25         &  -1.63945387   \\
+            3  &  0            &  0.25         &  0.125        &   0.814489029  \\
+            4  &  0.125        &  0.25         &  0.1875       &  -0.419946724  \\
+            5  &  0.125        &  0.1875       &  0.15625      &   0.195725903  \\
+            6  &  0.15625      &  0.1875       &  0.171875     &  -0.112536394  \\
+            7  &  0.15625      &  0.171875     &  0.1640625    &   0.041493241  \\
+        \bottomrule
+    \end{longtable}
+
+    So \(h \approx \num{0.1641}\), hence \(h = r - h = \approx \num{0.8359}\).
+\end{solution}
 
 \end{document}
