@@ -68,7 +68,7 @@
 
             So \(p_3 = \num{-0.6875}\).
 
-        \item \(f(\num{-1.25}) = \num{-2.953125}\) and \(f(\num{2.5})) =
+        \item \(f(\num{-1.25}) = \num{-2.953125}\) and \(f(\num{2.5}) =
             \num{31.5}\) have the opposite signs, so there's a root in
             \(\interval{\num{-1.25}}{\num{2.5}}\).
 
@@ -359,7 +359,6 @@
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endfirsthead
-                \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endhead
@@ -400,7 +399,6 @@
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endfirsthead
-                \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endhead
@@ -442,7 +440,6 @@
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endfirsthead
-                \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endhead
@@ -483,7 +480,6 @@
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endfirsthead
-                \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endhead
@@ -540,7 +536,6 @@
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endfirsthead
-                \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endhead
@@ -579,34 +574,60 @@
 
             We have the following table:
 
-            \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
-                \toprule
-                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-                \midrule
-                \endfirsthead
-                \toprule
-                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-                \midrule
-                \endhead
-                    1  &  1            &  2            &  1.5          &  -0.155465108  \\
-                    2  &  1            &  1.5          &  1.25         &   0.339356449  \\
-                    3  &  1.25         &  1.5          &  1.375        &   0.072171269  \\
-                    4  &  1.375        &  1.5          &  1.4375       &  -0.046499244  \\
-                    5  &  1.375        &  1.4375       &  1.40625      &   0.011612476  \\
-                    6  &  1.40625      &  1.4375       &  1.421875     &  -0.017747908  \\
-                    7  &  1.40625      &  1.421875     &  1.4140625    &  -0.003144013  \\
-                    8  &  1.40625      &  1.4140625    &  1.41015625   &   0.004215136  \\
-                    9  &  1.41015625   &  1.4140625    &  1.41210938   &   0.00053079   \\
-                   10  &  1.41210938   &  1.4140625    &  1.41308594   &  -0.001307804  \\
-                   11  &  1.41210938   &  1.41308594   &  1.41259766   &  -0.000388805  \\
-                   12  &  1.41210938   &  1.41259766   &  1.41235352   &   0.000070918  \\
-                   13  &  1.41235352   &  1.41259766   &  1.41247559   &  -0.000158962  \\
-                   14  &  1.41235352   &  1.41247559   &  1.41241455   &  -0.000044027  \\
-                   15  &  1.41235352   &  1.41241455   &  1.41238403   &   0.000013444  \\
-                   16  &  1.41238403   &  1.41241455   &  1.41239929   &  -0.000015292  \\
-                   17  &  1.41238403   &  1.41239929   &  1.41239166   &  -0.000000924  \\
-                \bottomrule
-            \end{longtable}
+            % \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endfirsthead
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endhead
+            %         1  &  1            &  2            &  1.5          &  -0.155465108  \\
+            %         2  &  1            &  1.5          &  1.25         &   0.339356449  \\
+            %         3  &  1.25         &  1.5          &  1.375        &   0.072171269  \\
+            %         4  &  1.375        &  1.5          &  1.4375       &  -0.046499244  \\
+            %         5  &  1.375        &  1.4375       &  1.40625      &   0.011612476  \\
+            %         6  &  1.40625      &  1.4375       &  1.421875     &  -0.017747908  \\
+            %         7  &  1.40625      &  1.421875     &  1.4140625    &  -0.003144013  \\
+            %         8  &  1.40625      &  1.4140625    &  1.41015625   &   0.004215136  \\
+            %         9  &  1.41015625   &  1.4140625    &  1.41210938   &   0.00053079   \\
+            %        10  &  1.41210938   &  1.4140625    &  1.41308594   &  -0.001307804  \\
+            %        11  &  1.41210938   &  1.41308594   &  1.41259766   &  -0.000388805  \\
+            %        12  &  1.41210938   &  1.41259766   &  1.41235352   &   0.000070918  \\
+            %        13  &  1.41235352   &  1.41259766   &  1.41247559   &  -0.000158962  \\
+            %        14  &  1.41235352   &  1.41247559   &  1.41241455   &  -0.000044027  \\
+            %        15  &  1.41235352   &  1.41241455   &  1.41238403   &   0.000013444  \\
+            %        16  &  1.41238403   &  1.41241455   &  1.41239929   &  -0.000015292  \\
+            %        17  &  1.41238403   &  1.41239929   &  1.41239166   &  -0.000000924  \\
+            %     \bottomrule
+            % \end{longtable}
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
+                    \toprule
+                    \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  1            &  2            &  1.5          &  -0.155465108  \\
+                        2  &  1            &  1.5          &  1.25         &   0.339356449  \\
+                        3  &  1.25         &  1.5          &  1.375        &   0.072171269  \\
+                        4  &  1.375        &  1.5          &  1.4375       &  -0.046499244  \\
+                        5  &  1.375        &  1.4375       &  1.40625      &   0.011612476  \\
+                        6  &  1.40625      &  1.4375       &  1.421875     &  -0.017747908  \\
+                        7  &  1.40625      &  1.421875     &  1.4140625    &  -0.003144013  \\
+                        8  &  1.40625      &  1.4140625    &  1.41015625   &   0.004215136  \\
+                        9  &  1.41015625   &  1.4140625    &  1.41210938   &   0.00053079   \\
+                       10  &  1.41210938   &  1.4140625    &  1.41308594   &  -0.001307804  \\
+                       11  &  1.41210938   &  1.41308594   &  1.41259766   &  -0.000388805  \\
+                       12  &  1.41210938   &  1.41259766   &  1.41235352   &   0.000070918  \\
+                       13  &  1.41235352   &  1.41259766   &  1.41247559   &  -0.000158962  \\
+                       14  &  1.41235352   &  1.41247559   &  1.41241455   &  -0.000044027  \\
+                       15  &  1.41235352   &  1.41241455   &  1.41238403   &   0.000013444  \\
+                       16  &  1.41238403   &  1.41241455   &  1.41239929   &  -0.000015292  \\
+                       17  &  1.41238403   &  1.41239929   &  1.41239166   &  -0.000000924  \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             So \(p \approx \num{1.412392}\).
 
@@ -625,7 +646,6 @@
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endfirsthead
-                \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endhead
@@ -684,7 +704,6 @@
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endfirsthead
-                \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endhead
@@ -745,7 +764,6 @@
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endfirsthead
-                \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endhead
@@ -808,7 +826,6 @@
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endfirsthead
-                \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
                 \endhead
@@ -855,21 +872,6 @@
     \begin{enumerate}[label = (\alph*)]
         \item We have the following table:
 
-            % \begin{longtable}{r S[table-format=-1.1] S[table-format=1.1] S[table-format=-1.1] S[table-format=-1.8]}
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endfirsthead
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endhead
-            %         1  &  -1.5         &  2.5          &   0.5         &   0.52734375   \\
-            %         2  &  -1.5         &  0.5          &  -0.5         &  -1.58203125   \\
-            %         3  &  -0.5         &  0.5          &   0           &   0            \\
-            %     \bottomrule
-            % \end{longtable}
-
             \begin{table}[H]
                 \centering
                 \begin{tabular}{r S[table-format=-1.1] S[table-format=1.1] S[table-format=-1.1] S[table-format=-1.8]}
@@ -887,20 +889,6 @@
             Bisection method gives \(0\).
 
         \item We have the following table:
-
-            % \begin{longtable}{r S[table-format=-1.1] S[table-format=1.2] S[table-format=1.3] S[table-format=1.9]}
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endfirsthead
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endhead
-            %         1  &  -0.5         &  2.4          &  0.95         &  0.001398666   \\
-            %         2  &  -0.5         &  0.95         &  0.225        &  0.62070919    \\
-            %     \bottomrule
-            % \end{longtable}
 
             \begin{table}[H]
                 \centering
@@ -921,20 +909,6 @@
 
         \item We have the following table:
 
-            % \begin{longtable}{r S[table-format=-1.2] S[table-format=1] S[table-format=1.3] S[table-format=-1.9]}
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endfirsthead
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endhead
-            %         1  &  -0.5         &  3            &  1.25         &  -0.241012573  \\
-            %         2  &   1.25        &  3            &  2.125        &  15.2352825    \\
-            %     \bottomrule
-            % \end{longtable}
-
             \begin{table}[H]
                 \centering
                 \begin{tabular}{r S[table-format=-1.2] S[table-format=1] S[table-format=1.3] S[table-format=-1.9]}
@@ -952,20 +926,6 @@
             method gives \(2\).
 
         \item We have the following table:
-
-            % \begin{longtable}{r S[table-format=-1] S[table-format=-1.2] S[table-format=-1.3] S[table-format=-2.7]}
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endfirsthead
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endhead
-            %         1  &  -3           &  -0.5         &  -1.75        &  -19.1924286   \\
-            %         2  &  -3           &  -1.75        &  -2.375       &  283.204185    \\
-            %     \bottomrule
-            % \end{longtable}
 
             \begin{table}[H]
                 \centering
@@ -1005,21 +965,6 @@
     \begin{enumerate}[label = (\alph*)]
         \item We have the following table:
 
-            % \begin{longtable}{r S[table-format=-1.3] S[table-format=1.1] S[table-format=-1.4] S[table-format=-1.9]}
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endfirsthead
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endhead
-            %         1  &  -3           &  2.5          &  -0.25        &  -1.44195557   \\
-            %         2  &  -0.25        &  2.5          &   1.125       &  -0.012767315  \\
-            %         3  &   1.125       &  2.5          &   1.8125      &  -1.95457248   \\
-            %     \bottomrule
-            % \end{longtable}
-
             \begin{table}[H]
                 \centering
                 \begin{tabular}{r S[table-format=-1.3] S[table-format=1.1] S[table-format=-1.4] S[table-format=-1.9]}
@@ -1038,21 +983,6 @@
             \(\interval{-3}{\num{2.5}}\), the Bisection method gives \(2\).
 
         \item We have the following table:
-
-            % \begin{longtable}{r S[table-format=-1.1] S[table-format=-1.3] S[table-format=-1.4] S[table-format=2.9]}
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endfirsthead
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endhead
-            %         1  &  -2.5         &   3           &   0.25        &    0.519104004 \\
-            %         2  &  -2.5         &   0.25        &  -1.125       &    3.68975401  \\
-            %         3  &  -2.5         &  -1.125       &  -1.8125      &   23.4201732   \\
-            %     \bottomrule
-            % \end{longtable}
 
             \begin{table}[H]
                 \centering
@@ -1073,20 +1003,6 @@
 
         \item We have the following table:
 
-            % \begin{longtable}{r S[table-format=-1.2] S[table-format=-1.3] S[table-format=-1.4] S[table-format=-1.9]}
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endfirsthead
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endhead
-            %          1 &  -1.75        &   1.5         &  -0.125       & -0.620491505    \\
-            %          2 &  -1.75        &  -0.125       &  -0.9375      & -1.33009678     \\
-            %     \bottomrule
-            % \end{longtable}
-
             \begin{table}[H]
                 \centering
                 \begin{tabular}{r S[table-format=-1.2] S[table-format=-1.3] S[table-format=-1.4] S[table-format=-1.9]}
@@ -1105,20 +1021,6 @@
             \(-1\).
 
         \item We have the following table:
-
-            % \begin{longtable}{r S[table-format=-1.3] S[table-format=1.2] S[table-format=1.4] S[table-format=1.9]}
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endfirsthead
-            %     \toprule
-            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-            %     \midrule
-            %     \endhead
-            %         1  &  -1.5         & 1.75          &  0.125        &  0.375359058   \\
-            %         2  &   0.125       & 1.75          &  0.9375       &  0.001384076   \\
-            %     \bottomrule
-            % \end{longtable}
 
             \begin{table}[H]
                 \centering
@@ -1161,7 +1063,6 @@
         \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
         \endfirsthead
-        \toprule
         \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
         \endhead
@@ -1207,7 +1108,6 @@
         \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
         \endfirsthead
-        \toprule
         \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
         \endhead
@@ -1255,7 +1155,6 @@
         \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
         \endfirsthead
-        \toprule
         \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
         \endhead
@@ -1301,7 +1200,6 @@
         \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
         \endfirsthead
-        \toprule
         \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
         \endhead
@@ -1369,7 +1267,7 @@
         p_n & = \sum_{k = 1}^{n} \frac{1}{k} \\
             & = 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \ldots \\
             & > 1 + (\frac{1}{2}) + (\frac{1}{4} + \frac{1}{4}) + \ldots \\
-            & = 1 + \frac{1}{2} + \frac{1}{2} + ... \\
+            & = 1 + \frac{1}{2} + \frac{1}{2} + \ldots \\
             & = \infty
     \end{aligned}\]
 \end{solution}
@@ -1445,7 +1343,6 @@
         \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
         \endfirsthead
-        \toprule
         \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
         \endhead
@@ -1461,5 +1358,7 @@
 
     So \(h \approx \num{0.1641}\), hence \(d = r - h \approx \num{0.8359}\).
 \end{solution}
+
+
 
 \end{document}
