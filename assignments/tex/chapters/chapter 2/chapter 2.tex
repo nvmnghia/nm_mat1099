@@ -15,7 +15,7 @@
     \(f(0) = -1\) and \(f(1) \approx \num{0.459697694}\) have the opposite
     signs, so there's a root in \(\interval{0}{1}\).
 
-    Table of iteration for \(f(x) = \sqrt{x} - \cos{x}\) on \(\interval{0}{1}\):
+    Applying Bisection method generates the following table:
 
     \begin{table}[H]    % Default table floats (i.e. [btp]). [h] keeps it here.
         % tabular must be nested inside table, otherwise manual \\ must be used
@@ -51,7 +51,7 @@
         \item \(f(-2) = \num{-22.5}\) and \(f(\num{1.5}) = \num{3.75}\) have the
             opposite signs, so there's a root in \(\interval{-2}{\num{1.5}}\).
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -72,11 +72,11 @@
             \num{31.5}\) have the opposite signs, so there's a root in
             \(\interval{\num{-1.25}}{\num{2.5}}\).
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
-                \begin{tabular}{r S[table-format=-1.1] S[table-format=-1.1] S[table-format=1.1] S[table-format=1.1]}
+                \begin{tabular}{r S[table-format=-1.1] S[table-format=1.1] S[table-format=1.1] S[table-format=1]}
                     \toprule
                     \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
                     \midrule
@@ -113,7 +113,7 @@
 
             \[\abs{p_n - p} \leq \frac{1 - 0}{2^n} < 10^{-2} \iff n \geq 7\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -142,7 +142,7 @@
 
             \[\abs{p_n - p} \leq \frac{\num{3.2} - 1}{2^n} < 10^{-2} \iff n \geq 8\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -172,7 +172,7 @@
 
             \[\abs{p_n - p} \leq \frac{4 - \num{3.2}}{2^n} < 10^{-2} \iff n \geq 7\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -219,7 +219,7 @@
 
             \[\abs{p_n - p} \leq \frac{-1 - (-2)}{2^n} < 10^{-2} \iff n \geq 7\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -248,7 +248,7 @@
 
             \[\abs{p_n - p} \leq \frac{2 - 0}{2^n} < 10^{-2} \iff n \geq 8\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -278,7 +278,7 @@
 
             \[\abs{p_n - p} \leq \frac{3 - 2}{2^n} < 10^{-2} \iff n \geq 7\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -307,7 +307,7 @@
 
             \[\abs{p_n - p} \leq \frac{0 - (-1)}{2^n} < 10^{-2} \iff n \geq 7\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -352,7 +352,7 @@
 
             \[\abs{p_n - p} \leq \frac{1 - 0}{2^n} < 10^{-5} \iff n \geq 17\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{longtable}{r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=-1.9]}
                 \toprule
@@ -392,7 +392,7 @@
 
             \[\abs{p_n - p} \leq \frac{1 - 0}{2^n} < 10^{-5} \iff n \geq 17\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{longtable}{r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=-1.9]}
                 \toprule
@@ -424,7 +424,7 @@
 
             So \(p \approx \num{0.25753}\).
 
-        \item \(f(-3) \approx \num{-9.76102172}\) and \(f(-2) =
+        \item \(f(-3) \approx \num{-9.76102172}\) and \(f(-2) \approx
             \num{1.614574483}\) have the opposite signs, so there's a root in
             \(\interval{-3}{-2}\).
 
@@ -433,7 +433,7 @@
 
             \[\abs{p_n - p} \leq \frac{-2 - (-3)}{2^n} < 10^{-5} \iff n \geq 17\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{longtable}{r S[table-format=-1.8] S[table-format=-1.8] S[table-format=-1.8] S[table-format=-1.9]}
                 \toprule
@@ -464,16 +464,16 @@
 
             So \(p \approx \num{-2.191299}\).
 
-        \item \(f(\num{0.2}) \approx \num{-0.283986684}\) and \(f(\num{0.3}) =
-            \num{0.006600946}\) have the opposite signs, so there's a root in
-            \(\interval{\num{0.2}}{\num{0.3}}\).
+        \item \(f(\num{0.2}) \approx \num{-0.283986684}\) and \(f(\num{0.3})
+            \approx \num{0.006600946}\) have the opposite signs, so there's a
+            root in \(\interval{\num{0.2}}{\num{0.3}}\).
 
             The number of iteration \(n\) needed to approximate \(p\) to
             within \(10^{-5}\) is:
 
             \[\abs{p_n - p} \leq \frac{\num{0.3} - \num{0.2}}{2^n} < 10^{-5} \iff n \geq 14\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{longtable}{r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=-1.9]}
                 \toprule
@@ -520,7 +520,7 @@
 
 \begin{solution}
     \begin{enumerate}[label = (\alph*)]
-        \item \(f(1) \approx \num{0.281718172}\) and \(f(2) =
+        \item \(f(1) \approx \num{0.281718172}\) and \(f(2) \approx
             \num{-1.389056099}\) have the opposite signs, so there's a root in
             \(\interval{1}{2}\).
 
@@ -529,7 +529,7 @@
 
             \[\abs{p_n - p} \leq \frac{2 - 1}{2^n} < 10^{-5} \iff n \geq 17\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
                 \toprule
@@ -572,7 +572,7 @@
 
             \[\abs{p_n - p} \leq \frac{2 - 1}{2^n} < 10^{-5} \iff n \geq 17\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             % \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
             %     \toprule
@@ -639,7 +639,7 @@
 
             \[\abs{p_n - p} \leq \frac{\num{0.5} - 0}{2^n} < 10^{-5} \iff n \geq 16\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{longtable}{r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=-1.9]}
                 \toprule
@@ -697,7 +697,7 @@
 
             \[\abs{p_n - p} \leq \frac{\pi - \dfrac{\pi}{2}}{2^n} < 10^{-5} \iff n \geq 18\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
                 \toprule
@@ -757,7 +757,7 @@
 
             \[\abs{p_n - p} \leq \frac{\frac{3 \pi}{2} - \pi}{2^n} < 10^{-5} \iff n \geq 18\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
                 \toprule
@@ -819,7 +819,7 @@
 
             \[\abs{p_n - p} \leq \frac{\num{1.5} - \num{0.5}}{2^n} < 10^{-5} \iff n \geq 17\]
 
-            We have the following table:
+            Applying Bisection method generates the following table:
 
             \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
                 \toprule
@@ -870,7 +870,7 @@
     \(f\) has 5 zeros: \(\pm 2\), \(\pm 1\), \(0\).
 
     \begin{enumerate}[label = (\alph*)]
-        \item We have the following table:
+        \item Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -888,7 +888,7 @@
             So when applied on \(\interval{\num{-1.5}}{\num{2.5}}\), the
             Bisection method gives \(0\).
 
-        \item We have the following table:
+        \item Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -907,7 +907,7 @@
             \(\interval{\num{-0.5}}{\num{2.4}}\), the Bisection method gives
             \(0\).
 
-        \item We have the following table:
+        \item Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -925,7 +925,7 @@
             So when applied on \(\interval{\num{-0.5}}{3}\), the Bisection
             method gives \(2\).
 
-        \item We have the following table:
+        \item Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -963,7 +963,7 @@
     \(f\) has 5 zeros: \(\pm 2\), \(\pm 1\), \(0\).
 
     \begin{enumerate}[label = (\alph*)]
-        \item We have the following table:
+        \item Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -982,7 +982,7 @@
             \(\interval{\num{1.125}}{\num{2.5}}\). So when applied on
             \(\interval{-3}{\num{2.5}}\), the Bisection method gives \(2\).
 
-        \item We have the following table:
+        \item Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -1001,7 +1001,7 @@
             \(\interval{\num{-2.5}}{\num{-1.125}}\). So when applied on
             \(\interval{\num{-2.5}}{3}\), the Bisection method gives \(-2\).
 
-        \item We have the following table:
+        \item Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -1020,7 +1020,7 @@
             \(\interval{\num{-1.75}}{\num{1.5}}\), the Bisection method gives
             \(-1\).
 
-        \item We have the following table:
+        \item Applying Bisection method generates the following table:
 
             \begin{table}[H]
                 \centering
@@ -1056,7 +1056,7 @@
 
     \[\frac{2 - 1}{2^n} < 10^{-4} \iff n \geq 14\]
 
-    Applying Bisection, we have the following table:
+    Applying Bisection method generates the following table:
 
     \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
         \toprule
@@ -1101,7 +1101,7 @@
 
     \[\frac{3 - 2}{2^n} < 10^{-4} \iff n \geq 14\]
 
-    Applying Bisection, we have the following table:
+    Applying Bisection method generates the following table:
 
     \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
         \toprule
@@ -1148,7 +1148,7 @@
 
     \[\abs{p_n - p} \leq \frac{4 - 1}{2^n} < 10^{-3} \iff n \geq 12\]
 
-    We have the following table:
+    Applying Bisection method generates the following table:
 
     \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
         \toprule
@@ -1193,7 +1193,7 @@
 
     \[\abs{p_n - p} \leq \frac{2 - 1}{2^n} < 10^{-4} \iff n \geq 14\]
 
-    We have the following table:
+    Applying Bisection method generates the following table:
 
     \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
         \toprule
@@ -1336,7 +1336,7 @@
 
     \[\abs{h - h_n} < \frac{1 - 0}{2^n} < 0.01 \iff n \geq 7\]
 
-    Applying Bisection, we have the following table:
+    Applying Bisection method generates the following table:
 
     \begin{longtable}{r S[table-format=1.5] S[table-format=1.6] S[table-format=1.7] S[table-format=-1.9]}
         \toprule
