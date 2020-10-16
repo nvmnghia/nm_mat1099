@@ -15,7 +15,7 @@
     \(f(0) = -1\) and \(f(1) \approx \num{0.459697694}\) have the opposite
     signs, so there's a root in \(\interval{0}{1}\).
 
-    Table of iteration for \(f(x) = \sqrt(x) - \cos{x}\) on \(\interval{0}{1}\):
+    Table of iteration for \(f(x) = \sqrt{x} - \cos{x}\) on \(\interval{0}{1}\):
 
     \begin{table}[H]    % Default table floats (i.e. [btp]). [h] keeps it here.
         % tabular must be nested inside table, otherwise manual \\ must be used
@@ -38,10 +38,12 @@
     Let \(f(x) = 3 (x + 1) (x - \dfrac{1}{2}) (x - 1)\). Use the bisection
     method to find \(p_3\) in the following intervals:
 
-    \begin{enumerate}[label = (\alph*)]
-        \item \(\interval{-2}{\num{1.5}}\)
-        \item \(\interval{\num{-1.5}}{\num{2.5}}\)
-    \end{enumerate}
+    \begin{multicols}{2}
+        \begin{enumerate}[label = (\alph*)]
+            \item \(\interval{-2}{\num{1.5}}\)
+            \item \(\interval{\num{-1.5}}{\num{2.5}}\)
+        \end{enumerate}
+    \end{multicols}
 \end{exercise}
 
 \begin{solution}
@@ -92,15 +94,17 @@
     Use the Bisection method to find solutions accurate to within \(10^{-2}\)
     for \(x^3 - 7x^2 + 14x - 6 = 0\) in the following intervals:
 
-    \begin{enumerate}[label=(\alph*)]
-        \item \(\interval{0}{1}\)
-        \item \(\interval{1}{\num{3.2}}\)
-        \item \(\interval{\num{3.2}}{4}\)
-    \end{enumerate}
+    \begin{multicols}{3}
+        \begin{enumerate}[label = (\alph*)]
+            \item \(\interval{0}{1}\)
+            \item \(\interval{1}{\num{3.2}}\)
+            \item \(\interval{\num{3.2}}{4}\)
+        \end{enumerate}
+    \end{multicols}
 \end{exercise}
 
 \begin{solution}
-    \begin{enumerate}[label=(\alph*)]
+    \begin{enumerate}[label = (\alph*)]
         \item \(f(0) = -6\) and \(f(1) = 2\) have the opposite signs, so there's
             a root in \(\interval{0}{1}\).
 
@@ -195,16 +199,18 @@
     Use the Bisection method to find solutions accurate to within \(10^{-2}\)
     for \(x^4 - 2x^3 - 4x^2 + 4x + 4 = 0\) for the following intervals:
 
-    \begin{enumerate}[label=(\alph*)]
-        \item \(\interval{-2}{-1}\)
-        \item \(\interval{0}{2}\)
-        \item \(\interval{2}{3}\)
-        \item \(\interval{-1}{0}\)
-    \end{enumerate}
+    \begin{multicols}{4}
+        \begin{enumerate}[label = (\alph*)]
+            \item \(\interval{-2}{-1}\)
+            \item \(\interval{0}{2}\)
+            \item \(\interval{2}{3}\)
+            \item \(\interval{-1}{0}\)
+        \end{enumerate}
+    \end{multicols}
 \end{exercise}
 
 \begin{solution}
-    \begin{enumerate}[label=(\alph*)]
+    \begin{enumerate}[label = (\alph*)]
         \item \(f(-2) = 12\) and \(f(-1) = -1\) have the opposite signs, so
             there's a root in \(\interval{-2}{-1}\).
 
@@ -217,7 +223,7 @@
 
             \begin{table}[H]
                 \centering
-                \begin{tabular}{r S[table-format=-1.5] S[table-format=-1.5] S[table-format=-1.6] S[table-format=-1.6]}
+                \begin{tabular}{r S[table-format=-1.6] S[table-format=-1.5] S[table-format=-1.6] S[table-format=-1.6]}
                     \toprule
                     \(n\)  &  {\(a_n\)}  &  {\(b_n\)}  &  {\(p_n\)}  &  {\(f(p_n)\)}  \\
                     \midrule
@@ -328,7 +334,7 @@
     Use the Bisection method to find solutions accurate to within \(10^{-5}\)
     for the following problems:
 
-    \begin{enumerate}[label=(\alph*)]
+    \begin{enumerate}[label = (\alph*)]
         \item \(x - 2^{-x} = 0\), \(x \in \interval{0}{1}\)
         \item \(e^x - x^2 + 3x - 2 = 0\), \(x \in \interval{0}{1}\)
         \item \(2 x \cos{2x} - (x + 1)^2 = 0\), \(x \in \interval{-3}{-2}\)
@@ -337,7 +343,7 @@
 \end{exercise}
 
 \begin{solution}
-    \begin{enumerate}[label=(\alph*)]
+    \begin{enumerate}[label = (\alph*)]
         \item \(f(0) = -1\) and \(f(1) = \num{0.5}\) have the opposite signs, so
             there's a root in \(\interval{0}{1}\).
 
@@ -352,6 +358,11 @@
                 \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
+                \endfirsthead
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                \endhead
                     1  &  0            &  1            &  0.5          &  -0.207106781  \\
                     2  &  0.5          &  1            &  0.75         &   0.155396442  \\
                     3  &  0.5          &  0.75         &  0.625        &  -0.023419777  \\
@@ -388,6 +399,11 @@
                 \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
+                \endfirsthead
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                \endhead
                     1  &  0            &  1            &  0.5          &   0.898721271  \\
                     2  &  0            &  0.5          &  0.25         &  -0.028474583  \\
                     3  &  0.25         &  0.5          &  0.375        &   0.439366415  \\
@@ -425,6 +441,11 @@
                 \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
+                \endfirsthead
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                \endhead
                     1  &  -3           &  -2           &  -2.5         &  -3.66831093   \\
                     2  &  -2.5         &  -2           &  -2.25        &  -0.613918903  \\
                     3  &  -2.25        &  -2           &  -2.125       &   0.630246832  \\
@@ -461,6 +482,11 @@
                 \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
+                \endfirsthead
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                \endhead
                     1  &  0.2          &  0.3          &  0.25         &  -0.132771895  \\
                     2  &  0.25         &  0.3          &  0.275        &  -0.061583071  \\
                     3  &  0.275        &  0.3          &  0.2875       &  -0.027112719  \\
@@ -486,16 +512,18 @@
     Use the Bisection method to find solutions accurate to within \(10^{-5}\)
     for the following problems:
 
-    \begin{enumerate}[label=(\alph*)]
-        \item \(3x - e^x = 0\), \(x \in \interval{1}{2}\)
-        \item \(2x + 3 \cos{x} -e^x = 0\), \(x \in \interval{0}{1}\)
-        \item \(x^2 - 4x + 4 - \ln{x} = 0\), \(x \in \interval{1}{2}\)
-        \item \(x + 1 - 2 \sin{\pi x} = 0\), \(x \in \interval{0}{\num{0.5}}\)
-    \end{enumerate}
+    \begin{multicols}{2}
+        \begin{enumerate}[label = (\alph*)]
+            \item \(3x - e^x = 0\), \(x \in \interval{1}{2}\)
+            \item \(2x + 3 \cos{x} -e^x = 0\), \(x \in \interval{0}{1}\)
+            \item \(x^2 - 4x + 4 - \ln{x} = 0\), \(x \in \interval{1}{2}\)
+            \item \(x + 1 - 2 \sin{\pi x} = 0\), \(x \in \interval{0}{\num{0.5}}\)
+        \end{enumerate}
+    \end{multicols}
 \end{exercise}
 
 \begin{solution}
-    \begin{enumerate}
+    \begin{enumerate}[label = (\alph*)]
         \item \(f(1) \approx \num{0.281718172}\) and \(f(2) =
             \num{-1.389056099}\) have the opposite signs, so there's a root in
             \(\interval{1}{2}\).
@@ -511,6 +539,11 @@
                 \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
+                \endfirsthead
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                \endhead
                     1  &  1            &  2            &  1.5          &   0.01831093   \\
                     2  &  1.5          &  2            &  1.75         &  -0.504602676  \\
                     3  &  1.5          &  1.75         &  1.625        &  -0.203419037  \\
@@ -550,6 +583,11 @@
                 \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
+                \endfirsthead
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                \endhead
                     1  &  1            &  2            &  1.5          &  -0.155465108  \\
                     2  &  1            &  1.5          &  1.25         &   0.339356449  \\
                     3  &  1.25         &  1.5          &  1.375        &   0.072171269  \\
@@ -582,38 +620,40 @@
 
             We have the following table:
 
-            \begin{table}
-                \centering
-                \begin{longtable}{r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=-1.9]}
-                    \toprule
-                    \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-                    \midrule
-                        1  &  0            &  0.5          &  0.25         &  -0.164213562  \\
-                        2  &  0            &  0.25         &  0.125        &   0.359633135  \\
-                        3  &  0.125        &  0.25         &  0.1875       &   0.076359534  \\
-                        4  &  0.1875       &  0.25         &  0.21875      &  -0.050036568  \\
-                        5  &  0.1875       &  0.21875      &  0.203125     &   0.011726391  \\
-                        6  &  0.203125     &  0.21875      &  0.2109375    &  -0.019525681  \\
-                        7  &  0.203125     &  0.2109375    &  0.20703125   &  -0.003990833  \\
-                        8  &  0.203125     &  0.20703125   &  0.205078125  &   0.003845166  \\
-                        9  &  0.205078125  &  0.20703125   &  0.206054688  &  -0.00007851   \\
-                       10  &  0.205078125  &  0.206054688  &  0.205566406  &   0.001881912  \\
-                       11  &  0.205566406  &  0.206054688  &  0.205810547  &   0.000901347  \\
-                       12  &  0.205810547  &  0.206054688  &  0.205932617  &   0.00041133   \\
-                       13  &  0.205932617  &  0.206054688  &  0.205993652  &   0.000166388  \\
-                       14  &  0.205993652  &  0.206054688  &  0.20602417   &   0.000043934  \\
-                       15  &  0.20602417   &  0.206054688  &  0.206039429  &  -0.000017289  \\
-                       16  &  0.20602417   &  0.206039429  &  0.206031799  &   0.000013322  \\
-                       \bottomrule
-                \end{longtable}
-            \end{table}
+            \begin{longtable}{r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=-1.9]}
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                \endfirsthead
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                \endhead
+                    1  &  0            &  0.5          &  0.25         &  -0.164213562  \\
+                    2  &  0            &  0.25         &  0.125        &   0.359633135  \\
+                    3  &  0.125        &  0.25         &  0.1875       &   0.076359534  \\
+                    4  &  0.1875       &  0.25         &  0.21875      &  -0.050036568  \\
+                    5  &  0.1875       &  0.21875      &  0.203125     &   0.011726391  \\
+                    6  &  0.203125     &  0.21875      &  0.2109375    &  -0.019525681  \\
+                    7  &  0.203125     &  0.2109375    &  0.20703125   &  -0.003990833  \\
+                    8  &  0.203125     &  0.20703125   &  0.205078125  &   0.003845166  \\
+                    9  &  0.205078125  &  0.20703125   &  0.206054688  &  -0.00007851   \\
+                    10  &  0.205078125  &  0.206054688  &  0.205566406  &   0.001881912  \\
+                    11  &  0.205566406  &  0.206054688  &  0.205810547  &   0.000901347  \\
+                    12  &  0.205810547  &  0.206054688  &  0.205932617  &   0.00041133   \\
+                    13  &  0.205932617  &  0.206054688  &  0.205993652  &   0.000166388  \\
+                    14  &  0.205993652  &  0.206054688  &  0.20602417   &   0.000043934  \\
+                    15  &  0.20602417   &  0.206054688  &  0.206039429  &  -0.000017289  \\
+                    16  &  0.20602417   &  0.206039429  &  0.206031799  &   0.000013322  \\
+                    \bottomrule
+            \end{longtable}
 
             So \(p \approx \num{0.206032}\).
     \end{enumerate}
 \end{solution}
 
 \begin{exercise}
-    \begin{enumerate}[label=(\alph*)]
+    \begin{enumerate}[label = (\alph*)]
         \item Sketch the graphs of \(y = x\) and \(y = 2 \sin{x}\).
         \item Use the Bisection method to find an approximation to within
             \(10^{−5}\) to the first positive value of \(x\) with \(x = 2
@@ -622,13 +662,12 @@
 \end{exercise}
 
 \begin{solution}
-    \begin{enumerate}[label=(\alph*)]
+    \begin{enumerate}[label = (\alph*)]
         \item Graph of \(y = x\) and \(y = 2 \sin{x}\) is as follow:
 
-            \begin{figure}[H]
-                \centering
+            \begin{center}
                 \subfile{graphics/exercise_7_graph/exercise_7_graph.tex}
-            \end{figure}
+            \end{center}
 
         \item According to the graph, the first positive root \(p\) of \(f = x -
             2 \sin{x}\) is in \(\interval{\dfrac{\pi}{2}}{\pi}\).
@@ -644,6 +683,11 @@
                 \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
+                \endfirsthead
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                \endhead
                     1  &  1.57079633   &  3.14159265   &  2.35619449   &   0.941980928  \\
                     2  &  1.57079633   &  2.35619449   &  1.96349541   &   0.115736343  \\
                     3  &  1.57079633   &  1.96349541   &  1.76714587   &  -0.194424693  \\
@@ -670,13 +714,21 @@
 \end{solution}
 
 \begin{exercise}
-    \begin{enumerate}[label=(\alph*)]
+    \begin{enumerate}[label = (\alph*)]
+        \item Sketch the graphs of \(y = x\) and \(y = \tan{x}\).
+        \item Use the Bisection method to find an approximation to within
+            \(10^{-5}\) to the first positive value of \(x\) with \(y =
+            \tan{x}\).
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = (\alph*)]
         \item Graph of \(y = x\) and \(y = \tan{x}\) is as follow:
 
-            \begin{figure}[H]
-                \centering
+            \begin{center}
                 \subfile{graphics/exercise_8_graph/exercise_8_graph.tex}
-            \end{figure}
+            \end{center}
 
         \item According to the graph, the first positive root \(p\) of \(f = x -
             \tan{x}\) is in \(\interval{\pi}{\dfrac{3 \pi}{2}}\).
@@ -684,7 +736,7 @@
             The number of iteration \(n\) needed to approximate \(p\) to within
             \(10^{-5}\) in that interval is:
 
-            \[\abs{p_n - p} \leq \frac{\dfrac{3 \pi}{2} - \pi}{2^n} < 10^{-5} \iff n \geq 18\]
+            \[\abs{p_n - p} \leq \frac{\frac{3 \pi}{2} - \pi}{2^n} < 10^{-5} \iff n \geq 18\]
 
             We have the following table:
 
@@ -692,6 +744,11 @@
                 \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
+                \endfirsthead
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                \endhead
                     1  &  3.14159265   &  4.71238898   &  3.92699082   &   2.92699082   \\
                     2  &  3.92699082   &  4.71238898   &  4.3196899    &   1.90547634   \\
                     3  &  4.3196899    &  4.71238898   &  4.51603944   &  -0.511300053  \\
@@ -715,10 +772,10 @@
 
             So \(p \approx \num{4.493407}\).
     \end{enumerate}
-\end{exercise}
+\end{solution}
 
 \begin{exercise}
-    \begin{enumerate}[label=(\alph*)]
+    \begin{enumerate}[label = (\alph*)]
         \item Sketch the graphs of \(y = e^x - 2\) and \(y = \cos{e^x - 2}\).
         \item Use the Bisection method to find an approximation to within
             \(10^{-5}\) to a value in \(\interval{\num{0.5}}{\num{1.5}}\) with
@@ -727,13 +784,12 @@
 \end{exercise}
 
 \begin{solution}
-    \begin{enumerate}[label=(\alph*)]
+    \begin{enumerate}[label = (\alph*)]
         \item The graphs of the 2 functions are as follow:
 
-            \begin{figure}
-                \centering
+            \begin{center}
                 \subfile{graphics/exercise_9_graph/exercise_9_graph.tex}
-            \end{figure}
+            \end{center}
 
         \item Let \(f = e^x - 2 - \cos{e^x - 2}\). \(f(\num{0.5}) \approx
             \num{-1.290212} \) and \(f(\num{1.5}) \approx \num{3.27174}\) have
@@ -751,6 +807,11 @@
                 \toprule
                 \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
                 \midrule
+                \endfirsthead
+                \toprule
+                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                \midrule
+                \endhead
                     1  &  0.5          &  1.5          &  1            &  -0.034655726  \\
                     2  &  1            &  1.5          &  1.25         &   1.40997635   \\
                     3  &  1            &  1.25         &  1.125        &   0.609079747  \\
@@ -778,43 +839,80 @@
     Let \(f(x) = (x + 2) (x+1)^2 x (x - 1)^3 (x - 2)\). To which zero of \(f\)
     does the Bisection method converge when applied on the following intervals?
 
-    \begin{enumerate}[label=(\alph*)]
-        \item \(\interval{\num{-1.5}}{\num{2.5}}\)
-        \item \(\interval{\num{-0.5}}{\num{2.4}}\)
-        \item \(\interval{\num{-0.5}}{3}\)
-        \item \(\interval{-3}{\num{-0.5}}\)
-    \end{enumerate}
+    \begin{multicols}{4}
+        \begin{enumerate}[label = (\alph*)]
+            \item \(\interval{\num{-1.5}}{\num{2.5}}\)
+            \item \(\interval{\num{-0.5}}{\num{2.4}}\)
+            \item \(\interval{\num{-0.5}}{3}\)
+            \item \(\interval{-3}{\num{-0.5}}\)
+        \end{enumerate}
+    \end{multicols}
 \end{exercise}
 
 \begin{solution}
     \(f\) has 5 zeros: \(\pm 2\), \(\pm 1\), \(0\).
 
-    \begin{enumerate}[label=(\alph*)]
+    \begin{enumerate}[label = (\alph*)]
         \item We have the following table:
 
-            \begin{longtable}{r S[table-format=-1.1] S[table-format=1.1] S[table-format=-1.1] S[table-format=-1.8]}
-                \toprule
-                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  -1.5         &  2.5          &   0.5         &   0.52734375   \\
-                    2  &  -1.5         &  0.5          &  -0.5         &  -1.58203125   \\
-                    3  &  -0.5         &  0.5          &   0           &   0            \\
-                \bottomrule
-            \end{longtable}
+            % \begin{longtable}{r S[table-format=-1.1] S[table-format=1.1] S[table-format=-1.1] S[table-format=-1.8]}
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endfirsthead
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endhead
+            %         1  &  -1.5         &  2.5          &   0.5         &   0.52734375   \\
+            %         2  &  -1.5         &  0.5          &  -0.5         &  -1.58203125   \\
+            %         3  &  -0.5         &  0.5          &   0           &   0            \\
+            %     \bottomrule
+            % \end{longtable}
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=-1.1] S[table-format=1.1] S[table-format=-1.1] S[table-format=-1.8]}
+                    \toprule
+                    \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  -1.5         &  2.5          &   0.5         &   0.52734375   \\
+                        2  &  -1.5         &  0.5          &  -0.5         &  -1.58203125   \\
+                        3  &  -0.5         &  0.5          &   0           &   0            \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             So when applied on \(\interval{\num{-1.5}}{\num{2.5}}\), the
             Bisection method gives \(0\).
 
         \item We have the following table:
 
-            \begin{longtable}{r S[table-format=-1.1] S[table-format=1.2] S[table-format=1.3] S[table-format=1.9]}
-                \toprule
-                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  -0.5         &  2.4          &  0.95         &  0.001398666   \\
-                    2  &  -0.5         &  0.95         &  0.225        &  0.62070919    \\
-                \bottomrule
-            \end{longtable}
+            % \begin{longtable}{r S[table-format=-1.1] S[table-format=1.2] S[table-format=1.3] S[table-format=1.9]}
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endfirsthead
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endhead
+            %         1  &  -0.5         &  2.4          &  0.95         &  0.001398666   \\
+            %         2  &  -0.5         &  0.95         &  0.225        &  0.62070919    \\
+            %     \bottomrule
+            % \end{longtable}
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=-1.1] S[table-format=1.2] S[table-format=1.3] S[table-format=1.9]}
+                    \toprule
+                    \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  -0.5         &  2.4          &  0.95         &  0.001398666   \\
+                        2  &  -0.5         &  0.95         &  0.225        &  0.62070919    \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             At \(n = 2\), the interval shrinks to
             \(\interval{\num{-0.5}}{\num{0.95}}\). So when applied on
@@ -823,14 +921,31 @@
 
         \item We have the following table:
 
-            \begin{longtable}{r S[table-format=-1.2] S[table-format=1] S[table-format=1.3] S[table-format=2.9]}
-                \toprule
-                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  -0.5         &  3            &  1.25         &  -0.241012573  \\
-                    2  &   1.25        &  3            &  2.125        &  15.2352825    \\
-                \bottomrule
-            \end{longtable}
+            % \begin{longtable}{r S[table-format=-1.2] S[table-format=1] S[table-format=1.3] S[table-format=-1.9]}
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endfirsthead
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endhead
+            %         1  &  -0.5         &  3            &  1.25         &  -0.241012573  \\
+            %         2  &   1.25        &  3            &  2.125        &  15.2352825    \\
+            %     \bottomrule
+            % \end{longtable}
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=-1.2] S[table-format=1] S[table-format=1.3] S[table-format=-1.9]}
+                    \toprule
+                    \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  -0.5         &  3            &  1.25         &  -0.241012573  \\
+                        2  &   1.25        &  3            &  2.125        &  15.2352825    \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             At \(n = 2\), the interval shrinks to \(\interval{\num{1.25}}{3}\).
             So when applied on \(\interval{\num{-0.5}}{3}\), the Bisection
@@ -838,14 +953,31 @@
 
         \item We have the following table:
 
-            \begin{longtable}{r S[table-format=-1] S[table-format=-1.2] S[table-format=-1.3] S[table-format=3.7]}
-                \toprule
-                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  -3           &  -0.5         &  -1.75        &  -19.1924286   \\
-                    2  &  -3           &  -1.75        &  -2.375       &  283.204185    \\
-                \bottomrule
-            \end{longtable}
+            % \begin{longtable}{r S[table-format=-1] S[table-format=-1.2] S[table-format=-1.3] S[table-format=-2.7]}
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endfirsthead
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endhead
+            %         1  &  -3           &  -0.5         &  -1.75        &  -19.1924286   \\
+            %         2  &  -3           &  -1.75        &  -2.375       &  283.204185    \\
+            %     \bottomrule
+            % \end{longtable}
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=-1] S[table-format=-1.2] S[table-format=-1.3] S[table-format=-2.7]}
+                    \toprule
+                    \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  -3           &  -0.5         &  -1.75        &  -19.1924286   \\
+                        2  &  -3           &  -1.75        &  -2.375       &  283.204185    \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             At \(n = 2\), the interval shrinks to
             \(\interval{\-3}{\num{-1.75}}\). So when applied on
@@ -857,29 +989,49 @@
     Let \(f(x) = (x + 2) (x+1) x (x - 1)^3 (x - 2)\). To which zero of \(f\)
     does the Bisection method converge when applied on the following intervals?
 
-    \begin{enumerate}[label=(\alph*)]
-        \item \(\interval{-3}{\num{2.5}}\)
-        \item \(\interval{\num{-2.5}}{3}\)
-        \item \(\interval{\num{-1.75}}{\num{1.5}}\)
-        \item \(\interval{\num{-1.5}}{\num{-1.75}}\)
-    \end{enumerate}
+    \begin{multicols}{2}
+        \begin{enumerate}[label = (\alph*)]
+            \item \(\interval{-3}{\num{2.5}}\)
+            \item \(\interval{\num{-2.5}}{3}\)
+            \item \(\interval{\num{-1.75}}{\num{1.5}}\)
+            \item \(\interval{\num{-1.5}}{\num{-1.75}}\)
+        \end{enumerate}
+    \end{multicols}
 \end{exercise}
 
 \begin{solution}
     \(f\) has 5 zeros: \(\pm 2\), \(\pm 1\), \(0\).
 
-    \begin{enumerate}[label=(\alph*)]
+    \begin{enumerate}[label = (\alph*)]
         \item We have the following table:
 
-            \begin{longtable}{r S[table-format=-1.3] S[table-format=1.1] S[table-format=-1.4] S[table-format=-1.9]}
-                \toprule
-                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  -3           &  2.5          &  -0.25        &  -1.44195557   \\
-                    2  &  -0.25        &  2.5          &   1.125       &  -0.012767315  \\
-                    3  &   1.125       &  2.5          &   1.8125      &  -1.95457248   \\
-                \bottomrule
-            \end{longtable}
+            % \begin{longtable}{r S[table-format=-1.3] S[table-format=1.1] S[table-format=-1.4] S[table-format=-1.9]}
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endfirsthead
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endhead
+            %         1  &  -3           &  2.5          &  -0.25        &  -1.44195557   \\
+            %         2  &  -0.25        &  2.5          &   1.125       &  -0.012767315  \\
+            %         3  &   1.125       &  2.5          &   1.8125      &  -1.95457248   \\
+            %     \bottomrule
+            % \end{longtable}
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=-1.3] S[table-format=1.1] S[table-format=-1.4] S[table-format=-1.9]}
+                    \toprule
+                    \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  -3           &  2.5          &  -0.25        &  -1.44195557   \\
+                        2  &  -0.25        &  2.5          &   1.125       &  -0.012767315  \\
+                        3  &   1.125       &  2.5          &   1.8125      &  -1.95457248   \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             At \(n = 3\), the interval shrinks to
             \(\interval{\num{1.125}}{\num{2.5}}\). So when applied on
@@ -887,15 +1039,33 @@
 
         \item We have the following table:
 
-            \begin{longtable}{r S[table-format=-1.1] S[table-format=-1.3] S[table-format=-1.4] S[table-format=2.9]}
-                \toprule
-                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  -2.5         &   3           &   0.25        &    0.519104004 \\
-                    2  &  -2.5         &   0.25        &  -1.125       &    3.68975401  \\
-                    3  &  -2.5         &  -1.125       &  -1.8125      &   23.4201732   \\
-                \bottomrule
-            \end{longtable}
+            % \begin{longtable}{r S[table-format=-1.1] S[table-format=-1.3] S[table-format=-1.4] S[table-format=2.9]}
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endfirsthead
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endhead
+            %         1  &  -2.5         &   3           &   0.25        &    0.519104004 \\
+            %         2  &  -2.5         &   0.25        &  -1.125       &    3.68975401  \\
+            %         3  &  -2.5         &  -1.125       &  -1.8125      &   23.4201732   \\
+            %     \bottomrule
+            % \end{longtable}
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=-1.1] S[table-format=-1.3] S[table-format=-1.4] S[table-format=2.9]}
+                    \toprule
+                    \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  -2.5         &   3           &   0.25        &    0.519104004 \\
+                        2  &  -2.5         &   0.25        &  -1.125       &    3.68975401  \\
+                        3  &  -2.5         &  -1.125       &  -1.8125      &   23.4201732   \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             At \(n = 3\), the interval shrinks to
             \(\interval{\num{-2.5}}{\num{-1.125}}\). So when applied on
@@ -903,14 +1073,31 @@
 
         \item We have the following table:
 
-            \begin{longtable}{r S[table-format=-1.2] S[table-format=-1.3] S[table-format=-1.4] S[table-format=-1.9]}
-                \toprule
-                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-                \midrule
-                     1 &  -1.75        &   1.5         &  -0.125       & -0.620491505    \\
-                     2 &  -1.75        &  -0.125       &  -0.9375      & -1.33009678     \\
-                \bottomrule
-            \end{longtable}
+            % \begin{longtable}{r S[table-format=-1.2] S[table-format=-1.3] S[table-format=-1.4] S[table-format=-1.9]}
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endfirsthead
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endhead
+            %          1 &  -1.75        &   1.5         &  -0.125       & -0.620491505    \\
+            %          2 &  -1.75        &  -0.125       &  -0.9375      & -1.33009678     \\
+            %     \bottomrule
+            % \end{longtable}
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=-1.2] S[table-format=-1.3] S[table-format=-1.4] S[table-format=-1.9]}
+                    \toprule
+                    \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                    \midrule
+                         1 &  -1.75        &   1.5         &  -0.125       & -0.620491505    \\
+                         2 &  -1.75        &  -0.125       &  -0.9375      & -1.33009678     \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             At \(n = 2\), the interval shrinks to
             \(\interval{\num{-1.75}}{\num{-0.125}}\). So when applied on
@@ -919,14 +1106,31 @@
 
         \item We have the following table:
 
-            \begin{longtable}{r S[table-format=-1.3] S[table-format=1.2] S[table-format=1.4] S[table-format=1.9]}
-                \toprule
-                \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
-                \midrule
-                    1  &  -1.5         & 1.75          &  0.125        &  0.375359058   \\
-                    2  &   0.125       & 1.75          &  0.9375       &  0.001384076   \\
-                \bottomrule
-            \end{longtable}
+            % \begin{longtable}{r S[table-format=-1.3] S[table-format=1.2] S[table-format=1.4] S[table-format=1.9]}
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endfirsthead
+            %     \toprule
+            %     \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+            %     \midrule
+            %     \endhead
+            %         1  &  -1.5         & 1.75          &  0.125        &  0.375359058   \\
+            %         2  &   0.125       & 1.75          &  0.9375       &  0.001384076   \\
+            %     \bottomrule
+            % \end{longtable}
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=-1.3] S[table-format=1.2] S[table-format=1.4] S[table-format=1.9]}
+                    \toprule
+                    \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+                    \midrule
+                        1  &  -1.5         & 1.75          &  0.125        &  0.375359058   \\
+                        2  &   0.125       & 1.75          &  0.9375       &  0.001384076   \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
 
             At \(n = 2\), the interval shrinks to
             \(\interval{\num{0.125}}{\num{1.75}}\). So when applied on
@@ -956,6 +1160,11 @@
         \toprule
         \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
+        \endfirsthead
+        \toprule
+        \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+        \midrule
+        \endhead
             1  &  1            &  2            &  1.5          &  -0.75         \\
             2  &  1.5          &  2            &  1.75         &   0.0625       \\
             3  &  1.5          &  1.75         &  1.625        &  -0.359375     \\
@@ -997,6 +1206,11 @@
         \toprule
         \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
+        \endfirsthead
+        \toprule
+        \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+        \midrule
+        \endhead
             1  &  2            &  3            &  2.5          &  -9.375        \\
             2  &  2.5          &  3            &  2.75         &  -4.203125     \\
             3  &  2.75         &  3            &  2.875        &  -1.23632812   \\
@@ -1036,10 +1250,15 @@
 
     We have the following table:
 
-    \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=2.9]}
+    \begin{longtable}{r S[table-format=1.8] S[table-format=1.8] S[table-format=1.8] S[table-format=-1.9]}
         \toprule
         \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
+        \endfirsthead
+        \toprule
+        \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+        \midrule
+        \endhead
             1  &  1            &  4            &  2.5          &  14.125        \\
             2  &  1            &  2.5          &  1.75         &   3.109375     \\
             3  &  1            &  1.75         &  1.375        &  -0.025390625  \\
@@ -1081,6 +1300,11 @@
         \toprule
         \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
+        \endfirsthead
+        \toprule
+        \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+        \midrule
+        \endhead
             1  &  1            &  2            &  1.5          &   0.875        \\
             2  &  1            &  1.5          &  1.25         &  -0.296875     \\
             3  &  1.25         &  1.5          &  1.375        &   0.224609375  \\
@@ -1108,12 +1332,16 @@
 \end{exercise}
 
 \begin{solution}
+    For \(f(p_n) < 10^{-3}\), it is required that \(n > 1\) as:
+
     \begin{align*}
         &\qquad&         f(p_n) & < 10^{-3} \\
         \iff&&   (p_n - 1)^{10} & < 10^{-3} \\
         \iff&& \frac{1}{n^{10}} & < 10^{-3} \\
         \iff&&                n & > 1
     \end{align*}
+
+    For \(\abs{p - p_n} < 10^{-3}\), it is required that \(n > 1000\) as:
 
     \begin{align*}
         &\qquad& \abs{p - p_n} & < 10^{-3} \\
@@ -1151,11 +1379,13 @@
     Show that when \(−1 < a < 0\) and \(2 < b < 3\), the Bisection method
     converges to
 
-    \begin{enumerate}[label=(\alph*)]
-        \item \(0\) if \(a + b < 2\)
-        \item \(2\) if \(a + b > 2\)
-        \item \(1\) if \(a + b = 2\)
-    \end{enumerate}
+    \begin{multicols}{3}
+        \begin{enumerate}[label = (\alph*)]
+            \item \(0\) if \(a + b < 2\)
+            \item \(2\) if \(a + b > 2\)
+            \item \(1\) if \(a + b = 2\)
+        \end{enumerate}
+    \end{multicols}
 \end{exercise}
 
 \begin{solution}
@@ -1163,13 +1393,13 @@
 
     With \(-1 < a < 0\) and \(2 < b < 3\):
 
-    \[\begin{aligned}
+    \begin{gather*}
         \sin{\pi a} < 0 \\
         \sin{\pi b} > 0 \\
         1 < a + b < 3
-    \end{aligned}\]
+    \end{gather*}
 
-    \begin{enumerate}[label=(\alph*)]
+    \begin{enumerate}[label = (\alph*)]
         \item If \(a + b < 2\), then \(\num{0.5} < p_1 = \frac{a + b}{2} < 1\).
             Then \(\sin{p_1} > 0\), and the interval shrinks to
             \(\interval{a}{p_1}\). \(0\) is the only zero in that interval, so
@@ -1212,8 +1442,13 @@
 
     \begin{longtable}{r S[table-format=1.5] S[table-format=1.6] S[table-format=1.7] S[table-format=-1.9]}
         \toprule
-        \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(h_n\)}   &  {\(f(h_n)\)}  \\
+        \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
         \midrule
+        \endfirsthead
+        \toprule
+        \(n\)  &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   &  {\(f(p_n)\)}  \\
+        \midrule
+        \endhead
             1  &  0            &  1            &  0.5          &  -6.25815151   \\
             2  &  0            &  0.5          &  0.25         &  -1.63945387   \\
             3  &  0            &  0.25         &  0.125        &   0.814489029  \\
@@ -1224,7 +1459,7 @@
         \bottomrule
     \end{longtable}
 
-    So \(h \approx \num{0.1641}\), hence \(h = r - h = \approx \num{0.8359}\).
+    So \(h \approx \num{0.1641}\), hence \(d = r - h \approx \num{0.8359}\).
 \end{solution}
 
 \end{document}
