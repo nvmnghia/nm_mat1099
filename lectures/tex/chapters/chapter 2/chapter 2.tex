@@ -1,5 +1,6 @@
 \documentclass[../../Lectures.tex]{subfiles}
 
+
 \begin{document}
 
 \chapter{Giải gần đúng phương trình}
@@ -133,11 +134,14 @@ chuỗi \(\{p_N\}_{n=0}^\infty\) phân kỳ (và cả khi chương trình sai).
 
     Ta có bảng sau:
 
-    \begin{tabular}{ r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=-1.6] }    % - for minus sign
-        \\    % Add space between the table and the previous paragraph.
+    \begin{longtable}{ r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=-1.6] }    % - for minus sign
         \toprule
          {\(n\)} &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   & {\(f(p_n)\)} \\
         \midrule
+        \endfirsthead
+         {\(n\)} &   {\(a_n\)}   &   {\(b_n\)}   &   {\(p_n\)}   & {\(f(p_n)\)} \\
+        \midrule
+        \endhead
               1  &  1.0          &  2.0          &  1.5          &   2.375      \\
               2  &  1.0          &  1.5          &  1.25         &  -1.79687    \\
               3  &  1.25         &  1.5          &  1.375        &   0.16211    \\
@@ -152,8 +156,7 @@ chuỗi \(\{p_N\}_{n=0}^\infty\) phân kỳ (và cả khi chương trình sai).
              12  &  1.364746094  &  1.365234375  &  1.364990234  &  -0.00396    \\
              13  &  1.364990234  &  1.365234375  &  1.365112305  &  -0.00194    \\
         \bottomrule
-        \\    % Add space between the table and the next paragraph.
-    \end{tabular}
+    \end{longtable}
 
     Sau 13 lần lặp, \(p_{13} = \num{1.365112305}\) xấp xỉ nghiệm \(p\) với sai số:
 
@@ -216,8 +219,8 @@ mà sẽ được giới thiệu sau.
 
 \subsection{Điểm bất động và bài toán tìm nghiệm}
 
-\emph{Điểm bất động (fixed point)} của một hàm là số mà tại đó giá trị của hàm
-số bằng đúng giá trị của đối số.
+\emph{Điểm bất động} (\emph{fixed point}) của một hàm là số mà tại đó giá trị
+của hàm số bằng đúng giá trị của đối số.
 
 % TODO: count by section
 \begin{definition}
@@ -358,7 +361,7 @@ Cần chú ý rằng phương pháp này chỉ đúng khi chuỗi \(\{p_n\}_{n=0
 tụ về \(p\).
 
 \begin{method}\label{method:fixed_point}
-    \emph{Phương pháp điểm bất động}
+    \emph{Phương pháp điểm bất động (fixed point method)}
 
     Phương pháp này cho phép tìm điểm bất động \(p\) của \(g\), khi biết một
     điểm bắt đầu \(p_0\).
@@ -388,37 +391,43 @@ trọng của hàm này.
 
     Ta có một số lựa chọn về hàm \(g\), được chọn ngẫu nhiên:
 
-    \[\begin{aligned}
-        &\textbf{(a) } x = g_1(x) = x - x^3 -4x^2 + 10   &&\textbf{(b) } x = g_2(x) = \left(\frac{10}{x} - 4x \right)^{0.5}  \\
-        &\textbf{(c) } x = \frac{1}{2} (10 - x^3)^{0.5}  &&\textbf{(d) } x = g_4(x) = \left(\frac{10}{x + 4} \right)^{0.5}   \\
-        &\textbf{(e) } x = g_5(x) = x - \frac{x^3 + 4x^2 - 10}{3x^2 + 8x}
-    \end{aligned}\]
+    \begin{multicols}{2}
+        \begin{enumerate}[label = (\alph*)]
+            \item \(x = g_1(x) = x - x^3 -4x^2 + 10\)
+            \item \(x = g_2(x) = \left(\frac{10}{x} - 4x \right)^{0.5}\)
+            \item \(x = \frac{1}{2} (10 - x^3)^{0.5}\)
+            \item \(x = g_4(x) = \left(\frac{10}{x + 4} \right)^{0.5}\)
+            \item \(x = g_5(x) = x - \frac{x^3 + 4x^2 - 10}{3x^2 + 8x}\)
+        \end{enumerate}
+    \end{multicols}
 
-    Với \(p_0 = 1.5\), ta có bảng sau:
+    Với \(p_0 = \num{1.5}\), ta có bảng sau:
 
-    \begin{tabular}{r c c S[table-format=1.9] S[table-format=1.9] S[table-format=1.9]}
-        \\
+    \begin{longtable}{r c c S[table-format=1.9] S[table-format=1.9] S[table-format=1.9]}
         \toprule
-        {\(n\)}  & {(a)}          & {(b)}                     & {(c)}         & {(d)}         & {(e)}         \\
+        {\(n\)}  &     {(a)}      &          {(b)}           &     {(c)}     &     {(d)}     &     {(e)}     \\
         \midrule
-              0  &  \num{1.5}     &  \num{1.5}                &  1.5          &  1.5          &  1.5          \\
-              1  &  \num{-0.875}  &  \num{0.8165}             &  1.286953768  &  1.348399725  &  1.373333333  \\
-              2  &  \num{6.732}   &  \num{2.9969}             &  1.402540804  &  1.367376372  &  1.365262015  \\
-              3  &  \num{-469.7}  &  \((\num{-8.65})^{0.5}\)  &  1.345458374  &  1.364957015  &  1.365230014  \\
-              4  &  \num{1.03e8}  &                           &  1.375170253  &  1.365264748  &  1.365230013  \\
-              5  &                &                           &  1.360094193  &  1.365225594  &               \\
-              6  &                &                           &  1.367846968  &  1.365230576  &               \\
-              7  &                &                           &  1.363887004  &  1.365229942  &               \\
-              8  &                &                           &  1.365916734  &  1.365230022  &               \\
-              9  &                &                           &  1.364878217  &  1.365230012  &               \\
-             10  &                &                           &  1.365410062  &  1.365230014  &               \\
-             15  &                &                           &  1.365223680  &  1.365230013  &               \\
-             20  &                &                           &  1.365230236  &               &               \\
-             25  &                &                           &  1.365230006  &               &               \\
-             30  &                &                           &  1.365230013  &               &               \\
+        \endfirsthead
+        {\(n\)}  &     {(a)}      &          {(b)}           &     {(c)}     &     {(d)}     &     {(e)}     \\
+        \midrule
+        \endhead
+              0  &  \num{1.5}     &  \num{1.5}               &  1.5          &  1.5          &  1.5          \\
+              1  &  \num{-0.875}  &  \num{0.8165}            &  1.286953768  &  1.348399725  &  1.373333333  \\
+              2  &  \num{6.732}   &  \num{2.9969}            &  1.402540804  &  1.367376372  &  1.365262015  \\
+              3  &  \num{-469.7}  &  \(\sqrt{\num{-8.65}}\)  &  1.345458374  &  1.364957015  &  1.365230014  \\
+              4  &  \num{1.03e8}  &                          &  1.375170253  &  1.365264748  &  1.365230013  \\
+              5  &                &                          &  1.360094193  &  1.365225594  &               \\
+              6  &                &                          &  1.367846968  &  1.365230576  &               \\
+              7  &                &                          &  1.363887004  &  1.365229942  &               \\
+              8  &                &                          &  1.365916734  &  1.365230022  &               \\
+              9  &                &                          &  1.364878217  &  1.365230012  &               \\
+             10  &                &                          &  1.365410062  &  1.365230014  &               \\
+             15  &                &                          &  1.365223680  &  1.365230013  &               \\
+             20  &                &                          &  1.365230236  &               &               \\
+             25  &                &                          &  1.365230006  &               &               \\
+             30  &                &                          &  1.365230013  &               &               \\
         \bottomrule
-        \\
-    \end{tabular}
+    \end{longtable}
 
     Với nghiệm thực \num{1.365230013}, ta thấy lựa chọn (c), (d), (e) có tiềm
     năng nhất. Phương pháp chia đôi cần 27 lần lặp để đạt được kết quả này, tuy
@@ -426,7 +435,7 @@ trọng của hàm này.
     phân kì còn (b) thậm chí không xác định (căn của số âm).
 \end{exmp}
 
-\subsection{Tìm \(g\) phù hợp}
+\subsection{Tìm \texorpdfstring{\(g\)}{g} phù hợp}
 
 Tiếp tục nhắc lại điểm quan trọng nhất để làm được phương pháp điểm bất động là
 chọn được \(g\) phù hợp. Định lí sau và hệ quả của nó cho ta một số gợi ý về
@@ -539,10 +548,13 @@ Qua các kết quả trên, ta rút ra hai quy tắc chọn hàm \(g\):
 
 \begin{itemize}
     \item \(\abs{g'(x)} < 1 \, \forall x \in \interval[open]{a}{b}\)
+    \item đạo hàm của \(g\) càng nhỏ càng tốt
 \end{itemize}
 
-đạo hàm của \(g\)
-càng nhỏ càng tốt.
+
+%----------------------------------------------------------------------------------------
+%	2.4 Phương pháp Newton & các phương pháp liên quan
+%----------------------------------------------------------------------------------------
 
 \section{Phương pháp Newton \& các phương pháp liên quan}
 
@@ -581,12 +593,12 @@ từ một \(p_0\) cho trước, và tạo dãy \(\{p_n\}_{n = 0}^\infty\) theo 
 % TODO: add illustration graph
 
 \begin{method}\label{method:newton}
-    \emph{Phương pháp Newton}
+    \emph{Phương pháp Newton (Newton's Method)}
 
     Phương pháp này cho phép tìm nghiệm \(p\) của \(f\), khi biết một điểm bắt
     đầu \(p_0\).
 
-    Đặt \(p = p_0 - \dfrac{f(p_0)}{f'(p_0)}\).
+    Đặt \(p = p_0 - \frac{f(p_0)}{f'(p_0)}\).
 
     \begin{itemize}
         \item Nếu \(\abs{p - p_0}\) đủ nhỏ, thì ta có \(p\) cần tìm.
@@ -612,28 +624,27 @@ nhau.
     Ta có \(f'(x) = -sin(x) - 1\). Áp dụng phương pháp Newton, ta có công thức
     cho chuỗi xấp xỉ sau:
 
-    \begin{equation*}
-        \begin{cases}
-            p_0 = \dfrac{\pi}{4} \\
-            p_{n + 1} = p_n - \dfrac{f(p_n)}{f'(p_n)} \, \forall n \geq 0
-        \end{cases}
-    \end{equation*}
+    \[\begin{cases}
+        p_0 = \frac{\pi}{4} \\
+        p_{n + 1} = p_n - \frac{f(p_n)}{f'(p_n)} \, \forall n \geq 0
+    \end{cases}\]
 
     Ta có bảng lặp, đạt kết quả tốt ngay khi \(n = 3\):
 
-    \begin{tabular}{r S[table-format=1.9]}
-        \\
-        \toprule
-        {\(n\)}  &  {\(p_n\)}          \\
-        \midrule
-              0  &  \(\frac{\pi}{4}\)  \\
-              1  &  0.739536134        \\
-              2  &  0.739085178        \\
-              3  &  0.739085133        \\
-              4  &  0.739085133        \\
-        \bottomrule
-        \\
-    \end{tabular}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{r S[table-format=1.9]}
+            \toprule
+            {\(n\)}  &     {\(p_n\)}       \\
+            \midrule
+                  0  &  \(\frac{\pi}{4}\)  \\
+                  1  &  0.739536134        \\
+                  2  &  0.739085178        \\
+                  3  &  0.739085133        \\
+                  4  &  0.739085133        \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
 
 \end{exmp}
 
@@ -658,12 +669,10 @@ sự nhạy cảm của phương pháp này với điểm khởi đầu.
 \begin{proof}
     Xét công thức chuỗi của phương pháp Newton.
 
-    \begin{equation*}
-        \begin{cases}
-            p_{n + 1} = g(p_n) \\
-            g(x) = x - \dfrac{f(x)}{f'(x)}
-        \end{cases}
-    \end{equation*}
+    \[\begin{cases}
+        p_{n + 1} = g(p_n) \\
+        g(x) = x - \frac{f(x)}{f'(x)}
+    \end{cases}\]
 
     Dễ thấy công thức của phương pháp Newton có dạng giống như phương pháp điểm
     bất định (kết quả của \(g\) ở vòng lặp này là đầu vào cho \(g\) ở vòng lặp
@@ -687,7 +696,7 @@ sự nhạy cảm của phương pháp này với điểm khởi đầu.
         Cho \(f \in C \interval{a}{b}\). Xét \(p \in \interval[open]{a}{b}\) sao
         cho \(f(p) \neq 0\).
 
-        \begin{enumerate}[label=(\alph*)]
+        \begin{enumerate}[label = (\alph*)]
             \item Nếu \(f(p) \neq 0\) thì tồn tại \(\delta > 0\) sao cho:
                 \[f(x) \neq 0 \, \forall x \in \interval{p - \delta}{p + \delta} \subseteq \interval{a}{b}\]
             \item Nếu \(f(p) = 0\) và cho \(K > 0\) thì tồn tại \(\delta > 0\) sao cho:
@@ -711,8 +720,9 @@ sự nhạy cảm của phương pháp này với điểm khởi đầu.
 
         \[\abs{f(x) - f(p)} < E \, \forall x \in \interval{p - \delta}{p + \delta} \subseteq \interval{a}{b}\]
 
-        \begin{enumerate}[label=(\alph*)]
+        \begin{enumerate}[label = (\alph*)]
             \item Xét khi \(E = \varepsilon < \abs{f(p)}\), ta có:
+
                 \[f(p) - \varepsilon < f(x) < f(p) + \varepsilon\]
 
                 Nếu \(f(p) < 0\), \(f(p) + \varepsilon < 0\), dẫn đến \(f(x) < 0
@@ -724,6 +734,7 @@ sự nhạy cảm của phương pháp này với điểm khởi đầu.
                 Vậy luôn chọn được \(\delta\) thỏa mãn yêu cầu.
 
             \item Xét khi \(E = K\). Do \(f(p) = 0\), ta có ngay kết quả:
+
                 \[\abs{f(x)} < K \, \forall x \in \interval{p - \delta}{p + \delta} \subseteq \interval{a}{b}\]
         \end{enumerate}
     \end{proof}
@@ -802,8 +813,8 @@ với \(p_0\) tốt, đồng thời phân kì nhanh với \(p_0\) xấu, cho ph�
 Một điểm yếu quan trọng của phương pháp Newton là cần phải tính đạo hàm của
 \(f\), và có nhiều trường hợp đạo hàm rất khó tính hay ước lượng.
 
-Để tránh điểm yếu này, \emph{phương pháp dây cung (secant method)} có một chút
-thay đổi trong công thức chuỗi.
+Để tránh điểm yếu này, \emph{phương pháp dây cung} (\emph{secant method}) có một
+chút thay đổi trong công thức chuỗi.
 
 Theo định nghĩa:
 
@@ -813,17 +824,17 @@ Nếu \(p_{n - 1}\) gần với \(p_n\), ta có:
 
 \[f'(p_n) \approx \frac{f(p_{n - 1}) - f(p_n)}{p_{n - 1} - p_n} = \frac{f(p_n) - f(p_{n - 1})}{p_n - p_{n - 1}}\]
 
-(Công thức trên là một xấp xỉ \emph{sai phân hữu hạn (finite difference)}). Thay
-vào công thức~\ref{eq:newton_sequence_function}, ta có:
+(Công thức trên là một xấp xỉ \emph{sai phân hữu hạn} (\emph{finite
+difference})). Thay vào công thức~\ref{eq:newton_sequence_function}, ta có:
 
 \begin{equation}\label{eq:secant_method}
-    p_{n + 1} = p_n - \frac{f(p_n)}{\dfrac{f(p_n) - f(p_{n - 1})}{p_n - p_{n - 1}}} = p_n - \frac{f(p_n) (p_n - p_{n - 1})}{f(p_n) - f(p_{n - 1})}
+    p_{n + 1} = p_n - \frac{f(p_n)}{\frac{f(p_n) - f(p_{n - 1})}{p_n - p_{n - 1}}} = p_n - \frac{f(p_n) (p_n - p_{n - 1})}{f(p_n) - f(p_{n - 1})}
 \end{equation}
 
 Đây chính là công thức được dùng trong phương pháp dây cung.
 
 \begin{method}\label{method:secant}
-    \emph{Phương pháp dây cung}
+    \emph{Phương pháp dây cung (secant method)}
 
     Phương pháp này cho phép tìm nghiệm \(p\) của \(f(p) = 0\) khi biết
     \emph{hai} điểm khởi đầu \(p_1\) và \(p_2\).
@@ -853,7 +864,7 @@ phương pháp chia đôi, và thu hẹp khoảng này sau mỗi lần lặp. T�
 là \emph{bracketing}, và phương pháp Newton và dây cung không có tính chất này.
 
 \begin{method}
-    \emph{Phương pháp điểm sai}
+    \emph{Phương pháp điểm sai (false position method)}
 
     Phương pháp này cho phép tìm nghiệm \(p\) của \(f(p) = 0\) khi biết
     \emph{hai} điểm khởi đầu \(p_0\) và \(p_1\) sao cho \(f(p_0)\) và \(f(p_1)\)
