@@ -15,6 +15,7 @@
 \usepackage{commath}    % Fucking abs & integrals & differentials
 
 \usepackage{enumitem}
+\usepackage{multicol}
 
 \usepackage{interval}
 \intervalconfig{
@@ -24,8 +25,15 @@
 \usepackage{siunitx}
 \sisetup{output-decimal-marker = {,}}
 
+\usepackage{float}
+
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{longtable}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{decorations.markings}
 
 \usepackage{amsthm}
 \newtheorem{definition}{Định nghĩa}
@@ -38,8 +46,6 @@
 \newtheorem*{method}{Phương pháp}
 \renewcommand{\proofname}{Chứng minh}
 \renewcommand{\qedsymbol}{đpcm.}
-
-\usepackage{tikz}
 
 \usepackage{bookmark}
 
