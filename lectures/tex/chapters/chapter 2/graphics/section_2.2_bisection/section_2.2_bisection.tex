@@ -1,0 +1,31 @@
+\documentclass[../../../../Lectures.tex]{subfiles}
+
+
+\begin{document}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=center,    % Normal Oxy axis intead of the default box
+        samples = 200,
+        xlabel = {\(x\)},
+        xtick = \empty,
+        xmin = -0.5, xmax = 8.5,
+        ylabel = {\(y\)},
+        ytick = \empty,
+        ymin = -2.5, ymax=4.5,
+    ]
+        \addplot [
+            green, domain=1:7,
+            postaction={ decorate },
+            decoration={ markings,
+                mark=at position 0.0   with { \fill [blue, name=a]   circle[radius=2pt] node [label={\(A\)}]   {}; },
+                mark=at position 0.25  with { \fill [blue, name=p-2] circle[radius=2pt] node [label={\(P_2\)}] {}; },
+                mark=at position 0.375 with { \fill [blue, name=p-3] circle[radius=2pt] node [label={\(P_3\)}] {}; },
+                mark=at position 0.5   with { \fill [blue, name=p-1] circle[radius=2pt] node [label={\(P_1\)}] {}; },
+                mark=at position 1.0   with { \fill [blue, name=b]   circle[radius=2pt] node [label={\(B\)}]   {}; },
+            }
+        ] {-0.046 * x^3 + 0.568 * x^2 - 0.989 * x - 1.533};
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}
