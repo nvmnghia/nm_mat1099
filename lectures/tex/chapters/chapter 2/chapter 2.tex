@@ -1,4 +1,4 @@
-\documentclass[../../Lectures.tex]{subfiles}
+\documentclass[../../Lectures]{subfiles}
 
 
 \begin{document}
@@ -271,13 +271,13 @@ năm 1900.
 
     Điểm bất động xảy ra đúng khi khi đồ thị của hàm số \(y = g(x)\) cắt đồ thị
     hàm số \(y = x\), vì vậy \(g\) có 2 điểm bất động là \(-1\) và \(2\). Điều
-    này được minh họa bởi hình~\ref{fig:exmp_2.2_fixed_point}.
+    này được minh họa bởi hình~\ref{fig:exmp_2.2_fixed_point}:
 
     \begin{figure}[!h]
         \centering
-        \subfile{graphics/exmp_2.2_fixed_point/exmp_2.2_fixed_point.tex}
-        \caption{Điểm bất động của \(y = x^2 - 2\)}
-        \label{fig:exmp_2.2_fixed_point}
+        \subfile{graphics/exmp_2.2_graph/exmp_2.2_graph}
+        \caption{Điểm bất động của \(y = x^2 - 2\).}
+        \label{fig:exmp_2.2_fixed_point}    % label always comes after caption
     \end{figure}
 \end{exmp}
 
@@ -611,11 +611,20 @@ Tương tự phương pháp chia đôi, ta có thể tùy chọn nhiều điều
 nhau.
 
 \begin{exmp}
-    Xấp xỉ nghiệm của \(f(x) = cos(x) - x = 0\) bằng phương pháp Newton.
+    Xấp xỉ nghiệm của \(f(x) = \cos{x} - x = 0\) bằng phương pháp Newton.
 
-    Xét đồ thị của hàm \(y = cos(x)\) và \(y = x\):
+    Xét đồ thị của hàm \(y = \cos{x}\) và \(y = x\):
 
-    % TODO: graph graph graph
+    \begin{figure}[H]
+        \centering
+
+        % https://tex.stackexchange.com/a/38611/206774
+        \begingroup
+            \tikzset{every picture/.style={scale=0.9}}%
+            \subfile{graphics/exmp_2.4_graph/exmp_2.4_graph}
+        \endgroup
+        \caption{Đồ thị của \(y = \cos{x}\) và \(y = x\).}
+    \end{figure}
 
     Dựa theo đồ thị, ta biết phương trình có nghiệm trong khoảng
     \(\interval{0}{\frac{\pi}{2}}\), nên ta xét điểm khởi đầu \(p_0 =
