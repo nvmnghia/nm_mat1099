@@ -6,6 +6,26 @@ import logging
 from function import f
 
 
+METHOD_DESC = '''
+    A bracketing, iterative root-finding method.
+    The function f must be continuous, and there exists a < b for which f(a)f(b) < 0.
+    The zero lies the interval [a, b]. Each iteration returns the mid point p of [a, b] as the approximation,
+    and use it with a if f(a)f(p) < 0, or b otherwise, as the search interval for the next iteration.
+
+    Parameters
+    ----------
+
+    A_1 : float
+        The lower bound of the interval to search for.
+    B_1 : float
+        The upper bound of the interval to search for.
+    ERROR_BOUND : float
+        The upper bound for absolute error.
+    MAX_ITER : int
+        Maximum number of iteration allowed.
+'''
+
+
 def same_sign(n1: float, n2: float) -> bool:
     """
     Check if 2 numbers have the same sign.
@@ -24,16 +44,16 @@ def same_sign(n1: float, n2: float) -> bool:
     return (n1 > 0) == (n2 > 0)    # Dumb me didn't use ()
 
 
-def bisection(A_1:float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_all=False):
+def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_all=False):
     """
     Approximate a zero of f using bisection method.
 
     Parameters
     ----------
     A_1 : float
-        The lower bound of the range to search for.
+        The lower bound of the interval to search for.
     B_1 : float
-        The upper bound of the range to search for.
+        The upper bound of the interval to search for.
     ERROR_BOUND : float
         The upper bound for absolute error.
     MAX_ITER : int
@@ -51,7 +71,7 @@ def bisection(A_1:float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_a
         2D list representing iteration data: [n, a, b, p, f]. Only returned if return_all is true, else None is returned.
     """
 
-    logging.info(f'Searching range is [A_1, B_1] = [{A_1}, {B_1}], maximum absolute error is {ERROR_BOUND}')
+    logging.info(f'Searching interval is [A_1, B_1] = [{A_1}, {B_1}], maximum absolute error is {ERROR_BOUND}')
 
     a = A_1
     b = B_1
@@ -60,14 +80,15 @@ def bisection(A_1:float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_a
 
     if same_sign(f_a, f_b):
         logging.warning(f'f(A_1) = {f_a} and f(B_1) = {f_b} have the same sign')
-        return None, None, None
+        return None, None
     logging.info(f'f(A_1) = {f_a} and f(B_1) = {f_b} have the opposite signs')
 
     N = int(math.ceil(math.log((B_1 - A_1) / ERROR_BOUND, 2)))
     if N > MAX_ITER:
         logging.info(f'Number of iteration is restricted to MAX_ITER = {MAX_ITER} instead of {N}')
         N = MAX_ITER
-    logging.info(f'Number of iteration is {N}')
+    else:
+        logging.info(f'Number of iteration is {N}')
 
     if return_all:
         T = [[0 for i in range(5)] for j in range(N)]
@@ -91,10 +112,6 @@ def bisection(A_1:float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_a
             f_b = f_p
 
     if return_all:
-        # Spaces are intentional. If this header is to be used,
-        # set tabulate.PRESERVE_WHITESPACE and use latex_raw table format.
-        # H = ['\(n\)  ', '{\(a_n\)}  ', '{\(b_n\)}  ', '{\(p_n\)}  ', '{\(f(p_n)\)}  ']
-        H = None
-        return p, H, T
+        return p, T
     else:
-        return p, None, None
+        return p, None

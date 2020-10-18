@@ -20,23 +20,24 @@ pip3 install -r requirements.txt
    [`function.py`](function.py).
 2. Run [`find_root.py`](find_root.py) with the name of the approximation method.
 
-   ```bash
-   $ python3 find_root.py -h
+  ```bash
+  $ python3 find_root.py -h
 
-   usage: find_root.py [-h] [--override [OVERRIDE [OVERRIDE ...]]] [--latex] [--verbose] {bisection}
+  usage: find_root.py [-h] [--override param:value [param:value ...]] [--latex] [--verbose] [--info] method
 
-   Given an function (hardcoded in function.py) and initial values, bound of absolute error,... (stored in function.py and can be overridden), approximate a root of the function using the specified method.
+  Given an function (hardcoded in function.py) and initial values, bound of absolute error,... (stored in function.py and can be overridden), approximate a root of the function using the specified method.
 
-   positional arguments:
-     {bisection}           Approximation method
+  positional arguments:
+    method                approximation method
 
-   optional arguments:
-     -h, --help            show this help message and exit
-     --override [OVERRIDE [OVERRIDE ...]], -o [OVERRIDE [OVERRIDE ...]]
-                           Override parameters in the format param=value, see function.py for parameters' names to override
-     --latex, -l           Print as LaTeX tabular
-     --verbose, -v         Print information during iteration
-   ```
+  optional arguments:
+    -h, --help            show this help message and exit
+    --override param:value [param:value ...], -o param:value [param:value ...]
+                          override parameters in the format param=value, see function.py for parameters' names to override
+    --latex, -l           print iteration data as LaTeX tabular
+    --verbose, -v         show log
+    --info, -i            show info and required params of the method and quit
+  ```
 
 A common example command to get pretty printed LaTeX table is:
 
