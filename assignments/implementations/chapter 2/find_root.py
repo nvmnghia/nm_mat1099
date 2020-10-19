@@ -1,6 +1,7 @@
 import sys
 from argparse import ArgumentParser, Action
 import logging
+from math import ceil
 
 from tabulate import tabulate
 tabulate.PRESERVE_WHITESPACE = True
@@ -20,7 +21,7 @@ class ParseParams(Action):
             key, value = value.split('=')
             try:
                 params[key] = float(value)
-            except :
+            except ValueError:
                 raise ValueError(f'Input override parameter {key} has a non-float value of {value}')
 
         setattr(namespace, self.dest, params)
@@ -59,11 +60,48 @@ def merge_params(override: dict):
     return params
 
 
+def print_latex(T: list, num_table: int):
+    """
+    Print iteration data as LaTeX tabular.
+
+    Parameters
+    ----------
+    T : list
+        List of iteration data.
+    num_table : int
+        Split iteration data into columns to display side by side.
+    """
+
+    if num_table != 1:
+        if num_table <= 0:
+            logging.warning(f'Non-positive number of side by side tables {num_table}, now print normally')
+        elif num_table > len(T):
+            logging.warning(f'Number of side by side tables {num_table} exceeds number of data rows {len(T)}, now print normally')
+        else:
+            num_row = len(T)
+            num_col = len(T[0])
+            row_per_side_table = int(ceil(num_row / num_table))
+            table = T
+
+            T = (
+                (
+                    table[i + j * row_per_side_table][k]
+                    for i in [i]    # I lol'd so hardddddd
+                        for j in range(num_table)
+                            for k in range(num_col)
+                                if i + j * row_per_side_table < num_row
+                )
+                for i in range(row_per_side_table)
+            )
+
+    print(tabulate(T, tablefmt='latex', floatfmt='.9g'))
+
+
 METHODS = ['bisection']
 
 # Setup parser
 PROG_DESC = '''
-    Given an function (hardcoded in function.py) and initial values, bound of
+    Given a function (hardcoded in function.py) and initial values, bound of
     absolute error,... (stored in function.py and can be overridden),
     approximate a root of the function using the specified method.
 '''
@@ -80,6 +118,10 @@ parser.add_argument('--override', '-o',
 parser.add_argument('--latex', '-l',
     action='store_true',
     help='print iteration data as LaTeX tabular')
+parser.add_argument('-t',
+    type=int, default=1, metavar='num_table',
+    help='split iteration data into tables and display side by side, must be used with -l, default %(default)s table')
+
 parser.add_argument('--verbose', '-v',
     action='store_true',
     help='show log')
@@ -111,6 +153,6 @@ if args.method == 'bisection':
 if p is None:
     print('No root found.')
 elif args.latex:
-    print(tabulate(T, tablefmt='latex', floatfmt='.9g'))
+    print_latex(T, args.t)
 else:
     print(p)

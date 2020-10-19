@@ -9,7 +9,7 @@
             "type": "python",
             "request": "launch",
             "program": "${file}",
-            "args": ["bisection", "-l"],
+            "args": ["bisection", "-l", "-c", "2"],
             "console": "integratedTerminal"
         }
     ]

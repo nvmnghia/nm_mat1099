@@ -21,11 +21,9 @@ pip3 install -r requirements.txt
 2. Run [`find_root.py`](find_root.py) with the name of the approximation method.
 
     ```bash
-    $ python3 find_root.py -h
+    usage: find_root.py [-h] [--override param=value [param=value ...]] [--latex] [-t num_table] [--verbose] [--info] method
 
-    usage: find_root.py [-h] [--override param=value [param=value ...]] [--latex] [--verbose] [--info] method
-
-    Given an function (hardcoded in function.py) and initial values, bound of absolute error,... (stored in function.py and can be overridden), approximate a root of the function using the specified method.
+    Given a function (hardcoded in function.py) and initial values, bound of absolute error,... (stored in function.py and can be overridden), approximate a root of the function using the specified method.
 
     positional arguments:
     method                approximation method
@@ -35,6 +33,7 @@ pip3 install -r requirements.txt
     --override param=value [param=value ...], -o param=value [param=value ...]
                             override params in the format param=value, see function.py or -i for params' names to override
     --latex, -l           print iteration data as LaTeX tabular
+    -t num_table          split iteration data into tables and display side by side, must be used with -l, default 1 table
     --verbose, -v         show log
     --info, -i            show info and required params of the method and quit
     ```
