@@ -75,7 +75,7 @@ parser.add_argument('method',
 parser.add_argument('--override', '-o',
     nargs='+', metavar='param=value',
     action=ParseParams,
-    help="override parameters in the format param=value, see function.py for parameters' names to override")
+    help="override params in the format param=value, see function.py or -i for params' names to override")
 
 parser.add_argument('--latex', '-l',
     action='store_true',
@@ -89,6 +89,7 @@ parser.add_argument('--info', '-i',
 
 args = parser.parse_args()
 
+# Print info and quit
 if args.info:
     if args.method == 'bisection':
         from algorithms.bisection import METHOD_DESC

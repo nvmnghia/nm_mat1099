@@ -3,26 +3,21 @@ import math
 import logging
 
 # Parameters could be overridden in find_root.py, so they're not imported here.
-from function import f
+from function import f, DESC_A_1, DESC_B_1, DESC_ERROR_BOUND, DESC_MAX_ITER
 
 
-METHOD_DESC = '''
+METHOD_DESC = f'''
     A bracketing, iterative root-finding method.
-    The function f must be continuous, and there exists a < b for which f(a)f(b) < 0.
-    The zero lies the interval [a, b]. Each iteration returns the mid point p of [a, b] as the approximation,
+    f must be continuous, and there exists a < b for which f(a)f(b) < 0.
+    The zero lies in [a, b]. Each iteration returns the mid point p of [a, b] as the approximation,
     and use it with a if f(a)f(p) < 0, or b otherwise, as the search interval for the next iteration.
 
     Parameters
     ----------
-
-    A_1 : float
-        The lower bound of the interval to search for.
-    B_1 : float
-        The upper bound of the interval to search for.
-    ERROR_BOUND : float
-        The upper bound for absolute error.
-    MAX_ITER : int
-        Maximum number of iteration allowed.
+    {DESC_A_1}
+    {DESC_B_1}
+    {DESC_ERROR_BOUND}
+    {DESC_MAX_ITER}
 '''
 
 
