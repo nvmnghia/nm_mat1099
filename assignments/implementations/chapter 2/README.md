@@ -26,16 +26,16 @@ pip3 install -r requirements.txt
     Given a function (hardcoded in function.py) and initial values, bound of absolute error,... (stored in function.py and can be overridden), approximate a root of the function using the specified method.
 
     positional arguments:
-    method                approximation method
+      method                approximation method [bisection, fixed_point]
 
     optional arguments:
-    -h, --help            show this help message and exit
-    --override param=value [param=value ...], -o param=value [param=value ...]
+      -h, --help            show this help message and exit
+      --override param=value [param=value ...], -o param=value [param=value ...]
                             override params in the format param=value, see function.py or -i for params' names to override
-    --latex, -l           print iteration data as LaTeX tabular
-    -t num_table          split iteration data into tables and display side by side, must be used with -l, default 1 table
-    --verbose, -v         show log
-    --info, -i            show info and required params of the method and quit
+      --latex, -l           print iteration data as LaTeX tabular
+      -t num_table          split iteration data into tables and display side by side, must be used with -l, default 1 table
+      --verbose, -v         show log
+      --info, -i            show info and required params of the method and quit
     ```
 
 A common example command to get pretty printed LaTeX table is:

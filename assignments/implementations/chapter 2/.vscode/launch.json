@@ -5,11 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
+            "name": "fixed point",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
-            "args": ["bisection", "-l", "-c", "2"],
+            "program": "find_root.py",
+            "args": ["fixed_point", "-lv", "-t", "2"],
             "console": "integratedTerminal"
         }
     ]

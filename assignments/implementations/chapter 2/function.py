@@ -12,10 +12,10 @@ params = {
     'B_1': math.pi,
 
     # or 1, depends on the method
-    'P_0': 0,
+    'P_0': 1.5,
 
     # Upper bound for absolute error
-    'ERROR_BOUND': 10**(-5),
+    'ERROR_BOUND': 10**(-4),
 
     # Max number of iteration
     'MAX_ITER': 1000,
@@ -55,7 +55,26 @@ def df(x: float) -> float:
         The derivative of the function at x.
     """
 
-    return x
+    pass
+
+
+def g(p: float) -> float:
+    """
+    Fixed-point sequence generator.
+
+    Parameters
+    ----------
+    p : float
+        The number at which the value of the function is calculated.
+
+    Returns
+    -------
+    float
+        The value of the function at x.
+    """
+
+    s = p**2
+    return p - (s - 3) / s
 
 
 DESC_A_1 = '''

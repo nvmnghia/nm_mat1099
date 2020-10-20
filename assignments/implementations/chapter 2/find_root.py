@@ -46,7 +46,7 @@ def merge_params(override: dict):
 
     # Override method params
     if override is not None:
-        params.update(override)
+        params = {**params, **override}
     params['MAX_ITER'] = int(params['MAX_ITER'])
 
     # Validate method params
@@ -97,7 +97,7 @@ def print_latex(T: list, num_table: int):
     print(tabulate(T, tablefmt='latex', floatfmt='.9g'))
 
 
-METHODS = ['bisection']
+METHODS = ['bisection', 'fixed_point']
 
 # Setup parser
 PROG_DESC = '''
@@ -109,7 +109,7 @@ parser = ArgumentParser(description=PROG_DESC)
 
 parser.add_argument('method',
     type=str, metavar='method', choices=METHODS,
-    help='approximation method')
+    help='approximation method [%(choices)s]')
 parser.add_argument('--override', '-o',
     nargs='+', metavar='param=value',
     action=ParseParams,
@@ -132,9 +132,14 @@ parser.add_argument('--info', '-i',
 args = parser.parse_args()
 
 # Print info and quit
+method = args.method
 if args.info:
-    if args.method == 'bisection':
+    if method == 'bisection':
         from algorithms.bisection import METHOD_DESC
+    elif method == 'fixed_point':
+        from algorithms.fixed_point import METHOD_DESC
+    else:
+        raise ValueError(f'Invalid method {method}')
 
     print(METHOD_DESC)
     sys.exit()
@@ -145,9 +150,14 @@ if args.verbose:
 
 # Perform approximation
 params = merge_params(args.override)
-if args.method == 'bisection':
+if method == 'bisection':
     from algorithms.bisection import bisection
     p, T = bisection(params['A_1'], params['B_1'], params['ERROR_BOUND'], params['MAX_ITER'], return_all=args.latex)
+elif method == 'fixed_point':
+    from algorithms.fixed_point import fixed_point
+    p, T = fixed_point(params['P_0'], params['ERROR_BOUND'], params['MAX_ITER'], return_all=args.latex)
+else:
+    raise ValueError(f'Invalid method {method}')
 
 # Print shit
 if p is None:

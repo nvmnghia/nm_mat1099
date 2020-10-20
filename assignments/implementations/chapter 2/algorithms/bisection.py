@@ -1,16 +1,23 @@
-import sys
-import math
+from math import ceil, log2
 import logging
+from typing import NamedTuple, List
 
 # Parameters could be overridden in find_root.py, so they're not imported here.
 from function import f, DESC_A_1, DESC_B_1, DESC_ERROR_BOUND, DESC_MAX_ITER
 
 
 METHOD_DESC = f'''
-    A bracketing, iterative root-finding method.
+    A bracketing, iterative zero-finding method.
+    The search range is halved until the zero is found.
+
     f must be continuous, and there exists a < b for which f(a)f(b) < 0.
-    The zero lies in [a, b]. Each iteration returns the mid point p of [a, b] as the approximation,
-    and use it with a if f(a)f(p) < 0, or b otherwise, as the search interval for the next iteration.
+    The zero lies in [a, b]. Each iteration returns the midpoint p of [a, b] as the approximation,
+    and use it with a if f(a)f(p) < 0, or b otherwise, as the interval for the next iteration.
+
+    Functions
+    ---------
+    f
+        Function to find zero for.
 
     Parameters
     ----------
@@ -19,6 +26,23 @@ METHOD_DESC = f'''
     {DESC_ERROR_BOUND}
     {DESC_MAX_ITER}
 '''
+
+
+class BisectionData(NamedTuple):
+    """
+    NamedTuple holding iteration data for Bisection method.
+    """
+
+    # iteration number (>= 1)
+    n: int
+    # lower bound
+    a: float
+    # upper bound
+    b: float
+    # approximated value
+    p: float
+    # value of f at p
+    f: float
 
 
 def same_sign(n1: float, n2: float) -> bool:
@@ -39,7 +63,7 @@ def same_sign(n1: float, n2: float) -> bool:
     return (n1 > 0) == (n2 > 0)    # Dumb me didn't use ()
 
 
-def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_all=False):
+def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_all=False) -> List[BisectionData]:
     """
     Approximate a zero of f using bisection method.
 
@@ -60,13 +84,12 @@ def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_
     -------
     p : float
         The zero found.
-    H : list[str]
-        List of header string for printing iteration data. Only returned if return_all is true, else None is returned.
-    T : list[list]
-        2D list representing iteration data: [n, a, b, p, f]. Only returned if return_all is true, else None is returned.
+    T : List[BisectionData]
+        List of iteration data. Only returned if return_all is true, else None is returned.
     """
 
-    logging.info(f'Searching interval is [A_1, B_1] = [{A_1}, {B_1}], maximum absolute error is {ERROR_BOUND}')
+    logging.info(f'Searching interval [A_1, B_1] = [{A_1}, {B_1}]')
+    logging.info(f'Maximum absolute error ERROR_BOUND = {ERROR_BOUND}')
 
     a = A_1
     b = B_1
@@ -78,26 +101,22 @@ def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_
         return None, None
     logging.info(f'f(A_1) = {f_a} and f(B_1) = {f_b} have the opposite signs')
 
-    N = int(math.ceil(math.log((B_1 - A_1) / ERROR_BOUND, 2)))
+    N = int(ceil(log2((B_1 - A_1) / ERROR_BOUND)))
     if N > MAX_ITER:
         logging.info(f'Number of iteration is restricted to MAX_ITER = {MAX_ITER} instead of {N}')
         N = MAX_ITER
     else:
         logging.info(f'Number of iteration is {N}')
 
-    if return_all:
-        T = [[0 for i in range(5)] for j in range(N)]
+    p = (a + b) / 2
+    T = [None for j in range(N)] if return_all else None
 
-    for i in range(N):
+    for i in range(1, N + 1):
         p = (a + b) / 2
         f_p = f(p)
 
         if return_all:
-            T[i][0] = i + 1
-            T[i][1] = a
-            T[i][2] = b
-            T[i][3] = p
-            T[i][4] = f_p
+            T[i - 1] = BisectionData(n=i, a=a, b=b, p=p, f=f_p)
 
         if same_sign(f_p, f_a):
             a = p
@@ -106,7 +125,4 @@ def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_
             b = p
             f_b = f_p
 
-    if return_all:
-        return p, T
-    else:
-        return p, None
+    return p, T
