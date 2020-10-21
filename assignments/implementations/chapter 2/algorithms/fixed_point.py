@@ -68,6 +68,7 @@ def fixed_point(P_0: float,  ERROR_BOUND: float, MAX_ITER: int, return_all=False
 
     p_0 = P_0
     p = p_0
+    found = False
 
     T = [FixedPointData(n=0, p=p_0)] if return_all else None
 
@@ -78,7 +79,12 @@ def fixed_point(P_0: float,  ERROR_BOUND: float, MAX_ITER: int, return_all=False
             T.append(FixedPointData(n=i, p=p))
 
         if abs(p - p_0) < ERROR_BOUND:
+            found = True
             break
         p_0 = p
 
-    return p, T
+    if not found:
+        logging.warn(f'Max number of iteration MAX_ITER = {MAX_ITER} reached but no fixed point found')
+        return None, T
+    else:
+        return p, T

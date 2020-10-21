@@ -161,8 +161,9 @@ else:
 
 # Print shit
 if p is None:
-    print('No root found.')
-elif args.latex:
-    print_latex(T, args.t)
+    print('Not found')
 else:
     print(p)
+
+if args.latex:
+    print_latex(T, args.t)
