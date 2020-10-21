@@ -64,7 +64,7 @@ def fixed_point(P_0: float,  ERROR_BOUND: float, MAX_ITER: int, return_all=False
 
     logging.info(f'Initial value P_0 = {P_0}')
     logging.info(f'Maximum absolute error ERROR_BOUND = {ERROR_BOUND}')
-    logging.info(f'Max number of iteration MAX_ITER= {MAX_ITER}')
+    logging.info(f'Max number of iteration MAX_ITER = {MAX_ITER}')
 
     p_0 = P_0
     p = p_0
