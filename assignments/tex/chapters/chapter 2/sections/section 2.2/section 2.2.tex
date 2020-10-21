@@ -1,0 +1,1056 @@
+\documentclass[../../../../Assignments]{subfiles}
+
+
+\begin{document}
+
+\section{Fixed-Point Iteration}
+
+\begin{exercise}\label{exer:2.2.1}
+    Use algebraic manipulation to show that each of the following functions has
+    a fixed-point at \(p\) precisely when \(f(p) = 0\), where \(f(x) = x^4 +
+    2x^2 - x - 3\).
+
+\begin{tasks}(2)
+    \task \(g_1(x) = (3 + x - 2x^2)^{\sfrac{1}{4}}\)
+    \task \(g_2(x) = \left(\dfrac{x + 3 - x^4}{2}\right)^{\sfrac{1}{2}}\)
+    \task \(g_3(x) = \left(\dfrac{x + 3}{x^2 + 2}\right)^{\sfrac{1}{2}}\)
+    \task \(g_4(x) = \dfrac{3x^4 + 2x^2 + 3}{4x^3 + 4x - 1}\)
+\end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item For \(x = p\):
+
+            \[\begin{aligned}
+                g_1(p) = (3 + p - 2p^2)^{\frac{1}{4}} = (p^4 - f(p))^{\sfrac{1}{4}} = \abs{p}
+            \end{aligned}\]
+
+            So \(p\) is a fixed-point of \(g_1\).
+
+        \item For \(x = p\):
+
+            \[\begin{aligned}
+                g_2(p) &= \left(\dfrac{p + 3 - p^4}{2}\right)^{\sfrac{1}{2}} \\
+                       &= \left(\dfrac{2p^2}{2}\right)^{\frac{1}{2}} \\
+                       &= \abs{p}
+            \end{aligned}\]
+
+            So \(p\) is a fixed-point of \(g_2\).
+
+        \item For \(x = p\):
+
+            \[\begin{aligned}
+                g_3(p) &= \left(\dfrac{p + 3}{p^2 + 2}\right)^{\sfrac{1}{2}} \\
+                       &= \left(\dfrac{p^4 + 2p^2}{p^2 + 2}\right)^{\sfrac{1}{2}} \\
+                       &= \abs{p}
+            \end{aligned}\]
+
+            So \(p\) is a fixed-point of \(g_3\).
+
+        \item For \(x = p\):
+
+            \[\begin{aligned}
+                g_4(p) &= \dfrac{3p^4 + 2p^2 + 3}{4p^3 + 4p - 1} \\
+                       &= \dfrac{4p^4 - (3 + p - 2p^2) + 2p^2 + 3}{4p^3 + 4p - 1} \\
+                       &= \dfrac{4p^4 + 4p^2 -p}{4p^3 + 4p - 1} \\
+                       &= p
+            \end{aligned}\]
+
+            So \(p\) is a fixed-point of \(g_4\).
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    \begin{tasks}
+        \task Perform four iterations, if possible, on each of the functions
+            \(g\) defined in \hyperref[exer:2.2.1]{Exercise 1}. Let \(p_0 =
+            1\) and \(p_{n + 1} = g(p_n)\), for \(n = 0, 1, 2, 3\).
+        \task Which function do you think gives the best approximation to the
+            solution?
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item Applying fixed-point method on the four functions \(g\) generates
+            the following table:
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=1.9]}
+                    \toprule
+                    \(n\)  & {\(p_n\) by \(g_1\)} & {\(p_n\) by \(g_2\)} & {\(p_n\) by \(g_3\)} & {\(p_n\) by \(g_4\)} \\
+                    \midrule
+                        0  &  1                   &  1                   &  1                   &  1                   \\
+                        1  &  1.189207115         &  1.224744871         &  1.154700538         &  1.142857143         \\
+                        2  &  1.080057753         &  0.993666159         &  1.11642741          &  1.12448169          \\
+                        3  &  1.149671431         &  1.228568645         &  1.126052233         &  1.124123164         \\
+                        4  &  1.107820053         &  0.987506429         &  1.123638885         &  1.12412303          \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+
+        \item \(g_4\) gives the best approximation as it generates the smallest
+            difference between \(p_3\) and \(p_4\): \({\abs{p_4 - p_3} =
+            \num{-134e-7}}\).
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    The following four methods are proposed to compute \(21^{\sfrac{1}{3}}\).
+    Rank them in order, based on their apparent speed of convergence, assuming
+    \(p_0 = 1\).
+
+    \begin{tasks}(2)
+        \task \(p_n = \dfrac{20 p_{n - 1} + \sfrac{21}{p_{n - 1}^2}}{21}\)               \label{exer:2.2.3:a}
+        \task \(p_n = p_{n - 1} - \dfrac{p_{n - 1}^3 - 21}{3 p_{n - 1}^2}\)              \label{exer:2.2.3:b}
+        \task \(p_n = p_{n - 1} - \dfrac{p_{n - 1}^4 - 21 p_{n - 1}}{p_{n - 1}^2 - 21}\) \label{exer:2.2.3:c}
+        \task \(p_n = \left(\dfrac{21}{p_{n-1}}\right)^{\sfrac{1}{2}}\)                  \label{exer:2.2.3:d}
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    Applying fixed-point method on the four sequences generate the following
+    table:
+
+    \begin{longtable}{r S[table-format=1.9] S[table-format=1.9] S[table-format=1.9] S[table-format=1.9]}
+        \toprule
+        \(n\)  & {\hyperref[exer:2.2.3:a]{a)}} & {\hyperref[exer:2.2.3:b]{b)}} & {\hyperref[exer:2.2.3:c]{c)}} & {\hyperref[exer:2.2.3:d]{d)}} \\
+        \midrule
+        \endfirsthead
+        \(n\)  & {\hyperref[exer:2.2.3:a]{a)}} & {\hyperref[exer:2.2.3:b]{b)}} & {\hyperref[exer:2.2.3:c]{c)}} & {\hyperref[exer:2.2.3:d]{d)}} \\
+        \midrule
+        \endhead
+            0  &  1            &  1            &  1            &  1            \\
+            1  &  1.952380952  &  7.666666667  &  0            &  4.582575695  \\
+            2  &  2.121754174  &  5.230203739  &  0            &  2.140695143  \\
+            3  &  2.242849692  &  3.742696919  &               &  3.132075595  \\
+            4  &  2.334839673  &  2.994853568  &               &  2.589366527  \\
+            5  &  2.40109338   &  2.777022226  &               &  2.847822274  \\
+            6  &  2.465059288  &  2.759041866  &               &  2.715521253  \\
+            7  &  2.512243463  &  2.758924181  &               &  2.780885095  \\
+            8  &  2.551057096  &  2.758924176  &               &  2.748008838  \\
+            9  &  2.583237767  &  2.758924176  &               &  2.764398093  \\
+           10  &  2.610081445  &               &               &  2.756191284  \\
+           11  &  2.632580301  &               &               &  2.760291639  \\
+           12  &  2.651509504  &               &               &  2.758240699  \\
+           13  &  2.667484488  &               &               &  2.759265978  \\
+           14  &  2.681000202  &               &               &  2.758753291  \\
+           15  &  2.692458887  &               &               &  2.759009623  \\
+           16  &  2.702190249  &               &               &  2.758881454  \\
+           17  &  2.710466453  &               &               &  2.758945538  \\
+           18  &  2.717513483  &               &               &  2.758913496  \\
+           19  &  2.723519902  &               &               &  2.758929517  \\
+        \bottomrule
+    \end{longtable}
+
+    Apparently, the speed of convergence is ranked in descending order as
+    follow: \hyperref[exer:2.2.3:b]{b)}, \hyperref[exer:2.2.3:d]{d)},
+    \hyperref[exer:2.2.3:a]{a)}. \hyperref[exer:2.2.3:c]{c)} does not converge.
+\end{solution}
+
+\begin{exercise}
+    The following four methods are proposed to compute \(7^{\sfrac{1}{5}}\).
+    Rank them in order, based on their apparent speed of convergence, assuming
+    \(p_0 = 1\).
+
+    \begin{tasks}(2)
+        \task \(p_n = p_{n - 1} - \left(1 + \frac{7 - p_{n - 1}^5}{p_{n - 1}^2}\right)^3\) \label{exer:2.2.4:a}
+        \task \(p_n = p_{n - 1} - \dfrac{p_{n - 1}^5 - 7}{p_{n - 1}^2}\)                   \label{exer:2.2.4:b}
+        \task \(p_n = p_{n - 1} - \dfrac{p_{n - 1}^5 - 7}{5 p_{n - 1}^4}\)                 \label{exer:2.2.4:c}
+        \task \(p_n = p_{n - 1} - \dfrac{p_{n - 1}^5 - 7}{12}\)                            \label{exer:2.2.4:d}
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    Applying fixed-point method on the four sequences generate the following
+    table:
+
+    \begin{longtable}{r c c S[table-format=1.9] S[table-format=1.9]}
+        \toprule
+        \(n\)  & {\hyperref[exer:2.2.4:a]{a)}} & {\hyperref[exer:2.2.4:b]{b)}} & {\hyperref[exer:2.2.4:c]{c)}} & {\hyperref[exer:2.2.4:d]{d)}} \\
+        \midrule
+        \endfirsthead
+        \(n\)  & {\hyperref[exer:2.2.4:a]{a)}} & {\hyperref[exer:2.2.4:b]{b)}} & {\hyperref[exer:2.2.4:c]{c)}} & {\hyperref[exer:2.2.4:d]{d)}} \\
+        \midrule
+        \endhead
+            0  &         1        &         1        &  2.2          &  1            \\
+            1  &        343       &         7        &  1.819763677  &  1.5          \\
+            2  &  \num{-2.25e25}  &  \num{-335.857}  &  1.58347483   &  1.450520833  \\
+            3  &                  &  \num{37884356}  &  1.489460974  &  1.498749661  \\
+            4  &                  &                  &  1.476022436  &  1.451903535  \\
+            5  &                  &                  &  1.475773246  &  1.497577067  \\
+            6  &                  &                  &  1.475773162  &  1.45319229   \\
+            7  &                  &                  &  1.475773162  &  1.496475364  \\
+            9  &                  &                  &               &  1.454396119  \\
+            8  &                  &                  &               &  1.495438587  \\
+           10  &                  &                  &               &  1.45552281   \\
+           11  &                  &                  &               &  1.494461513  \\
+           12  &                  &                  &               &  1.456579138  \\
+           13  &                  &                  &               &  1.493539533  \\
+           14  &                  &                  &               &  1.457571031  \\
+           15  &                  &                  &               &  1.49266856   \\
+           16  &                  &                  &               &  1.458803715  \\
+           17  &                  &                  &               &  1.491844948  \\
+           18  &                  &                  &               &  1.459381814  \\
+           19  &                  &                  &               &  1.491065425  \\
+        \bottomrule
+    \end{longtable}
+
+    Apparently, the speed of convergence is ranked in descending order as
+    follow: \hyperref[exer:2.2.4:c]{c)}, \hyperref[exer:2.2.4:d]{d)}.
+    \hyperref[exer:2.2.4:a]{a)} and \hyperref[exer:2.2.4:b]{b)} do not converge.
+\end{solution}
+
+\begin{exercise}
+    Use a fixed-point iteration method to determine a solution accurate to
+    within \(10^{-2}\) for \(x^4 - 3x^2 - 3 = 0\) on \(\interval{1}{2}\). Use
+    \(p_0 = 1\).
+\end{exercise}
+
+\begin{solution}
+    Let \(f(x) = x^4 - 3x^2 - 3\). Let \(p\) be the root of \(f\) in
+    \(\interval{1}{2}\). We need to find a function \(g\) for which \(p = g(p)\)
+    to perform the fixed-point method.
+
+    Extract \(p\) to RHS gives:
+
+    \[p^4 = 3p^2 + 3 \iff \abs{p} = (3p^2 + 3)^{\sfrac{1}{4}}\]
+
+    Then \(g\) is chosen as:
+
+    \[g(x) = (3x^2 + 3)^{\sfrac{1}{4}}\]
+
+    Applying fixed-point method on \(g\) generate the following table:
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{r S[table-format=1.9] r S[table-format=1.9]}
+            \toprule
+            \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+            \midrule
+                0  &  1            &      4  &  1.922847844  \\
+                1  &  1.56508458   &      5  &  1.93750754   \\
+                2  &  1.793572879  &      6  &  1.94331693   \\
+                3  &  1.885943743  &         &               \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    We can try the other obvious option
+
+    \[g(x) = \left(\frac{x^4 - 3}{3}\right)^{\num{0.5}}\]
+
+    \noindent which fails on the first iteration. A reasonable explanation for
+    the choice of \(g\) is that we need \(\abs{g'}\) to be as small as possible.
+    On \(\interval{1}{2}\), the \(O(x^{\num{0.5}})\) of the first choice clearly
+    has an advantage over \(O(x^2)\) of the second choice of \(g\).
+
+    We conclude that \(p \approx \num{1.943}\).
+\end{solution}
+
+\begin{exercise}
+    Use a fixed-point iteration method to determine a solution accurate to
+    within \(10^{-2}\) for \(x^3 - x - 1 = 0\) on \(\interval{1}{2}\). Use \(p_0
+    = 1\).
+\end{exercise}
+
+\begin{solution}
+    Let \(f(x) = x^3 - x - 1 = 0\). Let \(p\) be the root of \(f\) in
+    \(\interval{1}{2}\). We need to find a function \(g\) for which \(p = g(p)\)
+    to perform the fixed-point method.
+
+    Extract \(p\) to RHS gives:
+
+    \[p^3 = p + 1 \iff p = (p + 1)^{\sfrac{1}{3}}\]
+
+    Then \(g\) is chosen as:
+
+    \[g(x) = (p + 1)^{\sfrac{1}{3}}\]
+
+    Applying fixed-point method on \(g\) generates the following table:
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{r S[table-format=1.9] r S[table-format=1.9]}
+            \toprule
+            \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+            \midrule
+                0  &  1            &      3  &  1.322353819  \\
+                1  &  1.25992105   &      4  &  1.324268745  \\
+                2  &  1.312293837  &         &               \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    We conclude that \(p \approx \num{1.324}\).
+\end{solution}
+
+\begin{exercise}
+    Use Theorem 2.3 (Định lý 2.3 in the accompanying Lectures.pdf) to show that
+    \(g(x) = \pi + \num{0.5} \sin{\num{0.5} x}\) has a unique fixed point on
+    \(\interval{0}{2 \pi}\). Use fixed-point iteration to find an approximation
+    to the fixed point that is accurate to within \(10^{-2}\). Use Corollary 2.5
+    (Hệ quả 2.1) to estimate the number of iterations required to achieve
+    \(10^{-2}\) accuracy, and compare this theoretical estimate to the number
+    actually needed.
+\end{exercise}
+
+\begin{solution}
+    From the formula of \(g\):
+
+    \[\begin{aligned}
+                    g(x) & = \pi + \num{0.5} \sin{\num{0.5} x} \\
+        \Rightarrow g(x) & \in \interval{\pi - \num{0.5}}{\pi + \num{0.5}} \, \forall x
+    \end{aligned}\]
+
+    Consider the interval \(I = \interval{\pi - \num{0.5}}{\pi + \num{0.5}} \in
+    \interval{0}{2 \pi}\). From the above equations, we know that:
+
+    \begin{itemize}
+        \item \(g \in C I\)
+        \item \(g(x) \in I \, \forall x \in I\)
+    \end{itemize}
+
+    According to theorem 2.3, there exists a fixed point of \(g\) on \(I\).
+
+    Differentiating \(g\) gives:
+
+    \[g'(x) = -\num{0.25} \cos{\num{0.5} x} \Rightarrow \abs{g'(x)} \leq k = \num{0.25} < 1 \, \forall x\]
+
+    Again, according to theorem 2.3, there exists one and only one fixed point
+    of \(g\) on \(I\).
+
+    Applying fixed-point method on \(g\), with \(p_0 = \pi\), generates the
+    following table:
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{r S[table-format=1.9] r S[table-format=1.9]}
+            \toprule
+            \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+            \midrule
+                0  &  3.141592654  &      2  &  3.626048864  \\
+                1  &  3.641592654  &      3  &  3.626995622  \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    Using corollary 2.5, the number of iterations \(n\) required to achieve
+    \(10^{-2}\) accuracy is
+
+    \[\abs{p_n - p} \leq k^n \num{0.5} < 10^{-2} \iff n \geq 3\]
+
+    \noindent which is in line with the number of iteration actually performed.
+\end{solution}
+
+\begin{exercise}
+    Use Theorem 2.3 (Định lý 2.3 in the accompanying Lectures.pdf) to show that
+    \(g(x) = 2^{-x}\) has a unique fixed point on \(\interval{\frac{1}{3}}{1}\).
+    Use fixed-point iteration to find an approximation to the fixed point that
+    is accurate to within \(10^{-4}\). Use Corollary 2.5 (Hệ quả 2.1) to
+    estimate the number of iterations required to achieve \(10^{-4}\) accuracy,
+    and compare this theoretical estimate to the number actually needed.
+\end{exercise}
+
+\begin{solution}
+    From the formula of \(g\):
+
+    \[\begin{aligned}
+                     g(x) & = 2^{-x} \\
+        \Rightarrow g'(x) & = - 2^{-x} \ln{2}
+    \end{aligned}\]
+
+    It is clear that \(g \in C^1 R\).
+
+    Consider the interval \(I = \interval{\frac{1}{3}}{1}\), \(I_{open} =
+    \interval[open]{\frac{1}{3}}{1}\):
+
+    \[\begin{aligned}
+        &g'(x) < 0 \forall x \in I \\
+        &\Rightarrow 1 > g(\frac{1}{3}) = 2^{-\sfrac{1}{3}} \geq g(x) \geq g(1) = 2^{-1} > \frac{1}{3} \\
+        &\Rightarrow g(x) \in I \, \forall x \in I
+    \end{aligned}\]
+
+    So far, we know that:
+
+    \begin{itemize}
+        \item \(g \in C I\) (\(g \in C R\) even)
+        \item \(g(x) \in I \, \forall x \in I\)
+    \end{itemize}
+
+    According to theorem 2.3, there exists a fixed point of \(g\) on \(I\).
+
+    Consider \(g'\):
+
+    \begin{gather*}
+        -1 < - \ln{2} \leq g'(x) \leq - \frac{1}{3} \ln{2} < 0 \, \forall x \in I \\
+        \Rightarrow \abs{g'(x)} \leq k = \ln{2} < 1 \, \forall x \in I
+    \end{gather*}
+
+    Again, according to Theorem 2.3, there exists one and only one fixed point
+    of \(g\) on \(I\).
+
+    Applying fixed-point method on \(g\), with \(p_0 = \frac{2}{3}\), generates
+    the following table:
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{r S[table-format=1.9] r S[table-format=1.9]}
+            \toprule
+            \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+            \midrule
+                0  &  0.666666667  &      5  &  0.640746653  \\
+                1  &  0.629960525  &      6  &  0.641380922  \\
+                2  &  0.646194096  &      7  &  0.641099006  \\
+                3  &  0.638963711  &      8  &  0.641224295  \\
+                4  &  0.642174057  &      9  &  0.641168611  \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    Using Corollary 2.5, the number of iterations \(n\) required to achieve
+    \(10^{-4}\) accuracy is
+
+    \[\abs{p_n - p} \leq k^n \frac{1}{3} < 10^{-4} \iff n \geq 23\]
+
+    \noindent which is quit a bit higher than the number of iteration actually
+    performed.
+\end{solution}
+
+\begin{exercise}
+    % TODO: link Exercise 12
+    Use a fixed-point iteration method to find an approximation to \(\sqrt{3}\)
+    that is accurate to within \(10^{-4}\). Compare your result and the number
+    of iterations required with the answer obtained in Exercise 12 of Section
+    2.1.
+\end{exercise}
+
+\begin{solution}
+    Let \(f(x) = x^2 - 3\), \(p > 0\) is a zero of \(f\). Then \(p = \sqrt{3}\),
+    and an approximation of \(p\) is an approximation of \(\sqrt{3}\).
+
+    Consider \(g(x) = \frac{3}{x}\). It is clear that this is a bad choice, as
+    applying \(g\) on any \(p_0\) will generate a sequence that jumps between
+    \(p_0\) and \(\frac{3}{p_0}\).
+
+    From the textbook examples, we choose \(g(x) = x - \frac{x^2 - 3}{x^2}\).
+    Applying fixed-point method on \(g\) with \(p_0 = \num{1.5}\) generates the
+    following table:
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{r S[table-format=1.8] r S[table-format=1.8]}
+            \toprule
+            \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+            \midrule
+                0  &  1.5          &      4  &  1.73189858   \\
+                1  &  1.83333333   &      5  &  1.73207438   \\
+                2  &  1.72589532   &      6  &  1.73204716   \\
+                3  &  1.73304114   &         &               \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    We conclude that \(\sqrt{3} \approx \num{1.73205}\). In exercise 12 of
+    section 2.1, 14 iteration is needed, much higher than that of this method.
+\end{solution}
+
+\begin{exercise}
+    % TODO: link Exercise 12
+    Use a fixed-point iteration method to find an approximation to
+    \(\sqrt[3]{25}\) that is accurate to within \(10^{-4}\). Compare your result
+    and the number of iterations required with the answer obtained in Exercise
+    13 of Section 2.1.
+\end{exercise}
+
+\begin{solution}
+    Let \(f(x) = x^3 - 25\), \(p > 0\) is a zero of \(f\). Then \(p =
+    \sqrt[3]{25}\), and an approximation of \(p\) is an approximation of
+    \(\sqrt[3]{25}\).
+
+    We choose \(g(x) = x - \frac{x^3 - 25}{x^3}\). Applying fixed-point method
+    on \(g\) with \(p_0 = \num{2.5}\) generates the following table:
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{r S[table-format=1.8] r S[table-format=1.8]}
+            \toprule
+            \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+            \midrule
+                0  &  2.5          &      3  &  2.92378369   \\
+                1  &  3.1          &      4  &  2.92402386   \\
+                2  &  2.93917962   &      5  &  2.92401758   \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    We conclude that \(\sqrt[3]{25} \approx \num{2.92402}\). In exercise 13 of
+    section 2.1, 14 iteration is needed, much higher than that of this method.
+\end{solution}
+
+\begin{exercise}
+    For each of the following equations, determine an interval
+    \(\interval{a}{b}\) on which fixed-point iteration will converge. Estimate
+    the number of iterations necessary to obtain approximations accurate to
+    within \(10^{-5}\), and perform the calculations.
+
+    \begin{tasks}(2)
+        \task \(x = \dfrac{2 - e^x + x^2}{3}\)
+        \task \(x = \dfrac{5}{x^2} + 2\)
+        \task \(x = (\sfrac{e^x}{3})^{\sfrac{1}{2}}\)
+        \task \(x = 5^{-x}\)
+        \task \(x = 6^{-x}\)
+        \task \(x = \num{0.5}(\sin{x} + \cos{x})\)
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item Let
+
+            \[\begin{aligned}
+                &\quad&         g(x) &= \frac{2 - e^x + x^2}{3} \\
+                \Rightarrow&&  g'(x) &= \frac{2x - e^x}{3} \\
+                \Rightarrow&& g''(x) &= \frac{2 - e^x}{3}
+            \end{aligned}\]
+
+            It's clear that \(g\) is continuous in \(\mathbb{R}\).
+
+            Consider \(g''\):
+
+            \begin{itemize}
+                \item \(g''(x) > 0 \iff x < \ln{2}\)
+                \item \(g''(x) = 0 \iff x = \ln{2}\)
+                \item \(g''(x) < 0 \iff x > \ln{2}\)
+            \end{itemize}
+
+            So, \(\max g'(x) = g'(\ln{2}) = \dfrac{\ln{4} - 2}{3} < 0\). So \(g\)
+            is monotonically decreasing in \(\mathbb{R}\).
+
+            Consider the interval \(I = \interval{0}{1}\):
+
+            \[\]
+            \[\begin{aligned}
+                1 > g(0) = \frac{1}{3} > &g(x) > g(1) = \frac{3 - e}{3} > 0 \, \forall x \in I \\
+                             \Rightarrow &g(x) \in I \, \forall x \in I
+            \end{aligned}\]
+
+            So, \(I\) is an interval in which a fixed point \(p\) of \(g\)
+            exists. Applying fixed-point method on \(g\) with \(p_0 =
+            \num{0.5}\) generates the following table:
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=1.9] r S[table-format=1.9]}
+                    \toprule
+                    \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                    \midrule
+                        0  &  0.5          &      5  &  0.257265636  \\
+                        1  &  0.200426243  &      6  &  0.257598985  \\
+                        2  &  0.272749065  &      7  &  0.257512455  \\
+                        3  &  0.253607157  &      8  &  0.257534914  \\
+                        4  &  0.258550376  &      9  &  0.257529084  \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+
+            We conclude that the fixed point \(p \approx \num{0.257529}\).
+
+        \item Let
+
+            \[g = \frac{5}{x^2} + 2\]
+
+            Consider the interval \(I = \interval{\num{2.5}}{3}\). \(0 \notin
+            I\), so \(g\) is continuous in \(I\).
+
+            \(x^2\) is monotonically increasing in \(I\), so \(g\) is
+            monotonically decreasing in \(I\). So that:
+
+            \[\begin{aligned}
+                3 > g(\num{2.5}) = \num{2.8} > &g(x) > g(3) = \sfrac{23}{9} > \num{2.5} \, \forall x \in I \\
+                                   \Rightarrow &g(x) \in I \, \forall x \in I
+            \end{aligned}\]
+
+            So, \(I\) is an interval in which a fixed point \(p\) of \(g\)
+            exists. Applying fixed-point method on \(g\) with \(p_0 =
+            \num{2.75}\) generates the following table:
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=1.8] r S[table-format=1.8] r S[table-format=1.8]}
+                    \toprule
+                    \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                    \midrule
+                        0  &  2.75         &      6  &  2.69171092   &     12  &  2.69066691   \\
+                        1  &  2.66115702   &      7  &  2.69010182   &     13  &  2.69063746   \\
+                        2  &  2.7060395    &      8  &  2.69092764   &     14  &  2.69065258   \\
+                        3  &  2.68281293   &      9  &  2.69050363   &     15  &  2.69064482   \\
+                        4  &  2.69468708   &     10  &  2.69072129   &         &               \\
+                        5  &  2.68857829   &     11  &  2.69060954   &         &               \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+
+            We conclude that the fixed point \(p \approx \num{2.690645}\).
+
+        \item Let
+
+            \[g(x) = \left(\frac{e^x}{3}\right)^{\sfrac{1}{2}}\]
+
+            It's clear that \(g\) is continuous in \(\mathbb{R}\).
+
+            \(g\) is monotonically increasing in \(\mathbb{R}\). Consider the
+            interval \(I = \interval{0}{1}\):
+
+            \[\begin{aligned}
+                0 < g(0) = \dfrac{1}{\sqrt{3}} < &g(x) < g(1) = \sqrt{\dfrac{e}{3}} < 1 \\
+                                     \Rightarrow &g(x) \in I \, \forall x \in I
+            \end{aligned}\]
+
+            So, \(I\) is an interval in which a fixed point \(p\) of \(g\)
+            exists. Applying fixed-point method on \(g\) with \(p_0 =
+            \num{0.5}\) generates the following table:
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=1.9] r S[table-format=1.9] r S[table-format=1.9]}
+                    \toprule
+                    \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                    \midrule
+                        0  &  0.5          &      5  &  0.903281143  &     10  &  0.909876791  \\
+                        1  &  0.74133242   &      6  &  0.906952163  &     11  &  0.909948068  \\
+                        2  &  0.836407007  &      7  &  0.908618411  &     12  &  0.909980498  \\
+                        3  &  0.87712774   &      8  &  0.909375718  &     13  &  0.909995254  \\
+                        4  &  0.895169428  &      9  &  0.909720122  &     14  &  0.910001967  \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+
+            We conclude that the fixed point \(p \approx \num{0.910002}\).
+
+        \item Let \(g(x) = 5^{-x}\). It's clear that \(g\) is continuous in
+            \(\mathbb{R}\).
+
+            \(5^x\) is monotonically increasing in \(\mathbb{R}\), so \(g\) is
+            monotonically decreasing in \(\mathbb{R}\).
+
+            Consider the interval \(I = \interval{0}{1}\):
+
+            \[\begin{aligned}
+                0 < g(1) = \num{0.2} < &g(x) < g(0) = 1 \\
+                           \Rightarrow &g(x) \in I \, \forall x \in I
+            \end{aligned}\]
+
+            So, \(I\) is an interval in which a fixed point \(p\) of \(g\)
+            exists. Applying fixed-point method on \(g\) with \(p_0 =
+            \num{0.5}\) generates the following table:
+
+            \begin{longtable}{r S[table-format=1.9] r S[table-format=1.9] r S[table-format=1.9]}
+                \toprule
+                \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                \midrule
+                \endfirsthead
+                \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                \midrule
+                \endhead
+                    0  &  0.5          &     11  &  0.468245559  &     22  &  0.469685261  \\
+                    1  &  0.447213595  &     12  &  0.470663369  &     23  &  0.469574052  \\
+                    2  &  0.486867866  &     13  &  0.468835429  &     24  &  0.469658106  \\
+                    3  &  0.456766207  &     14  &  0.470216753  &     25  &  0.469594575  \\
+                    4  &  0.479439843  &     15  &  0.469172549  &     26  &  0.469642593  \\
+                    5  &  0.462259591  &     16  &  0.469961695  &     27  &  0.4696063    \\
+                    6  &  0.475219673  &     17  &  0.469365184  &     28  &  0.469633731  \\
+                    7  &  0.465409992  &     18  &  0.469816013  &     29  &  0.469612998  \\
+                    8  &  0.47281623   &     19  &  0.469475247  &     30  &  0.469628669  \\
+                    9  &  0.467213774  &     20  &  0.469732798  &     31  &  0.469616824  \\
+                   10  &  0.4714456    &     21  &  0.469538128  &     32  &  0.469625777  \\
+                \bottomrule
+            \end{longtable}
+
+            We conclude that the fixed point \(p \approx \num{0.469626}\).
+
+        \item Let \(g(x) = 6^{-x}\). It's clear that \(g\) is continuous in
+            \(\mathbb{R}\).
+
+            \(6^x\) is monotonically increasing in \(\mathbb{R}\), so \(g\) is
+            monotonically decreasing in \(\mathbb{R}\).
+
+            Consider the interval \(I = \interval{0}{1}\):
+
+            \[\begin{aligned}
+                0 < g(1) = \frac{1}{6} < &g(x) < g(0) = 1 \\
+                             \Rightarrow &g(x) \in I \, \forall x \in I
+            \end{aligned}\]
+
+            So, \(I\) is an interval in which a fixed point \(p\) of \(g\)
+            exists. Applying fixed-point method on \(g\) with \(p_0 =
+            \num{0.5}\) generates the following table:
+
+            \begin{longtable}{r S[table-format=1.9] r S[table-format=1.9] r S[table-format=1.9]}
+                \toprule
+                \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                \midrule
+                \endfirsthead
+                \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                \midrule
+                \endhead
+                    0  &  0.5          &     15  &  0.446190464  &     30  &  0.448132603  \\
+                    1  &  0.40824829   &     16  &  0.449568975  &     31  &  0.448007263  \\
+                    2  &  0.481194974  &     17  &  0.446855739  &     32  &  0.448107887  \\
+                    3  &  0.422238208  &     18  &  0.449033402  &     33  &  0.448027103  \\
+                    4  &  0.469282988  &     19  &  0.447284756  &     34  &  0.448091958  \\
+                    5  &  0.431347074  &     20  &  0.448688365  &     35  &  0.448039891  \\
+                    6  &  0.461686032  &     21  &  0.447561363  &     36  &  0.448081691  \\
+                    7  &  0.437258678  &     22  &  0.448466044  &     37  &  0.448048133  \\
+                    8  &  0.456821582  &     23  &  0.447739682  &     38  &  0.448075074  \\
+                    9  &  0.441086448  &     24  &  0.44832278   &     39  &  0.448053445  \\
+                   10  &  0.453699216  &     25  &  0.44785463   &     40  &  0.448070809  \\
+                   11  &  0.443561035  &     26  &  0.448230453  &     41  &  0.448056869  \\
+                   12  &  0.451692029  &     27  &  0.447928723  &     42  &  0.44806806   \\
+                   13  &  0.445159128  &     28  &  0.448170951  &     43  &  0.448059076  \\
+                   14  &  0.450400504  &     29  &  0.447976481  &         &               \\
+                \bottomrule
+            \end{longtable}
+
+            We conclude that the fixed point \(p \approx \num{0.448059}\).
+
+        \item Let \(g(x) = \num{0.5}(\sin{x} + \cos{x})\). It's clear that \(g\)
+            is continuous in \(\mathbb{R}\).
+
+            Manipulating \(g\) gives:
+
+            \begin{align*}
+                \sin{x} + \cos{x} &= \sqrt{2} \left(\frac{1}{\sqrt{2}} \sin{x} + \frac{1}{\sqrt{2}} \cos{x}\right) \\
+                                  &= \sqrt{2} \left(\cos{\frac{\pi}{4}} \sin{x} + \sin{\frac{\pi}{4}} \cos{x}\right) \\
+                                  &= \sqrt{2} \sin \left(x + \frac{\pi}{4}\right) \\
+                \Rightarrow  g(x) &= \num{0.5}(\sin{x} + \cos{x}) \\
+                                  &= \frac{1}{\sqrt{2}} \sin \left(x + \frac{\pi}{4}\right)
+            \end{align*}
+
+            Consider the interval \(I = \interval{0}{\frac{\pi}{4}}\).
+            \(sin{x}\) is monotonically increasing in
+            \(\interval{0}{\frac{\pi}{2}}\), so \(\sin{x + \frac{\pi}{4}}\) also
+            is monotonically increasing in \(I\). It follows that:
+
+            \[\begin{aligned}
+                0 < g(0) = \num{0.5} < g(x) < &g(\frac{\pi}{4}) = \frac{1}{\sqrt{2}} < \frac{\pi}{4} \\
+                                  \Rightarrow &g(x) \in I \, \forall x \in I
+            \end{aligned}\]
+
+            So, \(I\) is an interval in which a fixed point \(p\) of \(g\)
+            exists. Applying fixed-point method on \(g\) with \(p_0 =
+            \frac{\pi}{8}\) generates the following table:
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=1.9] r S[table-format=1.9]}
+                    \toprule
+                    \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                    \midrule
+                        0  &  0.392699082  &      4  &  0.704799153  \\
+                        1  &  0.653281482  &      5  &  0.704811271  \\
+                        2  &  0.700944543  &      6  &  0.70481196   \\
+                        3  &  0.70458659   &         &               \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+
+            We conclude that the fixed point \(p \approx \num{0.704812}\).
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    For each of the following equations, use the given interval or determine an
+    interval \(\interval{a}{b}\) on which fixed-point iteration will converge.
+    Estimate the number of iterations necessary to obtain approximations
+    accurate to within \(10^{-5}\), and perform the calculations.
+
+    \begin{tasks}(2)
+        \task \(2 + \sin{x} - x = 0\) on \(\interval{2}{3}\)
+        \task \(x^3 - 3x - 5 = 0\) on \(\interval{2}{3}\)
+        \task \(3x^2 - e^x = 0\)
+        \task \(x - \cos{x} = 0\)
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item Let \(I = \interval{2}{3}\) and
+
+            \[\begin{aligned}
+                             g(x) &= \sin{x} + 2 \\
+                \Rightarrow g'(x) &= \cos{x}
+            \end{aligned}\]
+
+            A fixed point \(p\) of \(g\) will also be a root of the problem.
+
+            Consider \(g\). It's clear that \(g\) is continuous on
+            \(\mathbb{R}\). \(\sin{x}\) is monotonically decreasing in \(I\), so
+            that:
+
+            \[2 < g(3) = \sin{3} + 2 < g(x) < g(2) = \sin{2} + 2 < 3\]
+
+            Consider \(g'\). \(\cos{x}\) is monotonically decreasing in \(I\),
+            so that:
+
+            \begin{gather*}
+                \cos{3} \leq g'(x) \leq \cos{2} < 0 \, \forall x \in I \\
+                \Rightarrow \abs{g'(x)} \leq k = - \cos{3} < 1
+            \end{gather*}
+
+            Therefore, all the conditions in Corollary 2.5 hold. Using Corollary
+            2.5, with \(p_0 = \num{2.5}\), the number of iteration \(n\)
+            required to obtain approximations accurate to within \(10^{-5}\) is:
+
+            \[\abs{p_n - p} \leq k^n \num{0.5} < 10^{-5} \iff n \geq 1076\]
+
+            Applying fixed-point method on \(g\) generates the following table:
+
+            \begin{longtable}{r S[table-format=1.8] r S[table-format=1.8] r S[table-format=1.8]}
+                \toprule
+                \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                \midrule
+                \endfirsthead
+                \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                \midrule
+                \endhead
+                    0  &  2.5          &     18  &  2.55222543   &     36  &  2.55412346   \\
+                    1  &  2.59847214   &     19  &  2.55583511   &     37  &  2.55425629   \\
+                    2  &  2.51680997   &     20  &  2.5528308    &     38  &  2.55414573   \\
+                    3  &  2.58492102   &     21  &  2.55533177   &     39  &  2.55423776   \\
+                    4  &  2.52836328   &     22  &  2.55325015   &     40  &  2.55416115   \\
+                    5  &  2.57551141   &     23  &  2.55498297   &     41  &  2.55422492   \\
+                    6  &  2.5363287    &     24  &  2.55354068   &     42  &  2.55417184   \\
+                    7  &  2.56897915   &     25  &  2.55474128   &     43  &  2.55421602   \\
+                    8  &  2.54183051   &     26  &  2.55374195   &     44  &  2.55417925   \\
+                    9  &  2.56444615   &     27  &  2.5545738    &     45  &  2.55420986   \\
+                   10  &  2.54563487   &     28  &  2.5538814    &     46  &  2.55418438   \\
+                   11  &  2.56130168   &     29  &  2.55445776   &     47  &  2.55420559   \\
+                   12  &  2.5482673    &     30  &  2.55397801   &     48  &  2.55418793   \\
+                   13  &  2.55912111   &     31  &  2.55437735   &     49  &  2.55420263   \\
+                   14  &  2.55008961   &     32  &  2.55404495   &     50  &  2.5541904    \\
+                   15  &  2.55760933   &     33  &  2.55432164   &     51  &  2.55420058   \\
+                   16  &  2.55135148   &     34  &  2.55409133   &     52  &  2.5541921    \\
+                   17  &  2.55656141   &     35  &  2.55428304   &         &               \\
+               \bottomrule
+            \end{longtable}
+
+            So one root of the problem is \(p \approx \num{2.554192}\).
+
+        \item Let \(I = \interval{2}{3}\) and
+
+            \[\begin{aligned}
+                             g(x) &= \sqrt[3]{2x + 5} \\
+                \Rightarrow g'(x) &= \dfrac{2}{3} (2x + 5)^{- \sfrac{2}{3}}
+            \end{aligned}\]
+
+            A fixed point \(p\) of \(g\) will also be a root of the problem.
+
+            Consider \(g\). It's clear that \(g\) is continuous and
+            monotonically increasing on \(\mathbb{R}\), so that:
+
+            \begin{align*}
+                2 < g(2) = \sqrt[3]{9} < &g(x) < g(3) = \sqrt[3]{11} < 3 \\
+                             \Rightarrow &g(x) \in I \, \forall x \in I
+            \end{align*}
+
+            Consider \(g'\). Since \(- \sfrac{2}{3} < 0\) and \(I > 0\),
+            \(g'(x)\) is monotonically decreasing in \(I\), so that:
+
+            \begin{gather*}
+                g'(2) = \frac{2}{9 \sqrt[3]{3}} \geq g'(x) \geq g'(3) = \frac{2}{3 \sqrt[3]{121}} \\
+                \Rightarrow \abs{g'(x)} \leq k = \frac{2}{9 \sqrt[3]{3}} < 1
+            \end{gather*}
+
+            Therefore, all the conditions in Corollary 2.5 hold. Using Corollary
+            2.5, with \(p_0 = \num{2.5}\), the number of iteration \(n\)
+            required to obtain approximations accurate to within \(10^{-5}\) is:
+
+            \[\abs{p_n - p} \leq k^n \num{0.5} < 10^{-5} \iff n \geq 6\]
+
+            Applying fixed-point method on \(g\) generates the following table:
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=1.8] r S[table-format=1.8]}
+                    \toprule
+                    \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                    \midrule
+                        0  &  2.5          &      4  &  2.09476055   \\
+                        1  &  2.15443469   &      5  &  2.09458325   \\
+                        2  &  2.10361203   &      6  &  2.09455631   \\
+                        3  &  2.09592741   &      7  &  2.09455222   \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+
+            So one root of the problem is \(p \approx \num{2.094552}\).
+
+        \item Let \(I = \interval{3}{4}\) and
+
+            \begin{align*}
+                             g(x) &= \ln{3x^2} = 2 \ln{x} + \ln{3} \\
+                \Rightarrow g'(x) &= \frac{2}{x}
+            \end{align*}
+
+            A fixed point \(p\) of \(g\) will also be a root of the problem.
+
+            Consider \(g\). It's clear that \(g\) is continuous and
+            monotonically increasing on \(I\), so that:
+
+            \begin{align*}
+                3 < g(3) = \ln{27} < &g(x) < g(4) = \ln{48} < 4 \\
+                         \Rightarrow &g(x) \in I \, \forall x \in I
+            \end{align*}
+
+            Consider \(g'\). Since \(I > 0\), \(g'(x)\) is monotonically
+            decreasing in \(I\), so that:
+
+            \begin{gather*}
+                g'(3) = \frac{2}{3} \geq g'(x) \geq g'(4) = \frac{1}{2} \\
+                \Rightarrow \abs{g'(x)} \leq k = \frac{2}{3} < 1
+            \end{gather*}
+
+            Therefore, all the conditions in Corollary 2.5 hold. Using Corollary
+            2.5, with \(p_0 = \num{3.5}\), the number of iteration \(n\)
+            required to obtain approximations accurate to within \(10^{-5}\) is:
+
+            \[\abs{p_n - p} \leq k^n \num{0.5} < 10^{-5} \iff n \geq 27\]
+
+            Applying fixed-point method on \(g\) generates the following table:
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=1.8] r S[table-format=1.8] r S[table-format=1.8]}
+                    \toprule
+                    \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                    \midrule
+                        0  &  3.5          &      6  &  3.72717712   &     12  &  3.73293923   \\
+                        1  &  3.60413823   &      7  &  3.72991458   &     13  &  3.73300413   \\
+                        2  &  3.66277767   &      8  &  3.73138295   &     14  &  3.7330389    \\
+                        3  &  3.69505586   &      9  &  3.73217015   &     15  &  3.73305753   \\
+                        4  &  3.71260363   &     10  &  3.73259204   &     16  &  3.73306751   \\
+                        5  &  3.72207913   &     11  &  3.7328181    &         &               \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+
+            So one root of the problem is \(p \approx \num{3.733068}\).
+
+        \item Let \(I = \interval{0}{1}\) and
+
+            \begin{align*}
+                             g(x) &= \cos{x} \\
+                \Rightarrow g'(x) &= - \sin{x}
+            \end{align*}
+
+            A fixed point \(p\) of \(g\) will also be a root of the problem.
+
+            Consider \(g\). It's clear that \(g\) is continuous and
+            monotonically decreasing on \(I\), so that:
+
+            \begin{align*}
+                1 = g(0) \geq &g(x) \geq g(1) = \cos{1} > 0  \\
+                  \Rightarrow &g(x) \in I \, \forall x \in I
+            \end{align*}
+
+            Consider \(g'\). Since \(I > 0\), \(g'(x)\) is monotonically
+            decreasing in \(I\), so that:
+
+            \begin{gather*}
+                g'(0) = 0 \geq g'(x) \geq g'(1) = - \sin{1} \\
+                \Rightarrow \abs{g'(x)} \leq k = \sin{1} < 1
+            \end{gather*}
+
+            Therefore, all the conditions in Corollary 2.5 hold. Using Corollary
+            2.5, with \(p_0 = \num{0.5}\), the number of iteration \(n\)
+            required to obtain approximations accurate to within \(10^{-5}\) is:
+
+            \[\abs{p_n - p} \leq k^n \num{0.5} < 10^{-5} \iff n \geq 63\]
+
+            Applying fixed-point method on \(g\) generates the following table:
+
+            \begin{longtable}{r S[table-format=1.9] r S[table-format=1.9] r S[table-format=1.9]}
+                \toprule
+                \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                \midrule
+                \endfirsthead
+                \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                \midrule
+                \endhead
+                    0  &  0.5          &     10  &  0.735006309  &     20  & 0.73900678    \\
+                    1  &  0.877582562  &     11  &  0.741826523  &     21  & 0.739137911   \\
+                    2  &  0.639012494  &     12  &  0.737235725  &     22  & 0.739049581   \\
+                    3  &  0.802685101  &     13  &  0.740329652  &     23  & 0.739109081   \\
+                    4  &  0.694778027  &     14  &  0.738246238  &     24  & 0.739069001   \\
+                    5  &  0.768195831  &     15  &  0.739649963  &     25  & 0.739096      \\
+                    6  &  0.719165446  &     16  &  0.738704539  &     26  & 0.739077813   \\
+                    7  &  0.752355759  &     17  &  0.739341452  &     27  & 0.739090064   \\
+                    8  &  0.730081063  &     18  &  0.738912449  &     28  & 0.739081812   \\
+                    9  &  0.745120341  &     19  &  0.739201444  &         &               \\
+               \bottomrule
+            \end{longtable}
+
+            So one root of the problem is \(p \approx \num{0.739082}\).
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Find all the zeros of \(f(x) = x^2 + 10 \cos{x}\) by using the fixed-point
+    iteration method for an appropriate iteration function \(g\). Find the zeros
+    accurate to within \(10^{-4}\).
+\end{exercise}
+
+\begin{solution}
+    Consider \(f = 0\). Since \(x^2 \geq 0\), \(\cos{x}\) must be negative for
+    the equation to hold, so that:
+
+    \begin{equation*}\label{exer:2.2.13:bound_x_by_cos}
+        x \in I_k = \interval{\frac{\pi}{2} + k 2 \pi}{\frac{3 \pi}{2} + k 2 \pi} \, \forall k \in \mathbb{N} \tag{1}
+    \end{equation*}
+
+    Also, since \(10 \cos{x} \in \interval{-10}{0}\):
+
+    \begin{equation*}\label{exer:2.2.13:bound_x_by_x^2}
+        x \in \interval{- \sqrt{10}}{\sqrt{10}} \tag{2}
+    \end{equation*}
+
+    Combining \eqref{exer:2.2.13:bound_x_by_cos} and
+    \eqref{exer:2.2.13:bound_x_by_x^2} gives:
+
+    \[x \in I = I_a \cup I_b \text{ where } I_a = \interval{- \sqrt{10}}{- \frac{\pi}{2}} \text{ and } I_b = \interval{\frac{\pi}{2}}{\sqrt{10}}\]
+
+    As \(x^2\) and \(\cos{x}\) take \(Oy\) as a symmetry axis, each zero \(z_b\)
+    of \(f\) in \(I_b\) will result in another zero \(z_a = - z_b\) in \(I_a\).
+    Hence, from now on, we just need to examine on \(I_b\).
+
+    Differentiating \(f\) gives:
+
+    \[f'(x) = 2x - 10 \sin{x}\]
+
+    \(x\) is monotonically increasing on \(I_b\), \(\sin{x}\) is monotonically
+    decreasing on \(I_b\). It follows that \(f'\) is monotonically increasing on
+    \(I_b\), which means:
+
+    \[f'(\frac{\pi}{2}) = \pi - 10 \leq f'(x) \leq f'(\sqrt{10}) = 2 \sqrt{10} - 10 \sin{\sqrt{10}}\]
+
+    \(f'\) clearly has one zero in \(I_b\), which means \(f\) has at most two
+    zeros in \(I_b\).
+
+    \begin{center}
+        \textbf{unfinished}
+    \end{center}
+\end{solution}
+
+\begin{exercise}
+    Use a fixed-point iteration method to determine a solution accurate to
+    within \(10^{-4}\) for \(x = \tan{x}\), for \(x \in \interval{4}{5}\).
+\end{exercise}
+
+\begin{solution}
+    
+\end{solution}
+
+\end{document}

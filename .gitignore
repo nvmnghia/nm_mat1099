@@ -511,3 +511,13 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+
+#####
+# Project
+#####
+
+# Include section folders that is exluded by rule
+# *.[1-9]
+# of #(r)(e)ledmac/(r)(e)ledpar, as they ends with .1, .2,...
+!section*/
