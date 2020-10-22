@@ -73,7 +73,12 @@ def fixed_point(P_0: float,  ERROR_BOUND: float, MAX_ITER: int, return_all=False
     T = [FixedPointData(n=0, p=p_0)] if return_all else None
 
     for i in range(1, MAX_ITER):
-        p = g(p_0)
+        try:
+            p = g(p_0)
+        except ArithmeticError as ae:
+            logging.error(f'Arithmetic error at iteration {i}: {ae}')
+            print(ae)
+            return None, T
 
         if return_all:
             T.append(FixedPointData(n=i, p=p))

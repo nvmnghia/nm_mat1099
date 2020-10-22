@@ -93,8 +93,14 @@ def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_
 
     a = A_1
     b = B_1
-    f_a = f(a)
-    f_b = f(b)
+
+    try:
+        f_a = f(a)
+        f_b = f(b)
+    except ArithmeticError as ae:
+        logging.error(f'Arithmetic error during prepare: {ae}')
+        print(ae)
+        return None, None
 
     if same_sign(f_a, f_b):
         logging.warning(f'f(A_1) = {f_a} and f(B_1) = {f_b} have the same sign')
@@ -113,7 +119,13 @@ def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_
 
     for i in range(1, N + 1):
         p = (a + b) / 2
-        f_p = f(p)
+
+        try:
+            f_p = f(p)
+        except ArithmeticError as ae:
+            logging.error(f'Arithmetic error at iteration {i}: {ae}')
+            print(ae)
+            return None, T
 
         if return_all:
             T[i - 1] = BisectionData(n=i, a=a, b=b, p=p, f=f_p)

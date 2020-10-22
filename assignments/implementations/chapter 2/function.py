@@ -12,7 +12,7 @@ params = {
     'B_1': math.pi,
 
     # or 1, depends on the method
-    'P_0': 1.5,
+    'P_0': 12000 / 3217,
 
     # Upper bound for absolute error
     'ERROR_BOUND': 10**(-4),
@@ -73,8 +73,7 @@ def g(p: float) -> float:
         The value of the function at x.
     """
 
-    s = p**2
-    return p - (s - 3) / s
+    return 300 - 80.425 * p - 201.0625 * (1 - math.e**(-0.4 * p))
 
 
 DESC_A_1 = '''
