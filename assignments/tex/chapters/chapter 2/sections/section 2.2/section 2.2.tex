@@ -313,13 +313,13 @@
         \item \(g(x) \in I \, \forall x \in I\)
     \end{itemize}
 
-    According to theorem 2.3, there exists a fixed point of \(g\) on \(I\).
+    According to Theorem 2.3, there exists a fixed point of \(g\) on \(I\).
 
     Differentiating \(g\) gives:
 
     \[g'(x) = -\num{0.25} \cos{\num{0.5} x} \Rightarrow \abs{g'(x)} \leq k = \num{0.25} < 1 \, \forall x\]
 
-    Again, according to theorem 2.3, there exists one and only one fixed point
+    Again, according to Theorem 2.3, there exists one and only one fixed point
     of \(g\) on \(I\).
 
     Applying fixed-point method on \(g\), with \(p_0 = \pi\), generates the
@@ -380,7 +380,7 @@
         \item \(g(x) \in I \, \forall x \in I\)
     \end{itemize}
 
-    According to theorem 2.3, there exists a fixed point of \(g\) on \(I\).
+    According to Theorem 2.3, there exists a fixed point of \(g\) on \(I\).
 
     Consider \(g'\):
 
@@ -432,7 +432,7 @@
     and an approximation of \(p\) is an approximation of \(\sqrt{3}\).
 
     Consider \(g(x) = \frac{3}{x}\). It is clear that this is a bad choice, as
-    applying \(g\) on any \(p_0\) will generate a sequence that jumps between
+    applying \(g\) on any \(p_0\) generates a sequence that jumps between
     \(p_0\) and \(\frac{3}{p_0}\).
 
     From the textbook examples, we choose \(g(x) = x - \frac{x^2 - 3}{x^2}\).
@@ -492,9 +492,9 @@
 
 \begin{exercise}
     For each of the following equations, determine an interval
-    \(\interval{a}{b}\) on which fixed-point iteration will converge. Estimate
-    the number of iterations necessary to obtain approximations accurate to
-    within \(10^{-5}\), and perform the calculations.
+    \(\interval{a}{b}\) on which fixed-point iteration converges. Estimate the
+    number of iterations necessary to obtain approximations accurate to within
+    \(10^{-5}\), and perform the calculations.
 
     \begin{tasks}(2)
         \task \(x = \dfrac{2 - e^x + x^2}{3}\)
@@ -516,7 +516,7 @@
                 \Rightarrow&& g''(x) &= \frac{2 - e^x}{3}
             \end{aligned}\]
 
-            It's clear that \(g\) is continuous in \(\mathbb{R}\).
+            It is clear that \(g\) is continuous in \(\mathbb{R}\).
 
             Consider \(g''\):
 
@@ -599,7 +599,7 @@
 
             \[g(x) = \left(\frac{e^x}{3}\right)^{\sfrac{1}{2}}\]
 
-            It's clear that \(g\) is continuous in \(\mathbb{R}\).
+            It is clear that \(g\) is continuous in \(\mathbb{R}\).
 
             \(g\) is monotonically increasing in \(\mathbb{R}\). Consider the
             interval \(I = \interval{0}{1}\):
@@ -630,7 +630,7 @@
 
             We conclude that the fixed point \(p \approx \num{0.910002}\).
 
-        \item Let \(g(x) = 5^{-x}\). It's clear that \(g\) is continuous in
+        \item Let \(g(x) = 5^{-x}\). It is clear that \(g\) is continuous in
             \(\mathbb{R}\).
 
             \(5^x\) is monotonically increasing in \(\mathbb{R}\), so \(g\) is
@@ -671,7 +671,7 @@
 
             We conclude that the fixed point \(p \approx \num{0.469626}\).
 
-        \item Let \(g(x) = 6^{-x}\). It's clear that \(g\) is continuous in
+        \item Let \(g(x) = 6^{-x}\). It is clear that \(g\) is continuous in
             \(\mathbb{R}\).
 
             \(6^x\) is monotonically increasing in \(\mathbb{R}\), so \(g\) is
@@ -716,7 +716,7 @@
 
             We conclude that the fixed point \(p \approx \num{0.448059}\).
 
-        \item Let \(g(x) = \num{0.5}(\sin{x} + \cos{x})\). It's clear that \(g\)
+        \item Let \(g(x) = \num{0.5}(\sin{x} + \cos{x})\). It is clear that \(g\)
             is continuous in \(\mathbb{R}\).
 
             Manipulating \(g\) gives:
@@ -784,9 +784,9 @@
                 \Rightarrow g'(x) &= \cos{x}
             \end{aligned}\]
 
-            A fixed point \(p\) of \(g\) will also be a root of the problem.
+            A fixed point \(p\) of \(g\) is also a root of the problem.
 
-            Consider \(g\). It's clear that \(g\) is continuous on
+            Consider \(g\). It is clear that \(g\) is continuous on
             \(\mathbb{R}\). \(\sin{x}\) is monotonically decreasing in \(I\), so
             that:
 
@@ -837,7 +837,7 @@
                \bottomrule
             \end{longtable}
 
-            So one root of the problem is \(p \approx \num{2.554192}\).
+            So one solution of the problem is \(p \approx \num{2.554192}\).
 
         \item Let \(I = \interval{2}{3}\) and
 
@@ -846,9 +846,9 @@
                 \Rightarrow g'(x) &= \dfrac{2}{3} (2x + 5)^{- \sfrac{2}{3}}
             \end{aligned}\]
 
-            A fixed point \(p\) of \(g\) will also be a root of the problem.
+            A fixed point \(p\) of \(g\) is also a solution of the problem.
 
-            Consider \(g\). It's clear that \(g\) is continuous and
+            Consider \(g\). It is clear that \(g\) is continuous and
             monotonically increasing on \(\mathbb{R}\), so that:
 
             \begin{align*}
@@ -886,7 +886,7 @@
                 \end{tabular}
             \end{table}
 
-            So one root of the problem is \(p \approx \num{2.094552}\).
+            So one solution of the problem is \(p \approx \num{2.094552}\).
 
         \item Let \(I = \interval{3}{4}\) and
 
@@ -895,9 +895,9 @@
                 \Rightarrow g'(x) &= \frac{2}{x}
             \end{align*}
 
-            A fixed point \(p\) of \(g\) will also be a root of the problem.
+            A fixed point \(p\) of \(g\) is also a solution of the problem.
 
-            Consider \(g\). It's clear that \(g\) is continuous and
+            Consider \(g\). It is clear that \(g\) is continuous and
             monotonically increasing on \(I\), so that:
 
             \begin{align*}
@@ -937,7 +937,7 @@
                 \end{tabular}
             \end{table}
 
-            So one root of the problem is \(p \approx \num{3.733068}\).
+            So one solution of the problem is \(p \approx \num{3.733068}\).
 
         \item Let \(I = \interval{0}{1}\) and
 
@@ -946,9 +946,9 @@
                 \Rightarrow g'(x) &= - \sin{x}
             \end{align*}
 
-            A fixed point \(p\) of \(g\) will also be a root of the problem.
+            A fixed point \(p\) of \(g\) is also a solution of the problem.
 
-            Consider \(g\). It's clear that \(g\) is continuous and
+            Consider \(g\). It is clear that \(g\) is continuous and
             monotonically decreasing on \(I\), so that:
 
             \begin{align*}
@@ -1007,23 +1007,23 @@
     Consider \(f = 0\). Since \(x^2 \geq 0\), \(\cos{x}\) must be negative for
     the equation to hold, so that:
 
-    \begin{equation*}\label{exer:2.2.13:bound_x_by_cos}
+    \begin{equation*}\label{eq:exer:2.2.13:bound_x_by_cos}
         x \in I_k = \interval{\frac{\pi}{2} + k 2 \pi}{\frac{3 \pi}{2} + k 2 \pi} \, \forall k \in \mathbb{N} \tag{1}
     \end{equation*}
 
     Also, since \(10 \cos{x} \in \interval{-10}{0}\):
 
-    \begin{equation*}\label{exer:2.2.13:bound_x_by_x^2}
+    \begin{equation*}\label{eq:exer:2.2.13:bound_x_by_x^2}
         x \in \interval{- \sqrt{10}}{\sqrt{10}} \tag{2}
     \end{equation*}
 
-    Combining \eqref{exer:2.2.13:bound_x_by_cos} and
-    \eqref{exer:2.2.13:bound_x_by_x^2} gives:
+    Combining \eqref{eq:exer:2.2.13:bound_x_by_cos} and
+    \eqref{eq:exer:2.2.13:bound_x_by_x^2} gives:
 
     \[x \in I = I_a \cup I_b \text{ where } I_a = \interval{- \sqrt{10}}{- \frac{\pi}{2}} \text{ and } I_b = \interval{\frac{\pi}{2}}{\sqrt{10}}\]
 
     As \(x^2\) and \(\cos{x}\) take \(Oy\) as a symmetry axis, each zero \(z_b\)
-    of \(f\) in \(I_b\) will result in another zero \(z_a = - z_b\) in \(I_a\).
+    of \(f\) in \(I_b\) results in another zero \(z_a = - z_b\) in \(I_a\).
     Hence, from now on, we just need to examine on \(I_b\).
 
     Differentiating \(f\) gives:
@@ -1036,12 +1036,54 @@
 
     \[f'(\frac{\pi}{2}) = \pi - 10 \leq f'(x) \leq f'(\sqrt{10}) = 2 \sqrt{10} - 10 \sin{\sqrt{10}}\]
 
-    \(f'\) clearly has one zero in \(I_b\), which means \(f\) has at most two
-    zeros in \(I_b\).
+    Combining with the fact that \(f'\) is continuous on \(I_b\), according to
+    Intermediate Value Theorem, \(f'\) has one zero in \(I_b\). It follows that
+    \(f\) has at most two zeros in \(I_b\).
 
-    \begin{center}
-        \textbf{unfinished}
-    \end{center}
+    Let
+
+    \[g(x) = x - \frac{-10 \cos{x}}{x^2} + 1 = x + \frac{10 \cos{x}}{x^2} + 1\]
+
+    A fixed point of \(g\) is also a zero of \(f\). \emph{Try} applying
+    fixed-point method on \(g\) with several \(p_0\), we found two fixed points:
+
+    \begin{itemize}
+        \item \(p_0 = \frac{\pi}{2}\) generates the following table:
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=1.8] r S[table-format=1.8] r S[table-format=1.8]}
+                    \toprule
+                    \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+                    \midrule
+                        0  &  1.57079633   &      4  &  1.95354867   &      8  &  1.96859328   \\
+                        1  &  2.57079633   &      5  &  1.9749308    &      9  &  1.96897439   \\
+                        2  &  2.29757529   &      6  &  1.96675733   &     10  &  1.96883622   \\
+                        3  &  2.03884343   &      7  &  1.96964871   &     11  &  1.96888624   \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+
+        \item \(p_0 = -\sqrt{10}\) generates the following table:
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{r S[table-format=-1.8]}
+                    \toprule
+                    \(n\)  &   {\(p_n\)}   \\
+                    \midrule
+                        0  &  -3.16227766  \\
+                        1  &  -3.16206373  \\
+                        2  &  -3.16198949  \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+    \end{itemize}
+
+    The second fixed point is interesting. It is indeed a fixed point of \(g\),
+    a zero of \(f\), but it belongs to \(I_a\). Due to the symmetry property, we
+    conclude that \(f\) has 4 zeros: \(\pm \num{1.96889}\) and \(\pm
+    \num{3.16199}\).
 \end{solution}
 
 \begin{exercise}
@@ -1050,7 +1092,512 @@
 \end{exercise}
 
 \begin{solution}
-    
+    Let
+
+    \[g(x) = x - \sqrt[3]{\frac{\tan{x}}{x}} + 1\]
+
+    A fixed point \(p\) of \(g\) is also a solution of the problem. Applying
+    fixed-point method on \(g\) generates the following table:
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{r S[table-format=1.8] r S[table-format=1.8] r S[table-format=1.8]}
+            \toprule
+            \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+            \midrule
+                0  &  4            &      4  &  4.49534411   &      8  &  4.49352955   \\
+                1  &  4.33850407   &      5  &  4.49242947   &      9  &  4.49334961   \\
+                2  &  4.50097594   &      6  &  4.49389301   &     10  &  4.49343923   \\
+                3  &  4.48937873   &      7  &  4.4931677    &         &               \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    So \(p \approx \num{4.49344}\) is a solution of the problem in
+    \(\interval{4}{5}\).
+\end{solution}
+
+\begin{exercise}
+    Use a fixed-point iteration method to determine a solution accurate to
+    within \(10^{-2}\) for \(2 \sin{\pi x} + x = 0\) on \(\interval{1}{2}\). Use
+    \(p_0 = 1\).
+\end{exercise}
+
+\begin{solution}
+    Consider \(f\):
+
+    \begin{align*}
+        &\quad&         f(x) &= 0 \\
+        \iff&& 2 \sin{\pi x} &= -x \\
+        \iff&&         \pi x &= \arcsin{\num{-0.5} x} + k 2 \pi \text{ (\(k \in \mathbb{N}\))} \\
+        \iff&&             x &= \frac{\arcsin{\num{-0.5} x}}{\pi} + 2k
+    \end{align*}
+
+    Let
+
+    \[g(x) = \frac{\arcsin\num{-0.5} x}{\pi} + 2\]
+
+    \(\arcsin\) is chosen as it ``behaves'' nicer than normal \(\sin\). Since
+    \(\arcsin\) returns values in principal branch
+    \(\interval{-\frac{\pi}{2}}{\frac{\pi}{2}}\), we need to use \(k = 1\) to
+    shift the value to cover \(\interval{1}{2}\).
+
+    A fixed point \(p\) of \(g\) is also a solution of the problem. Applying
+    fixed-point method on \(g\) generates the following table:
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{r S[table-format=1.8] r S[table-format=1.8]}
+            \toprule
+            \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+            \midrule
+                0  &  1            &      3  &  1.696498     \\
+                1  &  1.83333333   &      4  &  1.67765706   \\
+                2  &  1.63086925   &      5  &  1.68324099   \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    So \(p \approx \num{1.683}\) is a solution of the problem in
+    \(\interval{1}{2}\).
+
+\end{solution}
+
+\begin{exercise}
+    Let \(A\) be a given positive constant and \(g(x) = 2x - Ax^2\).
+
+    \begin{tasks}
+        \task Show that if fixed-point iteration converges to a nonzero limit,
+            then the limit is \(p = \sfrac{1}{A}\), so the inverse of a number
+            can be found using only multiplications and subtractions.
+        \task Find an interval about \(\sfrac{1}{A}\) for which fixed-point
+            iteration converges, provided \(p_0\) is in that interval.
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item If fixed-point iteration converges to a nonzero limit \(p\), then:
+
+            \begin{align*}
+                     p &= \lim_{n \to \infty} p_n \\
+                       &= \lim_{n \to \infty} g(p_{n - 1}) \\
+                       &= \lim_{n \to \infty} \left(2p_{n - 1} - Ap_{n - 1}^2\right) \\
+                       &= 2p - Ap^2 \\
+                \iff p &= Ap^2 \iff  p = \frac{1}{A}
+            \end{align*}
+
+        \item We try to find \(\delta > 0\) such that fixed-point method
+            converges on \(I = \interval{\sfrac{1}{A} - \delta}{\sfrac{1}{A} +
+            \delta}\) using Fixed Point Theorem.
+
+            The condition that \(g\) is continuous on \(I\) is satisfied with
+            any \(\delta\).
+
+            Consider \(g\):
+
+            \[g(x) = -Ax^2 + 2x = -A \left(x - \frac{1}{A}\right)^2 + \frac{1}{A}\]
+
+            So \(x = \frac{1}{A}\) is the axis of symmetry for \(g\).
+
+            Differentiating \(g\) gives:
+
+            \[g'(x) = 2 - 2Ax\]
+
+            It follows that:
+
+            \begin{itemize}
+                \item \(g'(x) < 0 \iff x > \frac{1}{A}\)
+                \item \(g'(x) = 0 \iff x = \frac{1}{A}\)
+                \item \(g'(x) > 0 \iff x < \frac{1}{A}\)
+            \end{itemize}
+
+            Combining with the fact that \(x = \frac{1}{A}\) is the symmetry
+            axis of \(g\) gives:
+
+            \begin{gather*}
+                g \left(\frac{1}{A} + \delta\right) = g \left(\frac{1}{A} - \delta\right) = g \left(\frac{1}{A} \pm \delta\right) \leq g(x) \leq g \left(\frac{1}{A}\right) \, \forall x \in I \\
+                \iff \frac{2}{A} - A \delta^2 \leq g(x) \leq \frac{1}{A}
+            \end{gather*}
+
+            Then, to satisfy the condition that \(g(x) \in I \, \forall x \in
+            I\), \(\delta\) must satisfy the following:
+
+            \begin{align*}
+                &\quad&   \frac{2}{A} - A \delta^2 &\geq \frac{1}{A} - \delta \\
+                \iff&& (A \delta)^2 - A \delta - 1 &\leq 0 \\
+                \iff&&                  0 < \delta &\leq \frac{1 + \sqrt{5}}{2A} \text{ (as \(\delta > 0\))} \tag{1}\label{eq:exer:2.2.17:1}
+            \end{align*}
+
+            Consider \(g'\). \(g'\) is monotonically decreasing on \(\mathbb{R}\), so:
+
+            \begin{gather*}
+                g' \left(\frac{1}{A} - \delta\right) = 2 A \delta \geq g'(x) \geq g' \left(\frac{1}{A} - \delta\right) = -2 A \delta \\
+                \iff \abs{g'(x)} \leq 2 A \delta \text{ (equal sign only at either end)} \tag{2}\label{eq:exer:2.2.17:2}
+            \end{gather*}
+
+            Then, to satisfy the condition that \(\abs{g'(x)} < 1 \, \forall x
+            \in I_{open} = \interval[open]{\sfrac{1}{A} - \delta}{\sfrac{1}{A} +
+            \delta}\), \(\delta\) must satisfy the following:
+
+            \[2 A \delta \leq 1 \iff \delta \leq \frac{1}{2A}\]
+
+            From \eqref{eq:exer:2.2.17:1} and \eqref{eq:exer:2.2.17:2}:
+
+            \[0 < \delta < \frac{1}{2A}\]
+
+            As all the conditions needed for Fixed Point Theorem hold, we
+            conclude that for any \(\delta \in \interval[open
+            left]{0}{\frac{1}{2A}}\), applying fixed-point method on \(g\) with
+            \(p_0 \in I\) converges to the fixed point.
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Find a function \(g\) defined on \(\interval{0}{1}\) that satisfies none of
+    the hypotheses of Theorem 2.3 but still has a unique fixed point on
+    \(\interval{0}{1}\).
+\end{exercise}
+
+\begin{solution}
+    Let \(I = \interval{0}{1}\), \(g = \dfrac{1}{x + \num{0.5}}\).
+
+    Consider \(g\). \(g\) is defined on \(\mathbb{R} \setminus \{\num{-0.5}\}\),
+    so it is defined on \(I\).
+
+    \(g(x) > 1 \, \forall x \in \interval{\num{-0.5}}{\num{0.5}}\), so the
+    condition that \(g(x) \in I \, \forall x \in I\) does not hold.
+
+    Differentiating \(g\) gives:
+
+    \[g'(x) = - \dfrac{1}{(x + \num{0.5})^2} < -1 \iff x \in \interval[open]{\num{-1.5}}{\num{0.5}} \setminus \{\num{-0.5}\}\]
+
+    So the condition that \(\abs{g'(x)} < 1 \, \forall x \in I\) does not hold.
+
+    Yet, \(g\) has a fixed point at \(x = \dfrac{\sqrt{17} - 1}{4}\).
+\end{solution}
+
+\begin{exercise}
+    \begin{tasks}
+        \task Show that Theorem 2.2 is true if the inequality \(\abs{g'(x)} \leq
+            k\) is replaced by \(g'(x) \leq k\), for all \(x \in
+            \interval[open]{a}{b}\). [Hint: Only uniqueness is in question.]
+        \task Show that Theorem 2.3 may not hold if inequality \(\abs{g'(x)}
+            \leq k\) is replaced by \(g'(x) \leq k\).
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item Where the fuck is Theorem 2.2 in the fucking book?
+        \item In the proof of Theorem 2.3, if \(\abs{g'(x) \leq k}\) is replaced
+            with \(g'(x) \leq k\), then there is a chance that \(g'(\xi) = -1\).
+            In that case, the assumption is no longer a contradiction, therefore
+            the proof is invalid, and the theorem doesn't hold.
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    \begin{tasks}
+        \task Use Theorem 2.4 (Định lí 2.5 in the accompanying Lectures.pdf) to
+            show that the sequence defined by:
+
+            \[x_n = \frac{1}{2} x_{n - 1} + \frac{1}{x_{n - 1}} \text{, for \(n \leq 1\)}\]
+
+            converges to \(\sqrt{2}\) whenever \(x_0 > \sqrt{2}\).
+
+        \task Use the fact that \(0 < (x_0 - \sqrt{2})^2\) whenever \(x_0 \neq
+            \sqrt{2}\) to show that if \(0 < x_0 < \sqrt{2}\), then \(x_1 >
+            \sqrt{2}\).
+
+        \task Use the above results to show that the sequence in (a) converges
+            to \(\sqrt{2}\) whenever \(x_0 > 0\).
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item Let \(g\) be the function that generates the sequence \(\{x_n\}\):
+
+            \begin{align*}
+                             g(x) &= \frac{x}{2} + \frac{1}{x} = \frac{x^2 + 2}{2x} \\
+                \Rightarrow g'(x) &= \frac{1}{2} - \frac{1}{x^2} = \frac{x^2 - 2}{2x^2}
+            \end{align*}
+
+            Consider \(I = \interval{\sqrt{2}}{b}\), for any \(b > \sqrt{2}\).
+            It is clear that \(g\) and \(g'\) exists on \(I\). Since \(g'(x) \leq
+            0 \, \forall x \in I\), \(g\) is monotonically increasing on \(I\).
+
+            Consider \(g'\). \(x^2\) is strictly increasing on \(I\), so \(g'\)
+            is strictly decreasing on \(I\), therefore:
+
+            \begin{gather*}
+                \frac{1}{2} > g'(x) \leq g'(\sqrt{2}) = 0 \, \forall x \in I \\
+                \Rightarrow \abs{g'(x)} < 1 \, \forall x \in I
+            \end{gather*}
+
+            Let
+
+            \[f(x) = g(x) - x = \frac{1}{x} - \frac{x}{2}\]
+
+            \(\sfrac{1}{x}\) is strictly decreasing on \(I\), and so is \(-x\).
+            Therefore, \(f\) is strictly decreasing on \(I\), so:
+
+            \[f(\sqrt{2}) = 0 \leq f(x) \, \forall x \in I\]
+
+            In other words, \(g(x) \leq x \, \forall x \in I\). It means that
+            for any \(b\), \(g(b) < b\). Combining with the fact that
+            \(g(\sqrt{2}) = \sqrt{2}\), it is guaranteed that:
+
+            \[g(x) \in I \, \forall x \in I\]
+
+            All the conditions of Theorem 2.4 hold, so we can apply it here: for
+            any \(x_0 \in I\), applying fixed-point method on \(g\) converges to
+            the unique fixed point in \(I\), using any \(x_0 \in I\).
+
+            Trivially, \(\sqrt{2}\) is a fixed point of \(g\), therefore it must
+            be the unique fixed point on \(I\).
+
+            We can conclude that for any \(x_0 > \sqrt{2}\), the sequence
+            converges to \(\sqrt{2}\).
+
+        \item When \(0 < x < \sqrt{2}\), \(g'(x) < 0\), which means \(g\) is
+            monotonically decreasing. Applying this on \(0 < x_0 < \sqrt{2}\)
+            gives:
+
+            \[x_1 = g(x_0) > g(\sqrt{2}) = \sqrt{2}\]
+
+        \item We have:
+
+            \begin{itemize}
+                \item If \(x_0 > \sqrt{2}\): proven.
+                \item If \(x_0 = \sqrt{2}\): it is exactly the fixed point.
+                \item If \(0 < x_0 < \sqrt{2}\): \(x_1 = g(x_0) > \sqrt{2}\),
+                    then from \(x_1\) onwards, the sequence converges to
+                    \(\sqrt{2}\), as proven with the case \(x_0 > \sqrt{2}\).
+            \end{itemize}
+
+            Therefore, we can conclude that the sequence converges to
+            \(\sqrt{2}\) whenever \(x_0 > 0\).
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    \begin{tasks}
+        \task Show that if A is any positive number, then the sequence defined
+            by
+
+            \[x_n = \frac{1}{2} x_{n - 1} + \frac{A}{2x_{n - 1}} \text{, for } n \geq 1\]
+
+            converges to \(\sqrt{A}\) whenever \(x_0 > 0\).
+        \task What happens if \(x_0 < 0\)?
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item Let
+
+            \begin{align*}
+                             g(x) &= \frac{x}{2} + \frac{A}{2x} = \frac{x^2 + A}{2x}\\
+                \Rightarrow g'(x) &= \frac{1}{2} - \frac{A}{2x^2} = \frac{x^2 - A}{2x^2}
+            \end{align*}
+
+            Trivially, we can find out that \(\sqrt{A}\) is a fixed point of
+            \(g\).
+
+            Let
+
+            \begin{align*}
+                             f(x) &= g(x) - x = \frac{A}{2x} - \frac{x}{2} = \frac{A - x^2}{2x} \\
+                \Rightarrow f'(x) &= - \frac{A}{2x^2} - \frac{1}{2} = - \frac{x^2 + A}{2x^2}
+            \end{align*}
+
+            Since \(f'(x) < 0 \, \forall x \neq 0\), \(f(x)\) is monotonically
+            increasing when \(x > 0\).
+
+            Consider the sign of \(g'\):
+
+            \begin{itemize}
+                \item \(g'(x) < 0 \iff \abs{x} < \sqrt{A}\)
+                \item \(g'(x) = 0 \iff \abs{x} = \sqrt{A}\)
+                \item \(g'(x) > 0 \iff \abs{x} > \sqrt{A}\)
+            \end{itemize}
+
+            If \(x > \sqrt{A}\), then:
+
+            \begin{itemize}
+                \item \(g' > 0\), which means \(g\) is monotonically increasing.
+                    It follows that:
+
+                    \[g(x) > g(\sqrt{A}) = \sqrt{A}\]
+
+                \item \(f(x) < f(\sqrt{A}) = 0\), which means \(g(x) < x\),
+                    making \(\{x_n\}\) a decreasing sequence.
+            \end{itemize}
+
+            From both of the above, we know that \(\{x_n\}\) is a lower-bounded
+            decreasing sequence, and therefore must converge:
+
+            \begin{align*}
+                     x &= \lim_{n \to \infty} x_n \\
+                       &= \lim_{n \to \infty} g(x_{n - 1}) \\
+                       &= \lim_{n \to \infty} \frac{x_{n - 1}}{2} + \frac{A}{2 x_{n - 1}} \\
+                       &= \frac{x}{2} + \frac{A}{2x} \\
+                \iff x &= \sqrt{A}
+            \end{align*}
+
+            So, for all \(x_0 > \sqrt{A}\), the sequence converges to
+            \(\sqrt{A}\).
+
+            If \(x = \sqrt{A}\), then \(g(x) = x = \sqrt{A}\). Hence \(x_n =
+            \sqrt{A} \, \forall n \geq 0\). So, for \(x_0 = \sqrt{A}\), the
+            sequence converges to \(\sqrt{A}\).
+
+            If \(0 < x < \sqrt{A}\), then \(g' < 0\), which means \(g\) is
+            monotonically decreasing. It follows that:
+
+            \[g(x) > g(\sqrt{A}) = \sqrt{A}\]
+
+            So, for \(0 < x_0 < \sqrt{A}\), \(x_1 = g(x_0) > \sqrt{A}\), then
+            from \(x_1\) onwards, the sequence converges to \(\sqrt{A}\), as
+            proven with the case \(x_0 > \sqrt{A}\).
+
+            We can conclude that the sequence \(\{x_n\}\) converges to
+            \(\sqrt{2}\) whenever \(x_0 > 0\).
+
+        \item If \(x_0 < 0\), then similar to the above proof, we conclude that
+            the sequence converges to \(-\sqrt{A}\).
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Replace the assumption in Theorem 2.4 that ``a positive number \(k < 1\)
+    exists with \(\abs{g(x)} \leq k\)'' with ``g satisfies a Lipschitz condition
+    on the interval \(\interval{a}{b}\) with Lipschitz constant \(L < 1\)'' (See
+    Exercise 27, Section 1.1.) Show that the conclusions of this theorem are
+    still valid.
+\end{exercise}
+
+\begin{solution}
+    \(g\) satisfies a Lipschitz condition on the interval \(\interval{a}{b}\)
+    with Lipschitz constant \(L < 1\) means that:
+
+    \[\frac{g(x_1) - g(x_2)}{x_1 - x_2} \leq L \, \forall x_1, x_2 \in \interval{a}{b} \tag{*}\label{eq:exer:2.2.21}\]
+
+    In the proof of Theorem 2.4, we see that:
+
+    \[\abs{p - p_n} = \abs{g(p) - g(p_{n - 1})}\]
+
+    From the previous section of the proof, we already proved that \(p\) and
+    \(p_{n - 1}\) is in \(\interval{a}{b}\). Applying \eqref{eq:exer:2.2.21}
+    with \(x_1 = p\), \(x_2 = p_{n - 1}\) gives:
+
+    \[\abs{p - p_n} = \abs{g(p) - g(p_{n - 1})} \leq L \abs{p - p_{n - 1}}\]
+
+    Then the proof proceeds normally, replacing \(k\) with \(L\).
+\end{solution}
+
+\begin{exercise}
+    Suppose that \(g\) is continuously differentiable on some interval
+    \(\interval[open]{c}{d}\) that contains the fixed point \(p\) of \(g\). Show
+    that if \(\abs{g'(p)} < 1\), then there exists a \(\delta > 0\) such that if
+    \(\abs{p_0 - p} \leq \delta\), then the fixed-point iteration converges.
+\end{exercise}
+
+\begin{solution}\label{exer:2.2.22}
+    Since \(p\) is a fixed point in \(\interval[open]{c}{d}\) of \(g\),
+    \(g(p) = p\).
+
+    Since \(g'\) is continuous at \(p\), according to the definition of
+    continuity and limit, for every \(\varepsilon > 0\), there exist \(\delta >
+    0\) such that:
+
+    \begin{gather*}
+        \abs{g'(x) - g'(p)} < \varepsilon \, \forall x \in D = \interval{p - \delta}{p + \delta} \\
+        \iff g'(x) \in E = \interval{g'(p) - \varepsilon}{g'(p) + \varepsilon} \, \forall x \in D
+    \end{gather*}
+
+    We can always choose a \(\varepsilon\) such that \(E \subset
+    \interval[open]{-1}{1}\). Then the proof proceeds normally, replacing
+    \(\interval{a}{b}\) with \(E\).
+\end{solution}
+
+\begin{exercise}
+    An object falling vertically through the air is subjected to viscous
+    resistance as well as to the force of gravity. Assume that an object with
+    mass \(m\) is dropped from a height \(s_0\) and that the height of the
+    object after \(t\) seconds is:
+
+    \[s(t) = s_0 - \frac{mg}{k} t + \frac{m^2g}{k^2} (1 - e^{- \sfrac{kt}{m}})\]
+
+    \noindent where \(g = \SI{32.17}{ft \per \second \squared}\) and \(k\)
+    represents the coefficient of air resistance in lb/s. Suppose \(s_0 =
+    \SI{300}{ft}\), \(m = \SI{0.25}{lb}\), and \(k = \SI{0.1}{lb \per
+    \second}\). Find, to within \(\SI{0.01}{\second}\), the time it takes this
+    quarter-pounder to hit the ground.
+\end{exercise}
+
+\begin{solution}
+    Replacing symbols in \(s(t)\) with number gives:
+
+    \[s(t) = \num{501.0625} - \num{80.425} t - \num{201.0625} e^{\num{-0.4} t}\]
+
+    Let
+
+    \[g(t) = \frac{1}{80.425} (501.0625 - \num{201.0625} e^{\num{-0.4} t})\]
+
+    A fixed point \(p\) of \(g\) is also a root of \(s(t) = 0\), which is the
+    time it takes the quarter-pounder to hit the ground.
+
+    Applying fixed-point method on \(g\) with \(p_0 = 3\) generates the
+    following table:
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{r S[table-format=1.8] r S[table-format=1.8]}
+            \toprule
+            \(n\)  &   {\(p_n\)}   &  \(n\)  &   {\(p_n\)}   \\
+            \midrule
+                0  &  3            &      3  &  5.99886594   \\
+                1  &  5.47719787   &      4  &  6.00328561   \\
+                2  &  5.9506374    &         &               \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    We conclude that it takes approximately \SI{6.003}{\second} for the
+    quarter-pounder to hit the ground.
+\end{solution}
+
+\begin{exercise}
+    Let \(g \in C^1 \interval{a}{b}\) and \(p\) be in \(\interval[open]{a}{b}\)
+    with \(g(p) = p\) and \(\abs{g'(p)} > 1\). Show that there exists a \(\delta
+    > 0\) such that if \(0 < \abs{p_0 - p} < \delta\), then \(\abs{p_0 - p} <
+    \abs{p_1 - p}\). Thus, no matter how close the initial approximation \(p_0\)
+    is to \(p\), the next iterate \(p_1\) is farther away, so the fixed-point
+    iteration does not converge if \(p_0 \neq p\).
+\end{exercise}
+
+\begin{solution}
+    This problem is similar to \hyperref[exer:2.2.22]{Exercise 22}.
+
+    Since \(g'\) is continuous at \(p\), according to the definition of
+    continuity and limit, for every \(\varepsilon > 0\), there exist \(\delta >
+    0\) such that:
+
+    \begin{gather*}
+        \abs{g'(x) - g'(p)} < \varepsilon \, \forall x \in D = \interval{p - \delta}{p + \delta} \\
+        \iff g'(x) \in E = \interval{g'(p) - \varepsilon}{g'(p) + \varepsilon} \, \forall x \in D
+    \end{gather*}
+
+    We can always choose a \(\varepsilon\) such that \(E \subset
+    \interval[open]{1}{\infty}\).
+
+    If \(p_0 \in D\), then according to Mean Value Theorem, there exist a \(\xi
+    \in D\) such that:
+
+    \[\abs{p_1 - p} = \abs{g(p_0) - g(p)} = \abs{g'(\xi)} \abs{p_0 - p} > \abs{p_0 - p}\]
 \end{solution}
 
 \end{document}
