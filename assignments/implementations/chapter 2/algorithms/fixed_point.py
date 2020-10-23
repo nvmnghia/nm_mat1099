@@ -1,15 +1,14 @@
 import logging
 from typing import NamedTuple, List
 
-
-from function import g, DESC_P_0, DESC_ERROR_BOUND, DESC_MAX_ITER
+from function import g, DESC_G, DESC_P_0, DESC_ERROR_BOUND, DESC_MAX_ITER
 
 
 METHOD_DESC = f'''
-    A fixed-point-finding method.
+    A fixed-point-finding method, not a root-finding one.
     g is applied on the initial value, and its output is used as input in the next iteration.
 
-    For the method to work, there must exist a < b such that:
+    Some basic sufficient conditions:
     - g is continuous on [a, b], g(x) is in between g(a), g(b) for all x in [a, b]:  p exists on [a, b]
     - In addition, g is differentiable on (a, b), |g(x)| < 1 for all x in [a, b]:    p is unique on [a, b]
 
@@ -17,8 +16,7 @@ METHOD_DESC = f'''
 
     Functions
     ---------
-    g
-        Function to find fixed point for (not f).
+    {DESC_G}
 
     Parameters
     ----------
@@ -28,9 +26,9 @@ METHOD_DESC = f'''
 '''
 
 
-class FixedPointData(NamedTuple):
+class FixedPointIterData(NamedTuple):
     """
-    NamedTuple holding iteration data for fixed-point method.
+    NamedTuple holding data of one iteration for fixed-point method.
     """
 
     # iteration number (>= 0)
@@ -39,7 +37,7 @@ class FixedPointData(NamedTuple):
     p: float
 
 
-def fixed_point(P_0: float,  ERROR_BOUND: float, MAX_ITER: int, return_all=False) -> List[FixedPointData]:
+def fixed_point(P_0: float,  ERROR_BOUND: float, MAX_ITER: int, return_all=False, **kwargs) -> List[FixedPointIterData]:
     """
     Approximate a fixed point of g using fixed-point method.
 
@@ -57,8 +55,8 @@ def fixed_point(P_0: float,  ERROR_BOUND: float, MAX_ITER: int, return_all=False
     Returns
     -------
     p : float
-        The zero found.
-    T : List[FixedPointData]
+        The fixed point found.
+    T : List[FixedPointIterData]
         List of iteration data. Only returned if return_all is true, else None is returned.
     """
 
@@ -70,9 +68,9 @@ def fixed_point(P_0: float,  ERROR_BOUND: float, MAX_ITER: int, return_all=False
     p = p_0
     found = False
 
-    T = [FixedPointData(n=0, p=p_0)] if return_all else None
+    T = [FixedPointIterData(n=0, p=p)] if return_all else None
 
-    for i in range(1, MAX_ITER):
+    for i in range(1, MAX_ITER + 1):
         try:
             p = g(p_0)
         except ArithmeticError as ae:
@@ -81,7 +79,7 @@ def fixed_point(P_0: float,  ERROR_BOUND: float, MAX_ITER: int, return_all=False
             return None, T
 
         if return_all:
-            T.append(FixedPointData(n=i, p=p))
+            T.append(FixedPointIterData(n=i, p=p))
 
         if abs(p - p_0) < ERROR_BOUND:
             found = True

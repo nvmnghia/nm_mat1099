@@ -97,7 +97,7 @@ def print_latex(T: list, num_table: int):
     print(tabulate(T, tablefmt='latex', floatfmt='.9g'))
 
 
-METHODS = ['bisection', 'fixed_point']
+METHODS = ['bisection', 'fixed_point', 'newton']
 
 # Setup parser
 PROG_DESC = '''
@@ -138,6 +138,8 @@ if args.info:
         from algorithms.bisection import METHOD_DESC
     elif method == 'fixed_point':
         from algorithms.fixed_point import METHOD_DESC
+    elif method == 'newton':
+        from algorithms.newton import METHOD_DESC
     else:
         raise ValueError(f'Invalid method {method}')
 
@@ -151,13 +153,14 @@ if args.verbose:
 # Perform approximation
 params = merge_params(args.override)
 if method == 'bisection':
-    from algorithms.bisection import bisection
-    p, T = bisection(params['A_1'], params['B_1'], params['ERROR_BOUND'], params['MAX_ITER'], return_all=args.latex)
+    from algorithms.bisection import bisection as method
 elif method == 'fixed_point':
-    from algorithms.fixed_point import fixed_point
-    p, T = fixed_point(params['P_0'], params['ERROR_BOUND'], params['MAX_ITER'], return_all=args.latex)
+    from algorithms.fixed_point import fixed_point as method
+elif method == 'newton':
+    from algorithms.newton import newton as method
 else:
     raise ValueError(f'Invalid method {method}')
+p, T = method(**params, return_all=args.latex)
 
 # Print shit
 if p is None:

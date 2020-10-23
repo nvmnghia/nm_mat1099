@@ -12,7 +12,7 @@ params = {
     'B_1': math.pi,
 
     # or 1, depends on the method
-    'P_0': 12000 / 3217,
+    'P_0': -1,
 
     # Upper bound for absolute error
     'ERROR_BOUND': 10**(-4),
@@ -24,7 +24,7 @@ params = {
 
 def f(x: float) -> float:
     """
-    Univariate function to find root for.
+    Univariate function to find zero for.
 
     Parameters
     ----------
@@ -37,7 +37,7 @@ def f(x: float) -> float:
         The value of the function at x.
     """
 
-    return x - 2 * math.sin(x)
+    return -x**3 - math.cos(x)
 
 
 def df(x: float) -> float:
@@ -55,7 +55,7 @@ def df(x: float) -> float:
         The derivative of the function at x.
     """
 
-    pass
+    return -3 * x**2 + math.sin(x)
 
 
 def g(p: float) -> float:
@@ -101,6 +101,17 @@ DESC_MAX_ITER = '''
         Maximum number of iteration allowed.
 '''
 
-DESC_DERIVATIVE = '''
-    The derivative of the function must be known (implemented in function.py).
+DESC_F = '''
+    f
+        Univariate function to find zero for.
+'''
+
+DESC_DF = '''
+    df
+        Derivative of f.
+'''
+
+DESC_G = '''
+    g
+        Univariate function to find fixed point for (not f).
 '''

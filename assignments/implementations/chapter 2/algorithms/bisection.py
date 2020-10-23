@@ -3,11 +3,11 @@ import logging
 from typing import NamedTuple, List
 
 # Parameters could be overridden in find_root.py, so they're not imported here.
-from function import f, DESC_A_1, DESC_B_1, DESC_ERROR_BOUND, DESC_MAX_ITER
+from function import f, DESC_F, DESC_A_1, DESC_B_1, DESC_ERROR_BOUND, DESC_MAX_ITER
 
 
 METHOD_DESC = f'''
-    A bracketing, iterative zero-finding method.
+    A bracketing root-finding method.
     The search range is halved until the zero is found.
 
     f must be continuous, and there exists a < b for which f(a)f(b) < 0.
@@ -16,8 +16,7 @@ METHOD_DESC = f'''
 
     Functions
     ---------
-    f
-        Function to find zero for.
+    {DESC_F}
 
     Parameters
     ----------
@@ -28,9 +27,9 @@ METHOD_DESC = f'''
 '''
 
 
-class BisectionData(NamedTuple):
+class BisectionIterData(NamedTuple):
     """
-    NamedTuple holding iteration data for Bisection method.
+    NamedTuple holding iteration data of one iteration for Bisection method.
     """
 
     # iteration number (>= 1)
@@ -42,28 +41,10 @@ class BisectionData(NamedTuple):
     # approximated value
     p: float
     # value of f at p
-    f: float
+    f_p: float
 
 
-def same_sign(n1: float, n2: float) -> bool:
-    """
-    Check if 2 numbers have the same sign.
-
-    Parameters
-    ----------
-    n1, n2 : float
-        2 numbers to be checked.
-
-    Returns
-    -------
-    bool
-        Whether the 2 numbers have the same sign.
-    """
-
-    return (n1 > 0) == (n2 > 0)    # Dumb me didn't use ()
-
-
-def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_all=False) -> List[BisectionData]:
+def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_all=False, **kwargs) -> List[BisectionIterData]:
     """
     Approximate a zero of f using bisection method.
 
@@ -84,7 +65,7 @@ def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_
     -------
     p : float
         The zero found.
-    T : List[BisectionData]
+    T : List[BisectionIterData]
         List of iteration data. Only returned if return_all is true, else None is returned.
     """
 
@@ -128,7 +109,7 @@ def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_
             return None, T
 
         if return_all:
-            T[i - 1] = BisectionData(n=i, a=a, b=b, p=p, f=f_p)
+            T[i - 1] = BisectionIterData(n=i, a=a, b=b, p=p, f_p=f_p)
 
         if same_sign(f_p, f_a):
             a = p
@@ -138,3 +119,21 @@ def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_
             f_b = f_p
 
     return p, T
+
+
+def same_sign(n1: float, n2: float) -> bool:
+    """
+    Check if 2 numbers have the same sign.
+
+    Parameters
+    ----------
+    n1, n2 : float
+        2 numbers to be checked.
+
+    Returns
+    -------
+    bool
+        Whether the 2 numbers have the same sign.
+    """
+
+    return (n1 > 0) == (n2 > 0)    # Dumb me didn't use ()
