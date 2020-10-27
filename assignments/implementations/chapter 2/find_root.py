@@ -1,7 +1,10 @@
 import sys
 from argparse import ArgumentParser, Action
+from typing import Dict, Union
 import logging
 from math import ceil
+
+import regex as re
 
 from tabulate import tabulate
 tabulate.PRESERVE_WHITESPACE = True
@@ -27,7 +30,7 @@ class ParseParams(Action):
         setattr(namespace, self.dest, params)
 
 
-def merge_params(override: dict):
+def merge_params(override: Dict[str, float]) -> Dict[str, Union[float, int]]:
     """
     Merge and validate method params.
 
@@ -60,7 +63,7 @@ def merge_params(override: dict):
     return params
 
 
-def print_latex(T: list, num_table: int):
+def print_latex(T: list, num_table: int) -> None:
     """
     Print iteration data as LaTeX tabular.
 
@@ -94,10 +97,37 @@ def print_latex(T: list, num_table: int):
                 for i in range(row_per_side_table)
             )
 
-    print(tabulate(T, tablefmt='latex', floatfmt='.9g'))
+    latex = str(tabulate(T, tablefmt='latex', floatfmt='.13f'))
+
+    # Remove trailing zeros
+    trailing_zero_matcher = re.compile(
+        r'''
+            (?<=         # Positive (=) look behind (<), i.e. must be (positive) preceded by (look behind)
+                \.\d*    # Decimal dot, followed by zero or more digit
+            )
+            0            # Match a SINGLE trailing zero
+            (?=          # Positive (=) look ahead (no <), i.e. must be (positive) succeeded by (look ahead)
+                0*\b     # Zero or more 0, followed by word boundary \b
+            )
+        ''',
+        re.VERBOSE    # Allow free-spacing and comment
+    )
+    latex = re.sub(trailing_zero_matcher, ' ', latex)
+
+    # Remove trailing decimal dot
+    latex = re.sub(r'\.(?=\s)', ' ', latex)
+
+    # Remove redundant minus sign
+    latex = re.sub(r'-(?=0\s)', ' ', latex)
+
+    # Add spacing between columns and newline
+    latex = re.sub('&', ' & ', latex)
+    latex = re.sub(r'\\\\', r' \\\\', latex)
+
+    print(latex)
 
 
-METHODS = ['bisection', 'fixed_point', 'newton']
+METHODS = ['bisection', 'fixed_point', 'newton', 'secant', 'false_position']
 
 # Setup parser
 PROG_DESC = '''
@@ -140,6 +170,10 @@ if args.info:
         from algorithms.fixed_point import METHOD_DESC
     elif method == 'newton':
         from algorithms.newton import METHOD_DESC
+    elif method == 'secant':
+        from algorithms.secant import METHOD_DESC
+    elif method == 'false_position':
+        from algorithms.false_position import METHOD_DESC
     else:
         raise ValueError(f'Invalid method {method}')
 
@@ -158,6 +192,10 @@ elif method == 'fixed_point':
     from algorithms.fixed_point import fixed_point as method
 elif method == 'newton':
     from algorithms.newton import newton as method
+elif method == 'secant':
+    from algorithms.secant import secant as method
+elif method == 'false_position':
+    from algorithms.false_position import false_position as method
 else:
     raise ValueError(f'Invalid method {method}')
 p, T = method(**params, return_all=args.latex)

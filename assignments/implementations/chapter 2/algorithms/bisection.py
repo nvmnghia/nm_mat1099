@@ -4,10 +4,11 @@ from typing import NamedTuple, List
 
 # Parameters could be overridden in find_root.py, so they're not imported here.
 from function import f, DESC_F, DESC_A_1, DESC_B_1, DESC_ERROR_BOUND, DESC_MAX_ITER
+from utils import same_sign
 
 
 METHOD_DESC = f'''
-    A bracketing root-finding method.
+    A bracketing root-finding method, slow but guarantees convergences.
     The search range is halved until the zero is found.
 
     f must be continuous, and there exists a < b for which f(a)f(b) < 0.
@@ -44,7 +45,7 @@ class BisectionIterData(NamedTuple):
     f_p: float
 
 
-def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_all=False, **kwargs) -> List[BisectionIterData]:
+def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_all=False, **_) -> List[BisectionIterData]:
     """
     Approximate a zero of f using bisection method.
 
@@ -69,6 +70,7 @@ def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_
         List of iteration data. Only returned if return_all is true, else None is returned.
     """
 
+    logging.info('Using function f')
     logging.info(f'Searching interval [A_1, B_1] = [{A_1}, {B_1}]')
     logging.info(f'Maximum absolute error ERROR_BOUND = {ERROR_BOUND}')
 
@@ -88,9 +90,10 @@ def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_
         return None, None
     logging.info(f'f(A_1) = {f_a} and f(B_1) = {f_b} have the opposite signs')
 
+
     N = int(ceil(log2((B_1 - A_1) / ERROR_BOUND)))
     if N > MAX_ITER:
-        logging.info(f'Number of iteration is restricted to MAX_ITER = {MAX_ITER} instead of {N}')
+        logging.info(f'Number of iteration capped at MAX_ITER = {MAX_ITER} instead of {N}')
         N = MAX_ITER
     else:
         logging.info(f'Number of iteration is {N}')
@@ -119,21 +122,3 @@ def bisection(A_1: float, B_1: float, ERROR_BOUND: float, MAX_ITER: int, return_
             f_b = f_p
 
     return p, T
-
-
-def same_sign(n1: float, n2: float) -> bool:
-    """
-    Check if 2 numbers have the same sign.
-
-    Parameters
-    ----------
-    n1, n2 : float
-        2 numbers to be checked.
-
-    Returns
-    -------
-    bool
-        Whether the 2 numbers have the same sign.
-    """
-
-    return (n1 > 0) == (n2 > 0)    # Dumb me didn't use ()

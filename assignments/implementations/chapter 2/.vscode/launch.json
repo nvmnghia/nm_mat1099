@@ -11,6 +11,22 @@
             "program": "find_root.py",
             "args": ["fixed_point", "-lv", "-t", "2"],
             "console": "integratedTerminal"
+        },
+        {
+            "name": "false position",
+            "type": "python",
+            "request": "launch",
+            "program": "find_root.py",
+            "args": ["false_position", "-lv"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "newton",
+            "type": "python",
+            "request": "launch",
+            "program": "find_root.py",
+            "args": ["newton", "-lv"],
+            "console": "integratedTerminal"
         }
     ]
 }

@@ -43,3 +43,9 @@ A common example command to get pretty printed LaTeX table is:
 ```bash
 python3 find_root.py bisection -l -v
 ```
+
+## Implementation
+
+Several points to check if a new method is implemented:
+
+- Iteration data should be returned at the point of error, even during preparation

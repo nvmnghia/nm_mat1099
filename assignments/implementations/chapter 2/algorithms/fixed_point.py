@@ -8,7 +8,7 @@ METHOD_DESC = f'''
     A fixed-point-finding method, not a root-finding one.
     g is applied on the initial value, and its output is used as input in the next iteration.
 
-    Some basic sufficient conditions:
+    Some basic sufficient conditions for convergence:
     - g is continuous on [a, b], g(x) is in between g(a), g(b) for all x in [a, b]:  p exists on [a, b]
     - In addition, g is differentiable on (a, b), |g(x)| < 1 for all x in [a, b]:    p is unique on [a, b]
 
@@ -37,7 +37,7 @@ class FixedPointIterData(NamedTuple):
     p: float
 
 
-def fixed_point(P_0: float,  ERROR_BOUND: float, MAX_ITER: int, return_all=False, **kwargs) -> List[FixedPointIterData]:
+def fixed_point(P_0: float,  ERROR_BOUND: float, MAX_ITER: int, return_all=False, **_) -> List[FixedPointIterData]:
     """
     Approximate a fixed point of g using fixed-point method.
 
@@ -60,16 +60,20 @@ def fixed_point(P_0: float,  ERROR_BOUND: float, MAX_ITER: int, return_all=False
         List of iteration data. Only returned if return_all is true, else None is returned.
     """
 
+    logging.info('Using function g')
     logging.info(f'Initial value P_0 = {P_0}')
     logging.info(f'Maximum absolute error ERROR_BOUND = {ERROR_BOUND}')
     logging.info(f'Max number of iteration MAX_ITER = {MAX_ITER}')
 
+    # Prepare
     p_0 = P_0
     p = p_0
-    found = False
 
     T = [FixedPointIterData(n=0, p=p)] if return_all else None
 
+    found = False
+
+    # Run
     for i in range(1, MAX_ITER + 1):
         try:
             p = g(p_0)

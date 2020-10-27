@@ -7,15 +7,18 @@ Add the function to find root for, and parameters of the root-finding method her
 
 
 params = {
-    # 2 initial values...
-    'A_1': math.pi / 2,
-    'B_1': math.pi,
+    # Search range
+    'A_1': 0,
+    'B_1': 1,
 
-    # or 1, depends on the method
-    'P_0': -1,
+    # 1 initial value,...
+    'P_0': 0.0067,
+
+    # or 2, depends on the method
+    'P_1': 1,
 
     # Upper bound for absolute error
-    'ERROR_BOUND': 10**(-4),
+    'ERROR_BOUND': 10**(-6),
 
     # Max number of iteration
     'MAX_ITER': 1000,
@@ -37,7 +40,7 @@ def f(x: float) -> float:
         The value of the function at x.
     """
 
-    return -x**3 - math.cos(x)
+    return 1 - (1 + x)**(-360) - 135 * x
 
 
 def df(x: float) -> float:
@@ -55,7 +58,7 @@ def df(x: float) -> float:
         The derivative of the function at x.
     """
 
-    return -3 * x**2 + math.sin(x)
+    return 360 * (1 + x)**(-361) - 135
 
 
 def g(p: float) -> float:
@@ -88,7 +91,12 @@ DESC_B_1 = '''
 
 DESC_P_0 = '''
     P_0 : float
-        The initial approximation to start searching.
+        The (first) initial approximation to start searching.
+'''
+
+DESC_P_1 = '''
+    P_1 : float
+        The second initial approximation to start searching.
 '''
 
 DESC_ERROR_BOUND = '''
