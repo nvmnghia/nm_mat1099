@@ -11,10 +11,21 @@
 
 \usepackage{mathtools}    % Loads amsmath anyway
 \allowdisplaybreaks
-\usepackage{amssymb}
+\usepackage{amssymb, amsthm}
 \usepackage{commath}    % Fucking abs & integrals & differentials
-\usepackage{amsthm}
-\usepackage{xfrac}
+\usepackage{nccmath}    % align & gather doesn't use shortskip: https://tex.stackexchange.com/a/386266/206774
+\useshortskip           % nccmath seems to fix that even without this line
+\usepackage{xfrac}    % small inline kawaii frac
+
+\usepackage{interval}
+\intervalconfig{
+  soft open fences ,    % instead of the "perverse" ]a; b]
+}
+
+\usepackage{siunitx}
+\sisetup{
+  per-mode = symbol    % m/s instead of default ms^-1
+}
 
 \usepackage{multicol}
 \usepackage{tasks}
@@ -26,19 +37,17 @@
 
 \usepackage{enumitem}
 
-\usepackage{interval}
-\intervalconfig{
-  soft open fences ,    % instead of the "perverse" ]a; b]
-}
-
-\usepackage{siunitx}
-
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{tabularx}
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
+
+\usepackage{listings}
+\lstset{
+  basicstyle = \ttfamily
+}
 
 \usepackage[figure, table]{totalcount}
 \usepackage{float}

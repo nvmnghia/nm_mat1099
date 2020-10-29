@@ -1,0 +1,21 @@
+\documentclass[../../../../../../Assignments.tex]{subfiles}
+
+% \documentclass{book}
+% \usepackage{pgfplots}
+% \pgfplotsset{compat=1.17}
+
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = center,
+        samples=250,
+        xlabel = \(x\),
+        xmin=0, xmax=5.5,
+        ylabel = \(y\),
+        ymin=-10000000, ymax=100,
+    ]
+        \addplot[green, restrict x to domain=0:4.7]{3 * 27^x - 7 * 25^x};    % domain can't be used with \addplot: https://tex.stackexchange.com/a/29226/206774
+    \end{axis}
+\end{tikzpicture}
+\end{document}

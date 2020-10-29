@@ -22,40 +22,38 @@
     \begin{enumerate}[label = \alph*)]
         \item For \(x = p\):
 
-            \[\begin{aligned}
-                g_1(p) = (3 + p - 2p^2)^{\frac{1}{4}} = (p^4 - f(p))^{\sfrac{1}{4}} = \abs{p}
-            \end{aligned}\]
+            \[g_1(p) = (3 + p - 2p^2)^{\frac{1}{4}} = (p^4 - f(p))^{\sfrac{1}{4}} = \abs{p}\]
 
             So \(p\) is a fixed-point of \(g_1\).
 
         \item For \(x = p\):
 
-            \[\begin{aligned}
+            \begin{align*}
                 g_2(p) &= \left(\dfrac{p + 3 - p^4}{2}\right)^{\sfrac{1}{2}} \\
                        &= \left(\dfrac{2p^2}{2}\right)^{\frac{1}{2}} \\
                        &= \abs{p}
-            \end{aligned}\]
+            \end{align*}
 
             So \(p\) is a fixed-point of \(g_2\).
 
         \item For \(x = p\):
 
-            \[\begin{aligned}
+            \begin{align*}
                 g_3(p) &= \left(\dfrac{p + 3}{p^2 + 2}\right)^{\sfrac{1}{2}} \\
                        &= \left(\dfrac{p^4 + 2p^2}{p^2 + 2}\right)^{\sfrac{1}{2}} \\
                        &= \abs{p}
-            \end{aligned}\]
+            \end{align*}
 
             So \(p\) is a fixed-point of \(g_3\).
 
         \item For \(x = p\):
 
-            \[\begin{aligned}
+            \begin{align*}
                 g_4(p) &= \dfrac{3p^4 + 2p^2 + 3}{4p^3 + 4p - 1} \\
                        &= \dfrac{4p^4 - (3 + p - 2p^2) + 2p^2 + 3}{4p^3 + 4p - 1} \\
                        &= \dfrac{4p^4 + 4p^2 -p}{4p^3 + 4p - 1} \\
                        &= p
-            \end{aligned}\]
+            \end{align*}
 
             So \(p\) is a fixed-point of \(g_4\).
     \end{enumerate}
@@ -300,10 +298,10 @@
 \begin{solution}
     From the formula of \(g\):
 
-    \[\begin{aligned}
+    \begin{align*}
                     g(x) & = \pi + \num{0.5} \sin{\num{0.5} x} \\
         \Rightarrow g(x) & \in \interval{\pi - \num{0.5}}{\pi + \num{0.5}} \, \forall x
-    \end{aligned}\]
+    \end{align*}
 
     Consider the interval \(I = \interval{\pi - \num{0.5}}{\pi + \num{0.5}} \in
     \interval{0}{2 \pi}\). From the above equations, we know that:
@@ -357,21 +355,21 @@
 \begin{solution}
     From the formula of \(g\):
 
-    \[\begin{aligned}
+    \begin{align*}
                      g(x) & = 2^{-x} \\
         \Rightarrow g'(x) & = - 2^{-x} \ln{2}
-    \end{aligned}\]
+    \end{align*}
 
     It is clear that \(g \in C^1 R\).
 
     Consider the interval \(I = \interval{\frac{1}{3}}{1}\), \(I_{open} =
     \interval[open]{\frac{1}{3}}{1}\):
 
-    \[\begin{aligned}
+    \begin{align*}
         &g'(x) < 0 \forall x \in I \\
         &\Rightarrow 1 > g(\frac{1}{3}) = 2^{-\sfrac{1}{3}} \geq g(x) \geq g(1) = 2^{-1} > \frac{1}{3} \\
         &\Rightarrow g(x) \in I \, \forall x \in I
-    \end{aligned}\]
+    \end{align*}
 
     So far, we know that:
 
@@ -510,11 +508,11 @@
     \begin{enumerate}[label = \alph*)]
         \item Let
 
-            \[\begin{aligned}
+            \begin{align*}
                 &\quad&         g(x) &= \frac{2 - e^x + x^2}{3} \\
                 \Rightarrow&&  g'(x) &= \frac{2x - e^x}{3} \\
                 \Rightarrow&& g''(x) &= \frac{2 - e^x}{3}
-            \end{aligned}\]
+            \end{align*}
 
             It is clear that \(g\) is continuous in \(\mathbb{R}\).
 
@@ -532,10 +530,10 @@
             Consider the interval \(I = \interval{0}{1}\):
 
             \[\]
-            \[\begin{aligned}
+            \begin{align*}
                 1 > g(0) = \frac{1}{3} > &g(x) > g(1) = \frac{3 - e}{3} > 0 \, \forall x \in I \\
                              \Rightarrow &g(x) \in I \, \forall x \in I
-            \end{aligned}\]
+            \end{align*}
 
             So, \(I\) is an interval in which a fixed point \(p\) of \(g\)
             exists. Applying fixed-point method on \(g\) with \(p_0 =
@@ -568,10 +566,10 @@
             \(x^2\) is monotonically increasing in \(I\), so \(g\) is
             monotonically decreasing in \(I\). So that:
 
-            \[\begin{aligned}
+            \begin{align*}
                 3 > g(\num{2.5}) = \num{2.8} > &g(x) > g(3) = \sfrac{23}{9} > \num{2.5} \, \forall x \in I \\
                                    \Rightarrow &g(x) \in I \, \forall x \in I
-            \end{aligned}\]
+            \end{align*}
 
             So, \(I\) is an interval in which a fixed point \(p\) of \(g\)
             exists. Applying fixed-point method on \(g\) with \(p_0 =
@@ -604,10 +602,10 @@
             \(g\) is monotonically increasing in \(\mathbb{R}\). Consider the
             interval \(I = \interval{0}{1}\):
 
-            \[\begin{aligned}
+            \begin{align*}
                 0 < g(0) = \dfrac{1}{\sqrt{3}} < &g(x) < g(1) = \sqrt{\dfrac{e}{3}} < 1 \\
                                      \Rightarrow &g(x) \in I \, \forall x \in I
-            \end{aligned}\]
+            \end{align*}
 
             So, \(I\) is an interval in which a fixed point \(p\) of \(g\)
             exists. Applying fixed-point method on \(g\) with \(p_0 =
@@ -638,10 +636,10 @@
 
             Consider the interval \(I = \interval{0}{1}\):
 
-            \[\begin{aligned}
+            \begin{align*}
                 0 < g(1) = \num{0.2} < &g(x) < g(0) = 1 \\
                            \Rightarrow &g(x) \in I \, \forall x \in I
-            \end{aligned}\]
+            \end{align*}
 
             So, \(I\) is an interval in which a fixed point \(p\) of \(g\)
             exists. Applying fixed-point method on \(g\) with \(p_0 =
@@ -679,10 +677,10 @@
 
             Consider the interval \(I = \interval{0}{1}\):
 
-            \[\begin{aligned}
+            \begin{align*}
                 0 < g(1) = \frac{1}{6} < &g(x) < g(0) = 1 \\
                              \Rightarrow &g(x) \in I \, \forall x \in I
-            \end{aligned}\]
+            \end{align*}
 
             So, \(I\) is an interval in which a fixed point \(p\) of \(g\)
             exists. Applying fixed-point method on \(g\) with \(p_0 =
@@ -734,10 +732,10 @@
             \(\interval{0}{\frac{\pi}{2}}\), so \(\sin{x + \frac{\pi}{4}}\) also
             is monotonically increasing in \(I\). It follows that:
 
-            \[\begin{aligned}
+            \begin{align*}
                 0 < g(0) = \num{0.5} < g(x) < &g(\frac{\pi}{4}) = \frac{1}{\sqrt{2}} < \frac{\pi}{4} \\
                                   \Rightarrow &g(x) \in I \, \forall x \in I
-            \end{aligned}\]
+            \end{align*}
 
             So, \(I\) is an interval in which a fixed point \(p\) of \(g\)
             exists. Applying fixed-point method on \(g\) with \(p_0 =
@@ -779,10 +777,10 @@
     \begin{enumerate}[label = \alph*)]
         \item Let \(I = \interval{2}{3}\) and
 
-            \[\begin{aligned}
+            \begin{align*}
                              g(x) &= \sin{x} + 2 \\
                 \Rightarrow g'(x) &= \cos{x}
-            \end{aligned}\]
+            \end{align*}
 
             A fixed point \(p\) of \(g\) is also a root of the problem.
 
@@ -841,10 +839,10 @@
 
         \item Let \(I = \interval{2}{3}\) and
 
-            \[\begin{aligned}
+            \begin{align*}
                              g(x) &= \sqrt[3]{2x + 5} \\
                 \Rightarrow g'(x) &= \dfrac{2}{3} (2x + 5)^{- \sfrac{2}{3}}
-            \end{aligned}\]
+            \end{align*}
 
             A fixed point \(p\) of \(g\) is also a solution of the problem.
 

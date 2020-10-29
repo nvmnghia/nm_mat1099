@@ -9,7 +9,7 @@
 \begin{tikzpicture}
     \begin{axis}[
         axis lines=center,
-        samples=1000,
+        samples=400,    % If the number of samples is too low, the continuous line version of tan(x) doesn't fully cover the dashed one.
         xlabel={\(x\)},
         xmin=-6,xmax=6,
         xtick=\empty,
