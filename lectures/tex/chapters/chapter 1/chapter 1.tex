@@ -12,11 +12,11 @@
 \subsubsection{Lý do nghiên cứu Phương pháp tính}
 
 \begin{itemize}
-    \item Làm viêc với các số gần đúng.
-    \item Giải gần đúng các phương trình và hệ phương trình.
+    \item Làm viêc với các số gần đúng
+    \item Giải gần đúng các phương trình và hệ phương trình
     \item Xấp xỉ hàm số: Phương pháp nội suy, phương pháp xấp xỉ hàm số, chuỗi
-        Taylor hoặc chuỗi Maclaurin.
-    \item Số học IEEE\@.    % https://tex.stackexchange.com/questions/55105/when-should-i-use-intersentence-spacing
+        Taylor hoặc chuỗi Maclaurin
+    \item Số học IEEE    % https://tex.stackexchange.com/questions/55105/when-should-i-use-intersentence-spacing
 \end{itemize}
 
 \subsubsection{Các nhiệm vụ}
@@ -308,11 +308,11 @@ bản. Sau đây ta ước lượng sai số khi cộng trừ, nhân chia các s
 
     Ta có:
 
-    \[\begin{aligned}
+    \begin{align*}
         \delta d &= \num{0.001835} \\
         \delta r &= \num{0.002538} \\
         \delta S &= \num{0.004373} \text{ nên } \Delta S = \num{0.094}
-    \end{aligned}\]
+    \end{align*}
 \end{exmp}
 
 \subsection{Sai số hàm nhiều biến}
@@ -337,12 +337,12 @@ với \(f'_i\) là đạo hàm riêng của \(u\) theo biến \(x_i\).
 
     Ta có:
 
-    \[\begin{aligned}
+    \begin{align*}
                u &= 100 \\
         \Delta u &= 2ab \Delta a + a^2 \Delta b \\
                  &= 2 \cdot \num{2.0} \cdot \num{25.0} \cdot \num{0.1} + \num{2.0}^2 \cdot \num{0.1} \\
                  &= \num{10.4}
-    \end{aligned}\]
+    \end{align*}
 \end{exmp}
 
 \subsubsection{Bài toán ngược}
@@ -402,10 +402,10 @@ một cách linh hoạt. Sau đây ta xét hai phương pháp thông dụng.
     Khi đo chiều dài thường có sai số lớn hơn chiều rộng nên ta có thể
     dùng~\ref{eq:evenly_distributed_error}.
 
-    \[\begin{aligned}
-        &\Delta d \leq \frac{\num{0.1}}{\num{2.20}} = \SI{0.0025}{m}
-        &\Delta r \leq \frac{\num{0.1}}{\num{2.45}} = \SI{0.0010}{m}
-    \end{aligned}\]
+    \[
+        \Delta d \leq \frac{\num{0.1}}{\num{2.20}} = \SI{0.0025}{m} \, \text{, }
+        \Delta r \leq \frac{\num{0.1}}{\num{2.45}} = \SI{0.0010}{m}
+    \]
 
     là đủ để \(\Delta S \leq \SI{0.1}{m^2}\)
 \end{exmp}
@@ -424,6 +424,7 @@ chúng như thế nào?
     \begin{itemize}
         \item các chữ số kể từ chữ số khác \(0\) đầu tiên tính từ trái sang phải
             gọi là \emph{các chữ số có nghĩa},
+
         \item các chữ số \(0\) bên trái là \emph{không có nghĩa}
     \end{itemize}
 \end{definition}
@@ -456,6 +457,7 @@ thì các chữ số \(0\) bên trái không có ở biểu diễn này, ý ngh�
         \item Nếu \(\Delta a \leq \num{0.5} \cdot 10^m\) thì \(a_k\) là
             \emph{chữ số chắc (đáng tin)} \(\forall k \geq m\) (theo nghĩa hẹp
             dùng trong tính toán).
+
         \item Nếu \(\num{0.5} \cdot 10^m \leq \Delta a \leq 10^m\) thì \(a_m\)
             là \emph{chắc theo nghĩa rộng}.
     \end{itemize}
@@ -502,15 +504,21 @@ Quy tắc chữ số chẵn: Giả sử \(a > 0\) và phần bỏ đi là \mu.
 
 \begin{itemize}
     \item Nếu \(\mu < \num{0.5} \cdot 10^m\) thì
+
         \begin{equation}\label{eq:removed_part_smaller}
             \overline{a} = \sum_{k=m}^{n} a_k 10^k
         \end{equation}
+
         nghĩa là ta giữ nguyên các chữ số đến hàng \(m\) tính từ trái sang phải.
+
     \item Nếu \(\mu > \num{0.5} \cdot 10^m\) thì
+
         \begin{equation}\label{eq:removed_part_larger}
             \overline{a} = \sum_{k=m}^{n} a_k 10^k + 10^m
         \end{equation}
+
     \item Nếu \(\mu = \num{0.5} \cdot 10^m\), ta xét tiếp:
+
         \begin{itemize}
             \item Nếu \(a_m\) chẵn, làm theo~\ref{eq:removed_part_smaller}.
             \item Nếu \(a_m\) lẻ, làm theo~\ref{eq:removed_part_larger}.
@@ -527,12 +535,12 @@ và giữ lại một hoặc hai chữ số không chắc.
 Nếu a có biểu diễn~\ref{eq:number_in_decimal} và \(a_k\) chắc với \(k \geq m\)
 thì \(\Delta a \leq 10^m\) nên
 
-\[\begin{aligned}
+\begin{align*}
     % TODO: Check this carefully.
     \delta_a = \frac{\Delta a}{\abs{a}} \leq \frac{10^m}{\sum\limits_{k=m}\limits^{n} a_k 10^k} &= \frac{1}{\sum\limits_{k=0}\limits^{n} a_{k+m} 10^k}
     % \delta_a = \frac{\Delta a}{\abs{a}} \leq \frac{10^m}{\sum\limits_{k=m}\limits^{n} a_k 10^k} &= \frac{1}{\sum\limits_{k=m}\limits^{n} a_k 10^{k - m}} \\
     %                                                                                             &= \frac{1}{\sum\limits_{k=0}\limits^{n} a_{k + m} 10^k}
-\end{aligned}\]
+\end{align*}
 
 Như vậy sai số tương đối của số gần đúng có thể ước lượng bởi nghịch đảo của số
 gồm các chữ số chắc của \(a\) không có dấu phẩy.
