@@ -1,0 +1,225 @@
+\documentclass[../../Lectures]{subfiles}
+
+
+\begin{document}
+
+\chapter{Giải hệ phương trình}
+
+Chúng ta có 2 loại hệ phương trình:
+
+\begin{itemize}
+    \item Hệ phương trình tuyến tính
+    \item Hệ phương trình phi tuyến
+\end{itemize}
+
+Chúng ta đã biết các phương pháp giải trực tiếp và gián tiếp Hệ phương trình
+tuyến tính:
+
+\begin{itemize}
+    \item Các phương pháp giải trực tiếp:
+
+        \begin{itemize}
+            \item Phương pháp Cramer
+            \item Phương pháp thế
+            \item Phương pháp sử dụng ma trận nghịch đảo
+            \item Phương pháp khử Gauss, Gauss-Jordan
+        \end{itemize}
+
+    \item Các phương pháp giải gián tiếp
+
+        \begin{itemize}
+            \item Phương pháp lặp đơn
+            \item Phương pháp lặp Seidel
+        \end{itemize}
+
+    \item Các phương pháp tìm trị riêng và véc tơ riêng của ma trận
+\end{itemize}
+
+
+%----------------------------------------------------------------------------------------
+%	3.1: Đặt bài toán và phương pháp giải
+%----------------------------------------------------------------------------------------
+
+\section{Đặt bài toán và phương pháp giải}
+
+Hệ phương trình tuyến tính \(n\) phương trình, \(n\) ẩn \(x_1\), \(x_2\),
+\ldots, \(x_n\) là tập \(n\) phương trình \(E_1\), \(E_2\), \ldots , \(E_n\)
+dạng
+
+\[\label{eq:general_system_equations}
+    \begin{cases}
+        E_1 \text{ : } a_{11} x_1 + a_{12} x_2 + \ldots + a_{1n} x_n = b_1 \\
+        E_2 \text{ : } a_{21} x_1 + a_{22} x_2 + \ldots + a_{2n} x_n = b_2 \\
+        \ldots \\
+        E_n \text{ : } a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nn} x_n = b_n \\
+    \end{cases}
+\]
+
+\noindent với các hệ số \(a_{jk}\) và \(b_j\) đã biết. Hệ được gọi là thuần nhất
+nếu các \(b_j\) bằng \(0\), trong trường hợp ngược lại được gọi là hệ không
+thuần nhất.
+
+Dùng cách biểu diễn ma trận, ta có thể viết hệ
+\eqref{eq:general_system_equations} dưới dạng:
+
+\begin{equation}
+    \bm{A x} = \bm{b}
+\end{equation}
+
+Ở đây, ma trận hệ số \(A = [a_{jk}]\) là ma trận vuông cấp \(n\), \(x\) và \(b\)
+là các véc tơ cột:
+
+\[
+    \bm{A} =
+        \begin{bmatrix}
+            a_{11}  &  a_{12}  &  \dots   &  a_{1n}  \\
+            a_{21}  &  a_{22}  &  \dots   &  a_{2n}  \\
+            \vdots  &  \vdots  &  \ddots  &  \vdots  \\
+            a_{n1}  &  a_{n2}  &  \dots   &  a_{nn}  \\
+        \end{bmatrix} \quad
+    \bm{x} =
+        \begin{bmatrix}
+            x_1     \\
+            x_2     \\
+            \vdots  \\
+            x_n     \\
+        \end{bmatrix} \quad
+    \bm{b} =
+        \begin{bmatrix}
+            b_1     \\
+            b_2     \\
+            \vdots  \\
+            b_n     \\
+        \end{bmatrix}
+\]
+
+Ma trận \(\bm{\tilde{A}}\) sau được gọi là ma trận mở rộng của hệ
+\eqref{eq:general_system_equations}:
+
+\[
+    \bm{\tilde{A}} = [\bm{A}, \bm{b}] =
+        \begin{bNiceArray}{cccc:c}
+            a_{11}  &  a_{12}  &  \dots   &  a_{1n}  &  b_1     \\
+            a_{21}  &  a_{22}  &  \dots   &  a_{2n}  &  b_2     \\
+            \vdots  &  \vdots  &  \ddots  &  \vdots  &  \vdots  \\
+            a_{n1}  &  a_{n2}  &  \dots   &  a_{nn}  &  b_n     \\
+        \end{bNiceArray}
+\]
+
+Nghiệm của \eqref{eq:general_system_equations} là bộ số \(x_1\), \(x_2\),
+\ldots, \(x_n\) thỏa mãn tất cả phương trình của hệ.
+
+Véc tơ nghiệm của \eqref{eq:general_system_equations} là \(\bm{x}\) mà các thành
+phần của nó lập thành một nghiệm của \eqref{eq:general_system_equations}.
+
+Hệ phương trình \eqref{eq:general_system_equations} có thể giải được bằng
+
+\begin{itemize}
+    \item \emph{phương pháp trực tiếp} (phương pháp khử Gauss, \ldots), hoặc
+    \item \emph{phương pháp gián tiếp} hay phương pháp lặp.
+\end{itemize}
+
+Chúng ta đã biết phương pháp sử dụng định thức để giải hệ phương trình
+\eqref{eq:general_system_equations}, đó là \emph{phương pháp Cramer}. Ở đây ta
+xét \hyperref[method:gauss_elimination]{\emph{phương pháp khử Gauss}} để giải hệ
+phương trình tuyến tính.
+
+\begin{method}\label{method:gauss_elimination}
+    \emph{Phương pháp khử Gauss (Gaussian elimination)}
+
+    Phương pháp khử Gauss là phép giải trực tiếp được thực hiện bằng quá trình
+    khử liên tiếp các ẩn để từng bước đưa ma trận mở rộng \(\bm{\tilde{A}}\) về
+    dạng tam giác trên (upper triangular matrix, hay dạng bậc thang).
+
+    Phương pháp này gồm hai phần thực hiện lần lượt như sau:
+
+    \begin{enumerate}
+        \item \emph{Quá trình thuận (forward elimination)}: Dùng các phép biến
+            đổi sơ cấp về hàng để đưa \(\bm{\tilde{A}}\) về dạng tam giác trên:
+
+            \begin{enumerate}
+                \item Khử \(x_1\) từ \(E_{\geq 2}\) bằng cách:
+
+                    \[E_i \coloneqq E_i - \frac{a_{i1}}{a_{11}} E_1 \, \forall i \in \interval{2}{n}\]
+
+                    \(a_{11}\) gọi là \emph{phần tử trục xoay (pivot)}, \(E_1\)
+                    gọi là phương trình chính (pivot equation).
+
+                \item Khử \(x_i\) từ \(E_{> i}\) bằng cách tương tự như trên,
+                    cuối cùng thu được dạng tam giác trên.
+            \end{enumerate}
+
+        \item \emph{Quá trình ngược (back substitution)}: Giải \(\bm{x}\) từ
+            cuối lên:
+
+            \begin{enumerate}
+                \item Giải \(x_n\) từ \(E_n\), giải tiếp được \(x_{n - 1}\) do
+                    đã biết \(x_n\).
+
+                \item Tương tự giải được đến \(x_1\), cuối cùng thu được nghiệm
+                    \(\bm{x}\).
+            \end{enumerate}
+    \end{enumerate}
+\end{method}
+
+\begin{exmp}
+    Hãy giải hệ phương trình:
+
+    \begin{align*}
+             8 x_2 + 2 x_3 &= -7 \tag{\(E_1\)} \\
+        3x_1 + 5x_2 + 2x_3 &= 8  \tag{\(E_2\)} \\
+        6x_1 + 2x_2 + 8x_3 &= 26 \tag{\(E_3\)}
+    \end{align*}
+
+    Chúng ta xoay trục từ \(E_1\) , nhưng do \(E_1\) không có ẩn \(x_1\), trong
+    khi đó hệ số của \(x_1\) trong phương trình \(E_3\) là lớn nhất. Vì vậy ta
+    đổi chỗ \(E_1\) và \(E_3\) cho nhau.
+
+    Tới đây ta có ma trận mở rộng như sau:
+
+    \[
+        \bm{\tilde{A}} =
+            \begin{bNiceArray}{S[table-format=1] S[table-format=1] S[table-format=1] : S[table-format=-1]}
+                6  &  2  &  8  &  26  \\
+                3  &  5  &  2  &   8  \\
+                   &  8  &  2  &  -7  \\
+            \end{bNiceArray}
+    \]
+
+    \begin{multicols}{2}
+        Khử \(x_1\) được:
+
+        \[
+            \begin{bNiceArray}{S[table-format=1] S[table-format=1] S[table-format=-1] : S[table-format=-1]}
+                6  &  2  &   8  &  26  \\
+                   &  4  &  -2  &  -5  \\
+                   &  8  &   2  &  -7  \\
+            \end{bNiceArray}
+        \]
+
+        Khử \(x_2\) được:
+
+        \[
+            \begin{bNiceArray}{S[table-format=1] S[table-format=1] S[table-format=-1] : S[table-format=-1]}
+                6  &  2  &   8  &  26  \\
+                   &  4  &  -2  &  -5  \\
+                   &     &   6  &   3  \\
+            \end{bNiceArray}
+        \]
+
+    \end{multicols}
+
+    Vậy ta giải được \(x_3 = \num{0.5}\), \(x_2 = -1\), \(x_1 = 4\).
+\end{exmp}
+
+\hyperref[method:gauss_elimination]{Phương pháp Gauss} còn có một số biến thể:
+
+\begin{itemize}
+    \item Phương pháp Gauss-Jordan: đưa \(\bm{A}\) về dạng đường chéo thay vì
+        dạng tam giác trên.
+
+    \item Phương pháp Doolittle, phương pháp Crout, phương pháp Cholesky đều dựa
+        trên phân tích \(\bm{LU}\) (\(\bm{LU}\) factorization).
+\end{itemize}
+
+\end{document}
