@@ -89,11 +89,14 @@ nhất một nghiệm trong khoảng này. Khi đó, ta có thể dùng phương
 
     \begin{itemize}
         \item Nếu \(f(p_1) = 0\) thì \(p = p_1\).
+
         \item Nếu \(f(p_1) \neq 0\) thì \(f(p_1)\) cùng dấu với \(f(a_1)\) hoặc
             \(f(b_1)\).
+
             \begin{itemize}
                 \item Nếu \(f(p_1)\) cùng dấu với \(f(a_1)\) thì \(p \in
                     \interval{p_1}{b_1}\). Đặt \(a_2 = p_1\), \(b_2 = b_1\).
+
                 \item Nếu \(f(p_1)\) cùng dấu với \(f(b_1)\) thì \(p \in
                     \interval{a_1}{p_1}\). Đặt \(a_2 = a_1\), \(b_2 = p_1\).
             \end{itemize}
@@ -287,9 +290,10 @@ nhất một} điểm bất động.
 \begin{theorem}\label{thm:sufficient_conditions_of_fixed_point}
 \phantom\\
 \begin{enumerate}
-    \item Nếu \(g \in \interval{a}{b}\), và \(g(x) \in \interval{a}{b} \,
+    \item Nếu \(g \in C \interval{a}{b}\), và \(g(x) \in \interval{a}{b} \,
         \forall x \in \interval{a}{b}\), khi đó \(g\) có ít nhất một điểm bất
         động trên \(\interval{a}{b}\).
+
     \item Hơn nữa, nếu \(g'(x)\) tồn tại trên \(\interval[open]{a}{b}\) và
         \(\abs{g'(x)} < 1 \, \forall x \in \interval{a}{b}\), khi đó, tồn tại
         duy nhất một điểm bất động trên \(\interval{a}{b}\).
@@ -361,7 +365,7 @@ Cần chú ý rằng phương pháp này chỉ đúng khi chuỗi \(\{p_n\}_{n=0
 tụ về \(p\).
 
 \begin{method}\label{method:fixed_point}
-    \emph{Phương pháp điểm bất động (fixed point method)}
+    \emph{Phương pháp điểm bất động (fixed-point method)}
 
     Phương pháp này cho phép tìm điểm bất động \(p\) của \(g\), khi biết một
     điểm bắt đầu \(p_0\).
@@ -391,24 +395,22 @@ trọng của hàm này.
 
     Ta có một số lựa chọn về hàm \(g\), được chọn ngẫu nhiên:
 
-    \begin{multicols}{2}
-        \begin{enumerate}[label = (\alph*)]
-            \item \(x = g_1(x) = x - x^3 -4x^2 + 10\)
-            \item \(x = g_2(x) = \left(\frac{10}{x} - 4x \right)^{0.5}\)
-            \item \(x = \frac{1}{2} (10 - x^3)^{0.5}\)
-            \item \(x = g_4(x) = \left(\frac{10}{x + 4} \right)^{0.5}\)
-            \item \(x = g_5(x) = x - \frac{x^3 + 4x^2 - 10}{3x^2 + 8x}\)
-        \end{enumerate}
-    \end{multicols}
+    \begin{tasks}(2)
+        \task \(x = g_1(x) = x - x^3 -4x^2 + 10\)
+        \task \(x = g_2(x) = \left(\frac{10}{x} - 4x \right)^{0.5}\)
+        \task \(x = \frac{1}{2} (10 - x^3)^{0.5}\)
+        \task \(x = g_4(x) = \left(\frac{10}{x + 4} \right)^{0.5}\)
+        \task \(x = g_5(x) = x - \frac{x^3 + 4x^2 - 10}{3x^2 + 8x}\)
+    \end{tasks}
 
     Với \(p_0 = \num{1.5}\), ta có bảng sau:
 
     \begin{longtable}{r c c S[table-format=1.9] S[table-format=1.9] S[table-format=1.9]}
         \toprule
-        {\(n\)}  &     {(a)}      &          {(b)}           &     {(c)}     &     {(d)}     &     {(e)}     \\
+        {\(n\)}  &     {a)}       &          {b)}            &     {c)}      &     {d)}      &     {e)}      \\
         \midrule
         \endfirsthead
-        {\(n\)}  &     {(a)}      &          {(b)}           &     {(c)}     &     {(d)}     &     {(e)}     \\
+        {\(n\)}  &     {a)}       &          {b)}            &     {c)}      &     {d)}      &     {e)}      \\
         \midrule
         \endhead
               0  &  \num{1.5}     &  \num{1.5}               &  1.5          &  1.5          &  1.5          \\
@@ -429,10 +431,10 @@ trọng của hàm này.
         \bottomrule
     \end{longtable}
 
-    Với nghiệm thực \num{1.365230013}, ta thấy lựa chọn (c), (d), (e) có tiềm
-    năng nhất. Phương pháp chia đôi cần 27 lần lặp để đạt được kết quả này, tuy
-    nhiên (d) chỉ cần 15 lần, còn (e) thậm chí chỉ cần 4. Ngược lại, (a) thì
-    phân kì còn (b) thậm chí không xác định (căn của số âm).
+    Với nghiệm thực \num{1.365230013}, ta thấy lựa chọn c), d), e) có tiềm năng
+    nhất. Phương pháp chia đôi cần 27 lần lặp để đạt được kết quả này, tuy nhiên
+    d) chỉ cần 15 lần, còn e) thậm chí chỉ cần 4. Ngược lại, a) thì phân kì còn
+    b) thậm chí không xác định (căn của số âm).
 \end{exmp}
 
 \subsection{Tìm \texorpdfstring{\(g\)}{g} phù hợp}
@@ -475,14 +477,14 @@ hợp.
     Kết hợp điều trên với \hyperref[thm:mean_value_theorem]{định lí giá trị
     trung bình}, ta có:
 
-    \[\abs{p_n - p} = \abs{g(p_{n - 1}) - g(p)} = \abs{g'(\xi_n)} \abs{p_{n - 1} - p} \leq \abs{p_{n - 1} - p}\]
+    \[\abs{p_n - p} = \abs{g(p_{n - 1}) - g(p)} = \abs{g'(\xi_n)} \abs{p_{n - 1} - p} \leq k \abs{p_{n - 1} - p}\]
 
     với \(\xi_n \in \interval[open]{a}{b}\). Quy nạp kết quả này ta có:
 
-    \[\begin{aligned}
+    \begin{align*}
                                  \abs{p_n - p} & \leq k^n \abs{p_0 - p} \\
         \iff \lim_{n \to \infty} \abs{p_n - p} & \leq \lim_{n \to \infty} k^n \abs{p_0 - p} = 0
-    \end{aligned}\]
+    \end{align*}
 
     Vậy ta thấy \(\{p_n\}_{n = 0}^\infty\) hội tụ về \(p\).
 \end{proof}
@@ -527,21 +529,21 @@ Ta tiếp tục xem xét một số hệ quả hữu dụng của định lí tr
 
     Do đó với \(m > n \geq 1\):
 
-    \[\begin{aligned}
+    \begin{align*}
         \abs{p_m - p_n} & = \abs{p_m - p_{m - 1} + p_{m - 1} - \ldots - p_{n + 1} + p_{n + 1} - p_n} \\
                         & \leq \abs{p_m - p_{m - 1}} + \ldots + \abs{p_{n + 1} - p_n}                \\
                         & \leq k^{m - 1} \abs{p_1 - p_0} + \ldots + k^n \abs{p_1 - p_0}              \\
                         & = \abs{p_1 - p_0} \sum_{i = n}^{m - 1} k^i                                 \\
                         & = \abs{p_1 - p_0} \frac{k^m - k^n}{k - 1}
-    \end{aligned}\]
+    \end{align*}
 
     Lấy giới hạn hai vế với \(m \to \infty\), ta có được bất đẳng
     thức~\ref{ieq:coro:thm:fixed_point_2}:
 
-    \[\begin{aligned}
+    \begin{align*}
         \lim_{m \to \infty} \abs{p_m - p_n} & = \abs{p_1 - p_0} \lim_{m \to \infty} \frac{k^m - k^n}{k - 1} \\
         \iff                  \abs{p_n - p} & = \frac{k^n}{1 - k} \abs{p_1 - p_0}
-    \end{aligned}\]
+    \end{align*}
 \end{proof}
 
 Qua các kết quả trên, ta rút ra hai quy tắc chọn hàm \(g\):
@@ -567,7 +569,7 @@ cho sai số của phương pháp này.
 
 Giả sử \(f \in C^2\interval{a}{b}\) (\(f\) khả vi liên tục đến cấp 2). Xét \(p_0
 \in \interval{a}{b}\) là một xấp xỉ của nghiệm \(p\) sao cho \(f'(p_0) \neq 0\)
-và \(\abs{p - p_0}\) "nhỏ".
+và \(\abs{p - p_0}\) ``nhỏ''.
 
 Khai triển Taylor quanh \(p_0\) và tại \(x = p\), ta có:
 
@@ -578,10 +580,10 @@ Với \(\xi(p)\) nằm giữa \(p\) và \(p_0\).
 Do giả thiết \(\abs{p - p_0}\) nhỏ, \((p - p_0)^2\) thậm chí còn nhỏ hơn. Phương
 trình trên trở thành:
 
-\[\begin{aligned}
+\begin{align*}
                 0 & \approx f(p_0) + (p - p_0) f'(p_0) \\
     \Rightarrow	p & \approx p_0 - \frac{f(p_0)}{f'(p_0)} \equiv p_1
-\end{aligned}\]
+\end{align*}
 
 Phương trình trên là tiền đề cho phương pháp Newton. Phương pháp Newton bắt đầu
 từ một \(p_0\) cho trước, và tạo dãy \(\{p_n\}_{n = 0}^\infty\) theo quy tắc:
@@ -696,6 +698,7 @@ sự nhạy cảm của phương pháp này với điểm khởi đầu.
         \item \label{proof:newton_part_1} \(g\) khả vi liên tục trên \(I =
             \interval{p - \delta}{p + \delta}\) và \(\abs{g'(x)} < 1 \, \forall
             x \in I\), và
+
         \item \label{proof:newton_part_2} \(g(x) \in I \, \forall x \in I\),
     \end{enumerate}
 
@@ -707,8 +710,11 @@ sự nhạy cảm của phương pháp này với điểm khởi đầu.
 
         \begin{enumerate}[label = (\alph*)]
             \item Nếu \(f(p) \neq 0\) thì tồn tại \(\delta > 0\) sao cho:
+
                 \[f(x) \neq 0 \, \forall x \in \interval{p - \delta}{p + \delta} \subseteq \interval{a}{b}\]
+
             \item Nếu \(f(p) = 0\) và cho \(K > 0\) thì tồn tại \(\delta > 0\) sao cho:
+
                 \[\abs{f(x)} \leq K \, \forall x \in \interval{p - \delta}{p + \delta} \subseteq \interval{a}{b}\]
         \end{enumerate}
     \end{lemma}
@@ -855,13 +861,26 @@ difference})). Thay vào công thức~\ref{eq:newton_sequence_function}, ta có:
 
 Chú ý rằng, công thức~\ref{eq:secant_method} có thể được rút ngắn thành:
 
-\[p_{n + 1} = \frac{f(p_n) p_{n - 1} - f(p_{n - 1}) p_n}{f(p_n) - f(p_{n - 1})}\]
+\begin{equation}\label{eq:secant_method_alternative}
+    p_{n + 1} = \frac{f(p_n) p_{n - 1} - f(p_{n - 1}) p_n}{f(p_n) - f(p_{n - 1})}
+\end{equation}
 
 Công thức trên cũng chính là công thức nhận được khi sử dụng cách tính thông
 thường (tìm phương trình đường thẳng nối hai điểm \((p_1, f(p_1))\) và \((p_2,
-f(p_2))\) rồi tìm giao điểm với \(Ox\)) Tuy nhiên cách viết này khiến tỉ số và
-mẫu số đều là những số rất nhỏ, dẫn đến sai lệch khi tính toán. Do vậy, trong sử
-dụng thực tế, công thức~\ref{eq:secant_method} được sử dụng nhiều hơn.
+f(p_2))\) rồi tìm giao điểm với \(Ox\)). So sánh với công
+thức~\eqref{eq:secant_method}, ta thấy:
+
+\begin{itemize}
+    \item Công thức~\eqref{eq:secant_method_alternative} có tỉ số và
+        mẫu số đều là những số rất nhỏ (do số trừ và số bị trừ ở hai hiệu đều
+        xấp xỉ nhau), dẫn đến sai lệch khi tính toán.
+
+    \item Công thức~\eqref{eq:secant_method} nhân hiệu ở tử số với \(f(p_n)\)
+        \emph{trước khi} chia, do đó giảm được sai lệch khi tính toán.
+\end{itemize}
+
+Do vậy, trong sử dụng thực tế, công thức~\ref{eq:secant_method} được sử dụng
+nhiều hơn.
 
 \subsection{Phương pháp điểm sai}
 
@@ -888,12 +907,13 @@ là \emph{bracketing}, và phương pháp Newton và dây cung không có tính 
         \item Nếu \(f(p_1\) và \(f(p_2)\) trái dấu, thì \(p_3\) là hoành độ của
             giao điểm của đường thẳng nối \((p_2, f(p_2))\) và \((p_1, f(p_1))\)
             với \(Ox\).
+
         \item Nếu không, thì \(p_3\) là hoành độ của giao điểm của đường thẳng
             nối \((p_2, f(p_2))\) và \((p_0, f(p_0))\)  với \(Ox\); đồng thời,
             tráo đổi giá trị của \(p_0\) và \(p_1\).
     \end{itemize}
 
-    Tương tự với \(p_3\), tính được \(p_4\) \(p_5\),\ldots
+    Tương tự với \(p_3\), tính được \(p_4\), \(p_5\),\ldots
 \end{method}
 
 Ta thấy yêu cầu \(f(p_0)\) và \(f(p_1)\) trái dấu là hiển nhiên do phương pháp
