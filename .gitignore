@@ -521,3 +521,5 @@ cython_debug/
 # *.[1-9]
 # of #(r)(e)ledmac/(r)(e)ledpar, as they ends with .1, .2,...
 !section*/
+
+*.xsim
