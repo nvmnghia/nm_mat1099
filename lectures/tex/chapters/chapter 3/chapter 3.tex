@@ -6,27 +6,24 @@
 \chapter{Giải hệ phương trình}
 
 Chúng ta có 2 loại hệ phương trình:
-
 \begin{itemize}
     \item Hệ phương trình tuyến tính
     \item Hệ phương trình phi tuyến
 \end{itemize}
 
-Chúng ta đã biết các phương pháp giải trực tiếp và gián tiếp Hệ phương trình
+Chúng ta đã biết các phương pháp giải trực tiếp và gián tiếp hệ phương trình
 tuyến tính:
-
 \begin{itemize}
     \item Các phương pháp giải trực tiếp:
-
         \begin{itemize}
             \item Phương pháp Cramer
             \item Phương pháp thế
             \item Phương pháp sử dụng ma trận nghịch đảo
-            \item Phương pháp khử Gauss, Gauss-Jordan
+            \item \hyperref[method:gauss_elimination]{Phương pháp khử Gauss},
+                Gauss-Jordan
         \end{itemize}
 
     \item Các phương pháp giải gián tiếp
-
         \begin{itemize}
             \item Phương pháp lặp đơn
             \item Phương pháp lặp Seidel
@@ -45,7 +42,6 @@ tuyến tính:
 Hệ phương trình tuyến tính \(n\) phương trình, \(n\) ẩn \(x_1\), \(x_2\),
 \ldots, \(x_n\) là tập \(n\) phương trình \(E_1\), \(E_2\), \ldots , \(E_n\)
 dạng
-
 \[\label{eq:general_system_equations}
     \begin{cases}
         E_1 \text{ : } a_{11} x_1 + a_{12} x_2 + \ldots + a_{1n} x_n = b_1 \\
@@ -54,21 +50,17 @@ dạng
         E_n \text{ : } a_{n1} x_1 + a_{n2} x_2 + \ldots + a_{nn} x_n = b_n \\
     \end{cases}
 \]
-
-\noindent với các hệ số \(a_{jk}\) và \(b_j\) đã biết. Hệ được gọi là thuần nhất
-nếu các \(b_j\) bằng \(0\), trong trường hợp ngược lại được gọi là hệ không
-thuần nhất.
+với các hệ số \(a_{jk}\) và \(b_j\) đã biết. Hệ được gọi là thuần nhất nếu các
+\(b_j\) bằng \(0\), trong trường hợp ngược lại được gọi là hệ không thuần nhất.
 
 Dùng cách biểu diễn ma trận, ta có thể viết hệ
 \eqref{eq:general_system_equations} dưới dạng:
-
-\begin{equation}
+\begin{equation}\label{eq:general_system_equations_in_matrix}
     \bm{A x} = \bm{b}
 \end{equation}
 
 Ở đây, ma trận hệ số \(A = [a_{jk}]\) là ma trận vuông cấp \(n\), \(x\) và \(b\)
 là các véc tơ cột:
-
 \[
     \bm{A} =
         \begin{bmatrix}
@@ -93,9 +85,8 @@ là các véc tơ cột:
         \end{bmatrix}
 \]
 
-Ma trận \(\bm{\tilde{A}}\) sau được gọi là ma trận mở rộng của hệ
-\eqref{eq:general_system_equations}:
-
+Ma trận \(\bm{\tilde{A}}\) sau được gọi là ma trận mở rộng (augmented matrix)
+của hệ \eqref{eq:general_system_equations}:
 \[
     \bm{\tilde{A}} = [\bm{A}, \bm{b}] =
         \begin{bNiceArray}{cccc:c}
@@ -113,16 +104,25 @@ Véc tơ nghiệm của \eqref{eq:general_system_equations} là \(\bm{x}\) mà c
 phần của nó lập thành một nghiệm của \eqref{eq:general_system_equations}.
 
 Hệ phương trình \eqref{eq:general_system_equations} có thể giải được bằng
-
 \begin{itemize}
-    \item \emph{phương pháp trực tiếp} (phương pháp khử Gauss, \ldots), hoặc
-    \item \emph{phương pháp gián tiếp} hay phương pháp lặp.
+    \item \emph{phương pháp trực tiếp}
+        (\hyperref[method:gauss_elimination]{phương pháp khử Gauss}, \ldots),
+        hoặc
+    \item \emph{phương pháp gián tiếp} hay \emph{phương pháp lặp}
 \end{itemize}
+
+
+%----------------------------------------------------------------------------------------
+%	3.2: Phương pháp khử Gauss
+%----------------------------------------------------------------------------------------
+
+\section{Phương pháp khử Gauss}\label{sec:gauss_elimination}
 
 Chúng ta đã biết phương pháp sử dụng định thức để giải hệ phương trình
 \eqref{eq:general_system_equations}, đó là \emph{phương pháp Cramer}. Ở đây ta
-xét \hyperref[method:gauss_elimination]{\emph{phương pháp khử Gauss}} để giải hệ
-phương trình tuyến tính.
+xét \emph{phương pháp khử Gauss} để giải hệ phương trình tuyến tính.
+
+\subsection{Phương pháp khử Gauss}
 
 \begin{method}\label{method:gauss_elimination}
     \emph{Phương pháp khử Gauss (Gaussian elimination)}
@@ -136,11 +136,11 @@ phương trình tuyến tính.
     \begin{enumerate}
         \item \emph{Quá trình thuận (forward elimination)}: Dùng các phép biến
             đổi sơ cấp về hàng để đưa \(\bm{\tilde{A}}\) về dạng tam giác trên:
-
             \begin{enumerate}
                 \item Khử \(x_1\) từ \(E_{\geq 2}\) bằng cách:
-
-                    \[E_i \coloneqq E_i - \frac{a_{i1}}{a_{11}} E_1 \, \forall i \in \interval{2}{n}\]
+                    \begin{equation}\label{eq:gauss_elinimation_1st}
+                        E_j \coloneqq E_j - \frac{a_{j1}}{a_{11}} E_1 \, \forall j \in \interval{2}{n}
+                    \end{equation}
 
                     \(a_{11}\) gọi là \emph{phần tử trục xoay (pivot)}, \(E_1\)
                     gọi là phương trình chính (pivot equation).
@@ -151,7 +151,6 @@ phương trình tuyến tính.
 
         \item \emph{Quá trình ngược (back substitution)}: Giải \(\bm{x}\) từ
             cuối lên:
-
             \begin{enumerate}
                 \item Giải \(x_n\) từ \(E_n\), giải tiếp được \(x_{n - 1}\) do
                     đã biết \(x_n\).
@@ -162,21 +161,24 @@ phương trình tuyến tính.
     \end{enumerate}
 \end{method}
 
-\begin{exmp}
-    Hãy giải hệ phương trình:
+Xem xét kĩ hơn, ta thấy \eqref{eq:gauss_elinimation_1st} có một chi tiết nhạy
+cảm là phép chia. Nếu \(a_{11} = 0\), phương pháp không thể thực hiện được, cho
+dù thực tế hệ phương trình có thể có nghiệm. Một cách xử lí trường hợp này là
+\emph{đổi vị trí hàng}, như trong hai ví dụ sau:
 
-    \begin{align*}
-             8 x_2 + 2 x_3 &= -7 \tag{\(E_1\)} \\
-        3x_1 + 5x_2 + 2x_3 &= 8  \tag{\(E_2\)} \\
-        6x_1 + 2x_2 + 8x_3 &= 26 \tag{\(E_3\)}
-    \end{align*}
+\begin{exmp}\label{exmp:3.1}
+    Hãy giải hệ phương trình:
+    \begin{numcases}{}
+              8x_2 + 2 x_3 & $= -7$ \tag{\(E_1\)} \\
+        3x_1 + 5x_2 + 2x_3 & $=  8$ \tag{\(E_2\)} \\
+        6x_1 + 2x_2 + 8x_3 & $= 26$ \tag{\(E_3\)}
+    \end{numcases}
 
     Chúng ta xoay trục từ \(E_1\) , nhưng do \(E_1\) không có ẩn \(x_1\), trong
     khi đó hệ số của \(x_1\) trong phương trình \(E_3\) là lớn nhất. Vì vậy ta
     đổi chỗ \(E_1\) và \(E_3\) cho nhau.
 
     Tới đây ta có ma trận mở rộng như sau:
-
     \[
         \bm{\tilde{A}} =
             \begin{bNiceArray}{S[table-format=1] S[table-format=1] S[table-format=1] : S[table-format=-1]}
@@ -188,7 +190,6 @@ phương trình tuyến tính.
 
     \begin{multicols}{2}
         Khử \(x_1\) được:
-
         \[
             \begin{bNiceArray}{S[table-format=1] S[table-format=1] S[table-format=-1] : S[table-format=-1]}
                 6  &  2  &   8  &  26  \\
@@ -198,7 +199,6 @@ phương trình tuyến tính.
         \]
 
         Khử \(x_2\) được:
-
         \[
             \begin{bNiceArray}{S[table-format=1] S[table-format=1] S[table-format=-1] : S[table-format=-1]}
                 6  &  2  &   8  &  26  \\
@@ -206,20 +206,504 @@ phương trình tuyến tính.
                    &     &   6  &   3  \\
             \end{bNiceArray}
         \]
-
     \end{multicols}
 
     Vậy ta giải được \(x_3 = \num{0.5}\), \(x_2 = -1\), \(x_1 = 4\).
 \end{exmp}
 
-\hyperref[method:gauss_elimination]{Phương pháp Gauss} còn có một số biến thể:
+\begin{exmp}
+    Hãy giải hệ phương trình:
+    % TODO: revisit numcases
+    \begin{numcases}{}
+           x_1 - x_2 + 2x_3 - x_4 & $=  -8$  \tag{\(E_1\)} \\
+        2x_1 - 2x_2 + 3x_3 - 3x_4 & $= -20$  \tag{\(E_2\)} \\
+                  x_1 + x_2 + x_3 & $=  -2$  \tag{\(E_3\)} \\
+          x_1 - x_2 + 4x_3 + 3x_4 & $=   4$  \tag{\(E_4\)}
+    \end{numcases}
 
+    Ta có ma trận mở rộng như sau:
+    \[
+        \bm{\tilde{A}} =
+            \begin{bNiceArray}{S[table-format=1] S[table-format=-1] S[table-format=1] S[table-format=-1] : S[table-format=-2]}
+                1  &  -1  &  2  &  -1  &   -8  \\
+                2  &  -2  &  3  &  -3  &  -20  \\
+                1  &   1  &  1  &   0  &   -2  \\
+                1  &  -1  &  4  &   3  &    4  \\
+            \end{bNiceArray}
+    \]
+\end{exmp}
+
+Phương pháp khử Gauss còn có một số biến thể:
 \begin{itemize}
     \item Phương pháp Gauss-Jordan: đưa \(\bm{A}\) về dạng đường chéo thay vì
         dạng tam giác trên.
 
-    \item Phương pháp Doolittle, phương pháp Crout, phương pháp Cholesky đều dựa
-        trên phân tích \(\bm{LU}\) (\(\bm{LU}\) factorization).
+    \item Phương pháp Doolittle, phương pháp Crout, phương pháp Cholesky: đều
+        dựa trên phân tích LU (LU factorization), sẽ giới thiệu ở phần sau.
 \end{itemize}
+
+\subsection{Độ phức tạp}
+
+Ta phân tích độ phức tạp của phương pháp khử Gauss:
+\begin{itemize}
+    \item Có tổng cộng \(n - 1\) bước khử.
+
+    \item Ở bước \(k\), ta khử \(x_k\) trong các phương trình \(E_{> k}\), tổng
+        cộng là \(n - k\) phương trình.
+
+    \item Trong mỗi phương trình:
+        \begin{itemize}
+            \item Có \(1\) phép chia: ví dụ \(\frac{a_{i1}}{a_11}\) trong
+                \eqref{eq:gauss_elinimation_1st}
+
+            \item Có \(n - k + 1\) phép nhân: ví dụ \(\frac{a_{i1}}{a_11} E_1\)
+                trong \eqref{eq:gauss_elinimation_1st}
+
+            \item Có \(n - k + 1\) phép trừ: ví dụ chính
+                \eqref{eq:gauss_elinimation_1st}
+        \end{itemize}
+\end{itemize}
+
+Do đó, tổng số phép tính của phương pháp này là:
+\begin{align*}
+    C(n) &= \sum_{k = 1}^{n - 1} (n - k) + 2 \sum_{k = 1}^{n - 1} (n - k)(n - k + 1) \\
+         &= \sum_{s = 1}^{n - 1} s + 2 \sum_{k = 1}^{n - 1} s(s + 1) \, \text{(with \(s = n - k\))} \\
+         &= \frac{1}{2} n(n - 1) + \frac{2}{3} n(n^2 - 1) \\
+         &\approx \frac{2}{3} n^3
+\end{align*}
+
+Ta nói rằng phương pháp khử Gauss có độ phức tạp \(\mathcal{O} (n^3)\).
+
+
+%----------------------------------------------------------------------------------------
+%	3.3: Phân tích LU và Ma trận nghịch đảo
+%----------------------------------------------------------------------------------------
+
+\section{Phân tích LU và Ma trận nghịch đảo}
+
+Chúng ta tiếp tục thảo luận các phương pháp số giải hệ phương trình tuyến tính
+\(n\) phương trình, \(n\) ẩn. Trong phần này, ta xem xét ba phương pháp cải tiến
+từ \hyperref[method:gauss_elimination]{phương pháp khử Gauss}, cho phép tìm
+nghiệm nhanh chóng hơn, gồm \hyperref[thm:lu_doolittle]{phương pháp Doolittle},
+\hyperref[method:cholevsky]{phương pháp Cholevsky}, và
+\hyperref[method:crout]{phương pháp Crout}. Cả ba phương pháp đều dựa trên phân
+tích LU.
+
+Điểm chung của các phương pháp này là đều cố gắng đưa ma trận về tích của các ma
+trận tam giác trên (\underline{U}pper triangular matrix) và ma trận tam giác
+dưới (\underline{L}ower triangular matrix). Hai dạng ma trận này rất hữu ích vì
+cho phép tìm \(\bm{x}\) với độ phức tạp \(\mathcal{O} (n^2)\); nếu xét theo khía
+cạnh này, phương pháp khử Gauss khác ở điểm là \emph{trực tiếp} biến đổi về dạng
+tam giác. Tất nhiên, phần lớn tính toán lại chuyển về việc phân tích ra dạng ma
+trận đặc biệt này, và với một số dạng ma trận đặc biệt, độ phức tạp có thể thấp
+hơn \(\mathcal{O} (n^3)\).
+
+Ba phương pháp được trình bày trong phần này đều gắn chặt với một kiểu phân tích
+ra ma trận tam giác. Vì rất dễ để giải nghiệm từ dạng tam giác, tên phương pháp
+vừa chỉ phương pháp phân tích ra dạng tam giác tương ứng, vừa chỉ phương pháp
+giải hệ tuyến tính từ dạng tam giác đã phân tích.
+
+\subsection{Phân tích LU \& phương pháp Doolittle}
+
+\begin{definition}
+    \emph{Phân tích LU (LU factorization)}
+
+    Phân tích LU là việc phân tích ma trận vuông \(\bm{A}\) thành tích của hai
+    ma trận
+    \[\bm{A} = \bm{LU}\] trong đó \(\bm{L}\) là ma trận tam giác dưới và
+    \(\bm{U}\) là ma trận tam giác trên.
+\end{definition}
+
+Một số lưu ý về phân tích LU:
+\begin{itemize}
+    \item Không phải mọi ma trận vuông đều có phân tích LU. Tuy nhiên, ta thừa
+        nhận một kết quả quan trọng là mọi ma trận khả nghịch \(\bm{A}_0\) đều
+        có thể sắp xếp lại các hàng để thu được một ma trận \(\bm{A}\) có phân
+        tích LU.
+
+    \item Có thể có nhiều cách phân tích LU.
+\end{itemize}
+
+Sau đây ta tìm hiểu phương pháp Doolittle để phân tích LU. Ta sẽ xem xét kết quả
+của phương pháp phân tích LU này với bài toán giải hệ phương trình tuyến tính
+trước, sau đó mới đi sâu vào công thức toán học của nó.
+
+\subsubsection{Phương pháp Doolittle: Dùng dạng LU để giải hệ tuyến tính}
+
+\begin{theorem}\label{thm:lu_doolittle}
+    Nếu hệ tuyến tính \(\bm{Ax} = \bm{b}\) có thể giải được bằng
+    \hyperref[method:gauss_elimination]{khử Gauss} mà không cần đổi vị trí hàng,
+    thì \(\bm{A}\) có thể phân tích thành tích của ma trận tam giác trên
+    \(\bm{L}\) và tam giác dưới \(\bm{U}\) (tức \(\bm{A} = \bm{LU}\)) với dạng
+    sau:
+    \[
+        \bm{U} =
+            \begin{bmatrix}
+                a_{11}^{(1)}  &  a_{12}^{(1)}  &  \dots   &  a_{1n}^{(1)}  \\
+                              &  a_{22}^{(2)}  &  \dots   &  a_{2n}^{(2)}  \\
+                              &                &  \ddots  &     \vdots     \\
+                              &                &          &  a_{nn}^{(n)}  \\
+            \end{bmatrix}
+        \text{, và }
+        \bm{L} =
+            \begin{bmatrix}
+                    1   &          &                &     \\
+                m_{21}  &     1    &                &     \\
+                \vdots  &  \ddots  &     \ddots     &     \\
+                m_{n1}  &  \dots   &  m_{n, n - 1}  &  1  \\
+            \end{bmatrix}
+    \]
+    trong đó
+    \begin{itemize}
+        \item \(a_{ji}^{k}\) là hệ số của \(x_i\) trong phương trình \(E_j\) tại
+            bước khử thứ \(k\)
+
+        \item \(m_{ji} = \dfrac{a_{ji}^{(i)}}{a_{ii}^{(i)}}\) là hệ số của
+            \(E_j\) trong, ví dụ, công thức \eqref{eq:gauss_elinimation_1st}.
+    \end{itemize}
+
+    \(\bm{U}\) cũng chính là ma trận \(\bm{A}\) thu được sau khi khử Gauss.
+\end{theorem}
+
+Định lí trên cũng chính là công thức cho phương pháp Doolittle.
+
+Chú ý rằng \(\bm{U}\) là \(\bm{A}\) sau khi khử Gauss, tức ma trận
+\(\bm{\tilde{A}}\) trong phần \ref{sec:gauss_elimination} nhưng bỏ đi cột cuối.
+
+Cần nhắc lại rằng, đến đây, ta vẫn cần giả sử hệ có thể giải được bằng khử Gauss
+mà \emph{không} cần đổi vị trí hàng. Mở rộng phương pháp Doolittle cho trường
+hợp cần đổi vị trí hàng không khó. Trước hết, ta cần tìm cách biểu diễn việc
+tráo đổi vị trí hàng.
+
+\begin{definition}
+    Ma trận hoán vị (permutation matrix) \(\bm{P}\) là ma trận có được bằng cách
+    sắp xếp lại các hàng của \(I\) tùy ý.
+\end{definition}
+
+Nhân \(P\) vào bên trái \(A\) sẽ tráo các hàng của \(A\) theo đúng cách tráo các
+hàng của \(I\) để tạo ra \(P\). Nói cách khác, \(P\) là tích các ma trận biến
+đổi sơ cấp tráo hàng (row swapping elementary operation).
+
+Ta chọn \(\bm{P}\) sao cho \(\bm{PA}\) có thể giải bằng khử Gauss mà không cần
+tráo vị trí hàng. \(\bm{P}\) được xây dựng đơn giản bằng cách áp dụng cách tráo
+hàng của Gauss cho ma trận \(\bm{I}\).
+
+\begin{exmp}
+    Tìm ma trận hoán vị cho ma trận trong ví dụ \ref{exmp:3.1}, sao cho sau khi
+    ma trận đó với ma trận gốc, nhận được một ma trận có thể dùng phương pháp
+    khử Gauss.
+
+    Trong ví dụ trên, hệ có thể dùng phương pháp khử Gauss sau khi đổi chỗ
+    \(E_1\) và \(E_3\). Vậy một ma trận hoán vị phù hợp là:
+    \[
+        \bm{P} =
+            \begin{pmatrix}
+                0  &  0  &  1  \\
+                0  &  1  &  0  \\
+                1  &  0  &  0  \\
+            \end{pmatrix}
+    \]
+\end{exmp}
+
+Sau khi tìm được \(\bm{P}\), \(\bm{PA}\) có thể áp dụng phương pháp khử Gauss mà
+không cần tráo vị trí hàng. Theo định lí \ref{thm:lu_doolittle}, \(\bm{PA}\) có
+phân tích LU:
+\begin{align*}
+        \bm{PA} &= \bm{LU} \\
+    \iff \bm{A} &= \bm{P}^{-1} \bm{LU} = (\bm{P}^t \bm{L}) \bm{U} \, \text{(do \(\bm{P}^{-1} = \bm{P}^t\))}
+\end{align*}
+
+\subsubsection{Chứng minh phương pháp Doolittle}
+
+Phần này chứng minh kĩ hơn về tính đúng đắn của phương pháp Doolittle, và có thể
+bỏ qua.
+
+\begin{proof}[Chứng minh định lí \ref{thm:lu_doolittle}]
+
+    Ta xem xét công thức \eqref{eq:gauss_elinimation_1st}. Xét trường hợp \(j =
+    2\):
+    \[E_2 \coloneqq E_2 - \frac{a_{21}}{a_{11}} E_1 = E_2 - m_{21} E_1\]
+
+    Sử dụng phép biến đổi sơ cấp cộng một hàng với \(\alpha\) lần một hàng khác
+    (row addition elementary operation), ta có ma trận biến đổi sau:
+    \[
+        \bm{M}_2^{(1)} =
+            \begin{pmatrix}
+                    1    &     &          &     \\
+                -m_{21}  &  1  &          &     \\
+                         &     &  \ddots  &     \\
+                         &     &          &  1  \\
+            \end{pmatrix}
+    \]
+
+    Tương tự, cùng trong bước khử đầu tiên (khử \(x_1\)) này, ta có dạng tổng
+    quát hơn của \(\bm{M}_j^{(1)}\):
+    \[
+        \bm{M}_j^{(1)} =
+            \begin{pmatrix}
+                1        &     &          &     \\
+                         &  1  &          &     \\
+                -m_{j1}  &     &  \ddots  &     \\
+                         &     &          &  1  \\
+            \end{pmatrix}
+    \]
+
+    Sau khi kết thúc bước khử \(x_1\), \(\bm{A}\) được biến đổi thành
+    \[
+        \bm{M}_2^{(1)} \bm{M}_3^{(1)} \ldots \bm{M}_n^{(1)} \bm{A} = \bm{M}^{(1)} \bm{A} = \bm{M}^{(1)} \bm{A}^{(1)} = \bm{A}^{(2)}
+    \]
+    và hơn nữa
+    \[
+        \bm{A}^{(2)} \bm{x} = \bm{M}^{(1)} \bm{A} \bm{x} = \bm{M}^{(1)} \bm{b} = \bm{b}^{(2)}
+    \]
+
+    Dễ dàng chứng minh được \(\bm{M}^{(1)}\) ở trên, gọi là ma trận biến đổi
+    Gauss thứ nhất, có dạng sau:
+    \[
+        \bm{M}^{(1)} =
+            \begin{pmatrix}
+                    1    &     &          &     \\
+                -m_{21}  &  1  &          &     \\
+                \vdots   &     &  \ddots  &     \\
+                -m_{n1}  &     &          &  1  \\
+            \end{pmatrix}
+    \]
+
+    Tương tự, ta chứng minh được \(\bm{M}^{k}\) (ma trận biến đổi Gauss thứ
+    \(k\)) có dạng sau:
+    \[
+        \bm{M}^{(k)} =
+            \begin{pmatrix}
+                1  &          &                 &          &          &     \\
+                   &  \ddots  &                 &          &          &     \\
+                   &          &        1        &          &          &     \\
+                   &          &  -m_{k + 1, k}  &  \ddots  &          &     \\
+                   &          &      \vdots     &          &  \ddots  &     \\
+                   &          &  -m_{n, k}      &          &          &  1  \\
+            \end{pmatrix}
+    \]
+
+    Cuối cùng, sau khi kết thúc bước khử \(x_n\):
+    \[
+        \bm{M}^{(1)} \bm{M}^{(2)} \ldots \bm{M}^{(n)} \bm{A} = \bm{M} \bm{A} = \bm{A}^{(n)}
+    \]
+    trong đó \(\bm{A}^{(n)}\) chính là ma trận \(\bm{A}\) sau khi khử Gauss:
+    \[
+        \bm{A}^{(n)} =
+            \begin{pmatrix}
+                a_{11}^{(1)}  &  a_{12}^{(1)}  &  \dots   &  a_{1n}^{(1)}  \\
+                              &  a_{22}^{(2)}  &  \dots   &  a_{2n}^{(2)}  \\
+                              &                &  \ddots  &     \vdots     \\
+                              &                &          &  a_{nn}^{(n)}  \\
+            \end{pmatrix}
+    \]
+
+    Tới đây, chúng ta đã biến đổi được phương trình ban đầu
+    \eqref{eq:general_system_equations_in_matrix} sang dạng sau:
+    \begin{equation}\label{eq:general_system_equations_in_matrix_transformed}
+        \bm{A}^{(n)} \bm{x} = \bm{M}^{(n - 1)} \bm{A}^{(n - 1)} \bm{x} = \bm{M}^{(n - 1)} \bm{b}^{(n - 1)} = \bm{b}^{(n)}
+    \end{equation}
+    trong đó \(\bm{A}^{(n)}\) là một ma trận tam giác trên.
+
+    Giờ đây, nếu coi \(\bm{A}^{(n)}\) là thành phần \(\bm{U}\) cần tìm, ta cần
+    nhân vào trước hai vế của
+    \eqref{eq:general_system_equations_in_matrix_transformed} một thành phần
+    \(\bm{L}\) nào đó để đưa
+    \eqref{eq:general_system_equations_in_matrix_transformed} về lại
+    \eqref{eq:general_system_equations_in_matrix}.
+
+    Thành phần \(\bm{U}\) đã thấy chỉ đơn giản là \(\bm{A}\) qua một chuỗi các
+    biến đổi sơ cấp cộng một hàng với \(\alpha\) lần một hàng khác. Do đó
+    \(\bm{L}\) chỉ cần là một ma trận có thể đảo ngược chuỗi biến đổi này.
+
+    Xét biến đổi \(\bm{M}_2^{(1)}\), biến đổi
+    \[
+        \bm{L}_2^{(1)} =
+            \begin{pmatrix}
+                    1   &     &          &     \\
+                m_{21}  &  1  &          &     \\
+                        &     &  \ddots  &     \\
+                        &     &          &  1  \\
+            \end{pmatrix}
+    \]
+    sẽ đảo ngược được \(\bm{M}_2^{(1)}\). Lý do cũng rất đơn giản:
+    \begin{itemize}
+        \item \(\bm{M}_2^{(1)}\) lấy \(E_2\) trừ đi \(m_{21}\) lần \(E_1\), thì
+        \item \(\bm{L}_2^{(1)}\) lấy \(E_2\) cộng với \(m_{21}\) lần \(E_1\)
+    \end{itemize}
+
+    Tương tự, ta dễ dàng thấy
+    \[
+        \bm{L}^{(k)} =
+            \begin{pmatrix}
+                1  &          &                &          &          &     \\
+                   &  \ddots  &                &          &          &     \\
+                   &          &        1       &          &          &     \\
+                   &          &  m_{k + 1, k}  &  \ddots  &          &     \\
+                   &          &     \vdots     &          &  \ddots  &     \\
+                   &          &  m_{n, k}      &          &          &  1  \\
+            \end{pmatrix}
+    \]
+    sẽ đảo ngược được \(\bm{M}^{(k)}\).
+
+    Nhân \(\bm{L}^{(k)}\) vào trước hai vế của
+    \eqref{eq:general_system_equations_in_matrix_transformed} theo thứ tự \(k\)
+    tăng dần từ \(1\) đến \(n - 1\), ta có:
+    \begin{align*}
+                                                   \bm{L}^{(1)} \bm{L}^{(2)} \ldots \bm{L}^{(n - 1)} \bm{A}^{(n)} \bm{x} &= \bm{L}^{(1)} \bm{L}^{(2)} \ldots \bm{L}^{(n - 1)} \bm{b}^{(n)} \\
+        \iff \bm{L}^{(1)} \bm{L}^{(2)} \ldots \bm{L}^{(n - 1)} \bm{M}^{(n - 1)} \ldots \bm{M}^{(2)} \bm{M}^{(1)} \bm{Ax} &= \bm{L}^{(1)} \bm{L}^{(2)} \ldots \bm{L}^{(n - 1)} \bm{M}^{(n - 1)} \ldots \bm{M}^{(2)} \bm{M}^{(1)} \bm{b} \\
+                                                                                                            \iff \bm{Ax} &= \bm{b}
+    \end{align*}
+
+    Đến đây, ta nhận được phương trình
+    \eqref{eq:general_system_equations_in_matrix} ban đầu. Vậy tích các
+    \(\bm{L}^{(k)}\) theo thứ tự trên là một giá trị \(\bm{L}\) phù hợp. Không
+    khó để chứng minh rằng:
+    \[
+        \bm{L} = \bm{L}^{(1)} \bm{L}^{(2)} \ldots \bm{L}^{(n - 1)} =
+            \begin{pmatrix}
+                    1   &          &                &          &                &     \\
+                m_{21}  &  \ddots  &                &          &                &     \\
+                \vdots  &  \ddots  &        1       &          &                &     \\
+                \vdots  &  \vdots  &  m_{k + 1, k}  &  \ddots  &                &     \\
+                \vdots  &  \vdots  &     \vdots     &  \ddots  &     \ddots     &     \\
+                m_{n1}  &  \dots   &  m_{n, k}      &  \dots   &  m_{n, n - 1}  &  1  \\
+            \end{pmatrix}
+    \]
+
+    Vậy ta đã xây dựng được phân tích LU của \(\bm{A}\), với \(\bm{L}\) và
+    \(\bm{U}\) có dạng như yêu cầu.
+
+\end{proof}
+
+\subsection{Phân tích LL' \& phương pháp Cholevsky}
+
+Thuật toán Cholesky phân tích một ma trận xác định dương ra dạng LL'. Để tìm
+hiểu phân tích này, ta cần biết về ma trận xác định dương.
+
+\begin{definition}
+    \emph{Ma trận xác định dương (positive definitive matrix)}
+
+    Ma trận \(\bm{A}\) \(n \times n\) gọi là xác định dương nếu:
+    \begin{itemize}
+        \item \(\bm{A}\) đối xứng, và
+        \item \(\bm{x}^t \bm{A} \bm{x} > 0 \, \forall \bm{x} \neq 0\)
+    \end{itemize}
+\end{definition}
+
+\(\bm{L}\) có dạng như sau (viết rõ lại để tiện biểu diễn về sau):
+\[
+    \bm{L} =
+        \begin{pmatrix}
+            l_{11}  &          &          &        \\
+            l_{21}  &  l_{22}  &          &        \\
+            \vdots  &  \vdots  &  \ddots  &        \\
+            l_{n1}  &  \dots   &  \dots   &  l_{nn}\\
+        \end{pmatrix}
+\]
+
+Ta thừa nhận định lí sau:
+
+\begin{theorem}
+    Ma trận \(\bm{A}\) là  khi và chỉ khi nó phân tích
+    được ra dạng \(\bm{L} \bm{L}^t\), trong đó \(\bm{L}\) là ma trận tam giác
+    dưới với đường chéo chính khác \(0\).
+\end{theorem}
+
+Do có số ẩn không lớn (với ma trận \(n \times n\) cần tìm tổng cộng \(\frac{n(n
++ 1)}{2}\) ẩn), đồng thời ma trận tích có dạng phù hợp, nên phương pháp này có
+thể giải bằng tay các ẩn theo cách thế thông thường với \(n\) nhỏ. Nếu không
+tiện tính tay, ta có phương pháp chính xác sau:
+
+\begin{method}\label{method:cholevsky}
+    \emph{Phương pháp Cholevsky}
+
+    Phương pháp Cholevsky phân tích ma trận xác định dương \(\bm{A}\) thành dạng
+    LL'.
+
+    Lần lượt tính phần tử khác \(0\) ở cột \(1\), \(2\), \ldots. Bước thứ \(i\)
+    sẽ tính các phần tử thuộc cột \(i\) như sau:
+    \begin{itemize}
+        \item Tính \(l_{ii}\):
+            \[l_{ii} = \left(a_{ii} - \sum_{k = 1}^{i - 1} l_{ik}^2\right)^{\num{0.5}}\]
+
+        \item Tính các phần tử còn lại, nếu có:
+            \[l_{ji} = \frac{1}{l_{ii}} \left(a_{ji} - \sum_{k = i + 1}^{n} l_{jk} l_{ik}\right) \mid j \in \interval{i + 1}{n}\]
+    \end{itemize}
+\end{method}
+
+\subsection{Phân tích LU cho ma trận dải \& thuật toán Crout}
+
+Ta quay trở lại với phân tích LU, tuy nhiên sử dụng thuật toán khác, nhanh vượt
+trội so với Doolittle, cho một loại ma trận đặc biệt, ma trận dải.
+
+\begin{definition}
+    \emph{Ma trận dải (band matrix)}
+
+    Ma trận \(n \times n\) gọi là ma trận dải nếu có \(1 < p \text{, } q < n\)
+    sao cho \(a_{ij} = 0\) khi \(j - i \geq p\) hoặc \(i - j \geq q\).
+\end{definition}
+
+Nói cách khác, hai chỉ số \(p\), \(q\) chỉ số đường chéo mà các phần tử trên đó
+không nhất thiết bằng \(0\):
+\begin{itemize}
+    \item \(p\) đường chéo trên đường chéo chính, gồm cả đường chéo chính
+    \item \(q\) đường chéo dưới đường chéo chính, gồm cả đường chéo chính
+\end{itemize}
+
+Ta lại xét tiếp một trường hợp đặc biệt: ma trận dải với \(p = q = 2\), gọi là
+ma trận ba đường chéo (tridiagonal matrix).
+
+Nếu \(\bm{A}\) trong \eqref{eq:general_system_equations_in_matrix} có dạng ba
+đường chéo:
+\[
+    \bm{A} =
+        \begin{pmatrix}
+            a_{11}  &  a_{12}  &          &                &                \\
+            a_{21}  &  a_{22}  &  a_{23}  &                &                \\
+                    &  a_{32}  &  a_{33}  &     \ddots     &                \\
+                    &          &  \ddots  &     \ddots     &  a_{n - 1, n}  \\
+                    &          &          &  a_{n, n - 1}  &     a_{nn}     \\
+        \end{pmatrix}
+\]
+thì có thể phân tích \(\bm{A}\) ra dạng LU như sau:
+\[
+    \bm{L} =
+        \begin{pmatrix}
+            l_{11}  &          &          &                &          \\
+            l_{21}  &  l_{22}  &          &                &          \\
+                    &  l_{32}  &  l_{33}  &                &          \\
+                    &          &  \ddots  &     \ddots     &          \\
+                    &          &          &  l_{n, n - 1}  &  l_{nn}  \\
+        \end{pmatrix}
+    \, \text{, và }
+    \bm{U} =
+        \begin{pmatrix}
+            1  &  u_{12}  &          &          &                \\
+               &    1     &  u_{23}  &          &                \\
+               &          &  \ddots  &  \ddots  &                \\
+               &          &          &  \ddots  &  u_{n - 1, n}  \\
+               &          &          &          &     1          \\
+
+        \end{pmatrix}
+\]
+
+Do có số ẩn không lớn (với ma trận \(n \times n\) cần tìm tổng cộng \(3n - 2\)
+ẩn), đồng thời ma trận tích có dạng phù hợp, nên phương pháp này có thể giải
+bằng tay các ẩn theo cách thế thông thường với \(n\) nhỏ. Nếu không tiện tính
+tay, ta giới thiệu qua phương pháp sau:
+
+\begin{method}\label{method:crout}
+    \emph{Phương pháp Crout cho trường hợp ma trận ba đường chéo}
+
+    Phương pháp Crout dùng để phân tích ma trận ra dạng LU. Dạng LU của phương
+    pháp Crout có khác biệt so phương pháp Doolittle:
+    \begin{itemize}
+        \item Phương pháp Crout tạo ra ma trận \(\bm{U}\) có đường chéo chính
+            bằng \(1\).
+        \item Phương pháp Doolittle tạo ra ma trận \(\bm{L}\) có đường chéo
+            chính bằng \(1\).
+    \end{itemize}
+\end{method}
 
 \end{document}
