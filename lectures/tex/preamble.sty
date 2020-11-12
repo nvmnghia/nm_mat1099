@@ -1,7 +1,11 @@
 \ProvidesPackage{preamble}
 
 
-\usepackage{hyperref}          % Clickable link
+\usepackage{xr}    % Reference between files
+% \usepackage{xr-hyper}    % Not sure if this is needed anymore. If needed, load it before hyperref
+\usepackage{hyperref}    % Clickable link
+\externaldocument[chapter2:]{chapters/chapter 2/chapter 2}
+
 \usepackage{indentfirst}
 
 % \usepackage[vietnamese]{babel}
@@ -19,6 +23,8 @@
 \usepackage{bm}    % Bold symbols
 \usepackage{nicematrix}
 \usepackage{cases}
+\usepackage{systeme}
+\usepackage{empheq}
 
 \usepackage{amsthm}
 \newtheorem{definition}{Định nghĩa}
@@ -37,9 +43,6 @@
 \usepackage{enumitem}
 \usepackage{multicol}
 
-\usepackage{enumitem}
-\usepackage{tasks}
-
 \usepackage{interval}
 \intervalconfig{
   soft open fences ,    % instead of the "perverse" ]a; b]
@@ -56,10 +59,16 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{longtable}
+\usepackage{array}
+\usepackage{hhline}
 
+% \usepackage[table]{xcolor}    % xcolor with [table] must be loaded first, as pgfplots also loads one
+\usepackage{colortbl}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
 \usetikzlibrary{decorations.markings}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
 
 \usepackage{bookmark}
 
@@ -76,6 +85,19 @@
   \addtocounter{page}{-1}%
   \null%
   \clearpage}
+
+
+\newtcbtheorem[number within=chapter]{cdefinition}{Định nghĩa}%
+{colback=blue!5, fonttitle=\bfseries}{def}
+\newtcbtheorem[number within=chapter]{ctheorem}{Định lí}%
+{colback=green!5, fonttitle=\bfseries}{thm}
+\newtcbtheorem[number within=chapter]{ccoro}{Hệ quả}%
+{colback=green!5, fonttitle=\bfseries}{coro}
+\newtcbtheorem[number within=chapter]{clemma}{Bổ đề}%
+{colback=green!5, fonttitle=\bfseries}{lemma}
+\newtcbtheorem[number within=chapter]{cmethod}{Phương pháp}%
+{fonttitle=\bfseries}{method}
+
 
 % \usepackage{standalone}
 \usepackage{subfiles} % Best loaded last in the preamble

@@ -63,38 +63,38 @@ Dùng cách biểu diễn ma trận, ta có thể viết hệ
 là các véc tơ cột:
 \[
     \bm{A} =
-        \begin{bmatrix}
+        \begin{pmatrix}
             a_{11}  &  a_{12}  &  \dots   &  a_{1n}  \\
             a_{21}  &  a_{22}  &  \dots   &  a_{2n}  \\
             \vdots  &  \vdots  &  \ddots  &  \vdots  \\
             a_{n1}  &  a_{n2}  &  \dots   &  a_{nn}  \\
-        \end{bmatrix} \quad
+        \end{pmatrix} \quad
     \bm{x} =
-        \begin{bmatrix}
+        \begin{pmatrix}
             x_1     \\
             x_2     \\
             \vdots  \\
             x_n     \\
-        \end{bmatrix} \quad
+        \end{pmatrix} \quad
     \bm{b} =
-        \begin{bmatrix}
+        \begin{pmatrix}
             b_1     \\
             b_2     \\
             \vdots  \\
             b_n     \\
-        \end{bmatrix}
+        \end{pmatrix}
 \]
 
 Ma trận \(\bm{\tilde{A}}\) sau được gọi là ma trận mở rộng (augmented matrix)
 của hệ \eqref{eq:general_system_equations}:
 \[
     \bm{\tilde{A}} = [\bm{A}, \bm{b}] =
-        \begin{bNiceArray}{cccc:c}
+        \begin{pNiceArray}{cccc:c}
             a_{11}  &  a_{12}  &  \dots   &  a_{1n}  &  b_1     \\
             a_{21}  &  a_{22}  &  \dots   &  a_{2n}  &  b_2     \\
             \vdots  &  \vdots  &  \ddots  &  \vdots  &  \vdots  \\
             a_{n1}  &  a_{n2}  &  \dots   &  a_{nn}  &  b_n     \\
-        \end{bNiceArray}
+        \end{pNiceArray}
 \]
 
 Nghiệm của \eqref{eq:general_system_equations} là bộ số \(x_1\), \(x_2\),
@@ -120,22 +120,21 @@ Hệ phương trình \eqref{eq:general_system_equations} có thể giải đư�
 
 Chúng ta đã biết phương pháp sử dụng định thức để giải hệ phương trình
 \eqref{eq:general_system_equations}, đó là \emph{phương pháp Cramer}. Ở đây ta
-xét \emph{phương pháp khử Gauss} để giải hệ phương trình tuyến tính.
+xét \emph{phương pháp khử Gauss}, cũng là một phương pháp trực tiếp, để giải hệ
+phương trình tuyến tính.
 
 \subsection{Phương pháp khử Gauss}
 
-\begin{method}\label{method:gauss_elimination}
-    \emph{Phương pháp khử Gauss (Gaussian elimination)}
+\begin{cmethod}{Phương pháp khử Gauss}{gauss_elimination}
+    Phương pháp này khử liên tiếp các ẩn để từng bước đưa ma trận mở rộng
+    \(\bm{\tilde{A}}\) về dạng tam giác trên (upper triangular matrix, hay dạng
+    bậc thang).
 
-    Phương pháp khử Gauss là phép giải trực tiếp được thực hiện bằng quá trình
-    khử liên tiếp các ẩn để từng bước đưa ma trận mở rộng \(\bm{\tilde{A}}\) về
-    dạng tam giác trên (upper triangular matrix, hay dạng bậc thang).
-
-    Phương pháp này gồm hai phần thực hiện lần lượt như sau:
+    Phương pháp gồm hai phần thực hiện lần lượt như sau:
 
     \begin{enumerate}
         \item \emph{Quá trình thuận (forward elimination)}: Dùng các phép biến
-            đổi sơ cấp về hàng để đưa \(\bm{\tilde{A}}\) về dạng tam giác trên:
+            đổi hàng sơ cấp để đưa \(\bm{\tilde{A}}\) về dạng tam giác trên:
             \begin{enumerate}
                 \item Khử \(x_1\) từ \(E_{\geq 2}\) bằng cách:
                     \begin{equation}\label{eq:gauss_elinimation_1st}
@@ -159,7 +158,13 @@ xét \emph{phương pháp khử Gauss} để giải hệ phương trình tuyến
                     \(\bm{x}\).
             \end{enumerate}
     \end{enumerate}
-\end{method}
+\end{cmethod}
+
+(\emph{``back''} trong cụm \emph{``back substitution''} nghĩa là các ẩn được
+giải từ cuối lên, do trước đó đã đưa được \(\bm{A}\) về dạng tam giác trên.
+Tương tự, nếu \(\bm{A}\) ở dạng tam giác dưới, việc thế từ trên xuống sẽ gọi là
+\emph{``forward substitution''}. Dù hai dạng này tương đương, trong khử Gauss ta
+chỉ nói đến back substitution).
 
 Xem xét kĩ hơn, ta thấy \eqref{eq:gauss_elinimation_1st} có một chi tiết nhạy
 cảm là phép chia. Nếu \(a_{11} = 0\), phương pháp không thể thực hiện được, cho
@@ -168,11 +173,12 @@ dù thực tế hệ phương trình có thể có nghiệm. Một cách xử l�
 
 \begin{exmp}\label{exmp:3.1}
     Hãy giải hệ phương trình:
-    \begin{numcases}{}
-              8x_2 + 2 x_3 & $= -7$ \tag{\(E_1\)} \\
-        3x_1 + 5x_2 + 2x_3 & $=  8$ \tag{\(E_2\)} \\
-        6x_1 + 2x_2 + 8x_3 & $= 26$ \tag{\(E_3\)}
-    \end{numcases}
+    % TODO: left brace before align?
+    \begin{align}
+               8x_2 + 2x_3 & = -7 \tag{\(E_1\)} \\
+        3x_1 + 5x_2 + 2x_3 & =  8 \tag{\(E_2\)} \\
+        6x_1 + 2x_2 + 8x_3 & = 26 \tag{\(E_3\)}
+    \end{align}
 
     Chúng ta xoay trục từ \(E_1\) , nhưng do \(E_1\) không có ẩn \(x_1\), trong
     khi đó hệ số của \(x_1\) trong phương trình \(E_3\) là lớn nhất. Vì vậy ta
@@ -181,30 +187,30 @@ dù thực tế hệ phương trình có thể có nghiệm. Một cách xử l�
     Tới đây ta có ma trận mở rộng như sau:
     \[
         \bm{\tilde{A}} =
-            \begin{bNiceArray}{S[table-format=1] S[table-format=1] S[table-format=1] : S[table-format=-1]}
+            \begin{pNiceArray}{S[table-format=1] S[table-format=1] S[table-format=1] : S[table-format=-1]}
                 6  &  2  &  8  &  26  \\
                 3  &  5  &  2  &   8  \\
-                   &  8  &  2  &  -7  \\
-            \end{bNiceArray}
+                   &  8  &  2  &  -7
+            \end{pNiceArray}
     \]
 
     \begin{multicols}{2}
         Khử \(x_1\) được:
         \[
-            \begin{bNiceArray}{S[table-format=1] S[table-format=1] S[table-format=-1] : S[table-format=-1]}
+            \begin{pNiceArray}{S[table-format=1] S[table-format=1] S[table-format=-1] : S[table-format=-1]}
                 6  &  2  &   8  &  26  \\
                    &  4  &  -2  &  -5  \\
-                   &  8  &   2  &  -7  \\
-            \end{bNiceArray}
+                   &  8  &   2  &  -7
+            \end{pNiceArray}
         \]
 
         Khử \(x_2\) được:
         \[
-            \begin{bNiceArray}{S[table-format=1] S[table-format=1] S[table-format=-1] : S[table-format=-1]}
+            \begin{pNiceArray}{S[table-format=1] S[table-format=1] S[table-format=-1] : S[table-format=-1]}
                 6  &  2  &   8  &  26  \\
                    &  4  &  -2  &  -5  \\
-                   &     &   6  &   3  \\
-            \end{bNiceArray}
+                   &     &   6  &   3
+            \end{pNiceArray}
         \]
     \end{multicols}
 
@@ -224,12 +230,12 @@ dù thực tế hệ phương trình có thể có nghiệm. Một cách xử l�
     Ta có ma trận mở rộng như sau:
     \[
         \bm{\tilde{A}} =
-            \begin{bNiceArray}{S[table-format=1] S[table-format=-1] S[table-format=1] S[table-format=-1] : S[table-format=-2]}
+            \begin{pNiceArray}{S[table-format=1] S[table-format=-1] S[table-format=1] S[table-format=-1] : S[table-format=-2]}
                 1  &  -1  &  2  &  -1  &   -8  \\
                 2  &  -2  &  3  &  -3  &  -20  \\
                 1  &   1  &  1  &   0  &   -2  \\
-                1  &  -1  &  4  &   3  &    4  \\
-            \end{bNiceArray}
+                1  &  -1  &  4  &   3  &    4
+            \end{pNiceArray}
     \]
 \end{exmp}
 
@@ -305,14 +311,12 @@ giải hệ tuyến tính từ dạng tam giác đã phân tích.
 
 \subsection{Phân tích LU \& phương pháp Doolittle}
 
-\begin{definition}
-    \emph{Phân tích LU (LU factorization)}
-
+\begin{cdefinition}{Phân tích LU (LU factorization)}{lu_factorization}
     Phân tích LU là việc phân tích ma trận vuông \(\bm{A}\) thành tích của hai
     ma trận
     \[\bm{A} = \bm{LU}\] trong đó \(\bm{L}\) là ma trận tam giác dưới và
     \(\bm{U}\) là ma trận tam giác trên.
-\end{definition}
+\end{cdefinition}
 
 Một số lưu ý về phân tích LU:
 \begin{itemize}
@@ -330,7 +334,7 @@ trước, sau đó mới đi sâu vào công thức toán học của nó.
 
 \subsubsection{Phương pháp Doolittle: Dùng dạng LU để giải hệ tuyến tính}
 
-\begin{theorem}\label{thm:lu_doolittle}
+\begin{ctheorem}{}{lu_doolittle}
     Nếu hệ tuyến tính \(\bm{Ax} = \bm{b}\) có thể giải được bằng
     \hyperref[method:gauss_elimination]{khử Gauss} mà không cần đổi vị trí hàng,
     thì \(\bm{A}\) có thể phân tích thành tích của ma trận tam giác trên
@@ -338,20 +342,20 @@ trước, sau đó mới đi sâu vào công thức toán học của nó.
     sau:
     \[
         \bm{U} =
-            \begin{bmatrix}
+            \begin{pmatrix}
                 a_{11}^{(1)}  &  a_{12}^{(1)}  &  \dots   &  a_{1n}^{(1)}  \\
                               &  a_{22}^{(2)}  &  \dots   &  a_{2n}^{(2)}  \\
                               &                &  \ddots  &     \vdots     \\
                               &                &          &  a_{nn}^{(n)}  \\
-            \end{bmatrix}
+            \end{pmatrix}
         \text{, và }
         \bm{L} =
-            \begin{bmatrix}
+            \begin{pmatrix}
                     1   &          &                &     \\
                 m_{21}  &     1    &                &     \\
                 \vdots  &  \ddots  &     \ddots     &     \\
                 m_{n1}  &  \dots   &  m_{n, n - 1}  &  1  \\
-            \end{bmatrix}
+            \end{pmatrix}
     \]
     trong đó
     \begin{itemize}
@@ -363,7 +367,7 @@ trước, sau đó mới đi sâu vào công thức toán học của nó.
     \end{itemize}
 
     \(\bm{U}\) cũng chính là ma trận \(\bm{A}\) thu được sau khi khử Gauss.
-\end{theorem}
+\end{ctheorem}
 
 Định lí trên cũng chính là công thức cho phương pháp Doolittle.
 
@@ -375,10 +379,10 @@ mà \emph{không} cần đổi vị trí hàng. Mở rộng phương pháp Dooli
 hợp cần đổi vị trí hàng không khó. Trước hết, ta cần tìm cách biểu diễn việc
 tráo đổi vị trí hàng.
 
-\begin{definition}
-    Ma trận hoán vị (permutation matrix) \(\bm{P}\) là ma trận có được bằng cách
-    sắp xếp lại các hàng của \(I\) tùy ý.
-\end{definition}
+\begin{cdefinition}{Ma trận hoán vị (permutation matrix)}{}
+    Ma trận hoán vị \(\bm{P}\) là ma trận có được bằng cách sắp xếp lại các hàng
+    của \(I\) tùy ý.
+\end{cdefinition}
 
 Nhân \(P\) vào bên trái \(A\) sẽ tráo các hàng của \(A\) theo đúng cách tráo các
 hàng của \(I\) để tạo ra \(P\). Nói cách khác, \(P\) là tích các ma trận biến
@@ -581,15 +585,13 @@ bỏ qua.
 Thuật toán Cholesky phân tích một ma trận xác định dương ra dạng LL'. Để tìm
 hiểu phân tích này, ta cần biết về ma trận xác định dương.
 
-\begin{definition}
-    \emph{Ma trận xác định dương (positive definitive matrix)}
-
+\begin{cdefinition}{Ma trận xác định dương (positive definitive matrix)}{}
     Ma trận \(\bm{A}\) \(n \times n\) gọi là xác định dương nếu:
     \begin{itemize}
         \item \(\bm{A}\) đối xứng, và
         \item \(\bm{x}^t \bm{A} \bm{x} > 0 \, \forall \bm{x} \neq 0\)
     \end{itemize}
-\end{definition}
+\end{cdefinition}
 
 \(\bm{L}\) có dạng như sau (viết rõ lại để tiện biểu diễn về sau):
 \[
@@ -604,20 +606,18 @@ hiểu phân tích này, ta cần biết về ma trận xác định dương.
 
 Ta thừa nhận định lí sau:
 
-\begin{theorem}
-    Ma trận \(\bm{A}\) là  khi và chỉ khi nó phân tích
-    được ra dạng \(\bm{L} \bm{L}^t\), trong đó \(\bm{L}\) là ma trận tam giác
-    dưới với đường chéo chính khác \(0\).
-\end{theorem}
+\begin{ctheorem}{}{}
+    Ma trận \(\bm{A}\) là xác định dương khi và chỉ khi nó phân tích được ra
+    dạng \(\bm{L} \bm{L}^t\), trong đó \(\bm{L}\) là ma trận tam giác dưới với
+    đường chéo chính khác \(0\).
+\end{ctheorem}
 
 Do có số ẩn không lớn (với ma trận \(n \times n\) cần tìm tổng cộng \(\frac{n(n
 + 1)}{2}\) ẩn), đồng thời ma trận tích có dạng phù hợp, nên phương pháp này có
 thể giải bằng tay các ẩn theo cách thế thông thường với \(n\) nhỏ. Nếu không
 tiện tính tay, ta có phương pháp chính xác sau:
 
-\begin{method}\label{method:cholevsky}
-    \emph{Phương pháp Cholevsky}
-
+\begin{cmethod}{Phương pháp Cholevsky}{cholevsky}
     Phương pháp Cholevsky phân tích ma trận xác định dương \(\bm{A}\) thành dạng
     LL'.
 
@@ -630,19 +630,17 @@ tiện tính tay, ta có phương pháp chính xác sau:
         \item Tính các phần tử còn lại, nếu có:
             \[l_{ji} = \frac{1}{l_{ii}} \left(a_{ji} - \sum_{k = i + 1}^{n} l_{jk} l_{ik}\right) \mid j \in \interval{i + 1}{n}\]
     \end{itemize}
-\end{method}
+\end{cmethod}
 
 \subsection{Phân tích LU cho ma trận dải \& thuật toán Crout}
 
 Ta quay trở lại với phân tích LU, tuy nhiên sử dụng thuật toán khác, nhanh vượt
 trội so với Doolittle, cho một loại ma trận đặc biệt, ma trận dải.
 
-\begin{definition}
-    \emph{Ma trận dải (band matrix)}
-
+\begin{cdefinition}{Ma trận dải (band matrix)}{}
     Ma trận \(n \times n\) gọi là ma trận dải nếu có \(1 < p \text{, } q < n\)
     sao cho \(a_{ij} = 0\) khi \(j - i \geq p\) hoặc \(i - j \geq q\).
-\end{definition}
+\end{cdefinition}
 
 Nói cách khác, hai chỉ số \(p\), \(q\) chỉ số đường chéo mà các phần tử trên đó
 không nhất thiết bằng \(0\):
@@ -652,7 +650,7 @@ không nhất thiết bằng \(0\):
 \end{itemize}
 
 Ta lại xét tiếp một trường hợp đặc biệt: ma trận dải với \(p = q = 2\), gọi là
-ma trận ba đường chéo (tridiagonal matrix).
+\emph{ma trận ba đường chéo (tridiagonal matrix)}.
 
 Nếu \(\bm{A}\) trong \eqref{eq:general_system_equations_in_matrix} có dạng ba
 đường chéo:
@@ -693,9 +691,7 @@ Do có số ẩn không lớn (với ma trận \(n \times n\) cần tìm tổng 
 bằng tay các ẩn theo cách thế thông thường với \(n\) nhỏ. Nếu không tiện tính
 tay, ta giới thiệu qua phương pháp sau:
 
-\begin{method}\label{method:crout}
-    \emph{Phương pháp Crout cho trường hợp ma trận ba đường chéo}
-
+\begin{cmethod}{Phương pháp Crout cho ma trận ba đường chéo}{crout}
     Phương pháp Crout dùng để phân tích ma trận ra dạng LU. Dạng LU của phương
     pháp Crout có khác biệt so phương pháp Doolittle:
     \begin{itemize}
@@ -704,6 +700,283 @@ tay, ta giới thiệu qua phương pháp sau:
         \item Phương pháp Doolittle tạo ra ma trận \(\bm{L}\) có đường chéo
             chính bằng \(1\).
     \end{itemize}
-\end{method}
+\end{cmethod}
+
+
+%----------------------------------------------------------------------------------------
+%	3.4: Các phương pháp lặp
+%----------------------------------------------------------------------------------------
+
+\section{Các phương pháp lặp}
+
+\hyperref[method:gauss_elimination]{Phương pháp khử Gauss} và các biến thể của
+nó trong hai phần cuối cùng là các \emph{phương pháp trực tiếp} để giải hệ
+phương trình tuyến tính; đây là những phương pháp đưa ra nghiệm sau một số tính
+toán có thể được xác định trước. Ngược lại, trong trường hợp \emph{giải gián
+tiếp} hoặc \emph{phương pháp lặp (iterative method)} chúng ta bắt đầu từ một giá
+trị xấp xỉ đến nghiệm đúng và, nếu thành công, sẽ có được xấp xỉ tốt hơn và tốt
+hơn từ một quá trình tính toán lặp đi lặp lại để đạt được độ chính xác cần
+thiết, số phép tính phụ thuộc vào độ chính xác cần thiết.
+
+Chúng ta áp dụng các phương pháp lặp nếu tốc độ hội tụ là đủ nhanh (nếu ma trận
+có các phần tử nằm trên đường chéo chính lớn hơn các phần tử nằm ngoài, như ta
+sẽ thấy), hoặc với \emph{ma trận thưa (sparse matrix)}, tức ma trận có phần lớn
+các phần tử là \(0\).
+
+\subsection{Phương pháp lặp Gauss - Seidel}
+
+Đây là một phương pháp lặp quan trọng, được nghiên cứu và sử dụng nhiều. Trước
+khi đi vào công thức chi tiết, ta xem xét phương pháp qua ví dụ sau:
+
+\begin{exmp}\label{exmp:3.4}
+    Xét hệ phương trình
+    % Tried & failed (or not elegant)
+    % \[   % atm systeme has a problem with this
+    %     \systeme{    % * means not aligning variables
+    %                     x_1 - \num{0.25} x_2 - \num{0.25} x_3                  = 50,
+    %         \num{-0.25} x_1 +            x_2 -                  \num{0.25} x_4 = 50,
+    %         \num{-0.25} x_1 +                             x_3 - \num{0.25} x_4 = 25,
+    %                          \num{-0.25} x_2 - \num{0.25} x_3 +            x_4 = 25    % No comma at the end!
+    %     }
+    % \]
+    % \begin{empheq}[left = \empheqlbrace]{alignat* = 5}
+    %                 x_1 &{}-{}& \num{0.25} x_2 &{}-{}& \num{0.25} x_3 &     &                &= 50  \\
+    %     \num{-0.25} x_1 &{}+{}&            x_2 &     &                &{}-{}& \num{0.25} x_4 &= 50  \\
+    %     \num{-0.25} x_1 &{}+{}&                &     &            x_3 &{}-{}& \num{0.25} x_4 &= 25  \\
+    %                     &{}-{}& \num{0.25} x_2 &{}-{}& \num{0.25} x_3 &{}+{}&            x_4 &= 25    % No \\ here
+    % \end{empheq}
+    \[
+        \left\{
+            \setlength{\arraycolsep}{0pt}%
+            \renewcommand{\arraystretch}{1.2}%
+            \begin{array}{ *{5}{ r >{ {} } c <{ {} } } r }
+                % *{5}{                    5 of anything in the next brace
+                %     r                    right align (for the operand)
+                %     >{ {} }              put {} before the content of every cell in column
+                %         c                center (for the operator)
+                %     <{ {} }              put {} after the content of every cell in column
+                % }
+                % r
+                            x_1 &-& \num{0.25} x_2 &-& \num{0.25} x_3 & &                &=& 50  \\
+                \num{-0.25} x_1 &+&            x_2 & &                &-& \num{0.25} x_4 &=& 50  \\
+                \num{-0.25} x_1 &+&                & &            x_3 &-& \num{0.25} x_4 &=& 25  \\
+                                &-& \num{0.25} x_2 &-& \num{0.25} x_3 &+&            x_4 &=& 25    % No \\ here
+            \end{array}
+        \right.    % Placeholder dot
+    \]
+
+    Viết lại hệ theo cách sau:
+    \begin{equation*}\tag{1}\label{eq:exmp_3.4}
+        \left\{
+            \setlength{\arraycolsep}{0pt}%
+            \renewcommand{\arraystretch}{1.2}%
+            \begin{array}{ *{5}{ r >{ {} } c <{ {} } } r }
+                x_1 &=&                && \num{0.25} x_2 &+& \num{0.25} x_3 & &                &+& 50  \\
+                x_2 &=& \num{0.25} x_1 &&                & &                &+& \num{0.25} x_4 &+& 50  \\
+                x_3 &=& \num{0.25} x_1 &&                & &                &+& \num{0.25} x_4 &+& 25  \\
+                x_4 &=&                && \num{0.25} x_2 &+& \num{0.25} x_3 & &                &+& 25
+            \end{array}
+        \right.
+    \end{equation*}
+
+    Ta bắt đầu bằng một xấp xỉ (cho dù có thể khác xa nghiệm cần tìm), ví dụ
+    \(x_1^{(0)} = x_2^{(0)} = x_3^{(0)} = x_4^{(0)} = 100\) và tính \(\bm{x}^{(1)}\)
+    từ các giá trị này, theo công thức \eqref{eq:exmp_3.4} như sau:
+    \[
+        % Color
+        \colorlet{old}{green!30}
+        \colorlet{new}{blue!30}
+        % Color
+        \newcommand\old{\cellcolor{old}}    % Mark old value
+        \newcommand\new{\cellcolor{new}}    % Mark new value
+        % Spacing
+        \setlength{\arraycolsep}{0pt}%
+        \renewcommand{\arraystretch}{1.5}%
+        \begin{array}{ *{5}{ r >{ {} } c <{ {} } } r l }
+                                                                       \multicolumn{9}{r}{\text{Giá trị cũ (chưa có giá trị mới) \(\downarrow\)}}  & &                \\
+            x_1^{(1)} &=&                          && \num{0.25} x_2^{(0)} \old&+ \old& \num{0.25} x_3^{(0)} \old&  \old&                      \old&+& 50 &{}= 100    \\
+            x_2^{(1)} &=& \num{0.25} x_1^{(1)} \new&&                          &  \old&                      \old&+ \old& \num{0.25} x_4^{(0)} \old&+& 50 &{}= 100    \\
+            x_3^{(1)} &=& \num{0.25} x_1^{(1)} \new&&                      \new&      &                          &+ \old& \num{0.25} x_4^{(0)} \old&+& 25 &{}= 75     \\
+            x_4^{(1)} &=&                      \new&& \num{0.25} x_2^{(1)} \new&+ \new& \num{0.25} x_3^{(1)} \new&      &                    &+& 25 &{}= \num{68.75}  \\
+                      & & \multicolumn{10}{l}{\text{\(\uparrow\) Giá trị mới}}
+        \end{array}
+    \]
+
+    Trong tính toán trên, \(\bm{x}^{(1)}\) được tính theo công thức
+    \eqref{eq:exmp_3.4}, nhưng với các giá trị \(x\) mới nhất có được ở thời
+    điểm tính toán. Tiếp tục tính toán, ta có bảng sau:
+    % \begin{table}[H]
+    %     \centering
+    %     \begin{tabular}{ *{4}{ S[table-format=2.3] } }
+    %         \toprule
+    %         \(x_1\)  &  \(x_2\)  &  \(x_3\)  &  \(x_4\)  \\
+    %         \midrule
+    %          89.062  &   88.281  &   63.281  &   62.891  \\
+    %          87.891  &   87.695  &   62.695  &   62.598  \\
+    %          87.598  &   87.549  &   62.549  &   62.524  \\
+    %          87.524  &   87.512  &   62.512  &   62.506  \\
+    %          87.506  &   87.503  &   62.503  &   62.502  \\
+    %         \bottomrule
+    %     \end{tabular}
+    % \end{table}
+
+    Rõ ràng, nghiệm hội tụ rất nhanh.
+\end{exmp}
+
+\subsubsection{Phương pháp Gauss-Seidel}
+
+Ta đã thấy Gauss-Seidel, cũng giống như \hyperref[chapter2:method:newton]{phương
+pháp Newton} hay \hyperref[chapter2:method:fixed_point]{phương pháp điểm bất
+động}, là một phương pháp lặp (iterative method), tức tính một hàm lặp đi lặp
+lại, kết quả lần lặp trước là đầu vào của lần lặp sau. Trong phần này, ta sẽ đưa
+ra công thức lặp Gauss-Seidel theo một cách trực quan từ ví dụ \ref{exmp:3.4}.
+
+Ví dụ \ref{exmp:3.4} thực hiện được dễ dàng nhất khi hệ số của \(x_i\) trong
+phương trình thứ \(i\) là \(1\), tức đường chéo chính của \(\bm{A}\) chỉ chứa
+\(1\). Để tiện trong việc đưa ra công thức, ta giả sử rằng \(a_{jj} = 1 \,
+\forall j \in \interval{1}{n}\), do mọi hệ phương trình có thể đưa được về dạng
+này, thông qua các biến đổi hàng sơ cấp.
+
+Ta tách \(\bm{A}\) như sau:
+\[\bm{A} = \bm{I} + \bm{L} + \bm{U}\]
+trong đó \(\bm{I}\) là ma trận đơn vị, \(\bm{L}\) là ma trận tam giác dưới chặt
+(strictly), \(\bm{U}\) là ma trận tam giác trên chặt.
+
+Thay vào \eqref{eq:general_system_equations_in_matrix}, ta có:
+\begin{gather*}
+    \bm{Ax} = (\bm{I} + \bm{L} + \bm{U}) \bm{x} = \bm{b} \\
+    \iff \bm{x} = \bm{b} -\bm{Lx} - \bm{Ux}
+\end{gather*}
+
+Theo ví dụ \ref{exmp:3.4}, ta thấy \(\bm{U}\) chứa các giá trị \(x\) cũ, còn
+\(\bm{L}\) chứa các giá trị \(x\) mới. Từ đó, ta có công thức lặp tổng quát:
+\begin{equation}\label{eq:gauss-seldel_sequence_function}
+    \bm{x}^{(m + 1)} = \bm{b} - \bm{L} \bm{x}^{(m + 1)} - \bm{U} \bm{x}^{(m)}
+\end{equation}
+trong đó \(\bm{x}^{(m)}\) là véc tơ nghiệm xấp xỉ thứ \(m\).
+
+\begin{cmethod}{Phương pháp Gauss-Seidel}{gauss-seidel}
+    Phương pháp này xấp xỉ nghiệm \(\bm{x}\) của hệ \(\bm{Ax} = \bm{b}\) khi
+    \begin{itemize}
+        \item biết xấp xỉ bắt đầu \(\bm{x}^{(0)}\), và
+        \item \(\bm{A}\) không chứa \(0\) trên đường chéo chính
+    \end{itemize}
+
+    Gọi các phương trình trong hệ là \(E_i\). Ta đưa hết \(x_i\) sang riêng vế
+    trái của \(E_i\) sao cho hệ số của \(x_i\) là \(1\). Nói cách khác, ta tính
+    \(x_i\) qua các \(x_j\), \(j \neq i\).
+
+    Phương pháp Gauss-Seidel thực hiện như sau:
+    \begin{enumerate}
+        \item Trong mỗi lần lặp, tính \(\bm{x}\) như sau:
+            \begin{itemize}
+                \item lần lượt tính \(x_i\) theo thứ tự \(i\) tăng dần như công
+                    thức đã tách vế trái ở trên, và
+                \item dùng giá trị \(x_j\) với mới nhất có thể khi tính \(x_i\)
+            \end{itemize}
+        \item Dừng lại khi đạt điều kiện dừng, nếu không lặp lại bước trên
+    \end{enumerate}
+\end{cmethod}
+
+Chú ý rằng, phương pháp trên chỉ cần điều kiện đường chéo chính của \(\bm{A}\)
+không chứa \(0\). Điều kiện đường chéo chính chứa toàn \(1\) được bỏ qua vì
+trong bước đưa \(x_i\) sang vế trái của \(E_i\), hệ số của \(x_i\) đã được
+chuyển thành \(1\).
+
+\subsubsection{Điều kiện hội tụ}
+
+Ta viết lại \eqref{eq:gauss-seldel_sequence_function} như sau:
+\begin{gather*}
+    \bm{x}^{(m + 1)} = \bm{b} - \bm{L} \bm{x}^{(m + 1)} - \bm{U} \bm{x}^{(m)} \\
+    \iff (\bm{I} + \bm{L})\bm{x}^{(m + 1)} = \bm{b} - \bm{U} \bm{x}^{(m)} \\
+    \iff \bm{x}^{(m + 1)} = \bm{C} \bm{x}^{(m)} + (\bm{I} + \bm{L})^{-1} \bm{b} \text{ với } \bm{C} = -(\bm{I} + \bm{L})^{-1} \bm{U}
+\end{gather*}
+
+Chú ý rằng, nếu muốn tính \(\bm{C}\) theo công thức trên, \(\bm{A}\) phải ở dạng
+đường chéo chính chứa toàn \(1\).
+
+Trước hết ta nhớ lại định nghĩa về \emph{véc tơ riêng} và
+\emph{giá trị riêng} của ma trận:
+
+\begin{cdefinition}{Véc tơ riêng (eigenvector) \& giá trị riêng (eigenvalue)}{}
+    Với mỗi ma trận \(\bm{A}\), véc tơ \(\bm{v} \neq \vec{0}\) và vô hướng
+    \(\lambda\) được gọi lần lượt là véc tơ riêng và giá trị riêng ứng với véc
+    tơ riêng đó nếu:
+    \[\bm{Av} = \lambda \bm{v}\]
+
+    Điều kiện cần và đủ để \(\lambda\) là giá trị riêng là:
+    \[\det(\bm{A} - \lambda \bm{I}) = 0\]
+\end{cdefinition}
+
+Quay trở lại phương pháp Gauss-Seidel, ta thừa nhận phương pháp này hội tụ khi
+và chỉ khi tất cả trị riêng của \(\bm{C}\) có giá trị tuyệt đối nhỏ hơn \(1\).
+Cụ thể hơn, ta xét \emph{bán kính phổ} của \(\bm{C}\).
+
+\begin{cdefinition}{Bán kính phổ (spectral radius)}{spectral_radius}
+    Bán kính phổ của ma trận \(\bm{C}\) là giá trị tuyệt đối lớn nhất của các
+    giá trị riêng của \(\bm{C}\).
+\end{cdefinition}
+
+Phương pháp Gauss-Seidel, với bán kính phổ \(r\) của \(\bm{C}\), sẽ hội tụ:
+\begin{itemize}
+    \item khi và chỉ khi \(r < 1\)
+    \item nhanh hơn khi \(r\) nhỏ
+\end{itemize}
+
+Như vậy, ta đã biết điều kiện \emph{cần và đủ} để phương pháp Gauss-Seidel hội
+tụ. Giờ ta sẽ xem xét một số điều kiện \emph{đủ} cho sự hội tụ này.
+
+Phương pháp Gauss-Seidel sẽ hội tụ khi
+\[\norm{\bm{C}} < 1\]
+
+\(\norm{\bm{C}}\) là \emph{chuẩn (norm)} của \(\bm{C}\). Ta có một số chuẩn hay
+gặp như sau:
+\begin{itemize}
+    \item Chuẩn Frobenius, tức căn bậc hai của tổng của bình phương mọi phần tử:
+        \[\norm{\bm{C}} = \sqrt{\sum_{j = 1}^n \sum_{k = 1}^n c_{jk}^2}\]
+
+    \item Chuẩn tổng cột, tức giá trị lớn nhất trong tổng các trị tuyệt đối của
+        phần tử một cột:
+        \[\norm{\bm{C}} = \max_k \sum_{j = 1}^n \abs{c_{jk}}\]
+
+    \item Chuẩn tổng hàng, tức giá trị lớn nhất trong tổng các trị tuyệt đối của
+        phần tử một hàng:
+        \[\norm{\bm{C}} = \max_j \sum_{k = 1}^n \abs{c_{jk}}\]
+\end{itemize}
+
+Ba chuẩn này không tương đương với nhau. Hoàn toàn có thể có trường hợp một
+chuẩn thỏa mãn điều kiện trị tuyệt đối nhỏ hơn \(1\), đủ để kết luận phương pháp
+hội tụ, nhưng dùng chuẩn khác thì lại không thể kết luận về sự hội tụ.
+
+\subsection{Phương pháp Jacobi}
+
+\hyperref[method:gauss-seidel]{Phương pháp Gauss-Seidel} là một phương pháp
+\emph{hiệu chỉnh liên tiếp (successive correction)} vì \emph{trong} mỗi bước
+lặp, ta cập nhật giá trị một thành phần \(x_j\) mỗi khi thành phần đó có xấp xỉ
+mới. \emph{Phương pháp Jacobi} sẽ giới thiệu dưới đây lại thuộc loại \emph{hiệu
+chỉnh đồng thời}, tức xấp xỉ mới của \(x_j\) không được dùng cho đến khi toàn bộ
+\(\bm{x}\) trong một bước được tính xong.
+
+Khác biệt về việc sử dụng giá trị xấp xỉ mới nói ở trên là điểm khác biệt chính
+yếu của hai phương pháp này. Do đó, ta có thể viết công thức lặp tổng quát cho
+phương pháp Jacobi dựa trên \eqref{eq:gauss-seldel_sequence_function} như sau:
+\begin{align}
+    \begin{aligned}
+        \bm{x}^{(m + 1)} &= \bm{b} - \bm{L} \bm{x}^{(m)} - \bm{U} \bm{x}^{(m)} \\
+                         &= \bm{b} - (\bm{L} + \bm{U}) \bm{x}^{(m)} \\
+                         &= \bm{b} - (\bm{A} - \bm{I}) \bm{x}^{(m)} \\
+                         &= \bm{b} + (\bm{I} - \bm{A}) \bm{x}^{(m)} \\
+    \end{aligned}
+\end{align}
+
+Tiếp tục chú ý, \(\bm{A}\) ở đây vẫn phải ở dạng có đường chéo chính toàn \(1\).
+
+Phương pháp Jacobi sẽ hội tụ với mọi \(\bm{x}^{(0)}\) khi và chỉ khi bán kính
+phổ của \(\bm{I} - \bm{A}\) nhỏ hơn \(1\).
+
+Phương pháp Jacobi gần đây được chú ý nhiều vì cho phép tính toán song song. Bản
+chất cập nhật lập tức của phương pháp Gauss-Seidel khiến việc song song hóa rất
+khó khăn, còn việc cập nhật sau mỗi lần lặp khiến phương pháp Jacobi có thể được
+song song hóa vô cùng dễ dàng.
 
 \end{document}
