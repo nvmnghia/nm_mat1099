@@ -165,7 +165,7 @@ phương trình tuyến tính.
 giải từ cuối lên, do trước đó đã đưa được \(\bm{A}\) về dạng tam giác trên.
 Tương tự, nếu \(\bm{A}\) ở dạng tam giác dưới, việc thế từ trên xuống sẽ gọi là
 \emph{``forward substitution''}. Dù hai dạng này tương đương, trong khử Gauss ta
-chỉ nói đến back substitution).
+chỉ nói đến back substitution.)
 
 Ta kí hiệu ma trận \(\bm{A}\) khởi đầu là \(\bm{A}^{(1)}\). Sau khi kết thúc
 bước khử \(x_i\), ma trận \(\bm{A}^{(i)}\) sẽ biến đổi thành \(\bm{A}^{(i +
@@ -186,7 +186,7 @@ dù thực tế hệ phương trình có thể có nghiệm. Một cách xử l�
         6x_1 + 2x_2 + 8x_3 & = 26 \tag{\(E_3\)}
     \end{align}
 
-    Chúng ta xoay trục từ \(E_1\) , nhưng do \(E_1\) không có ẩn \(x_1\), trong
+    Chúng ta xoay trục từ \(E_1\), nhưng do \(E_1\) không có ẩn \(x_1\), trong
     khi đó hệ số của \(x_1\) trong phương trình \(E_3\) là lớn nhất. Vì vậy ta
     đổi chỗ \(E_1\) và \(E_3\) cho nhau.
 
@@ -227,13 +227,12 @@ dù thực tế hệ phương trình có thể có nghiệm. Một cách xử l�
 
 \begin{exmp}
     Hãy giải hệ phương trình:
-    % TODO: revisit numcases
-    \begin{numcases}{}
-           x_1 - x_2 + 2x_3 - x_4 & $=  -8$  \tag{\(E_1\)} \\
-        2x_1 - 2x_2 + 3x_3 - 3x_4 & $= -20$  \tag{\(E_2\)} \\
-                  x_1 + x_2 + x_3 & $=  -2$  \tag{\(E_3\)} \\
-          x_1 - x_2 + 4x_3 + 3x_4 & $=   4$  \tag{\(E_4\)}
-    \end{numcases}
+    \begin{alignat}{11}
+         &x_1 &{}-{}&  &x_2 &{}+{}& 2&x_3 &{}-{}&  &x_4 &{}=  -8  \tag{\(E_1\)} \\
+        2&x_1 &{}-{}& 2&x_2 &{}+{}& 3&x_3 &{}-{}& 3&x_4 &{}= -20  \tag{\(E_2\)} \\
+         &x_1 &{}+{}&  &x_2 &{}+{}&  &x_3 &{} {}&  &    &{}=  -2  \tag{\(E_3\)} \\
+         &x_1 &{}-{}&  &x_2 &{}+{}& 4&x_3 &{}+{}& 3&x_4 &{}=   4  \tag{\(E_4\)}
+    \end{alignat}
 
     Ta có ma trận mở rộng như sau:
     \[
@@ -259,8 +258,8 @@ dù thực tế hệ phương trình có thể có nghiệm. Một cách xử l�
             \end{pNiceArray}
     \]
 
-    Điểm quay \(a_{22}^{(2)} = 0\), do đó cần phải đổi hàng. Ta chọn \(a_{32}
-    \neq 0\), do đó đổi chỗ \(E_2\) và \(E_3\):
+    Điểm quay \(a_{22}^{(2)} = 0\), do đó cần phải đổi hàng. Ta chọn
+    \(a_{32}^{(2)} \neq 0\), do đó đổi chỗ \(E_2\) và \(E_3\):
     \[
         \bm{\tilde{A}}^{(2)} =
             \begin{pNiceArray}{ S[table-format=1] *{3}{ S[table-format=-1] } : S[table-format=-1] }
@@ -303,8 +302,10 @@ Phương pháp khử Gauss còn có một số biến thể:
     \item Phương pháp Gauss-Jordan: đưa \(\bm{A}\) về dạng đường chéo thay vì
         dạng tam giác trên.
 
-    \item Phương pháp Doolittle, phương pháp Crout, phương pháp Cholesky: đều
-        dựa trên phân tích LU (LU factorization), sẽ giới thiệu ở phần sau.
+    \item \hyperref[thm:doolittle]{Phương pháp Doolittle},
+        \hyperref[method:crout]{phương pháp Crout},
+        \hyperref[method:cholesky]{phương pháp Cholesky}: đều dựa trên phân
+        tích LU (LU factorization), sẽ giới thiệu ở phần sau.
 \end{itemize}
 
 \subsection{Độ phức tạp}
@@ -318,11 +319,11 @@ Ta phân tích độ phức tạp của phương pháp khử Gauss:
 
     \item Trong mỗi phương trình:
         \begin{itemize}
-            \item Có \(1\) phép chia: ví dụ \(\frac{a_{i1}}{a_11}\) trong
+            \item Có \(1\) phép chia: ví dụ \(\dfrac{a_{i1}}{a_{11}}\) trong
                 \eqref{eq:gauss_elinimation_1st}
 
-            \item Có \(n - k + 1\) phép nhân: ví dụ \(\frac{a_{i1}}{a_11} E_1\)
-                trong \eqref{eq:gauss_elinimation_1st}
+            \item Có \(n - k + 1\) phép nhân: ví dụ \(\dfrac{a_{i1}}{a_{11}}
+                E_1\) trong \eqref{eq:gauss_elinimation_1st}
 
             \item Có \(n - k + 1\) phép trừ: ví dụ chính
                 \eqref{eq:gauss_elinimation_1st}
@@ -349,32 +350,33 @@ Ta nói rằng phương pháp khử Gauss có độ phức tạp \(\mathcal{O} (
 Chúng ta tiếp tục thảo luận các phương pháp số giải hệ phương trình tuyến tính
 \(n\) phương trình, \(n\) ẩn. Trong phần này, ta xem xét ba phương pháp cải tiến
 từ \hyperref[method:gauss_elimination]{phương pháp khử Gauss}, cho phép tìm
-nghiệm nhanh chóng hơn, gồm \hyperref[thm:lu_doolittle]{phương pháp Doolittle},
-\hyperref[method:cholevsky]{phương pháp Cholevsky}, và
+nghiệm nhanh chóng hơn, gồm \hyperref[thm:doolittle]{phương pháp Doolittle},
+\hyperref[method:cholesky]{phương pháp Cholesky}, và
 \hyperref[method:crout]{phương pháp Crout}. Cả ba phương pháp đều dựa trên phân
 tích LU.
 
-Điểm chung của các phương pháp này là đều cố gắng đưa ma trận về tích của các ma
-trận tam giác trên (\underline{U}pper triangular matrix) và ma trận tam giác
-dưới (\underline{L}ower triangular matrix). Hai dạng ma trận này rất hữu ích vì
-cho phép tìm \(\bm{x}\) với độ phức tạp \(\mathcal{O} (n^2)\); nếu xét theo khía
-cạnh này, phương pháp khử Gauss khác ở điểm là \emph{trực tiếp} biến đổi về dạng
-tam giác. Tất nhiên, phần lớn tính toán lại chuyển về việc phân tích ra dạng ma
-trận đặc biệt này, và với một số dạng ma trận đặc biệt, độ phức tạp có thể thấp
-hơn \(\mathcal{O} (n^3)\).
+Điểm chung của các phương pháp này là đều cố gắng đưa ma trận hệ số về tích của
+các ma trận tam giác trên (\underline{U}pper triangular matrix) và ma trận tam
+giác dưới (\underline{L}ower triangular matrix). Hai dạng ma trận này rất hữu
+ích vì cho phép tìm \(\bm{x}\) với độ phức tạp \(\mathcal{O} (n^2)\); nếu xét
+theo khía cạnh này, phương pháp khử Gauss khác ở điểm là \emph{trực tiếp} biến
+đổi về dạng tam giác. Tất nhiên, phần lớn tính toán lại chuyển về việc phân tích
+ra dạng ma trận đặc biệt này, và với một số hệ phương trình đặc biệt, độ phức
+tạp có thể thấp hơn \(\mathcal{O} (n^3)\).
 
 Ba phương pháp được trình bày trong phần này đều gắn chặt với một kiểu phân tích
-ra ma trận tam giác. Vì rất dễ để giải nghiệm từ dạng tam giác, tên phương pháp
-vừa chỉ phương pháp phân tích ra dạng tam giác tương ứng, vừa chỉ phương pháp
-giải hệ tuyến tính từ dạng tam giác đã phân tích.
+ra ma trận tam giác. Vì rất dễ để giải nghiệm từ dạng tam giác, nên tên phương
+pháp vừa chỉ phương pháp phân tích ra dạng tam giác tương ứng, vừa chỉ phương
+pháp giải hệ tuyến tính từ dạng tam giác đã phân tích.
 
 \subsection{Phân tích LU \& phương pháp Doolittle}
 
 \begin{cdefinition}{Phân tích LU (LU factorization)}{lu_factorization}
-    Phân tích LU là việc phân tích ma trận vuông \(\bm{A}\) thành tích của hai
-    ma trận
-    \[\bm{A} = \bm{LU}\] trong đó \(\bm{L}\) là ma trận tam giác dưới và
-    \(\bm{U}\) là ma trận tam giác trên.
+    Phân tích LU là việc phân tích ma trận vuông \(\bm{A}\) thành tích hai ma
+    trận
+    \[\bm{A} = \bm{LU}\]
+    trong đó \(\bm{L}\) là ma trận tam giác dưới và \(\bm{U}\) là ma trận tam
+    giác trên.
 \end{cdefinition}
 
 Một số lưu ý về phân tích LU:
@@ -393,7 +395,9 @@ trước, sau đó mới đi sâu vào công thức toán học của nó.
 
 \subsubsection{Phương pháp Doolittle: Dùng dạng LU để giải hệ tuyến tính}
 
-\begin{ctheorem}{}{lu_doolittle}
+Định lí sau đây cũng chính là công thức cho phương pháp Doolittle.
+
+\begin{ctheorem}{}{doolittle}
     Nếu hệ tuyến tính \(\bm{Ax} = \bm{b}\) có thể giải được bằng
     \hyperref[method:gauss_elimination]{khử Gauss} mà không cần đổi vị trí hàng,
     thì \(\bm{A}\) có thể phân tích thành tích của ma trận tam giác trên
@@ -427,8 +431,6 @@ trước, sau đó mới đi sâu vào công thức toán học của nó.
 
     \(\bm{U}\) cũng chính là ma trận \(\bm{A}\) thu được sau khi khử Gauss.
 \end{ctheorem}
-
-Định lí trên cũng chính là công thức cho phương pháp Doolittle.
 
 Chú ý rằng \(\bm{U}\) là \(\bm{A}\) sau khi khử Gauss, tức ma trận
 \(\bm{\tilde{A}}\) trong phần \ref{sec:gauss_elimination} nhưng bỏ đi cột cuối.
@@ -469,7 +471,7 @@ hàng của Gauss cho ma trận \(\bm{I}\).
 \end{exmp}
 
 Sau khi tìm được \(\bm{P}\), \(\bm{PA}\) có thể áp dụng phương pháp khử Gauss mà
-không cần tráo vị trí hàng. Theo định lí \ref{thm:lu_doolittle}, \(\bm{PA}\) có
+không cần tráo vị trí hàng. Theo định lí \ref{thm:doolittle}, \(\bm{PA}\) có
 phân tích LU:
 \begin{align*}
         \bm{PA} &= \bm{LU} \\
@@ -481,7 +483,7 @@ phân tích LU:
 Phần này chứng minh kĩ hơn về tính đúng đắn của phương pháp Doolittle, và có thể
 bỏ qua.
 
-\begin{proof}[Chứng minh định lí \ref{thm:lu_doolittle}]
+\begin{proof}[Chứng minh định lí \ref{thm:doolittle}]
 
     Ta xem xét công thức \eqref{eq:gauss_elinimation_1st}. Xét trường hợp \(j =
     2\):
@@ -612,11 +614,12 @@ bỏ qua.
     Nhân \(\bm{L}^{(k)}\) vào trước hai vế của
     \eqref{eq:general_system_equations_in_matrix_transformed} theo thứ tự \(k\)
     tăng dần từ \(1\) đến \(n - 1\), ta có:
-    \begin{align*}
-                                                   \bm{L}^{(1)} \bm{L}^{(2)} \ldots \bm{L}^{(n - 1)} \bm{A}^{(n)} \bm{x} &= \bm{L}^{(1)} \bm{L}^{(2)} \ldots \bm{L}^{(n - 1)} \bm{b}^{(n)} \\
-        \iff \bm{L}^{(1)} \bm{L}^{(2)} \ldots \bm{L}^{(n - 1)} \bm{M}^{(n - 1)} \ldots \bm{M}^{(2)} \bm{M}^{(1)} \bm{Ax} &= \bm{L}^{(1)} \bm{L}^{(2)} \ldots \bm{L}^{(n - 1)} \bm{M}^{(n - 1)} \ldots \bm{M}^{(2)} \bm{M}^{(1)} \bm{b} \\
-                                                                                                            \iff \bm{Ax} &= \bm{b}
-    \end{align*}
+    \[\begin{split}
+                                                       \bm{L}^{(1)} \bm{L}^{(2)} \ldots \bm{L}^{(n - 1)} \bm{A}^{(n)} \bm{x} &= \bm{L}^{(1)} \bm{L}^{(2)} \ldots \bm{L}^{(n - 1)} \bm{b}^{(n)} \\
+            \iff \bm{L}^{(1)} \bm{L}^{(2)} \ldots \bm{L}^{(n - 1)} \bm{M}^{(n - 1)} \ldots \bm{M}^{(2)} \bm{M}^{(1)} \bm{Ax} &= \bm{L}^{(1)} \bm{L}^{(2)} \ldots \bm{L}^{(n - 1)} \\
+                                                                                                                             & \bm{M}^{(n - 1)} \ldots \bm{M}^{(2)} \bm{M}^{(1)} \bm{b} \\
+                                                                                                                \iff \bm{Ax} &= \bm{b}
+    \end{split}\]
 
     Đến đây, ta nhận được phương trình
     \eqref{eq:general_system_equations_in_matrix} ban đầu. Vậy tích các
@@ -639,9 +642,10 @@ bỏ qua.
 
 \end{proof}
 
-\subsection{Phân tích LL' \& phương pháp Cholevsky}
+\newcommand{\LLt}{LL\textsuperscript{t}}
+\subsection{Phân tích \texorpdfstring{\LLt}{} và phương pháp Cholesky}
 
-Thuật toán Cholesky phân tích một ma trận xác định dương ra dạng LL'. Để tìm
+Thuật toán Cholesky phân tích một ma trận xác định dương ra dạng \LLt. Để tìm
 hiểu phân tích này, ta cần biết về ma trận xác định dương.
 
 \begin{cdefinition}{Ma trận xác định dương (positive definitive matrix)}{}
@@ -676,9 +680,9 @@ Do có số ẩn không lớn (với ma trận \(n \times n\) cần tìm tổng 
 thể giải bằng tay các ẩn theo cách thế thông thường với \(n\) nhỏ. Nếu không
 tiện tính tay, ta có phương pháp chính xác sau:
 
-\begin{cmethod}{Phương pháp Cholevsky}{cholevsky}
-    Phương pháp Cholevsky phân tích ma trận xác định dương \(\bm{A}\) thành dạng
-    LL'.
+\begin{cmethod}{Phương pháp Cholesky}{cholesky}
+    Phương pháp Cholesky phân tích ma trận xác định dương \(\bm{A}\) thành dạng
+    \LLt.
 
     Lần lượt tính phần tử khác \(0\) ở cột \(1\), \(2\), \ldots. Bước thứ \(i\)
     sẽ tính các phần tử thuộc cột \(i\) như sau:
@@ -694,7 +698,7 @@ tiện tính tay, ta có phương pháp chính xác sau:
 \subsection{Phân tích LU cho ma trận dải \& thuật toán Crout}
 
 Ta quay trở lại với phân tích LU, tuy nhiên sử dụng thuật toán khác, nhanh vượt
-trội so với Doolittle, cho một loại ma trận đặc biệt, ma trận dải.
+trội so với Doolittle, cho một loại ma trận đặc biệt: ma trận dải.
 
 \begin{cdefinition}{Ma trận dải (band matrix)}{}
     Ma trận \(n \times n\) gọi là ma trận dải nếu có \(1 < p \text{, } q < n\)
@@ -754,10 +758,10 @@ tay, ta giới thiệu qua phương pháp sau:
     Phương pháp Crout dùng để phân tích ma trận ra dạng LU. Dạng LU của phương
     pháp Crout có khác biệt so phương pháp Doolittle:
     \begin{itemize}
-        \item Phương pháp Crout tạo ra ma trận \(\bm{U}\) có đường chéo chính
+        \item Phương pháp Crout tạo ma trận \(\bm{U}\) có đường chéo chính bằng
+            \(1\).
+        \item Phương pháp Doolittle tạo ma trận \(\bm{L}\) có đường chéo chính
             bằng \(1\).
-        \item Phương pháp Doolittle tạo ra ma trận \(\bm{L}\) có đường chéo
-            chính bằng \(1\).
     \end{itemize}
 \end{cmethod}
 
@@ -845,7 +849,7 @@ khi đi vào công thức chi tiết, ta xem xét phương pháp qua ví dụ sa
         % Color
         \colorlet{old}{green!30}
         \colorlet{new}{blue!30}
-        % Color
+        % Cell color
         \newcommand\old{\cellcolor{old}}    % Mark old value
         \newcommand\new{\cellcolor{new}}    % Mark new value
         % Spacing
@@ -864,20 +868,20 @@ khi đi vào công thức chi tiết, ta xem xét phương pháp qua ví dụ sa
     Trong tính toán trên, \(\bm{x}^{(1)}\) được tính theo công thức
     \eqref{eq:exmp_3.4}, nhưng với các giá trị \(x\) mới nhất có được ở thời
     điểm tính toán. Tiếp tục tính toán, ta có bảng sau:
-    % \begin{table}[H]
-    %     \centering
-    %     \begin{tabular}{ *{4}{ S[table-format=2.3] } }
-    %         \toprule
-    %         \(x_1\)  &  \(x_2\)  &  \(x_3\)  &  \(x_4\)  \\
-    %         \midrule
-    %          89.062  &   88.281  &   63.281  &   62.891  \\
-    %          87.891  &   87.695  &   62.695  &   62.598  \\
-    %          87.598  &   87.549  &   62.549  &   62.524  \\
-    %          87.524  &   87.512  &   62.512  &   62.506  \\
-    %          87.506  &   87.503  &   62.503  &   62.502  \\
-    %         \bottomrule
-    %     \end{tabular}
-    % \end{table}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{ r *{4}{ S[table-format=2.3] } }
+            \toprule
+            \(k\)  &  \(x_1^{(k)}\)  &  \(x_2^{(k)}\)  &  \(x_3^{(k)}\)  &  \(x_4^{(k)}\)  \\
+            \midrule
+                1  &         89.062  &         88.281  &         63.281  &         62.891  \\
+                2  &         87.891  &         87.695  &         62.695  &         62.598  \\
+                3  &         87.598  &         87.549  &         62.549  &         62.524  \\
+                4  &         87.524  &         87.512  &         62.512  &         62.506  \\
+                5  &         87.506  &         87.503  &         62.503  &         62.502  \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
 
     Rõ ràng, nghiệm hội tụ rất nhanh.
 \end{exmp}
@@ -962,10 +966,11 @@ Trước hết ta nhớ lại định nghĩa về \emph{véc tơ riêng} và
     \(\lambda\) được gọi lần lượt là véc tơ riêng và giá trị riêng ứng với véc
     tơ riêng đó nếu:
     \[\bm{Av} = \lambda \bm{v}\]
-
-    Điều kiện cần và đủ để \(\lambda\) là giá trị riêng là:
-    \[\det(\bm{A} - \lambda \bm{I}) = 0\]
 \end{cdefinition}
+
+Ta thừa nhận một kết quả quan trọng để tính các giá trị riêng; sau khi đã có các
+giá trị riêng, ta có thể dễ dàng tìm các véc tơ riêng tương ứng:
+\[\det(\bm{A} - \lambda \bm{I}) = 0\]
 
 Quay trở lại phương pháp Gauss-Seidel, ta thừa nhận phương pháp này hội tụ khi
 và chỉ khi tất cả trị riêng của \(\bm{C}\) có giá trị tuyệt đối nhỏ hơn \(1\).
@@ -1013,8 +1018,8 @@ hội tụ, nhưng dùng chuẩn khác thì lại không thể kết luận về
 \emph{hiệu chỉnh liên tiếp (successive correction)} vì \emph{trong} mỗi bước
 lặp, ta cập nhật giá trị một thành phần \(x_j\) mỗi khi thành phần đó có xấp xỉ
 mới. \emph{Phương pháp Jacobi} sẽ giới thiệu dưới đây lại thuộc loại \emph{hiệu
-chỉnh đồng thời}, tức xấp xỉ mới của \(x_j\) không được dùng cho đến khi toàn bộ
-\(\bm{x}\) trong một bước được tính xong.
+chỉnh đồng thời}, tức khi tính toán chỉ dùng các xấp xỉ cũ, và cập nhật đồng
+thời các \(x_j\) ở cuối vòng lặp, sau khi đã tính xong \(x_n\).
 
 Khác biệt về việc sử dụng giá trị xấp xỉ mới nói ở trên là điểm khác biệt chính
 yếu của hai phương pháp này. Do đó, ta có thể viết công thức lặp tổng quát cho
