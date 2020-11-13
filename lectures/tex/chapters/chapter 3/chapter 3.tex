@@ -142,10 +142,11 @@ phương trình tuyến tính.
                     \end{equation}
 
                     \(a_{11}\) gọi là \emph{phần tử trục xoay (pivot)}, \(E_1\)
-                    gọi là phương trình chính (pivot equation).
+                    gọi là \emph{phương trình chính (pivot equation)}.
 
-                \item Khử \(x_i\) từ \(E_{> i}\) bằng cách tương tự như trên,
-                    cuối cùng thu được dạng tam giác trên.
+                \item Với \(i = 2, \ldots, n - 1\), khử \(x_i\) từ \(E_{> i}\)
+                    bằng cách tương tự như trên, cuối cùng thu được dạng tam
+                    giác trên.
             \end{enumerate}
 
         \item \emph{Quá trình ngược (back substitution)}: Giải \(\bm{x}\) từ
@@ -165,6 +166,11 @@ giải từ cuối lên, do trước đó đã đưa được \(\bm{A}\) về d�
 Tương tự, nếu \(\bm{A}\) ở dạng tam giác dưới, việc thế từ trên xuống sẽ gọi là
 \emph{``forward substitution''}. Dù hai dạng này tương đương, trong khử Gauss ta
 chỉ nói đến back substitution).
+
+Ta kí hiệu ma trận \(\bm{A}\) khởi đầu là \(\bm{A}^{(1)}\). Sau khi kết thúc
+bước khử \(x_i\), ma trận \(\bm{A}^{(i)}\) sẽ biến đổi thành \(\bm{A}^{(i +
+1)}\). Bước cuối cùng là bước khử \(x_{n - 1}\) (vì \(x_n\) không cần khử), và
+ma trận sau cùng là \(\bm{A}^{(n)}\).
 
 Xem xét kĩ hơn, ta thấy \eqref{eq:gauss_elinimation_1st} có một chi tiết nhạy
 cảm là phép chia. Nếu \(a_{11} = 0\), phương pháp không thể thực hiện được, cho
@@ -187,7 +193,7 @@ dù thực tế hệ phương trình có thể có nghiệm. Một cách xử l�
     Tới đây ta có ma trận mở rộng như sau:
     \[
         \bm{\tilde{A}} =
-            \begin{pNiceArray}{S[table-format=1] S[table-format=1] S[table-format=1] : S[table-format=-1]}
+            \begin{pNiceArray}{ *{3}{ S[table-format=1] } : S[table-format=-1] }
                 6  &  2  &  8  &  26  \\
                 3  &  5  &  2  &   8  \\
                    &  8  &  2  &  -7
@@ -197,20 +203,22 @@ dù thực tế hệ phương trình có thể có nghiệm. Một cách xử l�
     \begin{multicols}{2}
         Khử \(x_1\) được:
         \[
-            \begin{pNiceArray}{S[table-format=1] S[table-format=1] S[table-format=-1] : S[table-format=-1]}
-                6  &  2  &   8  &  26  \\
-                   &  4  &  -2  &  -5  \\
-                   &  8  &   2  &  -7
-            \end{pNiceArray}
+            \bm{\tilde{A}}^{(1)} =
+                \begin{pNiceArray}{ *{2}{ S[table-format=1] } S[table-format=-1] : S[table-format=-1] }
+                    6  &  2  &   8  &  26  \\
+                       &  4  &  -2  &  -5  \\
+                       &  8  &   2  &  -7
+                \end{pNiceArray}
         \]
 
         Khử \(x_2\) được:
         \[
-            \begin{pNiceArray}{S[table-format=1] S[table-format=1] S[table-format=-1] : S[table-format=-1]}
-                6  &  2  &   8  &  26  \\
-                   &  4  &  -2  &  -5  \\
-                   &     &   6  &   3
-            \end{pNiceArray}
+            \bm{\tilde{A}}^{(2)} =
+                \begin{pNiceArray}{ *{2}{ S[table-format=1] } S[table-format=-1] : S[table-format=-1] }
+                    6  &  2  &   8  &  26  \\
+                       &  4  &  -2  &  -5  \\
+                       &     &   6  &   3
+                \end{pNiceArray}
         \]
     \end{multicols}
 
@@ -229,14 +237,65 @@ dù thực tế hệ phương trình có thể có nghiệm. Một cách xử l�
 
     Ta có ma trận mở rộng như sau:
     \[
-        \bm{\tilde{A}} =
-            \begin{pNiceArray}{S[table-format=1] S[table-format=-1] S[table-format=1] S[table-format=-1] : S[table-format=-2]}
+        \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+            \begin{pNiceArray}{ *{2}{ S[table-format=1] S[table-format=-1] } : S[table-format=-2] }
                 1  &  -1  &  2  &  -1  &   -8  \\
                 2  &  -2  &  3  &  -3  &  -20  \\
                 1  &   1  &  1  &   0  &   -2  \\
                 1  &  -1  &  4  &   3  &    4
             \end{pNiceArray}
     \]
+
+    Khử \(x_1\) bằng chuỗi biến đổi
+    \[E_2 \coloneqq E_2 - 2E_1; \, E_3 \coloneqq E_3 - E_1; \, E_4 \coloneqq E_4 - E_1\]
+    cho kết quả:
+    \[
+        \bm{\tilde{A}}^{(2)} =
+            \begin{pNiceArray}{ S[table-format=1] *{3}{ S[table-format=-1] } : S[table-format=-1] }
+                1  &  -1  &   2  &  -1  &  -8  \\
+                0  &   0  &  -1  &  -1  &  -4  \\
+                0  &   2  &  -1  &   1  &   6  \\
+                0  &   0  &   2  &   4  &  12
+            \end{pNiceArray}
+    \]
+
+    Điểm quay \(a_{22}^{(2)} = 0\), do đó cần phải đổi hàng. Ta chọn \(a_{32}
+    \neq 0\), do đó đổi chỗ \(E_2\) và \(E_3\):
+    \[
+        \bm{\tilde{A}}^{(2)} =
+            \begin{pNiceArray}{ S[table-format=1] *{3}{ S[table-format=-1] } : S[table-format=-1] }
+                1  &  -1  &   2  &  -1  &  -8  \\
+                0  &   2  &  -1  &   1  &   6  \\
+                0  &   0  &  -1  &  -1  &  -4  \\
+                0  &   0  &   2  &   4  &  12
+            \end{pNiceArray}
+    \]
+
+    Do \(x_2\) đã được khử khỏi \(E_3\) và \(E_4\), ta có:
+    \[
+        \bm{\tilde{A}}^{(3)} = \bm{\tilde{A}}^{(2)} =
+            \begin{pNiceArray}{ S[table-format=1] *{3}{ S[table-format=-1] } : S[table-format=-1] }
+                1  &  -1  &   2  &  -1  &  -8  \\
+                0  &   2  &  -1  &   1  &   6  \\
+                0  &   0  &  -1  &  -1  &  -4  \\
+                0  &   0  &   2  &   4  &  12
+            \end{pNiceArray}
+    \]
+
+    Khử \(x_3\) bằng
+    \[E_4 \coloneqq E_4 - (-2) E_3\]
+    cho kết quả:
+    \[
+        \bm{\tilde{A}}^{(4)} =
+            \begin{pNiceArray}{ S[table-format=1] *{3}{ S[table-format=-1] } : S[table-format=-1] }
+                1  &  −1  &   2  &  −1  &  −8  \\
+                0  &   2  &  −1  &   1  &   6  \\
+                0  &   0  &  −1  &  −1  &  −4  \\
+                0  &   0  &   0  &   2  &   4
+            \end{pNiceArray}
+    \]
+
+    Vậy ta giải được \(x_4 = 2\), \(x_3 = 2\), \(x_2 = 3\), \(x_1 = -7\).
 \end{exmp}
 
 Phương pháp khử Gauss còn có một số biến thể:
@@ -385,8 +444,8 @@ tráo đổi vị trí hàng.
 \end{cdefinition}
 
 Nhân \(P\) vào bên trái \(A\) sẽ tráo các hàng của \(A\) theo đúng cách tráo các
-hàng của \(I\) để tạo ra \(P\). Nói cách khác, \(P\) là tích các ma trận biến
-đổi sơ cấp tráo hàng (row swapping elementary operation).
+hàng của \(I\) để tạo ra \(P\). Nói cách khác, \(P\) là tích các ma trận của
+\emph{biến đổi sơ cấp tráo hàng (row swapping elementary operation)}.
 
 Ta chọn \(\bm{P}\) sao cho \(\bm{PA}\) có thể giải bằng khử Gauss mà không cần
 tráo vị trí hàng. \(\bm{P}\) được xây dựng đơn giản bằng cách áp dụng cách tráo
@@ -712,16 +771,16 @@ tay, ta giới thiệu qua phương pháp sau:
 \hyperref[method:gauss_elimination]{Phương pháp khử Gauss} và các biến thể của
 nó trong hai phần cuối cùng là các \emph{phương pháp trực tiếp} để giải hệ
 phương trình tuyến tính; đây là những phương pháp đưa ra nghiệm sau một số tính
-toán có thể được xác định trước. Ngược lại, trong trường hợp \emph{giải gián
-tiếp} hoặc \emph{phương pháp lặp (iterative method)} chúng ta bắt đầu từ một giá
-trị xấp xỉ đến nghiệm đúng và, nếu thành công, sẽ có được xấp xỉ tốt hơn và tốt
-hơn từ một quá trình tính toán lặp đi lặp lại để đạt được độ chính xác cần
-thiết, số phép tính phụ thuộc vào độ chính xác cần thiết.
+toán được xác định trước. Ngược lại, trong trường hợp \emph{giải gián tiếp} hoặc
+\emph{phương pháp lặp (iterative method)} chúng ta bắt đầu từ một giá trị xấp xỉ
+nghiệm đúng và, nếu thành công, sẽ có được xấp xỉ tốt hơn và tốt hơn từ một quá
+trình tính toán lặp đi lặp lại. Trong các phương pháp này, số phép tính phụ
+thuộc vào độ chính xác cần thiết.
 
-Chúng ta áp dụng các phương pháp lặp nếu tốc độ hội tụ là đủ nhanh (nếu ma trận
-có các phần tử nằm trên đường chéo chính lớn hơn các phần tử nằm ngoài, như ta
-sẽ thấy), hoặc với \emph{ma trận thưa (sparse matrix)}, tức ma trận có phần lớn
-các phần tử là \(0\).
+Chúng ta áp dụng các phương pháp lặp nếu tốc độ hội tụ đủ nhanh (nếu ma trận có
+các phần tử nằm trên đường chéo chính lớn hơn các phần tử nằm ngoài, như ta sẽ
+thấy), hoặc với \emph{ma trận thưa (sparse matrix)}, tức ma trận có phần lớn các
+phần tử là \(0\).
 
 \subsection{Phương pháp lặp Gauss - Seidel}
 

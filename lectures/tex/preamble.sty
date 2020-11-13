@@ -38,10 +38,9 @@
 \renewcommand{\proofname}{Chứng minh}
 \renewcommand{\qedsymbol}{đpcm.}
 
-\usepackage{multicol}
-
 \usepackage{enumitem}
 \usepackage{multicol}
+\usepackage{tasks}
 
 \usepackage{interval}
 \intervalconfig{
@@ -88,13 +87,13 @@
 
 
 \newtcbtheorem[number within=chapter]{cdefinition}{Định nghĩa}%
-{colback=blue!5, fonttitle=\bfseries}{def}
+{colback=blue!5, colframe=blue!50, fonttitle=\bfseries}{def}
 \newtcbtheorem[number within=chapter]{ctheorem}{Định lí}%
-{colback=green!5, fonttitle=\bfseries}{thm}
+{colback=green!5, colframe=green!50, coltitle=black!50, fonttitle=\bfseries}{thm}
 \newtcbtheorem[number within=chapter]{ccoro}{Hệ quả}%
-{colback=green!5, fonttitle=\bfseries}{coro}
+{colback=green!5, colframe=green!50, coltitle=black!50, fonttitle=\bfseries}{coro}
 \newtcbtheorem[number within=chapter]{clemma}{Bổ đề}%
-{colback=green!5, fonttitle=\bfseries}{lemma}
+{colback=green!5, colframe=green!50, coltitle=black!50, fonttitle=\bfseries}{lemma}
 \newtcbtheorem[number within=chapter]{cmethod}{Phương pháp}%
 {fonttitle=\bfseries}{method}
 
