@@ -58,12 +58,10 @@ Giả sử \(f\) là hàm số xác định và liên tục trên khoảng \(\in
 \emph{\hyperref[thm:intermediate_value_theorem]{Định lý giá trị trung gian}} nói
 rằng tồn tại một số \(p \in \interval[open]{a}{b}\) với \(f(p) = 0\).
 
-\begin{theorem}\label{thm:intermediate_value_theorem}
-    Định lý giá trị trung gian (Intermediate Value Theorem).
-
+\begin{ctheorem}{Định lý giá trị trung gian (Intermediate Value Theorem)}{intermediate_value_theorem}
     Nếu \(f\) liên tục trên \(\interval{a}{b}\) và \(K\) nằm giữa \(f(a)\) và
     \(f(b)\), tồn tại \(c \in \interval[open]{a}{b}\) sao cho \(f(c) = K\).
-\end{theorem}
+\end{ctheorem}
 
 Cụ thể hơn, do \(f(a)\) và \(f(b)\) trái dấu, do đó \(0\) nằm giữa \(f(a)\) và
 \(f(b)\), do đó tồn tại nghiệm \(p \in \interval[open]{a}{b}\).
@@ -76,9 +74,7 @@ Mặc dù có thể tồn tại nhiều hơn một nghiệm trong khoảng
 \(\interval[open]{a}{b}\), nhưng để thuận lợi, chúng ta giả thiết chỉ có duy
 nhất một nghiệm trong khoảng này. Khi đó, ta có thể dùng phương pháp sau:
 
-\begin{method}\label{method:bisection}
-    \emph{Phương pháp chia đôi (Bisection method)}
-
+\begin{cmethod}{Phương pháp chia đôi (Bisection method)}{bisection}
     Phương pháp này cho phép tìm nghiệm \(p\) của \(f(p) = 0\) trong khoảng
     \(\interval{a}{b}\), với \(f(a)\) và \(f(b)\) trái dấu.
 
@@ -102,7 +98,7 @@ nhất một nghiệm trong khoảng này. Khi đó, ta có thể dùng phương
             \end{itemize}
             sau đó làm tiếp phương pháp trên với khoảng \(\interval{a_2}{b_2}\).
     \end{itemize}
-\end{method}
+\end{cmethod}
 
 Các cách dừng khác (còn gọi là \emph{tiêu chí dừng}) có thể được áp dụng trong
 phương pháp trên hoặc trong bất kỳ các kỹ thuật lặp lại trong chương này. Ví dụ,
@@ -187,13 +183,13 @@ Dù vậy, phương pháp này lại có một ưu điểm lớn là đảm bả
 đôi thường được dùng để tìm điểm bắt đầu cho các phương pháp khác hiệu quả hơn
 mà sẽ được giới thiệu sau.
 
-\begin{theorem}
+\begin{ctheorem}{}{}
     Cho hàm \(f \in \interval{a}{b}\) và \(f(a) \dot f(b) < 0\). Phương pháp
     chia đôi tạo ra một chuỗi \(\{p_n\}_{n=1}^\infty\) xấp xỉ nghiệm \(p\) của
     \(f\) với sai số như sau:
 
     \[\abs{p_n - p} \leq \frac{b - a}{2^n} \text{, } n \geq 1\]
-\end{theorem}
+\end{ctheorem}
 
 \begin{proof}
     Với mọi \(n \geq 1\), ta có:
@@ -225,10 +221,9 @@ mà sẽ được giới thiệu sau.
 \emph{Điểm bất động} (\emph{fixed point}) của một hàm là số mà tại đó giá trị
 của hàm số bằng đúng giá trị của đối số.
 
-% TODO: count by section
-\begin{definition}
+\begin{cdefinition}
     Số \(p\) được gọi là điểm bất động của hàm số \(g\) nếu \(g(p) = p\).
-\end{definition}
+\end{cdefinition}
 
 Trong phần này, chúng ta xét việc đưa bài toán tìm nghiệm về bài toán tìm điểm
 bất động và tìm sự liên hệ giữa chúng.
@@ -287,8 +282,7 @@ năm 1900.
 Định lý sau cho điều kiện đủ để hàm số \emph{có ít nhất một} và \emph{có duy
 nhất một} điểm bất động.
 
-\begin{theorem}\label{thm:sufficient_conditions_of_fixed_point}
-\phantom\\
+\begin{ctheorem}{}{sufficient_conditions_of_fixed_point}
 \begin{enumerate}
     \item Nếu \(g \in C \interval{a}{b}\), và \(g(x) \in \interval{a}{b} \,
         \forall x \in \interval{a}{b}\), khi đó \(g\) có ít nhất một điểm bất
@@ -298,21 +292,19 @@ nhất một} điểm bất động.
         \(\abs{g'(x)} < 1 \, \forall x \in \interval{a}{b}\), khi đó, tồn tại
         duy nhất một điểm bất động trên \(\interval{a}{b}\).
 \end{enumerate}
-\end{theorem}
+\end{ctheorem}
 
 Trước khi chứng minh định lí trên, ta cần biết \emph{định lí giá trị trung
 bình}.
 
-\begin{theorem}\label{thm:mean_value_theorem}
-    Định lí giá trị trung bình (Mean Value Theorem).
-
+\begin{ctheorem}{Định lí giá trị trung bình (Mean Value Theorem)}{mean_value_theorem}
     Nếu \(f\) liên tục trên \(\interval{a}{b}\) và khả vi trên
     \(\interval[open]{a}{b}\), tồn tại một điểm \(c \in \interval[open]{a}{b}\)
     sao cho tiếp tuyến tại \(c\) song song với cát tuyến qua hai điểm mút \((a,
     f(a))\) và \((b, f(b))\), hay nói cách khác:
 
     \[f'(c) = \frac{f(b) - f(a)}{b - a}\]
-\end{theorem}
+\end{ctheorem}
 
 \begin{proof}[Chứng minh Định lí~\ref{thm:sufficient_conditions_of_fixed_point}]
 \phantom\\
@@ -364,9 +356,7 @@ Khi này \(p\) chính là điểm bất động của \(g\). Đây chính là ti
 Cần chú ý rằng phương pháp này chỉ đúng khi chuỗi \(\{p_n\}_{n=0}^\infty\) hội
 tụ về \(p\).
 
-\begin{method}\label{method:fixed_point}
-    \emph{Phương pháp điểm bất động (fixed-point method)}
-
+\begin{cmethod}{Phương pháp điểm bất động (fixed-point method)}{fixed_point}
     Phương pháp này cho phép tìm điểm bất động \(p\) của \(g\), khi biết một
     điểm bắt đầu \(p_0\).
 
@@ -377,7 +367,7 @@ tụ về \(p\).
         \item Nếu \(\abs{p - p_0}\) chưa đủ nhỏ, ta đặt \(p_0 = p\) rồi làm tiếp
             phương pháp trên.
     \end{itemize}
-\end{method}
+\end{cmethod}
 
 Cũng như với \hyperref[method:bisection]{phương pháp chia đôi}, có thể dùng
 nhiều điều kiện dừng khác nhau. Ví dụ trên sử dụng điểu kiện \(\abs{p - p_0}\)
@@ -444,9 +434,7 @@ chọn được \(g\) phù hợp. Định lí sau và hệ quả của nó cho t
 việc chọn những hàm phù hợp, hay quan trọng hơn, loại bỏ những hàm không phù
 hợp.
 
-\begin{theorem}\label{thm:fixed_point}
-    \emph{Định lí điểm bất động}
-
+\begin{ctheorem}{Định lí điểm bất động}{fixed_point}
     Cho hàm \(g\) liên tục trên \(\interval{a}{b}\) sao cho \(g(x) \in
     \interval{a}{b} \, \forall x \in \interval{a}{b}\). Giả sử thêm rằng \(g\)
     khả vi trên \(\interval[open]{a}{b}\) và
@@ -459,7 +447,7 @@ hợp.
 
     hội tụ về \(p\) là điểm bất động duy nhất của \(g\) trên
     \(\interval{a}{b}\).
-\end{theorem}
+\end{ctheorem}
 
 \begin{proof}\label{proof:thm:fixed_point}
     % TODO: fix theorem reference
@@ -491,12 +479,9 @@ hợp.
 
 Ta tiếp tục xem xét một số hệ quả hữu dụng của định lí trên.
 
-\begin{coro}
-    \emph{Hệ quả của \hyperref[thm:fixed_point]{định lí điểm bất động}}
-
-    Nếu \(g\) thỏa mãn các điều kiện trong \hyperref[thm:fixed_point]{định lí
-    điểm bất động}, ta có cận trên của sai số tuyệt đối khi ước lượng \(p\) bằng
-    \(p_n\):
+\begin{ccoro}{Hệ quả của \hyperref[thm:fixed_point]{định lí điểm bất động}}{}
+    Nếu \(g\) thỏa mãn các điều kiện trong định lí điểm bất động, ta có cận trên
+    của sai số tuyệt đối khi ước lượng \(p\) bằng \(p_n\):
 
     \begin{equation}\label{ieq:coro:thm:fixed_point_1}
         \abs{p_n - p} \leq k^n \max \{p_0 - a, b - p_0\}
@@ -510,7 +495,7 @@ Ta tiếp tục xem xét một số hệ quả hữu dụng của định lí tr
 
     với \(k\) như đã định nghĩa trong \hyperref[proof:thm:fixed_point]{chứng
     minh của định lí điểm bất động}.
-\end{coro}
+\end{ccoro}
 
 \begin{proof}
     Ta có:
@@ -594,9 +579,7 @@ từ một \(p_0\) cho trước, và tạo dãy \(\{p_n\}_{n = 0}^\infty\) theo 
 
 % TODO: add illustration graph
 
-\begin{method}\label{method:newton}
-    \emph{Phương pháp Newton (Newton's Method)}
-
+\begin{cmethod}{Phương pháp Newton (Newton's Method)}{newton}
     Phương pháp này cho phép tìm nghiệm \(p\) của \(f\), khi biết một điểm bắt
     đầu \(p_0\).
 
@@ -607,7 +590,7 @@ từ một \(p_0\) cho trước, và tạo dãy \(\{p_n\}_{n = 0}^\infty\) theo 
         \item Nếu \(\abs{p - p_0}\) chưa đủ nhỏ, ta đặt \(p_0 = p\) rồi làm tiếp
             phương pháp trên.
     \end{itemize}
-\end{method}
+\end{cmethod}
 
 Tương tự phương pháp chia đôi, ta có thể tùy chọn nhiều điều kiện dừng khác
 nhau.
@@ -670,12 +653,12 @@ xấp xỉ tốt vẫn có thể hội tụ tới nghiệm).
 Sau đây ta sẽ xem xét kĩ hơn khả năng hội tụ của phương pháp Newton để thấy được
 sự nhạy cảm của phương pháp này với điểm khởi đầu.
 
-\begin{theorem}
+\begin{ctheorem}{}{}
     Cho \(f \in C^2 \interval{a}{b}\). Nếu \(f = 0\) có nghiệm \(p \in
     \interval[open]{a}{b}\) sao cho \(f'(p) \neq 0\), thì tồn tại \(\delta > 0\)
     sao cho phương pháp Newton hội tụ với bất kì xấp xỉ ban đầu \(p_0 \in
     \interval{p - \delta}{p + \delta}\).
-\end{theorem}
+\end{ctheorem}
 
 \begin{proof}
     Xét công thức chuỗi của phương pháp Newton.
@@ -848,16 +831,14 @@ difference})). Thay vào công thức~\ref{eq:newton_sequence_function}, ta có:
 
 Đây chính là công thức được dùng trong phương pháp dây cung.
 
-\begin{method}\label{method:secant}
-    \emph{Phương pháp dây cung (secant method)}
-
+\begin{cmethod}{Phương pháp dây cung (secant method)}{secant}
     Phương pháp này cho phép tìm nghiệm \(p\) của \(f(p) = 0\) khi biết
     \emph{hai} điểm khởi đầu \(p_1\) và \(p_2\).
 
     Đặt \(p_3\) là hoành độ của giao điểm của đường thẳng nối \((p_1, f(p_1))\)
     và \((p_2, f(p_2))\) với \(Ox\). Tiếp tục thực hiện phương pháp trên với
     \(p_2\) và \(p_3\) và các số sau đó, chuỗi sẽ hội tụ đến \(p\).
-\end{method}
+\end{cmethod}
 
 Chú ý rằng, công thức~\ref{eq:secant_method} có thể được rút ngắn thành:
 
@@ -891,9 +872,7 @@ khác biệt quan trọng: nó đảm bảo nghiệm luôn nằm trong khoảng 
 phương pháp chia đôi, và thu hẹp khoảng này sau mỗi lần lặp. Tính chất này gọi
 là \emph{bracketing}, và phương pháp Newton và dây cung không có tính chất này.
 
-\begin{method}
-    \emph{Phương pháp điểm sai (false position method)}
-
+\begin{cmethod}{Phương pháp điểm sai (Regula Falsi)}{}
     Phương pháp này cho phép tìm nghiệm \(p\) của \(f(p) = 0\) khi biết
     \emph{hai} điểm khởi đầu \(p_0\) và \(p_1\) sao cho \(f(p_0)\) và \(f(p_1)\)
     trái dấu.
@@ -914,11 +893,11 @@ là \emph{bracketing}, và phương pháp Newton và dây cung không có tính 
     \end{itemize}
 
     Tương tự với \(p_3\), tính được \(p_4\), \(p_5\),\ldots
-\end{method}
+\end{cmethod}
 
 Ta thấy yêu cầu \(f(p_0)\) và \(f(p_1)\) trái dấu là hiển nhiên do phương pháp
-này có tính bracketing, nếu không có nghiệm trong khoảng giữa \(p_0\) và \(p_1\)
-thì phương pháp sẽ không hội tụ.
+này có tính ``bracketing'', nếu không có nghiệm trong khoảng giữa \(p_0\) và
+\(p_1\) thì phương pháp sẽ không hội tụ.
 
 Ta cũng thấy yêu cầu tráo giá trị của \(p_0\) và \(p_1\) để đảm bảo nghiệm nằm
 giữa \(p_2\) và \(p_3\). Ngoài ra, do việc tráo giá trị, khi thuật toán kết

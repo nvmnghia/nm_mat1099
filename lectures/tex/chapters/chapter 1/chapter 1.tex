@@ -48,7 +48,7 @@ hay \(a\) là số gần đúng của \(a_0\). Khi đó sai số của \(a\) là
 Nhưng giá trị này nói chúng ta không biết được mà chỉ ước lượng được cận trên
 của trị tuyệt đối của nó.
 
-\begin{definition}
+\begin{cdefinition}{Sai số tuyệt đối (absolute error)}{}
     Giá trị ước lượng \(\Delta a\) sao cho
 
     \begin{equation} \label{eq:2}
@@ -56,7 +56,7 @@ của trị tuyệt đối của nó.
     \end{equation}
 
     được gọi là \emph{sai số tuyệt đối} của số gần đúng \(a\).
-\end{definition}
+\end{cdefinition}
 
 % TODO: Mục 2.1?
 Sai số tuyệt đối nhỏ nhất có thể biết được gọi là sai số tuyệt đối giới hạn của
@@ -105,14 +105,14 @@ Hai số gần đúng có cùng sai số tuyệt đối sẽ có ``mức độ c
 độ lớn của chúng khác nhau: số bé hơn sẽ có độ chính xác kém hơn. Để biểu diễn
 độ chính xác này, người ta dùng sai số tương đối.
 
-\begin{definition}
+\begin{cdefinition}{Sai số tương đối (relative error)}{}
     \emph{Sai số tương đối} của số gần đúng \(a\) là tỷ số giữa sai số tuyệt đối
     và giá trị tuyệt đối của nó, được ký hiệu là \(\delta a\).
 
     \begin{equation} \label{eq:4}
         \delta a = \frac{\delta a}{\abs{a}}
     \end{equation}
-\end{definition}
+\end{cdefinition}
 
 Thường sai số tương đối được biểu diễn dưới dạng phần trăm với 2 hoặc 3 chữ số.
 
@@ -420,7 +420,7 @@ chúng như thế nào?
 
 \subsection{Chữ số có nghĩa}
 
-\begin{definition}
+\begin{cdefinition}{Chữ số có nghĩa}{}
     Trong biểu diễn theo cơ số \(b\) (trường hợp riêng là biểu diễn thập phân):
 
     \begin{itemize}
@@ -429,7 +429,7 @@ chúng như thế nào?
 
         \item các chữ số \(0\) bên trái là \emph{không có nghĩa}
     \end{itemize}
-\end{definition}
+\end{cdefinition}
 
 Nếu \(a\) được viết dưới dạng
 
@@ -452,7 +452,7 @@ thì các chữ số \(0\) bên trái không có ở biểu diễn này, ý ngh�
 
 \subsection{Chữ số chắc}
 
-\begin{definition}
+\begin{cdefinition}{Chữ số chắc}{}
     Xét a có biểu diễn~\ref{eq:number_in_decimal} với sai số \(\Delta a\).
 
     \begin{itemize}
@@ -463,7 +463,7 @@ thì các chữ số \(0\) bên trái không có ở biểu diễn này, ý ngh�
         \item Nếu \(\num{0.5} \cdot 10^m \leq \Delta a \leq 10^m\) thì \(a_m\)
             là \emph{chắc theo nghĩa rộng}.
     \end{itemize}
-\end{definition}
+\end{cdefinition}
 
 \begin{exmp}
     \(a = \num{21.473}\) và \(\Delta a = \num{0.094} = \num{0.94} \cdot
