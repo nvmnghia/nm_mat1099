@@ -1,0 +1,10 @@
+{
+    "cSpell.words": [
+        "elim",
+        "floatfmt",
+        "fmethod",
+        "tablefmt"
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
+}
