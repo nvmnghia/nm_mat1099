@@ -906,8 +906,8 @@
             solution and
             \[2 \alpha + 2 \neq 0 \iff \alpha \in \varnothing\]
 
-        \item The system has a unique solution if and only if \(\alpha
-            \neq\notin \{0, 1\}\). Then the unique solution is:
+        \item The system has a unique solution if and only if \(\alpha \notin
+            \{0, 1\}\). Then the unique solution is:
             \[x_3 = \frac{\alpha + 1}{\alpha - \alpha^2} \, \text{, } x_2 = 1 \text{ and } x_1 = \frac{2}{\alpha - 1}\]
     \end{enumerate}
 \end{solution}
@@ -942,7 +942,7 @@
     \end{enumerate}
 \end{solution}
 
-\begin{exercise}
+\begin{exercise}\label{exer:3.1.12}
     Gauss-Jordan Method: This method is described as follows. Use the \(i^{th}\)
     equation to eliminate not only \(x_i\) from the equations \(E_{> i}\) as was
     done in the Gaussian elimination method, but also from \(E_{< i}\). Upon
@@ -963,8 +963,10 @@
 
 \begin{solution}
     In Step 4, change \(j\) from \(j > i\) to \(j \neq i\).
+
     In Step 8, calculate for all \(i\):
     \[x_i = \frac{b_i}{a_{ii}}\]
+
     Remove Step 9.
 \end{solution}
 
@@ -1082,6 +1084,173 @@
 
 \begin{solution}
     Opps, can't help without Maple license.
+\end{solution}
+
+\begin{exercise}
+    \begin{tasks}
+        \task Show that the Gauss-Jordan method requires
+            \[\frac{n^3}{2} + n^2 - \frac{n}{2} \text{ multiplications/divisions}\]
+            and
+            \[\frac{n^3}{2} - \frac{n}{2} \text{ additions/subtractions}\]
+
+        \task Make a table comparing the required operations for the
+            Gauss-Jordan and Gaussian elimination methods for \(n = 3, 10, 50,
+            100\). Which method requires less computation?
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item We have the following analysis:
+            \begin{itemize}
+                \item In Step 1, \(i\) iterates from \(1\) to \(n\), so there is
+                    \(n\) iterations. Inside each iteration:
+                    \begin{itemize}
+                        \item In Step 4, \(j\) iterates from \(1\) to \(n\) but
+                            skips \(i\), so there is \(n - 1\) iterations.
+                            Inside each iteration:
+                            \begin{itemize}
+                                \item In Step 5: \(1\) divisions
+                                \item In Step 6: \(n + 1\) multiplications; \(n
+                                    + 1\) subtractions.
+
+                                    However, some operations with or known to
+                                    results in \(0\) could be skipped,
+                                    therefore, Step 6 requires \(n + 1 - i\)
+                                    multiplications and \(n + 1 - i\)
+                                    subtractions.
+                            \end{itemize}
+
+                            Therefore, in each Step 4 iteration, there are \(n - i +
+                            2\) multiplications/divisions and \(n - i + 1\)
+                            subtractions.
+                    \end{itemize}
+
+                    Therefore, in each Step 1 iteration, there are \((n - 1)(n -
+                    i + 2)\) multiplications/divisions and \((n - 1)(n - i +
+                    1)\) subtractions
+
+                    Therefore, in all Step 1 iterations, there are
+                    \begin{align*}
+                        \sum_{i = 1}^{n} (n - 1)(n - i + 2) &= (n - 1) \left[n(n + 2) - \sum_{i = 1}^{n} i \right] \\
+                                                            &= \frac{n^3 + 2n^2 - 3n}{2} \text{ multiplications/divisions}
+                    \end{align*}
+                    and
+                    \begin{align*}
+                        \sum_{i = 1}^{n} (n - 1)(n - i + 1) &= (n - 1) \left[n(n + 1) - \sum_{i = 1}^{n} i \right] \\
+                                                            &= \frac{n^3 - n}{2} \text{ subtractions}
+                    \end{align*}
+
+                \item In Step 9, \(i\) iterates from \(1\) to \(n\), so there is
+                    \(n\) iterations. Inside each iteration, there is only \(1\)
+                    divisions. Therefore, in all Step 9 divisions, there are
+                    \(n\) divisions.
+            \end{itemize}
+
+            We can now conclude that Gauss-Jordan requires
+            \[\frac{n^3 + 2n^2 - 3n}{2} + n = \frac{n^3}{2} + n^2 - \frac{n}{2} \text{ multiplications/divisions}\]
+            and
+            \[\frac{n^3}{2} - \frac{n}{2} \text{ additions/subtractions}\]
+
+            Note that in most simple implementation, the cost of branching code
+            to skip operations (for example in Step 6 of this analysis) is
+            greater than the save from skipping operations itself. Therefore, a
+            well-vectorized implementation, though requiring even more
+            computation, turns out to outperform a ``skip'' implementation.
+
+        \item We have the following table:
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{ccccc}
+                    \toprule
+                    &  \multicolumn{2}{c}{Gauss Elimination}  &  \multicolumn{2}{c}{Gauss-Jordan}  \\
+                    \midrule
+                    \(n\)  &  M/D  &  A/S  &  M/D  &  A/S  \\
+                    \midrule
+                    3    &  17      &  11      &  21      &  12      \\
+                    10   &  430     &  375     &  595     &  495     \\
+                    50   &  44150   &  42875   &  64975   &  62475   \\
+                    100  &  343300  &  338250  &  509950  &  499950  \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+
+            Obviously, Gauss Elimination requires less computation.
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Consider the following Gaussian-elimination-Gauss-Jordan hybrid method for
+    solving system of equations. First, apply the Gaussian-elimination technique
+    to reduce the system to triangular form. Then use the \(n^{th}\) equation to
+    eliminate the coefficients of \(x_n\) in each of the first \(n - 1\) rows.
+    After this is completed use the \((n - 1)^{th}\) equation to eliminate the
+    coefficients of \(x_{n - 1}\) in the first \(n - 2\) rows, etc. The system
+    will eventually appear as the reduced system in
+    \hyperref[exer:3.1.12]{Exercise 12}.
+
+    \begin{tasks}
+        \task Show that this method requires
+            \[\frac{n^3}{3} + \frac{3n^2}{2} - \frac{5n}{6} \text{ multiplications/divisions}\]
+            and
+            \[\frac{n^3}{2} + \frac{n^2}{2} - \frac{5n}{6} \text{ additions/subtractions}\]
+
+        \task Make a table comparing the required operations for the Gaussian
+            elimination, Gauss-Jordan, and hybrid methods, for \(n = 3, 10, 50,
+            100\). Which method requires less computation?
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item We have the following analysis:
+            \begin{itemize}
+                \item Gauss elimination to upper triangular form: takes
+                    \[\frac{n^3}{3} + \frac{n^2}{2} - \frac{5n}{6} \text{ multiplications/divisions}\]
+                    and
+                    \[\frac{n^3}{3} - \frac{n}{3} \text{additions/subtractions}\]
+                \item Use the \(i^{th}\) equation to eliminate \(x_i\) in each
+                    of the first \(i - 1\) rows, starting with \(i = n\): Let
+                    \(i\) iterates from \(n\) to \(2\), so there is \(n - 1\)
+                    iterations.
+
+                    Inside each iteration, \(x_i\) is eliminated from \((i -
+                    1)^{th}\) equation to the first one. We only need to update
+                    the last column, as most operations with, or results in
+                    \(0\) is skipped. So, there is \(1\) division (for
+                    multiplier), \(1\) multiplication (scale row, or in fact
+                    last element of the row), \(1\) subtraction (elimination).
+
+                    Therefore, in all iterations of this step, there are
+                    \[\sum_{i = 2}^{n} 2(i - 1) = 2 \sum_{i = 1}^{n - 1} i = n(n - 1) \text{ multiplications/divisions}\]
+                    and
+                    \[\sum_{i = 2}^{n} (2i) = \frac{n(n - 1)}{2} \text{ multiplications/divisions}\]
+                \item The last step of solving diagonal matrix takes \(n\)
+                    divisions
+            \end{itemize}
+
+            We can now conclude that the hybrid methods takes
+            \[\frac{n^3}{3} + \frac{3n^2}{2} - \frac{5n}{6} \text{ multiplications/divisions}\]
+            and
+            \[\frac{n^3}{2} + \frac{n^2}{2} - \frac{5n}{6} \text{ additions/subtractions}\]
+
+        \item We have the following table:
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{ccccccc}
+                    \toprule
+                    &  \multicolumn{2}{c}{Gauss Elimination}  &  \multicolumn{2}{c}{Gauss-Jordan}  &  \multicolumn{2}{c}{Hybrid}  \\
+                    \midrule
+                    \(n\)  &  M/D  &  A/S  &  M/D  &  A/S  &  M/D  &  A/S  \\
+                    \midrule
+                    3    &  17      &  11      &  21      &  12      &  20      &  11      \\
+                    10   &  430     &  375     &  595     &  495     &  475     &  375     \\
+                    50   &  44150   &  42875   &  64975   &  62475   &  45375   &  42875   \\
+                    100  &  343300  &  338250  &  509950  &  499950  &  348250  &  338250  \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+    \end{enumerate}
 \end{solution}
 
 \end{document}
