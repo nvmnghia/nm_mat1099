@@ -32,7 +32,8 @@ PROG_DESC = '''
 parser = ArgumentParser(description=PROG_DESC)
 
 parser.add_argument('method',
-    type=str, metavar='method', choices=METHODS,
+    type=str, choices=METHODS,
+    metavar='method',
     help='approximation method [%(choices)s]')
 parser.add_argument('--override', '-o',
     nargs='+', metavar='param=value',
@@ -42,6 +43,10 @@ parser.add_argument('--override', '-o',
 parser.add_argument('--latex', '-l',
     action='store_true',
     help='print iteration data as LaTeX tabular')
+parser.add_argument('--decimal_places', '-d',
+    type=int, choices=range(1, 18), default=5,
+    metavar='decimal_places',
+    help='number of decimal places when printing (not affecting accuracy), default to %(default)s')
 
 parser.add_argument('--verbose', '-v',
     action='store_true',

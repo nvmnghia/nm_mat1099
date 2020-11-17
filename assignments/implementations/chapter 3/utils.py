@@ -1,9 +1,29 @@
+import logging
 from typing import Callable, List
 from collections.abc import Iterable
 
 import numpy as np
 from tabulate import tabulate
 import regex as re
+
+
+config = {
+    'decimal_places': None
+}
+
+def set_decimal_places(n: int):
+    """
+    Set number of decimal place in printing.
+
+    Parameters
+    ----------
+    n : int
+        Number of decimal places.
+    """
+
+    logging.info(f'Printing with {n} decimal places')
+    config['decimal_places'] = n
+    np.set_printoptions(precision=n)
 
 
 def is_valid_augmented(A: np.ndarray) -> bool:
@@ -45,7 +65,7 @@ def to_latex(M: np.ndarray) -> str:
         The string represent the matrix in LaTeX.
     """
 
-    latex = str(tabulate(M, tablefmt='latex', floatfmt='.5f'))
+    latex = str(tabulate(M, tablefmt='latex', floatfmt=f".{config['decimal_places']}f"))
 
     # Filter content line only (avoid tabular,...)
     latex = '\n'.join(
@@ -90,7 +110,7 @@ def to_latex(M: np.ndarray) -> str:
 
     # Split row into cells
     split_cells: Callable[[str], List[str]] = lambda row: \
-        row[: len(row) - 2].split('&')
+        row[:-2].split('&')
 
     # Merge cells into row
     merge_cells: Callable[[Iterable[str]], str] = lambda cells: \
@@ -119,3 +139,45 @@ def to_latex(M: np.ndarray) -> str:
     latex = merge_columns(map(strip_excess_spaces, split_columns(latex)))
 
     return(latex)
+
+
+def format_multiplier(m: float) -> str:
+    """
+    Format multiplier for Gauss Elimination and related methods
+
+    Parameters
+    ----------
+    m : float
+        The number to be formatted:
+        - strip trailing zero: 1.0 to '1'
+        - wrap negative: -1 to '(-1)'
+
+    Returns
+    -------
+    str
+        The formated number in string
+    """
+
+    s = f"%.{config['decimal_places']}f" % m
+
+    # Remove trailing zeros
+    trailing_zero_matcher = re.compile(
+        r'''
+            (?<=         # Positive (=) look behind (<), i.e. must be (positive) preceded by (look behind)
+                \.\d*    # Decimal dot, followed by zero or more digit
+            )
+            0            # Match a SINGLE trailing zero
+            (?=          # Positive (=) look ahead (no <), i.e. must be (positive) succeeded by (look ahead)
+                0*\b     # Zero or more 0, followed by word boundary \b
+            )
+        ''',
+        re.VERBOSE    # Allow free-spacing and comment
+    )
+    s = re.sub(trailing_zero_matcher, '', s)
+
+    # Remove trailing decimal dot
+    s = re.sub(r'\.(?=\s)', '', s)
+
+    if m < 0:
+        s = f'({s})'
+    return s

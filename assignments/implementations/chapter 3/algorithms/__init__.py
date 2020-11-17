@@ -1,1 +1,1 @@
-METHODS = ['gauss_elim']
+METHODS = ['gauss_elim', 'gauss_jordan']

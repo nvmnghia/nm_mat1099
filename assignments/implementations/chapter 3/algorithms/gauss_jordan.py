@@ -1,3 +1,4 @@
+from algorithms.gauss_elim import METHOD_DESC
 import logging
 
 import numpy as np
@@ -8,8 +9,9 @@ from utils import format_multiplier, is_valid_augmented, mat2str
 METHOD_DESC = '''
     A direct, accurate solving method.
 
-    The augmented matrix is transformed to a lower triangular matrix,
-    by eliminating unknown x_i in (i+1)th equation onwards.
+    The augmented matrix is transformed to a diagonal matrix,
+    by eliminating unknown x_i in all equation but the ith one.
+    Equivalent to Gauss Elimination gauss_elim.
 
     Parameters
     ----------
@@ -20,9 +22,9 @@ METHOD_DESC = '''
 '''
 
 
-def gauss_elim(A: np.ndarray, swap_row=True, print_latex=True, **_) -> np.ndarray:
+def gauss_jordan(A: np.ndarray, swap_row=True, print_latex=True, **_) -> np.ndarray:
     """
-    Solve the system using Gauss elimination method, with row swapping by default.
+    Solve the system using Gauss-Jordan method, with row swapping by default.
 
     Parameters
     ----------
@@ -50,8 +52,8 @@ def gauss_elim(A: np.ndarray, swap_row=True, print_latex=True, **_) -> np.ndarra
 
     # Elimination
     N = len(A)
-    for i in range(N - 1):
-        # Eliminate x_i (pivot)
+    for i in range(N):
+        # Eliminate x_i
         a_i = A[i][i]
 
         # Swap if needed
@@ -62,7 +64,7 @@ def gauss_elim(A: np.ndarray, swap_row=True, print_latex=True, **_) -> np.ndarra
                     (_i for _i in range(i + 1, N) if A[_i][i] != 0),
                     None)
                 if index_of_first_nonzero is None:
-                    logging.error(f'No nonzero A[{i + 1}][>={i + 1}] found. System has no unique solution (either no solution or infinite number of solutions).')
+                    logging.error(f'No nonzero A[{i + 1}][>={i + 1}] found. System has no unique solution (either no solution or infinite number of solutions)')
                     return None
 
                 # Swap the found equation with the current one
@@ -74,9 +76,9 @@ def gauss_elim(A: np.ndarray, swap_row=True, print_latex=True, **_) -> np.ndarra
                 logging.error(f'Cannot solve without swapping rows')
                 return None
 
-        # Eliminate x_i from E_{i+1} onwards
-        for _i in range(i + 1, N):
-            if A[_i][i] == 0:
+        # Eliminate x_i from all equation but E_i
+        for _i in range(N):
+            if _i == i or A[_i][i] == 0:
                 continue
 
             m = A[_i][i] / a_i
@@ -86,14 +88,13 @@ def gauss_elim(A: np.ndarray, swap_row=True, print_latex=True, **_) -> np.ndarra
 
         logging.info(f'Eliminated x_{i + 1}, A becomes:\n{mat2str(A, print_latex)}')
 
-    # Back substitution
-    P = A[:, :N]    # Parameter matrix
+    # Solve x
+    d = np.diag(A)
     b = A[:, N]
-    x = np.zeros((N, 1))
-    for i in range(N - 1, -1, -1):
-        if P[i][i] == 0:
-            logging.error(f'Parameter A[{i}][{i}] = 0. System has no unique solution (either no solution or infinite number of solutions).')
-            return None
-        x[i] = (b[i] - np.dot(P[i], x)) / P[i][i]
+    try:
+        x = np.divide(b, d)
+    except FloatingPointError:
+        logging.error(f'Floating point error, possibly divide by zero. System has no unique solution (either no solution or infinite number of solutions).')
+        return None
 
-    return x
+    return x.reshape(-1, 1)
