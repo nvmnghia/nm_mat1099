@@ -157,7 +157,7 @@
     \end{enumerate}
 \end{solution}
 
-\begin{exercise}
+\begin{exercise}\label{exer:3.1.3}
     Use Gaussian elimination with backward substitution and two-digit rounding
     arithmetic to solve the following linear systems. Do not reorder the
     equations.
@@ -452,7 +452,7 @@
             \]
 
             Eliminating \(x_2\) by these transformation
-            \[E_3 := E_3 - 2E_2\]
+            \[E_3 \coloneqq E_3 - 2E_2\]
             gives:
             \[
                 \bm{\tilde{A}}^{(3)} =
@@ -766,7 +766,7 @@
     \end{enumerate}
 \end{solution}
 
-\begin{exercise}
+\begin{exercise}\label{exer:3.1.7}
     Use Algorithm 6.1 and Maple with Digits:= 10 to solve the following linear
     systems \ldots
 \end{exercise}
@@ -940,6 +940,148 @@
         \item If the rows are swapped, the solution does not change, as the set
             of the equation does not change.
     \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Gauss-Jordan Method: This method is described as follows. Use the \(i^{th}\)
+    equation to eliminate not only \(x_i\) from the equations \(E_{> i}\) as was
+    done in the Gaussian elimination method, but also from \(E_{< i}\). Upon
+    reducing \([\bm{A}, \bm{b}]\) to:
+    \[\begin{pNiceArray}{cccc:c}
+        a_{11}^{(1)}  &                &          &                &  b_1^{(1)}  \\
+                      &  a_{22}^{(2)}  &          &                &  b_2^{(2)}  \\
+                      &                &  \ddots  &                &  \vdots     \\
+                      &                &          &  a_{nn}^{(n)}  &  b_n^{(n)}  \\
+    \end{pNiceArray}\]
+    the solution can be obtained by
+    \[x_i = \frac{b_i^{(i)}}{a_{ii}^{(i)}}\]
+
+    This procedure circumvents the backward substitution in the Gaussian
+    elimination. Construct an algorithm for the Gauss-Jordan procedure patterned
+    after that of Algorithm 6.1.
+\end{exercise}
+
+\begin{solution}
+    In Step 4, change \(j\) from \(j > i\) to \(j \neq i\).
+    In Step 8, calculate for all \(i\):
+    \[x_i = \frac{b_i}{a_{ii}}\]
+    Remove Step 9.
+\end{solution}
+
+\begin{exercise}
+    Use the Gauss-Jordan method and two-digit rounding arithmetic to solve the
+    systems in \hyperref[exer:3.1.3]{Exercise 3}.
+\end{exercise}
+
+\begin{solution}
+
+    \begin{enumerate}[label = \alph*)]
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1] S[table-format=1] : S[table-format=2] }
+                        4  &  -1  &  1  &   8  \\
+                        2  &   5  &  2  &   3  \\
+                        1  &   2  &  4  &  11  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_1\) by these transformation
+            \[E_2 \coloneqq E_2 - 0.5 E_1; \, E_3 \coloneqq E_3 - 0.25 E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1.2] S[table-format=1.2] : S[table-format=-1] }
+                        4  &  -1     &  1     &   8  \\
+                        0  &   5.5   &  1.5   &  -1  \\
+                        0  &   2.25  &  3.75  &   9  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_2\) by these transformation
+            \[E_1 \coloneqq E_1 - (-0.18182) E_2; \, E_3 \coloneqq E_3 - 0.40909 E_2\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1.1] S[table-format=1.5] : S[table-format=-1.5] }
+                        4  &  0    &  1.27273  &   7.81818  \\
+                        0  &  5.5  &  1.5      &  -1        \\
+                        0  &  0    &  3.13636  &   9.40909  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_3\) by these transformation
+            \[E_1 \coloneqq E_1 - 0.40580 E_3; \, E_2 \coloneqq E_2 - 0.47826 E_3\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(4)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1.1] S[table-format=1.5] : S[table-format=-1.5] }
+                        4  &  0    &  0        &   4        \\
+                        0  &  5.5  &  0        &  -5.5      \\
+                        0  &  0    &  3.13636  &   9.40909  \\
+                    \end{pNiceArray}
+            \]
+
+            The solution is \(x_3 \approx 3\), \(x_2 \approx -1\), \(x_1 \approx
+            1\).
+
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1] S[table-format=-1] : S[table-format=-1] }
+                        4  &  1  &   2  &   9  \\
+                        2  &  4  &  -1  &  -5  \\
+                        1  &  1  &  -3  &  -9
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_1\) by these transformation
+            \[E_2 \coloneqq E_2 - 0.50000 E_1; \, E_3 \coloneqq E_3 - 0.25000 E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1.2] S[table-format=-1.1] : S[table-format=-2.2] }
+                        4  &  1     &   2    &    9     \\
+                        0  &  3.5   &  -2    &   -9.5   \\
+                        0  &  0.75  &  -3.5  &  -11.25  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_2\) by these transformation
+            \[E_1 \coloneqq E_1 - 0.28571 E_2; \, E_3 \coloneqq E_3 - 0.21429 E_2\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1.1] S[table-format=-1.5] : S[table-format=-1.5] }
+                        4  &  0    &   2.57143  &  11.71429  \\
+                        0  &  3.5  &  -2        &  -9.5      \\
+                        0  &  0    &  -3.07143  &  -9.21429  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_3\) by these transformation
+            \[E_1 \coloneqq E_1 - (-0.83721) E_3; \, E_2 \coloneqq E_2 - 0.65116 E_3\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(4)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1.1] S[table-format=-1.5] : S[table-format=-1.5] }
+                        4  &  0    &   0        &   4        \\
+                        0  &  3.5  &   0        &  -3.5      \\
+                        0  &  0    &  -3.07143  &  -9.21429  \\
+                    \end{pNiceArray}
+            \]
+
+            The solution is \(x_3 \approx 3\), \(x_2 \approx -1\), \(x_1 \approx
+            1\).
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Repeat \hyperref[exer:3.1.7]{Exercise 7} using the Gauss-Jordan method.
+\end{exercise}
+
+\begin{solution}
+    Opps, can't help without Maple license.
 \end{solution}
 
 \end{document}
