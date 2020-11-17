@@ -666,7 +666,7 @@
     \begin{enumerate}[label = (\alph*)]
         \item Sketch the graphs of \(y = x\) and \(y = 2 \sin{x}\).
         \item Use the Bisection method to find an approximation to within
-            \(10^{−5}\) to the first positive value of \(x\) with \(x = 2
+            \(10^{-5}\) to the first positive value of \(x\) with \(x = 2
             \sin{x}\).
     \end{enumerate}
 \end{exercise}
@@ -1028,7 +1028,7 @@
 \end{solution}
 
 \begin{exercise}
-    Find an approximation to \(\sqrt{3}\) correct to within \(10^{−4}\) using
+    Find an approximation to \(\sqrt{3}\) correct to within \(10^{-4}\) using
     the Bisection Algorithm.
 \end{exercise}
 
@@ -1073,7 +1073,7 @@
 \end{solution}
 
 \begin{exercise}
-    Find an approximation to \(\sqrt[3]{25}\) correct to within \(10^{−4}\)
+    Find an approximation to \(\sqrt[3]{25}\) correct to within \(10^{-4}\)
     using the Bisection Algorithm.
 \end{exercise}
 
@@ -1121,13 +1121,13 @@
 \begin{exercise}
     Use Theorem 2.1 (\emph{Định lí 2.2} in the Lectures.pdf of the project) to
     find a bound for the number of iterations needed to achieve an approximation
-    with accuracy \(10^{-3}\) to the solution of \(x^3 + x − 4 = 0\) lying in
+    with accuracy \(10^{-3}\) to the solution of \(x^3 + x - 4 = 0\) lying in
     the interval \(\interval{1}{4}\). Find an approximation to the root with
     this degree of accuracy.
 \end{exercise}
 
 \begin{solution}
-    Let \(f(x) = x^3 + x − 4\). \(f(1) = -2\) and \(f(4) = 64\) have the
+    Let \(f(x) = x^3 + x - 4\). \(f(1) = -2\) and \(f(4) = 64\) have the
     opposite signs, so there's a root \(p\) of \(f\) in \(\interval{1}{4}\).
 
     The number of iteration \(n\) needed to approximate \(p\) to within
@@ -1166,13 +1166,13 @@
 \begin{exercise}
     Use Theorem 2.1 (\emph{Định lí 2.2} in the Lectures.pdf of the project) to
     find a bound for the number of iterations needed to achieve an approximation
-    with accuracy \(10^{-4}\) to the solution of \(x^3 - x − 1 = 0\) lying in
+    with accuracy \(10^{-4}\) to the solution of \(x^3 - x - 1 = 0\) lying in
     the interval \(\interval{1}{2}\). Find an approximation to the root with
     this degree of accuracy.
 \end{exercise}
 
 \begin{solution}
-    Let \(f(x) = x^3 - x − 1\). \(f(1) = -2\) and \(f(4) = 64\) have the
+    Let \(f(x) = x^3 - x - 1\). \(f(1) = -2\) and \(f(4) = 64\) have the
     opposite signs, so there's a root \(p\) of \(f\) in \(\interval{1}{2}\).
 
     The number of iteration \(n\) needed to approximate \(p\) to within
@@ -1211,7 +1211,7 @@
 \end{solution}
 
 \begin{exercise}
-    Let \(f(x) = (x − 1)^{10}\), \(p = 1\), and \(p_n = 1 + \frac{1}{n}\). Show
+    Let \(f(x) = (x - 1)^{10}\), \(p = 1\), and \(p_n = 1 + \frac{1}{n}\). Show
     that \(\abs{f(p_n)} < 10^{-3}\) whenever \(n > 1\) but that \(\abs{p - p_n}
     < 10^{-3}\) requires that \(n > 1000\).
 \end{exercise}
@@ -1261,7 +1261,7 @@
 
 \begin{exercise}
     The function defined by \(f(x) = \sin{\pi x}\) has zeros at every integer.
-    Show that when \(−1 < a < 0\) and \(2 < b < 3\), the Bisection method
+    Show that when \(-1 < a < 0\) and \(2 < b < 3\), the Bisection method
     converges to
 
     \begin{tasks}(3)
