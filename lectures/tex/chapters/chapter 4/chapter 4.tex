@@ -6,4 +6,257 @@
 \chapter{Các phương pháp nội suy}
 
 
+%----------------------------------------------------------------------------------------
+%	4.1: Mở đầu & Cơ sở lý thuyết
+%----------------------------------------------------------------------------------------
+
+\section{Mở đầu \& Cơ sở lý thuyết}
+
+Chúng ta được biết các giá trị của một hàm số ở những điểm khác nhau \(x_0\),
+\(x_1\), \ldots, \(x_n\). Chúng ta mong muốn tính được giá trị xấp xỉ của hàm
+tại các điểm \(x\) mới nằm giữa các điểm này mà các giá trị của hàm số được đưa
+ra. Quá trình này được gọi là \emph{nội suy}.
+
+Chúng ta nên chú ý đến phần này vì nội suy tạo thành nền móng cho cả hai phần
+tính gần đúng đạo hàm và tính gần đúng tích phân. Thật vậy, phép nội suy cho
+phép chúng ta phát triển các công thức cho tích phân và đạo hàm bằng số.
+
+Với hàm \(y = f(x)\), ta kí hiệu các giá trị đã biết của \(f\) như sau
+\[f_k = f(x_k) \mid k \in \interval{0}{n}\]
+hay một cách biểu diễn khác ở dạng cặp
+\[(x_k, f_k)\]
+
+Các giá trị hàm số này được lấy từ đâu?
+\begin{itemize}
+    \item Nó có thể tính được từ một hàm ``toán học'', chẳng hạn hàm logarithm
+        hoặc hàm Bessel, hoặc
+    \item Nó có thể là số liệu đo được hoặc tự động ghi lại trong một thí nghiệm
+        nào đó, chẳng hạn chất lượng không khí của Hà Nội hoặc đo thành phần khí
+        thải của ô tô hoặc xe máy khi đi với tốc độ khác nhau
+\end{itemize}
+
+Ý tưởng của nội suy là tìm đa thức \(p_n(x)\) có bậc là \(n\) (hoặc nhỏ hơn) thỏa
+mãn:
+\begin{equation}\label{eq:general_approximation_polynomial}
+    p_n(x_k) = x \, \forall k \in \interval{0}{n}
+\end{equation}
+
+Chúng ta sẽ gọi \(p_n\) là \emph{đa thức nội suy} và \(x_0\), \(x_1\), \ldots,
+\(x_n\) là các điểm mốc. Nếu \(f\) là hàm toán học thì ta gọi \(p_n(x)\) là
+\emph{xấp xỉ} (hoặc là xấp xỉ đa thức) của hàm \(f\). Chúng ta sẽ dùng \(p_n\)
+để tính giá trị của hàm \(f\) tại các điểm \(x\) khác điểm mốc nằm trong hoặc
+ngoài khoảng \(\interval{x_0}{x_n}\).
+
+Lý do đa thức rất thuận tiện để xấp xỉ vì chúng ta có thể dễ dàng lấy đạo hàm và
+tích phân chúng, và kết quả cũng là một đa thức. Hơn nữa, \emph{đa thức có thể
+xấp xỉ hàm liên tục với bất kỳ độ chính xác tùy ý}. Kết quả này được gọi là
+\emph{định lí xấp xỉ Weierstrass}.
+
+\begin{ctheorem}{Định lí xấp xỉ Weierstrass}{weierstrass_approx}
+    Với mọi hàm \(f\) xác định trên \(J = \interval{a}{b}\) và một sai số
+    \(\beta > 0\) cho trước, luôn tồn tại đa thức \(p_n(x)\) (có bậc \(n\) đủ
+    cao) sao cho:
+    \[\abs{f(x) - p_n(x)} < \beta \, \forall x \in J\]
+\end{ctheorem}
+
+Ta không đi vào chứng minh định lý trên. Ta chú ý đến hai tính chất quan trọng
+của các đa thức nội suy \(p_n\):
+\begin{itemize}
+    \item \(p_n\) tồn tại (đã được khẳng định bởi
+        \hyperref[thm:weierstrass_approx]{định lí Weierstrass})
+    \item \(p_n\) duy nhất
+\end{itemize}
+
+Ta có thể chứng minh tính duy nhất của \(p_n\) như sau:
+
+\begin{proof}[Chứng minh tính duy nhất của đa thức nội suy]\label{proof:polynomial_approx_uniqueness}
+    \phantom\\
+
+    Thật vậy, giả sử có đa thức \(q_n\) khác cũng thỏa mãn:
+    \begin{gather*}
+        q_n(x_k) = x \, \forall k \in \interval{0}{n} \\
+        \iff r(x) = p_n(x_k) - q_n(x_k) = 0 \, \forall k \in \interval{0}{n}
+    \end{gather*}
+
+    Nói cách khác, \(r\) có đúng \(n + 1\) nghiệm. Nhưng \(r(x)\) là đa thức bậc
+    tối đa là \(n\), do đó nó có tối đa \(n\) nghiệm, dẫn đến mâu thuẫn.
+
+    Vậy ta kết luận đa thức nội suy \(p_n\) là duy nhất.
+\end{proof}
+
+Sau đây, ta xem xét một số phương pháp tìm \(p_n\). Theo như tính duy nhất đã
+chứng minh ở trên, với cùng một số liệu, các phương pháp khác nhau cần phải cho
+ra cùng một đa thức. Hơn nữa, các đa thức có thể được biểu diễn dưới các dạng
+khác nhau do các mục tiêu khác nhau.
+
+
+%----------------------------------------------------------------------------------------
+%	4.2:  Phương pháp nội suy Lagrange
+%----------------------------------------------------------------------------------------
+
+\section{Phương pháp nội suy Lagrange}
+
+\subsection{Phương pháp nội suy Lagrange}
+
+Sau đây ta trình bày việc xây dựng \(p_n\) bằng \emph{phương pháp nội suy
+Lagrange}.
+
+\begin{cmethod}{Phương pháp nội suy Lagrange}{lagrange_approx}
+    Phương pháp gồm hai bước:
+    \begin{enumerate}
+        \item Tạo các đa thức \(L_k\) với bậc tối đa là \(n\) theo công thức sau:
+            \begin{align*}
+                L_k(x) &= \frac{(x - x_0) \ldots (x - x_{k - 1}) (x - x_{k + 1}) \ldots (x - x_n)}{(x_k - x_0) \ldots (x_k - x_{k - 1}) (x_k - x_{k + 1}) \ldots (x_k - x_n)} \\
+                       &= \prod_{i = 0 \mid i \neq k}^{n} \frac{x - x_i}{x_k - x_i}
+            \end{align*}
+
+            Ý tưởng ở đây là:
+            \begin{itemize}
+                \item \(L_k(x_k) = 1\)
+                \item \(L_k(x_j) = 0 \, \forall j \neq k \in \interval{0}{n} \)
+            \end{itemize}
+
+        \item Viết \(p_n\):
+            \[p_n(x) = \sum_{k = 0}^{n} L_k(x) \cdot f_k\]
+
+            Ý tưởng ở đây là với mọi \(x_k\), \(p_n\) rút gọn còn \(f_k\), do
+            cách xây dựng \(L_k\) ở trên.
+    \end{enumerate}
+\end{cmethod}
+
+% TODO: examples?
+
+\(p_n\) ở dạng này gọi là \emph{đa thức nội suy Lagrange bậc \(n\)}.
+
+\subsection{Đánh giá sai số}
+
+Ta có định lý sau về sai số của phương pháp nội suy Lagrange, hay nói cách khác,
+của \emph{mọi} phương pháp nội suy đa thức:
+
+\begin{ctheorem}{Sai số nội suy đa thức}{polynomial_approx_error}
+    Nếu \(f\) khả vi liên tục đến bậc \(n + 1\), thì sai số của mọi phương pháp
+    nội suy đa thức xấp xỉ \(f\) được tính theo công thức sau:
+    \begin{equation}\label{eq:polynomial_approx_error}
+        \epsilon_n(x) = f(x) - p_n(x) = \frac{f^{(n + 1)}(t)}{(n + 1)!} \prod_{i = 0}^{n} (x - x_i)
+    \end{equation}
+    trong đó, \(t\) là một số nào đó trong khoảng giữa \(x_k\) nhỏ nhất, \(x_k\)
+    lớn nhất, và \(x\).
+\end{ctheorem}
+
+Ý tưởng của công thức trên đến từ quan sát rằng nếu \(f\) cũng là đa thức, thì
+\(f\) chính là \(p_n\), dẫn đến sai số bằng \(0\). Đồng thời, \(f\) lúc này lại
+có đạo hàm bậc \(n + 1\) bằng \(0\). Từ hai điều trên, ta kì vọng rằng sai số sẽ
+liên quan đến đạo hàm bậc \(n + 1\) của \(f\).
+
+%TODO: proof, example
+
+
+%----------------------------------------------------------------------------------------
+%	4.3:  Phương pháp nội suy Newton
+%----------------------------------------------------------------------------------------
+
+\section{Phương pháp nội suy Newton}
+
+Với bộ dữ liệu đã cho, ta đã \hyperref[proof:polynomial_approx_uniqueness]{chứng
+minh} đa thức nội suy \(p_n\) là duy nhất. Tuy nhiên, với các yêu cầu khác nhau,
+ta có thể dùng \(p_n(x)\) ở các dạng thức khác nhau. Đa thức nội suy
+\hyperref[method:lagrange_approx]{dạng Lagrange} thuận lợi cho việc tính gần
+đúng giá trị đạo hàm và tích phân số.
+
+Một trường hợp riêng, nhưng rất quan trọng là \emph{đa thức dạng Newton}, dạng
+thức này thuận lợi trong việc giải gần đúng phương trình vi phân với giá trị ban
+đầu.
+
+% TODO: Ví dụ 3?
+Hơn nữa, xây dựng đa thức dạng Newton yêu cầu phải tính toán ít hơn đa thức dạng
+Lagrange, đặc biệt khi \(n\) tăng để đạt được độ chính xác cần thiết. Khi đó, đa
+thức dạng Newton sử dụng tất cả các kết quả tính toán từ trước đó và cộng thêm
+một số hạng khác có thể không được tính từ đa thức dạng Lagrange. Số hạng này
+nhận được từ việc ứng dụng Nguyên lý sai số (Được sử dụng trong Ví dụ 3 của đa
+thức dạng Lagrange).
+
+Trong hai phần sau, ta sẽ từ từ xây dựng phương pháp nội suy Newton. Phần đầu là
+dạng tổng quát (tỉ sai phân), phần sau là một trường hợp đặc biệt hay dùng (sai
+phân tiến).
+
+\subsection(Công thức tỉ sai phân)
+
+Giả sử \(p_{n-1}(x)\) là đa thức Newton bậc \((n - 1)\) (dạng của nó ta xác định
+sau). Khi đó:
+\[p_{n - 1}(x_k) = f_k \, \forall k \in \interval{0}{n - 1}\]
+
+Từ đó, ta có thể viết đa thức Newton bậc \(n\) như sau:
+\begin{equation}\label{eq:diff_consecutive_polynomial_approx}
+    p_n(x) = p_{n - 1}(x) + g_n(x)
+\end{equation}
+
+Do \(p_n\) cũng là một đa thức nội suy, ta có
+\[p_{n}(x_k) = f_k \, \forall k \in \interval{0}{n}\]
+từ đó ta có một số giá trị của \(g_n\):
+\[g_n(x_k) = 0 \, \forall k \in \interval{0}{n - 1}\]
+
+Theo \eqref{eq:diff_consecutive_polynomial_approx}, ta thấy hiển nhiên \(g_n\)
+có bậc \(n\).
+
+Từ hai điều trên, ta suy ra được dạng của \(g_n\)
+\[g_n(x) = a_n \prod_{i = 0}^{n - 1} (x - x_i)\]
+
+Phần việc còn lại là đi tìm \(a_n\). Ta dễ dàng tính được \(a_n\) khi xét \(x =
+x_n\):
+\begin{equation}\label{eq:divided_difference_incremental_form}
+    a_n = \frac{f_n - p_{n - 1}(x_n)}{\prod_{i = 0}^{n - 1} (x_n - x_i)}
+\end{equation}
+
+Tổng quát hóa, ta có công thức cho \(a_k\) như sau:
+\[a_k = f[x_0, \ldots, x_k] = \frac{f[x_1, \ldots, x_k] - f[x_0, \ldots, x_{k - 1}]}{x_k - x_0} \, \forall k > 0\]
+với
+\[a_1 = f[x_0, x_1] = \frac{f_1 - f_0}{x_1 - x_0}\]
+
+Công thức đệ quy trên được gọi là \emph{tỉ sai phân thứ \(k\) (\(k^{th}\)
+divided difference)}.
+
+Tổng hợp lại, ta có công thức tỉ sai phân của Newton:
+\begin{equation}\label{eq:divided_difference}
+    \begin{aligned}
+        p_n(x) &= f_0 + a_1 \prod_{i = 0}^{0} (x - x_i) + a_2 \prod_{i = 0}^{1} (x - x_i) + \ldots + a_n \prod_{i = 0}^{n - 1} (x - x_i) \\
+               &= f_0 + \sum_{j = 1}^{n}   \left[ a_j \prod_{i = 0}^{j - 1} (x - x_i) \right]
+    \end{aligned}
+\end{equation}
+
+Khi làm bài tập, ta thường dùng công thức
+\eqref{eq:divided_difference_incremental_form}, như trình bày trong ví dụ sau:
+
+%TODO: example...
+
+\subsection{Công thức sai phân tiến}
+
+\emph{Sai phân tiến (forward difference)} là một trường hợp đặc biệt của
+\hyperref[eq:divided_difference]{công thức tỉ sai phân}, trong đó các mốc nội
+suy cách đều. Ta sẽ thấy các công thức được đơn giản đi đáng kể.
+
+Trước hết ta nêu ra dạng của \(x\):
+\[x_n = x_0 + nh\]
+
+Ta định nghĩa công thức cho \(\Delta^1\), tức \emph{sai phân tiến thứ nhất
+(\(1^{st}\) forward difference)} của \(f\) tại \(x_j\) như sau:
+\[\Delta^1 f_j = f_{j + 1} - f_j\]
+
+Ta tiếp tục có sai phân tiến thứ hai, cũng tại \(x_j\):
+\[\Delta^2 f_j = \Delta^1 f_{j + 1} - \Delta^1 f_j\]
+
+Tổng quát, công thức sai phân tiến thứ \(k\) tại \(x_j\) được định nghĩa đệ quy
+như sau:
+\[\Delta^k f_j = f_{j + 1} - f_j\]
+
+Với cách định nghĩa sai phân tiến như trên, ta có thể chứng minh được, bằng quy
+nạp:
+\[a_k = f[x_0, \ldots, x_k] = \frac{1}{k! h^k} \Delta^k f_0\]
+
+Áp dụng công thức trên vào \eqref{eq:divided_difference}, ta có:
+\[p_n(x) = \sum_{s = 0}^{n} \binom{r}{s} \Delta^s f_0\]
+với \(x = x_0 + rh\)
+
+Đồng thời, \eqref{eq:polynomial_approx_error} cũng được đơn giản hóa:
+\[\epsilon_n(x) = \frac{h^{n + 1}}{(n + 1)!} r(r - 1) \ldots (r - n) f^{n + 1}(t)\]
+
 \end{document}
