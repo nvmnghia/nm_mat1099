@@ -179,7 +179,7 @@ Trong hai phần sau, ta sẽ từ từ xây dựng phương pháp nội suy New
 dạng tổng quát (tỉ sai phân), phần sau là một trường hợp đặc biệt hay dùng (sai
 phân tiến).
 
-\subsection(Công thức tỉ sai phân)
+\subsection{Công thức tỉ sai phân}
 
 Giả sử \(p_{n-1}(x)\) là đa thức Newton bậc \((n - 1)\) (dạng của nó ta xác định
 sau). Khi đó:
@@ -203,7 +203,7 @@ Từ hai điều trên, ta suy ra được dạng của \(g_n\)
 
 Phần việc còn lại là đi tìm \(a_n\). Ta dễ dàng tính được \(a_n\) khi xét \(x =
 x_n\):
-\begin{equation}\label{eq:divided_difference_incremental_form}
+\begin{equation}\label{eq:divided_diff_incremental_form}
     a_n = \frac{f_n - p_{n - 1}(x_n)}{\prod_{i = 0}^{n - 1} (x_n - x_i)}
 \end{equation}
 
@@ -216,7 +216,7 @@ Công thức đệ quy trên được gọi là \emph{tỉ sai phân thứ \(k\)
 divided difference)}.
 
 Tổng hợp lại, ta có công thức tỉ sai phân của Newton:
-\begin{equation}\label{eq:divided_difference}
+\begin{equation}\label{eq:divided_diff}
     \begin{aligned}
         p_n(x) &= f_0 + a_1 \prod_{i = 0}^{0} (x - x_i) + a_2 \prod_{i = 0}^{1} (x - x_i) + \ldots + a_n \prod_{i = 0}^{n - 1} (x - x_i) \\
                &= f_0 + \sum_{j = 1}^{n}   \left[ a_j \prod_{i = 0}^{j - 1} (x - x_i) \right]
@@ -224,15 +224,15 @@ Tổng hợp lại, ta có công thức tỉ sai phân của Newton:
 \end{equation}
 
 Khi làm bài tập, ta thường dùng công thức
-\eqref{eq:divided_difference_incremental_form}, như trình bày trong ví dụ sau:
+\eqref{eq:divided_diff_incremental_form}, như trình bày trong ví dụ sau:
 
 %TODO: example...
 
 \subsection{Công thức sai phân tiến}
 
 \emph{Sai phân tiến (forward difference)} là một trường hợp đặc biệt của
-\hyperref[eq:divided_difference]{công thức tỉ sai phân}, trong đó các mốc nội
-suy cách đều. Ta sẽ thấy các công thức được đơn giản đi đáng kể.
+\hyperref[eq:divided_diff]{công thức tỉ sai phân}, trong đó các mốc cách
+đều. Ta sẽ thấy các công thức được đơn giản đi đáng kể.
 
 Trước hết ta nêu ra dạng của \(x\):
 \[x_n = x_0 + nh\]
@@ -241,22 +241,110 @@ Ta định nghĩa công thức cho \(\Delta^1\), tức \emph{sai phân tiến th
 (\(1^{st}\) forward difference)} của \(f\) tại \(x_j\) như sau:
 \[\Delta^1 f_j = f_{j + 1} - f_j\]
 
+Ta có thể thấy chữ \emph{``tiến''} ở đây hiểu theo nghĩa là lấy \(f_{j + 1}\)
+trừ đi \(f_j\).
+
 Ta tiếp tục có sai phân tiến thứ hai, cũng tại \(x_j\):
 \[\Delta^2 f_j = \Delta^1 f_{j + 1} - \Delta^1 f_j\]
 
 Tổng quát, công thức sai phân tiến thứ \(k\) tại \(x_j\) được định nghĩa đệ quy
 như sau:
-\[\Delta^k f_j = f_{j + 1} - f_j\]
+\begin{equation}\label{eq:kth_forward_diff}
+    \Delta^k f_j = \Delta^{k - 1} f_{j + 1} - \Delta^{k - 1} f_j
+\end{equation}
 
 Với cách định nghĩa sai phân tiến như trên, ta có thể chứng minh được, bằng quy
 nạp:
 \[a_k = f[x_0, \ldots, x_k] = \frac{1}{k! h^k} \Delta^k f_0\]
 
-Áp dụng công thức trên vào \eqref{eq:divided_difference}, ta có:
-\[p_n(x) = \sum_{s = 0}^{n} \binom{r}{s} \Delta^s f_0\]
-với \(x = x_0 + rh\)
+Áp dụng công thức trên vào \eqref{eq:divided_diff}, ta có:
+\begin{equation}\label{eq:forward_diff_interpo}
+    p_n(x) = \sum_{s = 0}^{n} \binom{r}{s} \Delta^s f_0
+\end{equation}
+với \(x = x_0 + rh\).
 
 Đồng thời, \eqref{eq:polynomial_approx_error} cũng được đơn giản hóa:
 \[\epsilon_n(x) = \frac{h^{n + 1}}{(n + 1)!} r(r - 1) \ldots (r - n) f^{n + 1}(t)\]
+
+\subsection{Công thức sai phân lùi}
+
+Tương tự như \hyperref[eq:kth_forward_diff]{sai phân tiến}, \emph{sai phân lùi
+(backward difference)} cũng chỉ áp dụng cho trường hợp mốc cách đều, chỉ khác
+biệt ở chỉ số của hai toán hạng trong phép trừ định nghĩa.
+
+Ta có công thức cho sai phân lùi thứ \(k\) như sau:
+\begin{equation}\label{eq:backward_diff}
+    \nabla^k f_j = \nabla^{k - 1} f_j - \nabla^{k - 1} f_{j - 1}
+\end{equation}
+
+Ta cập nhật \eqref{eq:divided_diff} như sau:
+\begin{equation}\label{eq:backward_diff_interpo}
+    p_n(x) = \sum_{s = 0}^{n} \binom{r + s - 1}{s} \nabla^s f_0
+\end{equation}
+với \(x = x_0 + rh\).
+
+
+%----------------------------------------------------------------------------------------
+%	4.4:  Phương pháp nội suy Spline bậc 3
+%----------------------------------------------------------------------------------------
+
+\section{Phương pháp nội suy Spline bậc 3}
+
+Bây giờ nếu \(n\) của đa thức nội suy \(p_n\) lớn, có thể có sự dao động lớn với
+\(x\) ở giữa các điểm mốc. Do đó chúng ta gặp phải sự không ổn định của đa thức
+nội suy. Hình sau cho thấy một ví dụ nổi tiếng của C. Runge, trong đó sai số tối
+đa có thể tăng lên rất cao (với các nút được giữ bằng nhau và số của chúng tăng
+lên).
+
+Những dao động không mong muốn này được tránh bằng \emph{phương pháp spline} do
+I. J. Schoenberg tìm ra năm 1946 (Quarterly of Applied Mathematics 4, trang
+45-99, 112-141). Phương pháp này được sử dụng rộng rãi trong thực tế. Nó cũng
+đặt nền móng cho các hệ thống CAD (computer-aided design) hiện đại.
+
+\subsection{Điều kiện tồn tại và duy nhất của nội suy spline bậc 3}
+
+Ý tưởng toán học của phương pháp là như sau: thay vì dùng một đa thức bậc cao
+trên toàn khoảng \(\interval{a}{b}\), có giá trị trùng với giá trị hàm số tại
+các điểm mút
+\[a = x_0 < x_1 < \ldots < x_n = b\]
+ta sẽ dùng \(n\) đa thức bậc thấp \(q\), ví dụ như bậc 3; mỗi đa thức xác trên
+một khoảng con nằm giữa 2 điểm mốc:
+\[q_k(x) \text{ xác định trên } \interval{x_k}{x_{k + 1}} \text{, } k \in \interval{0}{n - 1}\]
+
+Từ đó chúng ta tạo ra hàm nội suy được gọi là \emph{hàm spline} \(g(x)\) bằng
+cách ghép các đa thức này lại với nhau tạo thành hàm số liên tục duy nhất đi qua
+các điểm đã cho, nghĩa là
+\begin{equation}\label{eq:spline_condition_1}
+    g(x_k) = f(x_k) = f_k \, \forall k \in \interval{0}{n}
+\end{equation}
+
+Chú ý rằng, \(g(x) = q_k(x)\) trên \(\interval{x_k}{x_{k + 1}}\). Ta nói
+\emph{nội suy spline là nội suy từng khúc (piecewise)}.
+
+Đa thức bậc nhất là nội suy spline đơn giản nhất. Tuy nhiên, đa thức nội suy bậc
+nhất không trơn tại các điểm mốc, do đó ít có giá trị thực tế. Hiện nay,
+\emph{đa thức spline bậc 3 (cubic spline)} là một trong những dạng nội suy được
+dùng nhiều nhất.
+
+Theo định nghĩa, spline bậc 3 \(g(x)\) là hàm liên tục trên khoảng
+\(\interval{a}{b}\), có đạo hàm bậc nhất và bậc hai liên tục và thỏa mãn điều
+kiện \eqref{eq:spline_condition_1}; hơn nữa, giữa các điểm mốc \(g(x)\) được cho
+bởi đa thức \(q\) bậc ba hoặc nhỏ hơn.
+
+Ta khẳng định rằng có đa thức spline bậc 3 như vậy. Và nếu ta thêm điều kiện
+\begin{equation}\label{eq:spline_condition_2}
+    g'(x_0) = k_0 \, \text{và } \, g'(x_n) = k_n
+\end{equation}
+với \(k_0\) và \(k_n\) cho trước (tức cho trước hệ số góc ở hai mút), ta có thể
+khẳng định rằng spline bậc ba thỏa mãn là duy nhất.
+
+\begin{ctheorem}{Điều kiện tồn tại và duy nhất của đa thức spline bậc 3}{exist_unique_cubic_spline}
+    Cho \(x_j, f_j\) với \(f(x_j) = f_j\), \(j \in \interval{0}{n}\). Cho hai số
+    bất kì \(k_0\) và \(k_n\). Có một và chỉ một đa thức spline bậc 3 \(g(x)\)
+    ứng với bộ \(x_j, f_j\), và thỏa mãn cả \eqref{eq:spline_condition_1} và
+    \eqref{eq:spline_condition_2}.
+\end{ctheorem}
+
+\subsection{Tìm đa thức spline}
 
 \end{document}
