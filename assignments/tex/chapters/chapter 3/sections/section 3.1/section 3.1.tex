@@ -1,0 +1,1256 @@
+\documentclass[../../../../Assignments]{subfiles}
+
+
+\begin{document}
+
+\section{Gauss elimination}
+
+\begin{exercise}
+    For each of the following linear systems, obtain a solution by graphical
+    methods, if possible. Explain the results from a geometrical standpoint.
+
+    \begin{tasks}(2)
+        \task
+            \begin{alignat*}{5}
+                &x_1 &{}+{}& 2&x_2 &{}= 3 \\
+                &x_1 &{}-{}&  &x_2 &{}= 0
+            \end{alignat*}
+        \task
+            \begin{alignat*}{5}
+                 &x_1 &{}+{}& 2&x_2 &{}= 3 \\
+                2&x_1 &{}+{}& 4&x_2 &{}= 6
+            \end{alignat*}
+        \task
+            \begin{alignat*}{5}
+                 &x_1 &{}+{}& 2&x_2 &{}= 0 \\
+                2&x_1 &{}+{}& 4&x_2 &{}= 0
+            \end{alignat*}
+        \task
+            \begin{alignat*}{5}
+                2&x_1 &{}+{}& 2&x_2 &{}= -1 \\
+                4&x_1 &{}+{}& 2&x_2 &{}= -2 \\
+                 &x_1 &{}-{}& 3&x_2 &{}=  5
+            \end{alignat*}
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item The graphs of the equations are as follow:
+            \begin{figure}[H]
+                \centering
+                \begingroup
+                    \tikzset{every picture/.style={scale=0.9}}%
+                    \subfile{graphics/exercise_1_graphs/exercise_1a_graph}
+                \endgroup
+            \end{figure}
+
+            The solution is \(x_1 = 1\), \(x_2 = 1\) as the lines intersect at
+            \((1, 1)\).
+
+        \item The graphs of the equations are as follow:
+            \begin{figure}[H]
+                \centering
+                \begingroup
+                    \tikzset{every picture/.style={scale=0.9}}%
+                    \subfile{graphics/exercise_1_graphs/exercise_1b_graph}
+                \endgroup
+            \end{figure}
+
+            The system of equation has an infinite number of solutions, as the
+            line coincide.
+
+        \item The graphs of the equations are as follow:
+            \begin{figure}[H]
+                \centering
+                \begingroup
+                    \tikzset{every picture/.style={scale=0.9}}%
+                    \subfile{graphics/exercise_1_graphs/exercise_1c_graph}
+                \endgroup
+            \end{figure}
+
+            The system of equation has an infinite number of solutions, as the
+            lines coincide.
+
+        \item The graphs of the equations are as follow:
+            \begin{figure}[H]
+                \centering
+                \begingroup
+                    \tikzset{every picture/.style={scale=0.9}}%
+                    \subfile{graphics/exercise_1_graphs/exercise_1d_graph}
+                \endgroup
+            \end{figure}
+
+            The solution is \(x_1 = -\frac{11}{7}\), \(x_2 = \frac{2}{7}\) as
+            the lines intersect at \((\frac{2}{7}, -\frac{11}{7})\).
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    For each of the following linear systems, obtain a solution by graphical
+    methods, if possible. Explain the results from a geometrical standpoint.
+\end{exercise}
+
+\begin{solution}
+    \begin{tasks}(2)
+        \task
+            \begin{alignat*}{5}
+                &x_1 &{}+{}& 2&x_2 &{}= 0 \\
+                &x_1 &{}-{}&  &x_2 &{}= 0
+            \end{alignat*}
+        \task
+            \begin{alignat*}{5}
+                  &x_1 &{}+{}& 2&x_2 &{}= 3 \\
+                -2&x_1 &{}-{}& 4&x_2 &{}= 6
+            \end{alignat*}
+        \task
+            \begin{alignat*}{5}
+                2&x_1 &{}+{}&  &x_2 &{}= -1 \\
+                 &x_1 &{}+{}&  &x_2 &{}=  2 \\
+                 &x_1 &{}-{}& 3&x_2 &{}=  5
+            \end{alignat*}
+        \task
+            \begin{alignat*}{5}
+                2&x_1 &{}+{}&  &x_2 &{}+{}& x_3 &{}=  1 \\
+                2&x_1 &{}+{}& 4&x_2 &{}-{}& x_3 &{}= -1
+            \end{alignat*}
+    \end{tasks}
+\end{solution}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item The graphs of the equations are as follow:
+            \begin{figure}[H]
+                \centering
+                \begingroup
+                    \tikzset{every picture/.style={scale=0.9}}%
+                    \subfile{graphics/exercise_2_graphs/exercise_2a_graph}
+                \endgroup
+            \end{figure}
+
+            The solution is \(x_1 = 0\), \(x_2 = 0\) as the lines intersect at
+            \((0, 0)\).
+
+        \item The graphs of the equations are as follow:
+            \begin{figure}[H]
+                \centering
+                \begingroup
+                    \tikzset{every picture/.style={scale=0.9}}%
+                    \subfile{graphics/exercise_2_graphs/exercise_2b_graph}
+                \endgroup
+            \end{figure}
+
+            The system of equation has no solution, as the lines are parallel to
+            each other.
+
+        \item The graphs of the equations are as follow:
+            \begin{figure}[H]
+                \centering
+                \begingroup
+                    \tikzset{every picture/.style={scale=0.9}}%
+                    \subfile{graphics/exercise_2_graphs/exercise_2c_graph}
+                \endgroup
+            \end{figure}
+
+            The system of equation has no solution, as the lines do not
+            intersect.
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}\label{exer:3.1.3}
+    Use Gaussian elimination with backward substitution and two-digit rounding
+    arithmetic to solve the following linear systems. Do not reorder the
+    equations.
+
+    \begin{tasks}(2)
+        \task
+            \begin{alignat*}{9}
+                4&x_1 &{}-{}&  &x_2 &{}+{}&  &x_3 &{}={}&  8 \\
+                2&x_1 &{}+{}& 5&x_2 &{}-{}& 2&x_3 &{}={}&  3 \\
+                 &x_1 &{}+{}& 2&x_2 &{}-{}& 4&x_3 &{}={}& 11
+            \end{alignat*}
+        \task
+            \begin{alignat*}{9}
+                4&x_1 &{}+{}&  &x_2 &{}+{}& 2&x_3 &{}={}&  9 \\
+                2&x_1 &{}+{}& 4&x_2 &{}-{}& 1&x_3 &{}={}& \num{-5} \\    % somehow -5 is rendered as - 5 without \num{}
+                 &x_1 &{}+{}&  &x_2 &{}-{}& 3&x_3 &{}={}& \num{-9}
+            \end{alignat*}
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1] S[table-format=1] : S[table-format=2] }
+                        4  &  -1  &  1  &   8  \\
+                        2  &   5  &  2  &   3  \\
+                        1  &   2  &  4  &  11
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_1\) by these transformation
+            \[E_2 \coloneqq E_2 - \num{0.5} E_1; \, E_3 \coloneqq E_3 - \num{0.25}E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1.2] S[table-format=1.2] : S[table-format=-1] }
+                        4  &  -1     &  1     &   8  \\
+                        0  &   5.5   &  1.5   &  -1  \\
+                        0  &   2.25  &  3.75  &   9
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_2\) by these transformation
+            \[E_3 \coloneqq E_3 - \frac{9}{22} E_2\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1.1] S[table-format=1.5] : S[table-format=-1.5] }
+                        4  &  -1    &  1        &   8        \\
+                        0  &   5.5  &  1.5      &  -1        \\
+                        0  &   0    &  3.13636  &   9.40909
+                    \end{pNiceArray}
+            \]
+
+            The solution is \(x_3 \approx 3\), \(x_2 \approx -1\), \(x_1 \approx
+            1\).
+
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1] S[table-format=-1] : S[table-format=-1] }
+                        4  &  1  &   2  &   9  \\
+                        2  &  4  &  -1  &  -5  \\
+                        1  &  1  &  -3  &  -9
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_1\) by these transformation
+            \[E_2 \coloneqq E_2 - \num{0.5} E_1; \, E_3 \coloneqq E_3 - \num{0.25}E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1.2] S[table-format=-1.1] : S[table-format=-2.2] }
+                        4  &  1     &   2    &    9     \\
+                        0  &  3.5   &  -2    &   -9.5   \\
+                        0  &  0.75  &  -3.5  &  -11.25
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_2\) by these transformation
+            \[E_3 \coloneqq E_3 - \frac{3}{14} E_2\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1.1] S[table-format=-1.5] : S[table-format=-1.5] }
+                        4  &  1    &   2        &   9        \\
+                        0  &  3.5  &  -2        &  -9.5      \\
+                        0  &  0    &  -3.07143  &  -9.21429
+                    \end{pNiceArray}
+            \]
+
+            The solution is \(x_3 \approx 3\), \(x_2 \approx -1\), \(x_1 \approx
+            1\).
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Use Gaussian elimination with backward substitution and two-digit rounding
+    arithmetic to solve the following linear systems. Do not reorder the
+    equations.
+
+    \begin{tasks}(2)
+        \task
+            \begin{alignat*}{9}
+                         -1&x_1 &{}+{}&           4&x_2 &{}+{}&            &x_3 &{}={}&  8 \\
+                \frac{5}{3}&x_1 &{}+{}& \frac{2}{3}&x_2 &{}+{}& \frac{2}{3}&x_3 &{}={}&  1 \\
+                          2&x_1 &{}+{}&            &x_2 &{}+{}&           4&x_3 &{}={}& 11
+            \end{alignat*}
+        \task
+            \begin{alignat*}{9}
+                          4&x_1 &{}+{}&           2&x_2 &{}-{}&            &x_3 &{}={}& \num{-5} \\
+                \frac{1}{9}&x_1 &{}+{}& \frac{1}{9}&x_2 &{}-{}& \frac{1}{3}&x_3 &{}={}& \num{-1} \\
+                          1&x_1 &{}+{}&           4&x_2 &{}+{}&           2&x_3 &{}={}&  9
+            \end{alignat*}
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=-1.5] S[table-format=1.5] S[table-format=1.5] : S[table-format=2] }
+                        -1        &  4        &  1        &   8  \\
+                         1.66667  &  0.66667  &  0.66667  &   1  \\
+                         2        &  1        &  4        &  11
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_1\) by these transformation
+            \[E_2 \coloneqq E_2 - (\num{-1.6667}) E_1; \, E_3 \coloneqq E_3 - (-2)E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                    \begin{pNiceArray}{ S[table-format=-1] S[table-format=1.5] S[table-format=1.5] : S[table-format=2.5] }
+                        -1  &  4        &  1        &   8        \\
+                         0  &  7.33333  &  2.33333  &  14.33333  \\
+                         0  &  9        &  6        &  27
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_2\) by these transformation
+            \[E_3 \coloneqq E_3 - \num{1.22727} E_2\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                    \begin{pNiceArray}{ S[table-format=-1] S[table-format=1.5] S[table-format=1.5] : S[table-format=2.5] }
+                        -1  &  4        &  1        &   8        \\
+                         0  &  7.33333  &  2.33333  &  14.33333  \\
+                         0  &  0        &  3.13636  &   9.40909
+                    \end{pNiceArray}
+            \]
+
+            The solution is \(x_3 \approx 3\), \(x_2 \approx 1\), \(x_1 \approx
+            -1\).
+
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=1.5] S[table-format=1.5] S[table-format=-1.5] : S[table-format=-1] }
+                        4        &  2        &  -1        &  -5  \\
+                        0.11111  &  0.11111  &  -0.33333  &  -1  \\
+                        1        &  4        &   2        &   9
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_1\) by these transformation
+            \[E_2 \coloneqq E_2 - \num{0.02778} E_1; \, E_3 \coloneqq E_3 - \num{0.25} E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1.5] S[table-format=-1.5] : S[table-format=-1.5] }
+                        4  &  2        &  -1        &  -5        \\
+                        0  &  0.05556  &  -0.30555  &  -0.86111  \\
+                        0  &  3.5      &   2.25     &  10.25
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_2\) by these transformation
+            \[E_3 \coloneqq E_3 - \num{63.00063} E_2\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1.5] S[table-format=-1.5] : S[table-format=-1.5] }
+                        4  &  2        &  -1        &  -5        \\
+                        0  &  0.05556  &  -0.30555  &  -0.86111  \\
+                        0  &  0        &  21.5      &  64.50063
+                    \end{pNiceArray}
+            \]
+
+            The solution is \(x_3 \approx 3\), \(x_2 \approx 1\), \(x_1 \approx
+            -1\).
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Use the Gaussian Elimination Algorithm to solve the following linear
+    systems, if possible, and determine whether row interchanges are necessary:
+
+    \begin{tasks}(2)
+        \task
+            \begin{alignat*}{9}
+                 &x_1 &{}-{}& 1&x_2 &{}+{}& 3&x_3 &{}={}&  2 \\
+                3&x_1 &{}-{}& 3&x_2 &{}+{}& 1&x_3 &{}={}& -1 \\
+                 &x_1 &{}+{}& 1&x_2 &{}-{}&  &    &{}={}&  3
+            \end{alignat*}
+        \task
+            \begin{alignat*}{9}
+                 2&x_1 &{}-{}& \num{1.5}&x_2 &{}+{}& 3&x_3 &{}={}&  1 \\
+                -1&x_1 &{} {}&          &    &{}+{}& 2&x_3 &{}={}&  3 \\
+                 4&x_1 &{}-{}& \num{4.5}&x_2 &{}+{}& 5&x_3 &{}={}&  1
+            \end{alignat*}
+        \task
+            \begin{alignat*}{12}
+                2&x_1 &{} {}&          &    &{} {}&          &    &{} {}&  &    &{}={}&       3     \\
+                 &x_1 &{}+{}& \num{1.5}&x_2 &{} {}&          &    &{} {}&  &    &{}={}&  \num{4.5}  \\
+                 &    &{} {}&  \num{-3}&x_2 &{}+{}& \num{0.5}&x_3 &{} {}&  &    &{}={}& \num{-6.6}  \\
+                2&x_1 &{}-{}&         2&x_2 &{}+{}&          &x_3 &{}+{}&  &x_4 &{}={}&  \num{0.8}
+            \end{alignat*}
+        \task
+            \begin{alignat*}{12}
+                 &x_1 &{}+{}&  &x_2 &{} {}&  &    &{}+{}&  &x_4 &{}={}&  2 \\
+                2&x_1 &{}+{}&  &x_2 &{}-{}&  &x_3 &{}+{}&  &x_4 &{}={}&  1 \\
+                4&    &{}-{}&  &x_2 &{}-{}& 2&x_3 &{}+{}& 2&    &{}={}&  0 \\
+                3&x_1 &{}-{}&  &x_2 &{}-{}&  &x_3 &{}+{}& 2&x_4 &{}={}& -3
+            \end{alignat*}
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1] S[table-format=1] : S[table-format=-1] }
+                        1  &  -1  &  3  &   2  \\
+                        3  &  -3  &  1  &  -1  \\
+                        1  &   1  &  0  &   3  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_1\) by these transformation
+            \[E_2 \coloneqq E_2 - 3E_1; \, E_3 \coloneqq E_3 - 1E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1] S[table-format=-1] : S[table-format=-1] }
+                        1  &  -1  &   3  &   2  \\
+                        0  &   0  &  -8  &  -7  \\
+                        0  &   2  &  -3  &   1  \\
+                    \end{pNiceArray}
+            \]
+
+            As \(a_{22}^{(2)} = 0\), we have to swap row 2 and 3. Eliminating
+            \(x_2\) by these transformation
+            \[E_3 \coloneqq E_3 - \num{63.00063} E_2\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1] S[table-format=-1] : S[table-format=-1] }
+                        1  &  -1  &   3  &   2  \\
+                        0  &   2  &  -3  &   1  \\
+                        0  &   0  &  -8  &  -7  \\
+                    \end{pNiceArray}
+            \]
+
+            The solution is \(x_3 = \num{0.875}\), \(x_2 = \num{1.8125}\), \(x_1
+            = \num{1.1875}\).
+
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=-1] S[table-format=-1.1] S[table-format=1] : S[table-format=1] }
+                         2  &  -1.5  &  3  &  1  \\
+                        -1  &   0    &  2  &  3  \\
+                         4  &  -4.5  &  5  &  1  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_1\) by these transformation
+            \[E_2 \coloneqq E_2 - (\num{-0.5}) E_1; \, E_3 \coloneqq E_3 - 2E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1.2] S[table-format=-1.1] : S[table-format=-1.1] }
+                        2  &  -1.5   &   3    &   1    \\
+                        0  &  -0.75  &   3.5  &   3.5  \\
+                        0  &  -1.5   &  -1    &  -1    \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_2\) by these transformation
+            \[E_3 \coloneqq E_3 - 2E_2\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1.2] S[table-format=-1.1] : S[table-format=-1.1] }
+                        2  &  -1.5   &   3    &   1    \\
+                        0  &  -0.75  &   3.5  &   3.5  \\
+                        0  &   0     &  -8    &  -8    \\
+                    \end{pNiceArray}
+            \]
+
+            The solution is \(x_3 = 1\), \(x_2 = 0\), \(x_1 = -1\).
+
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1.1] S[table-format=1.1] S[table-format=1] : S[table-format=-1.1] }
+                        2  &   0    &  0    &  0  &   3    \\
+                        1  &   1.5  &  0    &  0  &   4.5  \\
+                        0  &  -3    &  0.5  &  0  &  -6.6  \\
+                        2  &  -2    &  1    &  1  &   0.8  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_1\) by these transformation
+            \[E_2 \coloneqq E_2 - 0.5 E_1; \, E_3 \coloneqq E_3 - 0E_1; \, E_4 \coloneqq E_4 - 1E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                \begin{pNiceArray}{ S[table-format=1] S[table-format=-1.1] S[table-format=1.1] S[table-format=1] : S[table-format=-1.1] }
+                        2  &   0    &  0    &  0  &   3    \\
+                        0  &   1.5  &  0    &  0  &   3    \\
+                        0  &  -3    &  0.5  &  0  &  -6.6  \\
+                        0  &  -2    &  1    &  1  &  -2.2  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_2\) by these transformation
+            \[E_3 \coloneqq E_3 - (-2) E_2; \, E_4 \coloneqq E_4 - (\num{-1.33333}) E_2\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                \begin{pNiceArray}{ S[table-format=1] S[table-format=1.1] S[table-format=1.1] S[table-format=1] : S[table-format=-1.1] }
+                        2  &  0    &  0    &  0  &   3    \\
+                        0  &  1.5  &  0    &  0  &   3    \\
+                        0  &  0    &  0.5  &  0  &  -0.6  \\
+                        0  &  0    &  1    &  1  &   1.8  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_3\) by these transformation
+            \[E_4 \coloneqq E_4 - 2E_3\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(4)} =
+                \begin{pNiceArray}{ S[table-format=1] S[table-format=1.1] S[table-format=1.1] S[table-format=1] : S[table-format=-1.1] }
+                        2  &  0    &  0    &  0  &   3    \\
+                        0  &  1.5  &  0    &  0  &   3    \\
+                        0  &  0    &  0.5  &  0  &  -0.6  \\
+                        0  &  0    &  0    &  1  &   3    \\
+                    \end{pNiceArray}
+            \]
+
+            The solution is \(x_4 = 3\), \(x_3 = \num{-1.2}\), \(x_2 = 2\),
+            \(x_1 = \num{1.5}\).
+
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1] S[table-format=-1] S[table-format=1] : S[table-format=-1] }
+                        1  &   1  &   0  &  1  &   2  \\
+                        2  &   1  &  -1  &  1  &   1  \\
+                        4  &  -1  &  -2  &  2  &   0  \\
+                        3  &  -1  &  -1  &  2  &  -3  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_1\) by these transformation
+            \[E_2 \coloneqq E_2 - 2E_1; \, E_3 \coloneqq E_3 - 4E_1; \, E_4 \coloneqq E_4 - 3E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                \begin{pNiceArray}{ S[table-format=1] *{3}{ S[table-format=-1] } : S[table-format=-1] }
+                        1  &   1  &   0  &   1  &   2  \\
+                        0  &  -1  &  -1  &  -1  &  -3  \\
+                        0  &  -5  &  -2  &  -2  &  -8  \\
+                        0  &  -4  &  -1  &  -1  &  -9  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_2\) by these transformation
+            \[E_3 \coloneqq E_3 - 5E_2; \, E_4 \coloneqq E_4 - 4E_2\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                    \begin{pNiceArray}{ S[table-format=1] *{3}{ S[table-format=-1] } : S[table-format=-1] }
+                        1  &   1  &   0  &   1  &   2  \\
+                        0  &  -1  &  -1  &  -1  &  -3  \\
+                        0  &   0  &   3  &   3  &   7  \\
+                        0  &   0  &   3  &   3  &   3  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_3\) by these transformation
+            \[E_4 \coloneqq E_4 - E_3\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(4)} =
+                    \begin{pNiceArray}{ S[table-format=1] *{3}{ S[table-format=-1] } : S[table-format=-1] }
+                        1  &   1  &   0  &   1  &   2  \\
+                        0  &  -1  &  -1  &  -1  &  -3  \\
+                        0  &   0  &   3  &   3  &   7  \\
+                        0  &   0  &   0  &   0  &  -4  \\
+                    \end{pNiceArray}
+            \]
+
+            The system has no unique solution.
+    \end{enumerate}
+\end{solution}
+
+
+\begin{exercise}
+    Use the Gaussian Elimination Algorithm to solve the following linear
+    systems, if possible, and determine whether row interchanges are necessary:
+
+    \begin{tasks}(2)
+        \task
+            \begin{alignat*}{9}
+                &    &{} {}&  &x_2 &{}-{}& 2&x_3 &{}={}& 4 \\
+                &x_1 &{}-{}& 3&x_2 &{}+{}&  &x_3 &{}={}& 6 \\
+                &x_1 &{} {}&  &    &{}-{}&  &x_3 &{}={}& 2
+            \end{alignat*}
+        \task
+           \begin{alignat*}{12}
+                 &x_1 &{}-{}& \num{0.5}&    &{}+{}&          &x_3 &{} {}&  &    &{}={}& 4 \\
+                2&x_1 &{}-{}&          &x_2 &{}-{}&          &x_3 &{}+{}&  &x_4 &{}={}& 5 \\
+                 &x_1 &{}+{}&          &x_2 &{}+{}& \num{0.5}&x_3 &{} {}&  &    &{}={}& 2 \\
+                 &x_1 &{}-{}& \num{0.5}&x_2 &{}+{}&          &x_3 &{}+{}&  &x_4 &{}={}& 5
+            \end{alignat*}
+        \task
+            \begin{alignat*}{12}
+                2&x_1 &{} {}& -{}&x_2 &{}+{}&  &x_3 &{}-{}&  &x_4 &{}={}& 6 \\
+                 &    &{} {}&    &x_2 &{}-{}&  &x_3 &{}+{}&  &x_4 &{}={}& 5 \\
+                 &    &{} {}&    &    &{} {}&  &    &{} {}&  &x_4 &{}={}& 5 \\
+                 &    &{} {}&    &    &{} {}&  &x_3 &{}-{}&  &x_4 &{}={}& 3
+            \end{alignat*}
+        \task
+            \begin{alignat*}{12}
+                  &x_1 &{}+{}&  &x_2 &{} {}&  &    &{}+{}&  &x_4 &{}={}&  2 \\
+                 2&x_1 &{}+{}&  &x_2 &{}-{}&  &x_3 &{}+{}&  &x_4 &{}={}&  1 \\
+                -1&x_1 &{}+{}& 2&x_2 &{}+{}& 3&x_3 &{}-{}&  &x_4 &{}={}&  4 \\
+                 3&x_1 &{}-{}&  &x_2 &{}-{}&  &x_3 &{}+{}& 2&x_4 &{}={}& -3
+            \end{alignat*}
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1] S[table-format=-1] : S[table-format=1] }
+                        0  &   1  &  -2  &  4  \\
+                        1  &  -1  &   1  &  6  \\
+                        1  &   0  &  -1  &  2  \\
+                    \end{pNiceArray}
+            \]
+
+            As \(a_{11}^{(1)} = 0\), we need to swap row 1 and 2. Eliminating
+            \(x_1\) by these transformation
+            \[E_3 \coloneqq E_3 - E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                \begin{pNiceArray}{ S[table-format=1] S[table-format=-1] S[table-format=-1] : S[table-format=-1] }
+                        1  &  -1  &   1  &   6  \\
+                        0  &   1  &  -2  &   4  \\
+                        0  &   1  &  -2  &  -4  \\
+                    \end{pNiceArray}
+            \]
+
+            As \(a_{22}^{(2)} = 0\), we have to swap row 2 and 3. Eliminating
+            \(x_2\) by these transformation
+            \[E_3 \coloneqq E_3 - E_2\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1] S[table-format=-1] : S[table-format=-1] }
+                        1  &  -1  &   1  &   6  \\
+                        0  &   1  &  -2  &   4  \\
+                        0  &   0  &   0  &  -8  \\
+                    \end{pNiceArray}
+            \]
+
+            The system has no unique solution.
+
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=-1] S[table-format=-1.1] S[table-format=-1.1] S[table-format=1] : S[table-format=1] }
+                        1  &  -0.5  &   1    &  0  &  4  \\
+                        2  &  -1    &  -1    &  1  &  5  \\
+                        1  &   1    &   0.5  &  0  &  2  \\
+                        1  &  -0.5  &   1    &  1  &  5  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_1\) by these transformation
+            \[E_2 \coloneqq E_2 - 2 E_1; \, E_3 \coloneqq E_3 - E_1; \, E_4 \coloneqq E_4 - E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                    \begin{pNiceArray}{ S[table-format=-1] S[table-format=-1.1] S[table-format=-1.1] S[table-format=1] : S[table-format=-1] }
+                        1  &  -0.5  &   1    &  0  &   4  \\
+                        0  &   0    &  -3    &  1  &  -3  \\
+                        0  &   1.5  &  -0.5  &  0  &  -2  \\
+                        0  &   0    &   0    &  1  &   1  \\
+                    \end{pNiceArray}
+            \]
+
+            As \(a_{22}^{(2)} = 0\), we need to swap row 2 and 3, effectively
+            eliminating \(x_2\) and \(x_3\):
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                    \begin{pNiceArray}{ S[table-format=-1] S[table-format=-1.1] S[table-format=-1.1] S[table-format=1] : S[table-format=-1] }
+                        1  &  -0.5  &   1    &  0  &   4  \\
+                        0  &   1.5  &  -0.5  &  0  &  -2  \\
+                        0  &   0    &  -3    &  1  &  -3  \\
+                        0  &   0    &   0    &  1  &   1  \\
+                    \end{pNiceArray}
+            \]
+
+            The solution is \(x_4 = 1\), \(x_3 \approx \num{1.33333}\), \(x_2
+            \approx \num{-0.88889}\), \(x_1 \approx \num{2.22222}\).
+
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1] S[table-format=-1] S[table-format=-1] : S[table-format=1] }
+                        2  &  -1  &   1  &  -1  &  6  \\
+                        0  &   1  &  -1  &   1  &  5  \\
+                        0  &   0  &   0  &   1  &  5  \\
+                        0  &   0  &   1  &  -1  &  3  \\
+                    \end{pNiceArray}
+            \]
+
+            \(x_1\) and \(x_2\) are already eliminated. As \(a_{33}^{(3)} = 0\),
+            we need to swap row 3 and 4, effectively eliminating \(x_3\):
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                \begin{pNiceArray}{ S[table-format=1] S[table-format=-1] S[table-format=-1] S[table-format=-1] : S[table-format=1] }
+                        2  &  -1  &   1  &  -1  &  6  \\
+                        0  &   1  &  -1  &   1  &  5  \\
+                        0  &   0  &   1  &  -1  &  3  \\
+                        0  &   0  &   0  &   1  &  5  \\
+                    \end{pNiceArray}
+            \]
+
+            The solution is \(x_4 = 5\), \(x_3 = 8\), \(x_2 = 8\), \(x_1 =
+            \num{5.5}\).
+
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ *{4}{ S[table-format=-1] } : S[table-format=-1] }
+                        1  &   1  &   0  &   1  &   2  \\
+                        2  &   1  &  -1  &   1  &   1  \\
+                       -1  &   2  &   3  &  -1  &   4  \\
+                        3  &  -1  &  -1  &   2  &  -3  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_1\) by these transformation
+            \[E_2 \coloneqq E_2 - 2E_1; \, E_3 \coloneqq E_3 - (-1) E_1; \, E_4 \coloneqq E_4 - 3E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                    \begin{pNiceArray}{ *{4}{ S[table-format=-1] } : S[table-format=-1] }
+                        1  &   1  &   0  &   1  &   2  \\
+                        0  &  -1  &  -1  &  -1  &  -3  \\
+                        0  &   3  &   3  &   0  &   6  \\
+                        0  &  -4  &  -1  &  -1  &  -9  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_2\) by these transformation
+            \[E_3 \coloneqq E_3 - (-3) E_2; \, E_4 \coloneqq E_4 - 4E_2\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                    \begin{pNiceArray}{ *{4}{ S[table-format=-1] } : S[table-format=-1] }
+                        1  &   1  &   0  &   1  &   2  \\
+                        0  &  -1  &  -1  &  -1  &  -3  \\
+                        0  &   0  &   0  &  -3  &  -3  \\
+                        0  &   0  &   3  &   3  &   3  \\
+                    \end{pNiceArray}
+            \]
+
+            As \(a_{33}^{(3)} = 0\), we need to swap row 3 and 4, effectively
+            eliminating \(x_3\):
+            \[
+                \bm{\tilde{A}}^{(4)} =
+                    \begin{pNiceArray}{ *{4}{ S[table-format=-1] } : S[table-format=-1] }
+                        1  &   1  &   0  &   1  &   2  \\
+                        0  &  -1  &  -1  &  -1  &  -3  \\
+                        0  &   0  &   3  &   3  &   3  \\
+                        0  &   0  &   0  &  -3  &  -3  \\
+                    \end{pNiceArray}
+            \]
+
+            The solution is \(x_4 = 1\), \(x_3 = 0\), \(x_2 = 2\), \(x_1 = -1\).
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}\label{exer:3.1.7}
+    Use Algorithm 6.1 and Maple with Digits:= 10 to solve the following linear
+    systems \ldots
+\end{exercise}
+
+\begin{solution}
+    Opps, can't help without Maple license.
+\end{solution}
+
+\begin{exercise}
+    Use Algorithm 6.1 and Maple with Digits:= 10 to solve the following linear
+    systems \ldots
+\end{exercise}
+
+\begin{solution}
+    Opps, can't help without Maple license.
+\end{solution}
+
+\begin{exercise}
+    Given the linear system
+
+    \begin{alignat*}{5}
+               2&x_1 &{}-{}& 6 \alpha& x_2 &{}=      3    \\
+        3 \alpha&x_1 &{}-{}&         & x_2 &{}= \num{1.5}
+    \end{alignat*}
+
+    \begin{tasks}
+        \task Find value(s) of \(\alpha\) for which the system has no solutions.
+        \task Find value(s) of \(\alpha\) for which the system has an infinite
+            number of solutions.
+        \task Assuming a unique solution exists for a given \(\alpha\), find the
+            solution.
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    Let
+    \[
+        \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+            \begin{pNiceArray}{ cc : c }
+                2         &  -6 \alpha  &  3          \\
+                3 \alpha  &         -1  &  \num{1.5}  \\
+            \end{pNiceArray}
+    \]
+
+    Eliminating \(x_1\) gives:
+    \[
+        \bm{\tilde{A}}^{(2)} =
+            \begin{pNiceArray}{ cc : c }
+                2  &  -6 \alpha       &  3          \\
+                0  &  9 \alpha^2 - 1  &  \num{1.5} - \num{4.5} \alpha  \\
+            \end{pNiceArray}
+    \]
+
+    The system has no unique solution (either no solution or infinite number of
+    solutions) if and only if:
+    \[9 \alpha^2 - 1 = 0 \iff \alpha = \pm \frac{1}{3}\]
+
+    \begin{enumerate}[label = \alph*)]
+        \item The system has no solution if it has no unique solution and
+            \[\num{1.5}(1 - 3 \alpha) \neq 0 \iff \alpha = -\frac{1}{3}\]
+
+        \item The system has an infinite number of solution if it has no unique
+            solution and
+            \[\num{1.5}(1 - 3 \alpha) = 0 \iff \alpha = \frac{1}{3}\]
+
+            In this case, the solution assumes a general form:
+            \[x_2 \in \mathbb{R} \text{ and } x_1 = x_2 + \num{1.5}\]
+
+        \item The system has a unique solution if and only if \(\alpha \neq \pm
+            \frac{1}{3}\). Then the unique solution is:
+            \[x_2 = \frac{\num{-1.5}}{3 \alpha + 1} \text{ and } x_1 = \frac{\num{1.5}}{3 \alpha + 1}\]
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Given the linear system
+
+    \begin{alignat*}{5}
+                  &x_1 &{}-{}&  & x_2 &{}+{}& \alpha&x_3 &{}= -2 \\
+               -{}&x_1 &{}+{}& 2& x_2 &{}-{}& \alpha&x_3 &{}=  3 \\
+            \alpha&x_1 &{}+{}&  & x_2 &{}+{}& \alpha&x_3 &{}=  2
+    \end{alignat*}
+
+    \begin{tasks}
+        \task Find value(s) of \(\alpha\) for which the system has no solutions.
+        \task Find value(s) of \(\alpha\) for which the system has an infinite
+            number of solutions.
+        \task Assuming a unique solution exists for a given \(\alpha\), find the
+            solution.
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    Let
+    \[
+        \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+            \begin{pNiceArray}{ ccc : c }
+                    1   &  -1  &   \alpha  &  -2  \\
+                   -1   &   2  &  -\alpha  &   3  \\
+                \alpha  &   1  &   \alpha  &   2  \\
+            \end{pNiceArray}
+    \]
+
+    Eliminating \(x_1\) by these transformation
+    \[E_2 \coloneqq E_2 - (-1) E_1; \, E_3 \coloneqq E_3 - \alpha E_1\]
+    gives:
+    \[
+        \bm{\tilde{A}}^{(2)} =
+            \begin{pNiceArray}{ ccc : c }
+                1  &      -1      &        \alpha       &       -2       \\
+                0  &       1      &           0         &        1       \\
+                0  &  \alpha + 1  &  \alpha - \alpha^2  &  2 \alpha + 2  \\
+            \end{pNiceArray}
+    \]
+
+    Eliminating \(x_2\) by these transformation
+    \[E_3 \coloneqq E_3 - (\alpha + 1) E_2\]
+    gives:
+    \[
+        \bm{\tilde{A}}^{(3)} =
+            \begin{pNiceArray}{ ccc : c }
+                1  &  -1  &        \alpha       &      -2      \\
+                0  &   1  &           0         &       1      \\
+                0  &   0  &  \alpha - \alpha^2  &  \alpha + 1  \\
+            \end{pNiceArray}
+    \]
+
+    The system has no unique solution (either no solution or infinite number of
+    solutions) if and only if:
+    \[\alpha - \alpha^2 = 0 \iff \alpha \in \{0, 1\}\]
+
+    \begin{enumerate}[label = \alph*)]
+        \item The system has no solution if it has no unique solution and
+            \[2 \alpha + 2 \neq 0 \iff \alpha \in \{0, 1\}\]
+
+        \item The system has an infinite number of solution if it has no unique
+            solution and
+            \[2 \alpha + 2 \neq 0 \iff \alpha \in \varnothing\]
+
+        \item The system has a unique solution if and only if \(\alpha \notin
+            \{0, 1\}\). Then the unique solution is:
+            \[x_3 = \frac{\alpha + 1}{\alpha - \alpha^2} \, \text{, } x_2 = 1 \text{ and } x_1 = \frac{2}{\alpha - 1}\]
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Show that the 3 elementary row operations do not change the solution set of
+    a linear system.
+\end{exercise}
+
+\begin{solution}
+    Let \(x_1, x_2, \ldots, x_n\) be the solution of the original system.
+
+    When an elementary row operations is applied on row \(i^{th}\), the original
+    solution still satisfies the unchanged rows. We have to proove that it also
+    satisfies the changed row.
+
+    \begin{enumerate}[label = \alph*)]
+        \item If \(i^{th}\) row is scaled, \(i^{th}\) equation is still
+            satisfied by the original solution because both size of it is
+            multiplied with a constant.
+
+        \item If a scaled \(j^{th}\) row is added to \(i^{th}\) row, then the
+            original solution still satisfies the new row, as
+            \begin{itemize}
+                \item it satisfies the \(j^{th}\) row, therefore satisfies the
+                    scaled \(j^{th}\) row, as proven above, and
+                \item it satisfies the original \(i^{th}\) row
+            \end{itemize}
+
+        \item If the rows are swapped, the solution does not change, as the set
+            of the equation does not change.
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}\label{exer:3.1.12}
+    Gauss-Jordan Method: This method is described as follows. Use the \(i^{th}\)
+    equation to eliminate not only \(x_i\) from the equations \(E_{> i}\) as was
+    done in the Gaussian elimination method, but also from \(E_{< i}\). Upon
+    reducing \([\bm{A}, \bm{b}]\) to:
+    \[\begin{pNiceArray}{cccc:c}
+        a_{11}^{(1)}  &                &          &                &  b_1^{(1)}  \\
+                      &  a_{22}^{(2)}  &          &                &  b_2^{(2)}  \\
+                      &                &  \ddots  &                &  \vdots     \\
+                      &                &          &  a_{nn}^{(n)}  &  b_n^{(n)}  \\
+    \end{pNiceArray}\]
+    the solution can be obtained by
+    \[x_i = \frac{b_i^{(i)}}{a_{ii}^{(i)}}\]
+
+    This procedure circumvents the backward substitution in the Gaussian
+    elimination. Construct an algorithm for the Gauss-Jordan procedure patterned
+    after that of Algorithm 6.1.
+\end{exercise}
+
+\begin{solution}
+    In Step 4, change \(j\) from \(j > i\) to \(j \neq i\).
+
+    In Step 8, calculate for all \(i\):
+    \[x_i = \frac{b_i}{a_{ii}}\]
+
+    Remove Step 9.
+\end{solution}
+
+\begin{exercise}
+    Use the Gauss-Jordan method and two-digit rounding arithmetic to solve the
+    systems in \hyperref[exer:3.1.3]{Exercise 3}.
+\end{exercise}
+
+\begin{solution}
+
+    \begin{enumerate}[label = \alph*)]
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1] S[table-format=1] : S[table-format=2] }
+                        4  &  -1  &  1  &   8  \\
+                        2  &   5  &  2  &   3  \\
+                        1  &   2  &  4  &  11  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_1\) by these transformation
+            \[E_2 \coloneqq E_2 - 0.5 E_1; \, E_3 \coloneqq E_3 - 0.25 E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=-1.2] S[table-format=1.2] : S[table-format=-1] }
+                        4  &  -1     &  1     &   8  \\
+                        0  &   5.5   &  1.5   &  -1  \\
+                        0  &   2.25  &  3.75  &   9  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_2\) by these transformation
+            \[E_1 \coloneqq E_1 - (-0.18182) E_2; \, E_3 \coloneqq E_3 - 0.40909 E_2\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1.1] S[table-format=1.5] : S[table-format=-1.5] }
+                        4  &  0    &  1.27273  &   7.81818  \\
+                        0  &  5.5  &  1.5      &  -1        \\
+                        0  &  0    &  3.13636  &   9.40909  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_3\) by these transformation
+            \[E_1 \coloneqq E_1 - 0.40580 E_3; \, E_2 \coloneqq E_2 - 0.47826 E_3\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(4)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1.1] S[table-format=1.5] : S[table-format=-1.5] }
+                        4  &  0    &  0        &   4        \\
+                        0  &  5.5  &  0        &  -5.5      \\
+                        0  &  0    &  3.13636  &   9.40909  \\
+                    \end{pNiceArray}
+            \]
+
+            The solution is \(x_3 \approx 3\), \(x_2 \approx -1\), \(x_1 \approx
+            1\).
+
+        \item Let
+            \[
+                \bm{\tilde{A}} = \bm{\tilde{A}}^{(1)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1] S[table-format=-1] : S[table-format=-1] }
+                        4  &  1  &   2  &   9  \\
+                        2  &  4  &  -1  &  -5  \\
+                        1  &  1  &  -3  &  -9
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_1\) by these transformation
+            \[E_2 \coloneqq E_2 - 0.50000 E_1; \, E_3 \coloneqq E_3 - 0.25000 E_1\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(2)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1.2] S[table-format=-1.1] : S[table-format=-2.2] }
+                        4  &  1     &   2    &    9     \\
+                        0  &  3.5   &  -2    &   -9.5   \\
+                        0  &  0.75  &  -3.5  &  -11.25  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_2\) by these transformation
+            \[E_1 \coloneqq E_1 - 0.28571 E_2; \, E_3 \coloneqq E_3 - 0.21429 E_2\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(3)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1.1] S[table-format=-1.5] : S[table-format=-1.5] }
+                        4  &  0    &   2.57143  &  11.71429  \\
+                        0  &  3.5  &  -2        &  -9.5      \\
+                        0  &  0    &  -3.07143  &  -9.21429  \\
+                    \end{pNiceArray}
+            \]
+
+            Eliminating \(x_3\) by these transformation
+            \[E_1 \coloneqq E_1 - (-0.83721) E_3; \, E_2 \coloneqq E_2 - 0.65116 E_3\]
+            gives:
+            \[
+                \bm{\tilde{A}}^{(4)} =
+                    \begin{pNiceArray}{ S[table-format=1] S[table-format=1.1] S[table-format=-1.5] : S[table-format=-1.5] }
+                        4  &  0    &   0        &   4        \\
+                        0  &  3.5  &   0        &  -3.5      \\
+                        0  &  0    &  -3.07143  &  -9.21429  \\
+                    \end{pNiceArray}
+            \]
+
+            The solution is \(x_3 \approx 3\), \(x_2 \approx -1\), \(x_1 \approx
+            1\).
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Repeat \hyperref[exer:3.1.7]{Exercise 7} using the Gauss-Jordan method.
+\end{exercise}
+
+\begin{solution}
+    Opps, can't help without Maple license.
+\end{solution}
+
+\begin{exercise}
+    \begin{tasks}
+        \task Show that the Gauss-Jordan method requires
+            \[\frac{n^3}{2} + n^2 - \frac{n}{2} \text{ multiplications/divisions}\]
+            and
+            \[\frac{n^3}{2} - \frac{n}{2} \text{ additions/subtractions}\]
+
+        \task Make a table comparing the required operations for the
+            Gauss-Jordan and Gaussian elimination methods for \(n = 3, 10, 50,
+            100\). Which method requires less computation?
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item We have the following analysis:
+            \begin{itemize}
+                \item In Step 1, \(i\) iterates from \(1\) to \(n\), so there is
+                    \(n\) iterations. Inside each iteration:
+                    \begin{itemize}
+                        \item In Step 4, \(j\) iterates from \(1\) to \(n\) but
+                            skips \(i\), so there is \(n - 1\) iterations.
+                            Inside each iteration:
+                            \begin{itemize}
+                                \item In Step 5: \(1\) divisions
+                                \item In Step 6: \(n + 1\) multiplications; \(n
+                                    + 1\) subtractions.
+
+                                    However, some operations with or known to
+                                    results in \(0\) could be skipped,
+                                    therefore, Step 6 requires \(n + 1 - i\)
+                                    multiplications and \(n + 1 - i\)
+                                    subtractions.
+                            \end{itemize}
+
+                            Therefore, in each Step 4 iteration, there are \(n - i +
+                            2\) multiplications/divisions and \(n - i + 1\)
+                            subtractions.
+                    \end{itemize}
+
+                    Therefore, in each Step 1 iteration, there are \((n - 1)(n -
+                    i + 2)\) multiplications/divisions and \((n - 1)(n - i +
+                    1)\) subtractions
+
+                    Therefore, in all Step 1 iterations, there are
+                    \begin{align*}
+                        \sum_{i = 1}^{n} (n - 1)(n - i + 2) &= (n - 1) \left[n(n + 2) - \sum_{i = 1}^{n} i \right] \\
+                                                            &= \frac{n^3 + 2n^2 - 3n}{2} \text{ multiplications/divisions}
+                    \end{align*}
+                    and
+                    \begin{align*}
+                        \sum_{i = 1}^{n} (n - 1)(n - i + 1) &= (n - 1) \left[n(n + 1) - \sum_{i = 1}^{n} i \right] \\
+                                                            &= \frac{n^3 - n}{2} \text{ subtractions}
+                    \end{align*}
+
+                \item In Step 9, \(i\) iterates from \(1\) to \(n\), so there is
+                    \(n\) iterations. Inside each iteration, there is only \(1\)
+                    divisions. Therefore, in all Step 9 divisions, there are
+                    \(n\) divisions.
+            \end{itemize}
+
+            We can now conclude that Gauss-Jordan requires
+            \[\frac{n^3 + 2n^2 - 3n}{2} + n = \frac{n^3}{2} + n^2 - \frac{n}{2} \text{ multiplications/divisions}\]
+            and
+            \[\frac{n^3}{2} - \frac{n}{2} \text{ additions/subtractions}\]
+
+            Note that in most simple implementation, the cost of branching code
+            to skip operations (for example in Step 6 of this analysis) is
+            greater than the save from skipping operations itself. Therefore, a
+            well-vectorized implementation, though requiring even more
+            computation, turns out to outperform a ``skip'' implementation.
+
+        \item We have the following table:
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{ccccc}
+                    \toprule
+                    &  \multicolumn{2}{c}{Gauss Elimination}  &  \multicolumn{2}{c}{Gauss-Jordan}  \\
+                    \midrule
+                    \(n\)  &  M/D  &  A/S  &  M/D  &  A/S  \\
+                    \midrule
+                    3    &  17      &  11      &  21      &  12      \\
+                    10   &  430     &  375     &  595     &  495     \\
+                    50   &  44150   &  42875   &  64975   &  62475   \\
+                    100  &  343300  &  338250  &  509950  &  499950  \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+
+            Obviously, Gauss Elimination requires less computation.
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Consider the following Gaussian-elimination-Gauss-Jordan hybrid method for
+    solving system of equations. First, apply the Gaussian-elimination technique
+    to reduce the system to triangular form. Then use the \(n^{th}\) equation to
+    eliminate the coefficients of \(x_n\) in each of the first \(n - 1\) rows.
+    After this is completed use the \((n - 1)^{th}\) equation to eliminate the
+    coefficients of \(x_{n - 1}\) in the first \(n - 2\) rows, etc. The system
+    will eventually appear as the reduced system in
+    \hyperref[exer:3.1.12]{Exercise 12}.
+
+    \begin{tasks}
+        \task Show that this method requires
+            \[\frac{n^3}{3} + \frac{3n^2}{2} - \frac{5n}{6} \text{ multiplications/divisions}\]
+            and
+            \[\frac{n^3}{2} + \frac{n^2}{2} - \frac{5n}{6} \text{ additions/subtractions}\]
+
+        \task Make a table comparing the required operations for the Gaussian
+            elimination, Gauss-Jordan, and hybrid methods, for \(n = 3, 10, 50,
+            100\). Which method requires less computation?
+    \end{tasks}
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}[label = \alph*)]
+        \item We have the following analysis:
+            \begin{itemize}
+                \item Gauss elimination to upper triangular form: takes
+                    \[\frac{n^3}{3} + \frac{n^2}{2} - \frac{5n}{6} \text{ multiplications/divisions}\]
+                    and
+                    \[\frac{n^3}{3} - \frac{n}{3} \text{additions/subtractions}\]
+                \item Use the \(i^{th}\) equation to eliminate \(x_i\) in each
+                    of the first \(i - 1\) rows, starting with \(i = n\): Let
+                    \(i\) iterates from \(n\) to \(2\), so there is \(n - 1\)
+                    iterations.
+
+                    Inside each iteration, \(x_i\) is eliminated from \((i -
+                    1)^{th}\) equation to the first one. We only need to update
+                    the last column, as most operations with, or results in
+                    \(0\) is skipped. So, there is \(1\) division (for
+                    multiplier), \(1\) multiplication (scale row, or in fact
+                    last element of the row), \(1\) subtraction (elimination).
+
+                    Therefore, in all iterations of this step, there are
+                    \[\sum_{i = 2}^{n} 2(i - 1) = 2 \sum_{i = 1}^{n - 1} i = n(n - 1) \text{ multiplications/divisions}\]
+                    and
+                    \[\sum_{i = 2}^{n} (2i) = \frac{n(n - 1)}{2} \text{ multiplications/divisions}\]
+                \item The last step of solving diagonal matrix takes \(n\)
+                    divisions
+            \end{itemize}
+
+            We can now conclude that the hybrid methods takes
+            \[\frac{n^3}{3} + \frac{3n^2}{2} - \frac{5n}{6} \text{ multiplications/divisions}\]
+            and
+            \[\frac{n^3}{2} + \frac{n^2}{2} - \frac{5n}{6} \text{ additions/subtractions}\]
+
+        \item We have the following table:
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{ccccccc}
+                    \toprule
+                    &  \multicolumn{2}{c}{Gauss Elimination}  &  \multicolumn{2}{c}{Gauss-Jordan}  &  \multicolumn{2}{c}{Hybrid}  \\
+                    \midrule
+                    \(n\)  &  M/D  &  A/S  &  M/D  &  A/S  &  M/D  &  A/S  \\
+                    \midrule
+                    3    &  17      &  11      &  21      &  12      &  20      &  11      \\
+                    10   &  430     &  375     &  595     &  495     &  475     &  375     \\
+                    50   &  44150   &  42875   &  64975   &  62475   &  45375   &  42875   \\
+                    100  &  343300  &  338250  &  509950  &  499950  &  348250  &  338250  \\
+                    \bottomrule
+                \end{tabular}
+            \end{table}
+    \end{enumerate}
+\end{solution}
+
+\end{document}

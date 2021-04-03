@@ -1,0 +1,26 @@
+\documentclass[../../../../../../Assignments.tex]{subfiles}
+
+% \documentclass{book}
+% \usepackage{pgfplots}
+% \pgfplotsset{compat=1.17}
+
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = center,
+        samples=10,
+        xlabel = \(x_2\),
+        xmin=-3, xmax=3,
+        ylabel = \(x_1\),
+        ymin=-3, ymax=3,
+        legend cell align={left},
+    ]
+        \addplot[green]{3 - 2 * x};
+        \addlegendentry{\(\phantom{-2}x_1 + 2x_2 = 3\)};
+
+        \addplot[blue]{-3 - 2 * x};
+        \addlegendentry{\(-2x_1 - 4x_2 = 6\)};
+    \end{axis}
+\end{tikzpicture}
+\end{document}
