@@ -76,19 +76,19 @@ Trong thực tế thì sai số \(E_a\) không thể biết được nên khi kh
 lầm người ta còn dùng từ \emph{sai số} để chỉ sai số tuyệt đối \(E_a\).
 
 \begin{exmp}\label{exmp:room_example}
-    Căn phòng có chiều dài \(d = \SI{5.45}{m}\) và chiều rộng \(r =
-    \SI{3.94}{m}\) với sai số \SI{1}{cm}.
+    Căn phòng có chiều dài \(d = \qty{5.45}{m}\) và chiều rộng \(r =
+    \qty{3.94}{m}\) với sai số \qty{1}{cm}.
 
     Khi đó ta hiểu là:
 
     \begin{gather*}
-        \Delta d = \SI{0.01}{m} \text{ hay } d = \SI[separate-uncertainty=true]{5.45 \pm 0.01}{m} \\
-        \Delta r = \SI{0.01}{m} \text{ hay } r = \SI[separate-uncertainty=true]{3.97 \pm 0.01}{m}
+        \Delta d = \qty{0.01}{m} \text{ hay } d = \qty{5.45(0.01)}{m} \\
+        \Delta r = \qty{0.01}{m} \text{ hay } r = \qty{3.97(0.01)}{m}
     \end{gather*}
 
     Như vậy diện tích của phòng được ước lượng bởi:
 
-    \[S = d \cdot r = \num{5.45} \cdot \num{3.94} = \SI{21.473}{m^2}\]
+    \[S = d \cdot r = \num{5.45} \cdot \num{3.94} = \qty{21.473}{m^2}\]
 
     với cận trên và cận dưới của \(S\) là:
 
@@ -96,7 +96,7 @@ lầm người ta còn dùng từ \emph{sai số} để chỉ sai số tuyệt �
 
     Vậy ta có ước lượng sai số tuyệt đối của S là:
 
-    \[\abs{S - S_0} \leq \SI{0.094}{m^2}\]
+    \[\abs{S - S_0} \leq \qty{0.094}{m^2}\]
 \end{exmp}
 
 \subsection{Sai số tương đối}
@@ -126,7 +126,7 @@ nên ta chỉ cần biết một trong hai loại sai số của nó là đượ
 
 \begin{exmp}
     Nếu \(a = \num{57}\) và \(\Delta a = \num{0.5}\) thì \(\delta a =
-    \num{0.0087719}\) hoặc \SI{0.88}{\percent} (gọn hơn là \SI{0.9}{\percent}).
+    \num{0.0087719}\) hoặc \qty{0.88}{\percent} (gọn hơn là \qty{0.9}{\percent}).
 \end{exmp}
 
 \subsection{Các loại sai số khác}
@@ -280,7 +280,7 @@ bản. Sau đây ta ước lượng sai số khi cộng trừ, nhân chia các s
     Ta có \(u = \num{0.4}\) với \(\Delta u = \num{0.05} + \num{0.05} =
     \num{0.1}\).
 
-    Vậy \(\delta u = \dfrac{\num{0.1}}{\num{0.4}} = \SI{25}{\percent}\).
+    Vậy \(\delta u = \dfrac{\num{0.1}}{\num{0.4}} = \qty{25}{\percent}\).
 \end{exmp}
 
 \subsubsection{Sai số của tích hoặc thương}
@@ -391,25 +391,25 @@ một cách linh hoạt. Sau đây ta xét hai phương pháp thông dụng.
 \end{enumerate}
 
 \begin{exmp}
-    Mảnh vườn có cạnh \(d \approx \SI{45.0}{m}\) và \(r \approx
-    \SI{20.0}{m}\). Cần tính \(d\) và \(r\) với \(\Delta d\), \(\Delta r\) như
-    thế nào để \(\Delta S \leq \SI{0.1}{m^2}\).
+    Mảnh vườn có cạnh \(d \approx \qty{45.0}{m}\) và \(r \approx
+    \qty{20.0}{m}\). Cần tính \(d\) và \(r\) với \(\Delta d\), \(\Delta r\) như
+    thế nào để \(\Delta S \leq \qty{0.1}{m^2}\).
 
     \emph{Cách 1.}
     Xét \(\Delta d = \Delta r = \Delta x\), ta áp dụng~\ref{eq:same_error}:
 
-    \[\Delta x \leq \frac{\num{0.1}}{45 + 20} = \SI{0.0015}{m}\]
+    \[\Delta x \leq \frac{\num{0.1}}{45 + 20} = \qty{0.0015}{m}\]
 
     \emph{Cách 2.}
     Khi đo chiều dài thường có sai số lớn hơn chiều rộng nên ta có thể
     dùng~\ref{eq:evenly_distributed_error}.
 
     \[
-        \Delta d \leq \frac{\num{0.1}}{\num{2.20}} = \SI{0.0025}{m} \, \text{, }
-        \Delta r \leq \frac{\num{0.1}}{\num{2.45}} = \SI{0.0010}{m}
+        \Delta d \leq \frac{\num{0.1}}{\num{2.20}} = \qty{0.0025}{m} \, \text{, }
+        \Delta r \leq \frac{\num{0.1}}{\num{2.45}} = \qty{0.0010}{m}
     \]
 
-    là đủ để \(\Delta S \leq \SI{0.1}{m^2}\)
+    là đủ để \(\Delta S \leq \qty{0.1}{m^2}\)
 \end{exmp}
 
 \section[Sai số quy tròn, quan hệ sai số \& số chữ số chắc]{Sai số qui tròn, quan hệ giữa sai số và số chữ số đáng tin}
